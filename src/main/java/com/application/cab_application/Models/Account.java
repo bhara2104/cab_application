@@ -10,17 +10,20 @@ public class Account {
     private String password;
     private String phoneNumber;
     private AccountType accountType;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
 
-    public Account(int id, String email, String password, String phoneNumber, AccountType accountType, Timestamp createdAt, Timestamp updatedAt) {
+    public Account(int id, String email, String password, String phoneNumber, AccountType accountType) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.accountType = accountType;
-        this.createdAt = createdAt ;
-        this.updatedAt = updatedAt ;
+    }
+
+    public Account(int id, String email, String phoneNumber, AccountType accountType){
+        this.id = id;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.accountType = accountType;
     }
 
     public Account() {
@@ -45,13 +48,5 @@ public class Account {
 
     public AccountType getAccountType() {
         return accountType;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
     }
 }
