@@ -54,7 +54,10 @@ public class VehicleDao {
             resultSet = preparedStatement.executeQuery();
             if(resultSet.isBeforeFirst()){
                 resultSet.next();
-                return new Vehicle(resultSet.getInt("id"),resultSet.getString("model"), VehicleType.fromCode(resultSet.getInt("vehicle_type")),resultSet.getString("vehicle_number"),resultSet.getString("brand"), resultSet.getInt("year")) ;
+                return new Vehicle(resultSet.getInt("id"),resultSet.getString("model"),
+                        VehicleType.fromCode(resultSet.getInt("vehicle_type")),
+                        resultSet.getString("vehicle_number"),resultSet.getString("brand"),
+                        resultSet.getInt("year")) ;
             } else {
                 return new Vehicle() ;
             }
