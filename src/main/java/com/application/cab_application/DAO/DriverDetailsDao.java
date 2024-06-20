@@ -21,10 +21,7 @@ public class DriverDetailsDao {
             }else{
                 return new DriverDetails();
             }
-        }catch (ClassNotFoundException e){
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        } catch (SQLException e){
+        }catch (ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());
         }
         return new DriverDetails();
