@@ -12,6 +12,11 @@ public class VehicleDao {
         String query = "insert into vehicles(vehicle_type,vehicle_number,brand,year,model) values (?,?,?,?,?)";
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1,vehicle.getVehicleType().getCode());
+            preparedStatement.setString(2,vehicle.getVehicleNumber());
+            preparedStatement.setString(3,vehicle.getBrand());
+            preparedStatement.setInt(4,vehicle.getYear());
+            preparedStatement.setString(5, vehicle.getModel());
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();
@@ -29,6 +34,11 @@ public class VehicleDao {
     public Boolean updateVehicle(Vehicle vehicle){
         String query = "update vehicles set vehicle_number = ? , vehicle_type = ?, model = ? , year = ?, brand = ? where id = " + vehicle.getId();
         try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
+            preparedStatement.setString(1,vehicle.getVehicleNumber());
+            preparedStatement.setInt(2,vehicle.getVehicleType().getCode());
+            preparedStatement.setString(3,vehicle.getModel());
+            preparedStatement.setInt(4,vehicle.getYear());
+            preparedStatement.setString(5,vehicle.getBrand());
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0 ;
         }catch (Exception e){
