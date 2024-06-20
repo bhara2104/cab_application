@@ -8,9 +8,9 @@ public class Vehicle {
     private VehicleType vehicleType;
     private String vehicleNumber;
     private String brand;
-    private String year;
+    private int year;
 
-    public Vehicle(int id, String model, VehicleType vehicleType, String vehicleNumber, String brand, String year) {
+    public Vehicle(int id, String model, VehicleType vehicleType, String vehicleNumber, String brand, int year) {
         this.id = id;
         this.model = model;
         this.vehicleType = vehicleType;
@@ -43,7 +43,7 @@ public class Vehicle {
         return brand;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 }

@@ -17,7 +17,7 @@ public enum RequestStatus {
         return code ;
     }
 
-    public RequestStatus fromCode(int code){
+    public static RequestStatus fromCode(int code){
         for(RequestStatus requestStatus: RequestStatus.values()){
             if(requestStatus.getCode() == code)
                 return requestStatus ;
