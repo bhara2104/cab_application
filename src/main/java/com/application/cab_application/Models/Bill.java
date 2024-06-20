@@ -1,10 +1,10 @@
 package com.application.cab_application.Models;
 
 public class Bill {
-    private int id ;
-    private int rideID ;
-    private double billAmount ;
-    private int paymentId ;
+    private int id;
+    private int rideID;
+    private double billAmount;
+    private int paymentId;
 
     public Bill(int id, int rideID, double billAmount, int paymentId) {
         this.id = id;

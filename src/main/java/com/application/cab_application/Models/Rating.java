@@ -2,9 +2,9 @@ package com.application.cab_application.Models;
 
 public class Rating {
     private int id;
-    private String comments ;
-    private double ratingValue ;
-    private int rideID ;
+    private String comments;
+    private double ratingValue;
+    private int rideID;
 
     public Rating() {
     }

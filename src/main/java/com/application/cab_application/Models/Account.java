@@ -19,14 +19,14 @@ public class Account {
         this.accountType = accountType;
     }
 
-    public Account(String email, String password, String phoneNumber, AccountType accountType){
-        this.email = email ;
+    public Account(String email, String password, String phoneNumber, AccountType accountType) {
+        this.email = email;
         this.password = password;
-        this.phoneNumber = phoneNumber ;
+        this.phoneNumber = phoneNumber;
         this.accountType = accountType;
     }
 
-    public Account(int id, String email, String phoneNumber, AccountType accountType){
+    public Account(int id, String email, String phoneNumber, AccountType accountType) {
         this.id = id;
         this.email = email;
         this.phoneNumber = phoneNumber;

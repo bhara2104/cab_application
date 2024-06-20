@@ -19,7 +19,7 @@ public class DriverDetails {
         this.vehicleId = vehicleId;
     }
 
-    public DriverDetails(){
+    public DriverDetails() {
 
     }
 
