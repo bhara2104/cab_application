@@ -3,11 +3,11 @@ package com.application.cab_application.Models;
 import java.sql.Timestamp;
 
 public class AccountDetails {
-    private int id ;
-    private int accountId ; //It is mapped to account in order to fetch the account details like name and other details
-    private String name ;
-    private String address ;
-    private int currentRideID ; // This ID is mapped as the current ride which the rider or driver is travelling
+    private int id;
+    private int accountId; //It is mapped to account in order to fetch the account details like name and other details
+    private String name;
+    private String address;
+    private int currentRideID; // This ID is mapped as the current ride which the rider or driver is travelling
 
     public AccountDetails(int id, int accountId, String name, String address, int currentRideID) {
         this.id = id;
@@ -17,14 +17,14 @@ public class AccountDetails {
         this.currentRideID = currentRideID;
     }
 
-    public AccountDetails(int accountId, String name, String address, int currentRideID){
+    public AccountDetails(int accountId, String name, String address, int currentRideID) {
         this.accountId = accountId;
-        this.name = name ;
+        this.name = name;
         this.address = address;
         this.currentRideID = currentRideID;
     }
 
-    public AccountDetails(){
+    public AccountDetails() {
 
     }
 

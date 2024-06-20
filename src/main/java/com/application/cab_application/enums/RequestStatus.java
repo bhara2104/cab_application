@@ -7,22 +7,22 @@ public enum RequestStatus {
     ENDED(4),
     CANCELLED(5);
 
-    private final int code ;
+    private final int code;
 
-    RequestStatus(int code){
+    RequestStatus(int code) {
         this.code = code;
     }
 
-    public int getCode(){
-        return code ;
+    public int getCode() {
+        return code;
     }
 
-    public static RequestStatus fromCode(int code){
-        for(RequestStatus requestStatus: RequestStatus.values()){
-            if(requestStatus.getCode() == code)
-                return requestStatus ;
+    public static RequestStatus fromCode(int code) {
+        for (RequestStatus requestStatus : RequestStatus.values()) {
+            if (requestStatus.getCode() == code)
+                return requestStatus;
         }
-        throw new IllegalArgumentException("Unknown code " +code);
+        throw new IllegalArgumentException("Unknown code " + code);
     }
 
 }

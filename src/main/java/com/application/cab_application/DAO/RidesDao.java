@@ -1,49 +1,43 @@
 package com.application.cab_application.DAO;
 
-import com.application.cab_application.Models.Location;
+import com.application.cab_application.Models.Ride;
 import com.application.cab_application.Util.DatabaseConnector;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class LocationDao {
-    public int createLocation(Location location) {
-        String query = "Insert into locations(city,latitude,longitude,landmark,pincode) values (?,?,?,?,?)";
+public class RidesDao {
+    private int createRide(Ride ride) {
+        String query = "insert into rides(rider_id,driver_id,ride_details_id) values (?,?,?)";
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, location.getCity());
-            preparedStatement.setDouble(2, location.getLatitude());
-            preparedStatement.setDouble(3, location.getLongitude());
-            preparedStatement.setString(5, location.getLandmark());
-            preparedStatement.setInt(5, location.getPinCode());
+            preparedStatement.setInt(1, ride.getRiderId());
+            preparedStatement.setInt(2, ride.getDriverId());
+            preparedStatement.setInt(3, ride.getRideDetailsId());
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();
+                resultSet.next();
                 return resultSet.getInt(1);
-            } else
-                return 0;
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return 0;
     }
 
-
-    public Location getLocation(int id) {
-        String query = "select * from locations where id =" + id;
+    private Ride getRide(int id) {
+        String query = "select * from rides where id =" + id;
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             resultSet = preparedStatement.executeQuery();
             if (resultSet.isBeforeFirst()) {
                 resultSet.next();
-                return new Location(resultSet.getInt("id"), resultSet.getDouble("latitude"),
-                        resultSet.getDouble("longitude"), resultSet.getString("landmark"),
-                        resultSet.getString("city"), resultSet.getInt("pincode"));
+                return new Ride(resultSet.getInt("id"), resultSet.getInt("rider_id"), resultSet.getInt("driver_id"), resultSet.getInt("ride_details_id"));
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return new Location();
+        return new Ride();
     }
-
 }

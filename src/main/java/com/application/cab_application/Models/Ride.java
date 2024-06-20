@@ -1,9 +1,9 @@
 package com.application.cab_application.Models;
 
 public class Ride {
-    private int id ;
-    private int RiderId ;
-    private int DriverId ;
+    private int id;
+    private int RiderId;
+    private int DriverId;
     private int rideDetailsId;
 
     public Ride(int id, int riderId, int driverId, int rideDetailsId) {
@@ -13,7 +13,7 @@ public class Ride {
         this.rideDetailsId = rideDetailsId;
     }
 
-    public Ride(){
+    public Ride() {
 
     }
 

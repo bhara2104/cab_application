@@ -19,7 +19,7 @@ public class Vehicle {
         this.year = year;
     }
 
-    public Vehicle(){
+    public Vehicle() {
 
     }
 

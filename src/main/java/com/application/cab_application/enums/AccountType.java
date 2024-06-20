@@ -4,12 +4,13 @@ public enum AccountType {
     RIDER(1),
     DRIVER(2);
 
-    private final int code ;
-    AccountType(int code){
+    private final int code;
+
+    AccountType(int code) {
         this.code = code;
     }
 
-    public int getCode(){
+    public int getCode() {
         return code;
     }
 
