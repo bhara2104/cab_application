@@ -40,4 +40,16 @@ public class RidesDao {
         }
         return new Ride();
     }
+
+    public Boolean updateDriverID(int rideID, int driverID) {
+        String query = "update rides set driver_id = ? where rideID =" + rideID;
+        try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1,driverID);
+            int affectedRows = preparedStatement.executeUpdate();
+            return affectedRows > 0;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 }
