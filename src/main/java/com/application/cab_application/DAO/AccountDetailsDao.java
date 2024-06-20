@@ -10,13 +10,12 @@ import java.sql.SQLException;
 
 public class AccountDetailsDao {
     public int createAccountDetails(AccountDetails details) {
-        String sql = "Insert into account_details(account_id,name,address,current_ride_id) values(?, ?, ?, ?)";
+        String sql = "Insert into account_details(account_id,name,address) values(?, ?, ?)";
         ResultSet rs;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, details.getAccountId());
             preparedStatement.setString(2, details.getName());
             preparedStatement.setString(3, details.getAddress());
-            preparedStatement.setInt(4, 0);
             int affectedRows = preparedStatement.executeUpdate();
             if(affectedRows > 0){
                 rs = preparedStatement.getGeneratedKeys();
