@@ -3,7 +3,6 @@ package com.application.cab_application.DAO;
 import com.application.cab_application.Models.DriverDetails;
 import com.application.cab_application.Util.DatabaseConnector;
 
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
