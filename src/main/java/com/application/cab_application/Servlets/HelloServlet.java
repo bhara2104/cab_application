@@ -1,4 +1,4 @@
-package com.application.cab_application;
+package com.application.cab_application.Servlets;
 
 import java.io.*;
 
