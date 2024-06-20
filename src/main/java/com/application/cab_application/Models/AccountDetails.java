@@ -8,19 +8,24 @@ public class AccountDetails {
     private String name ;
     private String address ;
     private int currentRideID ; // This ID is mapped as the current ride which the rider or driver is travelling
-    private Timestamp createdAt ;
-    private Timestamp updateAt ;
-    private Timestamp lastLoginAt;
 
-    public AccountDetails(int id, int accountId, String name, String address, int currentRideID, Timestamp createdAt, Timestamp updateAt, Timestamp lastLoginAt) {
+    public AccountDetails(int id, int accountId, String name, String address, int currentRideID) {
         this.id = id;
         this.accountId = accountId;
         this.name = name;
         this.address = address;
         this.currentRideID = currentRideID;
-        this.createdAt = createdAt;
-        this.updateAt = updateAt;
-        this.lastLoginAt = lastLoginAt;
+    }
+
+    public AccountDetails(int accountId, String name, String address, int currentRideID){
+        this.accountId = accountId;
+        this.name = name ;
+        this.address = address;
+        this.currentRideID = currentRideID;
+    }
+
+    public AccountDetails(){
+
     }
 
     public int getId() {
@@ -51,18 +56,6 @@ public class AccountDetails {
         this.currentRideID = currentRideID;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setUpdateAt(Timestamp updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    public void setLastLoginAt(Timestamp lastLoginAt) {
-        this.lastLoginAt = lastLoginAt;
-    }
-
     public String getName() {
         return name;
     }
@@ -73,17 +66,5 @@ public class AccountDetails {
 
     public int getCurrentRideID() {
         return currentRideID;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public Timestamp getUpdateAt() {
-        return updateAt;
-    }
-
-    public Timestamp getLastLoginAt() {
-        return lastLoginAt;
     }
 }
