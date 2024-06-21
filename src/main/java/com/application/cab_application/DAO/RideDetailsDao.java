@@ -48,6 +48,16 @@ public class RideDetailsDao {
     }
 
     public static boolean updateRideDetails(RideDetails rideDetails) {
-
+        String query = "update ride_details set ride_status = ? , start_time = ? , end_time = ? where id ="+rideDetails.getId();
+        try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
+            preparedStatement.setInt(1,rideDetails.getRequestStatus().getCode());
+            preparedStatement.setTimestamp(2,rideDetails.getStartTime());
+            preparedStatement.setTimestamp(3,rideDetails.getEndTime());
+            int result = preparedStatement.executeUpdate();
+            return result > 0 ;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false ;
     }
 }

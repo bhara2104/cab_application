@@ -4,27 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/HelloServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/AccountDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/DriverDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/RiderDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/DatabaseConnector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/enums/AccountType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestDatabaseConnector.java" afterDir="false" />
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Ride Details DAO">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RideDetailsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RideDetailsDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +24,25 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;codermusk&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/codermusk/cab_application.git&quot;,
+    &quot;accountId&quot;: &quot;161d5406-c775-4c4a-b3ca-fcdfbb482ec6&quot;
+  }
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -49,31 +50,58 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2i66NxIIfYzT5Spxb5oV4JMJ97O" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.TestDatabaseConnector.checkConnection.executor": "Run",
-    "JUnit.TestDatabaseConnector.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.TestAccountDao.checkCreatedAccount.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestAccountDao.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDatabaseConnector.checkConnection.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDatabaseConnector.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;after__some__DAOs&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.TestDatabaseConnector.checkConnection">
+}</component>
+  <component name="RunManager" selected="JUnit.TestAccountDao">
+    <configuration name="TestAccountDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cab_application" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestAccountDao" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestAccountDao.checkCreatedAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cab_application" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestAccountDao" />
+      <option name="METHOD_NAME" value="checkCreatedAccount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestDatabaseConnector" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cab_application" />
       <option name="PACKAGE_NAME" value="" />
@@ -117,8 +145,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestDatabaseConnector.checkConnection" />
+        <item itemvalue="JUnit.TestAccountDao" />
+        <item itemvalue="JUnit.TestAccountDao.checkCreatedAccount" />
         <item itemvalue="JUnit.TestDatabaseConnector" />
+        <item itemvalue="JUnit.TestDatabaseConnector.checkConnection" />
       </list>
     </recent_temporary>
   </component>
@@ -138,11 +168,232 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718798643884</updated>
-      <workItem from="1718798644794" duration="2559000" />
+      <workItem from="1718798644794" duration="30698000" />
+      <workItem from="1718934943240" duration="354000" />
     </task>
+    <task id="LOCAL-00001" summary="Added Models and Test for Database connector and a enum for account type">
+      <option name="closed" value="true" />
+      <created>1718801985124</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718801985124</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added Request Status Enum to Keep track of the ride status and created an Account DAO to retrieve database objects to process the API">
+      <option name="closed" value="true" />
+      <created>1718861618793</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718861618793</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added an Enum Function to convert enum code into account type and account type into enum code">
+      <option name="closed" value="true" />
+      <created>1718866395767</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718866395767</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Removed unwanted timestamps">
+      <option name="closed" value="true" />
+      <created>1718866415902</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718866415902</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added Methods to get account by email and create account and retrieve account by email">
+      <option name="closed" value="true" />
+      <created>1718866456157</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718866456157</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added methods to fetch rider and driver accounts">
+      <option name="closed" value="true" />
+      <created>1718866783738</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718866783738</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added Test for account creation and account retrieval">
+      <option name="closed" value="true" />
+      <created>1718867731047</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718867731047</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added Nested class to prevent the flaky failure of the checkCreated account test case">
+      <option name="closed" value="true" />
+      <created>1718867891944</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1718867891944</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added Mockito inline and mockito core as dependency inorder to mock the Test cases">
+      <option name="closed" value="true" />
+      <created>1718868238679</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1718868238679</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Account Details DAO to transfer account details objects">
+      <option name="closed" value="true" />
+      <created>1718868260891</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1718868260891</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Removed Time Stamps from model">
+      <option name="closed" value="true" />
+      <created>1718875617267</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1718875617267</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Created necessary methods to process account details requests">
+      <option name="closed" value="true" />
+      <created>1718875640282</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1718875640282</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added ENUM types to store the enums are numbers in database and validate those enums while retrieving">
+      <option name="closed" value="true" />
+      <created>1718875678821</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1718875678821</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added DAO for account details and driver details">
+      <option name="closed" value="true" />
+      <created>1718878109888</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1718878109888</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Vehicles DAO">
+      <option name="closed" value="true" />
+      <created>1718879222173</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1718879222173</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Vehicle Dao and Fixes in vehicle type">
+      <option name="closed" value="true" />
+      <created>1718880510841</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1718880510841</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Moved Hello servlet to servlets package and added some needed methods in LocationDAO">
+      <option name="closed" value="true" />
+      <created>1718881447376</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1718881447376</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Updated Location and Location Dao to get location and creating a new location">
+      <option name="closed" value="true" />
+      <created>1718882396468</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1718882396468</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added Payment model and payment type">
+      <option name="closed" value="true" />
+      <created>1718885558517</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1718885558517</updated>
+    </task>
+    <task id="LOCAL-00020" summary="RidesDAO">
+      <option name="closed" value="true" />
+      <created>1718886161411</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1718886161411</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added Rating model">
+      <option name="closed" value="true" />
+      <created>1718886321604</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1718886321604</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Formatted Syntaxes and Added Ride Dao">
+      <option name="closed" value="true" />
+      <created>1718887014922</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1718887014922</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added updateDriverID in RidesDao">
+      <option name="closed" value="true" />
+      <created>1718887385913</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1718887385913</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Ride Details DAO">
+      <option name="closed" value="true" />
+      <created>1718888871537</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1718888871537</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Models and Test for Database connector and a enum for account type" />
+    <MESSAGE value="Added Request Status Enum to Keep track of the ride status and created an Account DAO to retrieve database objects to process the API" />
+    <MESSAGE value="Added an Enum Function to convert enum code into account type and account type into enum code" />
+    <MESSAGE value="Removed unwanted timestamps" />
+    <MESSAGE value="Added Methods to get account by email and create account and retrieve account by email" />
+    <MESSAGE value="Added methods to fetch rider and driver accounts" />
+    <MESSAGE value="Added Test for account creation and account retrieval" />
+    <MESSAGE value="Added Nested class to prevent the flaky failure of the checkCreated account test case" />
+    <MESSAGE value="Added Mockito inline and mockito core as dependency inorder to mock the Test cases" />
+    <MESSAGE value="Account Details DAO to transfer account details objects" />
+    <MESSAGE value="Removed Time Stamps from model" />
+    <MESSAGE value="Created necessary methods to process account details requests" />
+    <MESSAGE value="Added ENUM types to store the enums are numbers in database and validate those enums while retrieving" />
+    <MESSAGE value="Added DAO for account details and driver details" />
+    <MESSAGE value="Vehicles DAO" />
+    <MESSAGE value="Vehicle Dao and Fixes in vehicle type" />
+    <MESSAGE value="Moved Hello servlet to servlets package and added some needed methods in LocationDAO" />
+    <MESSAGE value="Updated Location and Location Dao to get location and creating a new location" />
+    <MESSAGE value="Added Payment model and payment type" />
+    <MESSAGE value="RidesDAO" />
+    <MESSAGE value="Added Rating model" />
+    <MESSAGE value="Formatted Syntaxes and Added Ride Dao" />
+    <MESSAGE value="Added updateDriverID in RidesDao" />
+    <MESSAGE value="Ride Details DAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ride Details DAO" />
   </component>
 </project>
