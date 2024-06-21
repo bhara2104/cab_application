@@ -11,4 +11,13 @@
         <servlet-name>AccountServlet</servlet-name>
         <url-pattern>/accounts/*</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AccountDetailsServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.AccountDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AccountDetailsServlet</servlet-name>
+        <url-pattern>/account_details/*</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -1,5 +1,6 @@
 package com.application.cab_application.Servlets;
 
+import com.application.cab_application.Services.AccountDetailsService;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,8 +20,11 @@ public class AccountDetailsServlet extends HttpServlet {
         }
         try {
             int idValue = Integer.parseInt(id);
-
+            String result = AccountDetailsService.getAccountDetailsResponse(idValue);
+            response.setStatus(HttpServletResponse.SC_OK);
+            printWriter.write(result);
         } catch (Exception e){
+            System.out.println(e.getMessage());
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
