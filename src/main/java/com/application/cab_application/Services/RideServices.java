@@ -28,7 +28,7 @@ public class RideServices {
                     return false;
                 }
                 rideDetails1.setRideID(id);
-                RideDetailsDao.createRiderDetail(rideDetails1);
+                RideDetailsDao.createRideDetail(rideDetails1);
                 connection.commit();
                 return true;
             } catch (Exception e) {
@@ -47,7 +47,6 @@ public class RideServices {
         RideDetails rideDetails = RideDetailsDao.getRideDetails(rideID);
         JsonElement rideJsonElement = gson.toJsonTree(ride);
         JsonElement rideDetailsJsonElement = gson.toJsonTree(rideDetails);
-
         JsonObject responseObject = new JsonObject();
         responseObject.add("ride", rideJsonElement);
         responseObject.add("rideDetails", rideDetailsJsonElement);

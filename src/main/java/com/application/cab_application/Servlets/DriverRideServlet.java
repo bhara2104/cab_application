@@ -1,7 +1,11 @@
 package com.application.cab_application.Servlets;
 
 import java.io.*;
+import java.util.List;
 
+import com.application.cab_application.DAO.RidesDao;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -12,7 +16,15 @@ public class DriverRideServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+        Gson gson = new Gson();
+        response.setContentType("application/json");
+        String accountId = request.getParameter("accountID");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter writer = response.getWriter();
+        List<JsonObject> objectList = RidesDao.getAllRideDetails(Integer.parseInt(accountId),"DRIVER");
+        String responseValues = gson.toJson(objectList);
+        response.setStatus(HttpServletResponse.SC_OK);
+        writer.write(responseValues);
     }
 
     public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {

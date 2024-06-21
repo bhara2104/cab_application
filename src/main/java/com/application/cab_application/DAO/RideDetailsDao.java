@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class RideDetailsDao {
-    public static int createRiderDetail(RideDetails rideDetails) {
+    public static int createRideDetail(RideDetails rideDetails) {
         String query = "insert into ride_details(from_location_id, to_location_id, ride_status, start_time, end_time, ride_id) values (?,?,?,?,?,?)";
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -39,7 +39,7 @@ public class RideDetailsDao {
             if (resultSet.isBeforeFirst()) {
                 resultSet.next();
                 return new RideDetails(resultSet.getInt("id"), resultSet.getInt("from_location_id"),
-                        resultSet.getInt("to_location_id"), RequestStatus.fromCode(resultSet.getInt("request_status")),
+                        resultSet.getInt("to_location_id"), RequestStatus.fromCode(resultSet.getInt("ride_status")),
                         resultSet.getTimestamp("start_time"), resultSet.getTimestamp("end_time"), resultSet.getInt("ride_id"));
             }
         } catch (Exception e) {
