@@ -56,7 +56,7 @@ public class AccountDetailsDao {
     public static boolean updateAccount(AccountDetails accountDetails, int id) throws SQLException {
         AccountDetails accountDetails1 = getAccountDetailsByAccountID(id);
         if (accountDetails1.getAccountId() != 0) {
-            String query = "update accounts set name = ?, address = ? where id =" + accountDetails.getAccountId();
+            String query = "update account_details set name = ?, address = ? where id =" + accountDetails.getAccountId();
             try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
                 preparedStatement.setString(1, accountDetails.getName());
                 preparedStatement.setString(2, accountDetails.getAddress());
@@ -74,8 +74,8 @@ public class AccountDetailsDao {
         return false;
     }
 
-    public static boolean updateCurrentRideID(int accountDetailsID, int rideID) {
-        String query = "update accounts set current_ride_id = ? where id =" + accountDetailsID;
+    public static boolean updateCurrentRideID(int accountID, int rideID) {
+        String query = "update account_details set current_ride_id = ? where account_id =" + accountID;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setInt(1, rideID);
             int rows = preparedStatement.executeUpdate();

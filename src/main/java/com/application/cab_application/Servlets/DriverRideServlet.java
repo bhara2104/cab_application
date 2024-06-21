@@ -3,6 +3,7 @@ package com.application.cab_application.Servlets;
 import java.io.*;
 import java.util.List;
 
+import com.application.cab_application.DAO.AccountDao;
 import com.application.cab_application.DAO.AccountDetailsDao;
 import com.application.cab_application.DAO.DriverDetailsDao;
 import com.application.cab_application.DAO.RidesDao;
@@ -43,7 +44,21 @@ public class DriverRideServlet extends HttpServlet {
     }
 
     public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+        String rideID = request.getParameter("RideID");
+        String driverID = request.getParameter("DriverID");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter printWriter = response.getWriter();
+        boolean success = RidesDao.updateDriverID(Integer.parseInt(rideID), Integer.parseInt(driverID));
+        if(success){
+            boolean check = AccountDetailsDao.updateCurrentRideID(Integer.parseInt(driverID),Integer.parseInt(rideID));
+            System.out.println(check + " " +driverID);
+            response.setStatus(HttpServletResponse.SC_OK);
+            printWriter.write("{\"message\":\"Ride Accepted Successfully\"}");
+        }else{
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            printWriter.write("{\"message\":\"There is an error while accepting Ride\"}");
+        }
     }
 
     public void destroy() {
