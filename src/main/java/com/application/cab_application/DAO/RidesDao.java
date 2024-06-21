@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import java.security.spec.ECField;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -123,5 +124,45 @@ public class RidesDao {
             System.out.println(e.getMessage());
         }
         return new ArrayList<>();
+    }
+
+    public static List<JsonObject> getAvailableRides(int locationID){
+        List<JsonObject> jsonObjects = new ArrayList<>();
+        String query = "SELECT \n" +
+                "    r.id, \n" +
+                "    r.driver_id, \n" +
+                "    r.rider_id, \n" +
+                "    rd.id AS ride_detail_id, \n" +
+                "    rd.from_location_id, \n" +
+                "    rd.to_location_id, \n" +
+                "    rd.ride_status, \n" +
+                "    rd.start_time, \n" +
+                "    rd.end_time, \n" +
+                "    rd.ride_id\n" +
+                "FROM \n" +
+                "    rides AS r\n" +
+                "INNER JOIN \n" +
+                "    ride_details AS rd \n" +
+                "ON \n" +
+                "    r.id = rd.ride_id\n" +
+                "Where r.driver_id IS NULL and rd.from_location_id =  " + locationID;
+
+        try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                JsonObject jsonObject = new JsonObject();
+                Ride ride = new Ride(rs.getInt("id"), rs.getInt("rider_id"), rs.getInt("driver_id"));
+                RideDetails rideDetails = new RideDetails(rs.getInt("ride_detail_id"),rs.getInt("from_location_id"),rs.getInt("to_location_id"), RequestStatus.fromCode(rs.getInt("ride_status")),rs.getTimestamp("start_time"), rs.getTimestamp("end_time"), rs.getInt("ride_id"));
+                JsonElement rideElement= PrettyPrintHelper.prettyPrintHelper(ride);
+                JsonElement rideDetailElement = PrettyPrintHelper.prettyPrintHelper(rideDetails);
+                jsonObject.add("ride", rideElement);
+                jsonObject.add("rideDetails",rideDetailElement);
+                jsonObjects.add(jsonObject);
+            }
+            return jsonObjects ;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return jsonObjects;
     }
 }
