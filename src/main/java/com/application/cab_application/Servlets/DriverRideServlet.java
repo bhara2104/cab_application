@@ -27,7 +27,7 @@ public class DriverRideServlet extends HttpServlet {
         String accountId = request.getParameter("accountID");
         response.setCharacterEncoding("UTF-8");
         PrintWriter writer = response.getWriter();
-        if(!action.isEmpty() && action.equals("getAvailableRides")){
+        if(action!=null && action.equals("getAvailableRides")){
             DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(Integer.parseInt(accountId));
             int locationId = driverDetails.getCurrentLocationId();
             List<JsonObject> objectList = RidesDao.getAvailableRides(locationId);
