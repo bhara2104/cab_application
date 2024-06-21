@@ -8,11 +8,10 @@ import java.sql.ResultSet;
 
 public class RidesDao {
     public static int createRide(Ride ride) throws Exception {
-        String query = "insert into rides(rider_id,driver_id) values (?,?)";
+        String query = "insert into rides(rider_id) values (?)";
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, ride.getRiderId());
-            preparedStatement.setInt(2, ride.getDriverId());
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();
@@ -26,7 +25,7 @@ public class RidesDao {
         return 0;
     }
 
-    private static Ride getRide(int id) {
+    public static Ride getRide(int id) {
         String query = "select * from rides where id =" + id;
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {

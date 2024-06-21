@@ -15,9 +15,9 @@ public class RideDetailsDao {
             preparedStatement.setInt(1, rideDetails.getFromLocation());
             preparedStatement.setInt(2, rideDetails.getToLocation());
             preparedStatement.setInt(3, rideDetails.getRequestStatus().getCode());
-            preparedStatement.setTimestamp(5, rideDetails.getStartTime());
-            preparedStatement.setTimestamp(6, rideDetails.getEndTime());
-            preparedStatement.setInt(7,rideDetails.getRideID());
+            preparedStatement.setTimestamp(4, rideDetails.getStartTime());
+            preparedStatement.setTimestamp(5, rideDetails.getEndTime());
+            preparedStatement.setInt(6,rideDetails.getRideID());
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();
@@ -32,7 +32,7 @@ public class RideDetailsDao {
 
 
     public static RideDetails getRideDetails(int id) {
-        String query = "select * from ride_details where id = " + id;
+        String query = "select * from ride_details where ride_id = " + id;
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             resultSet = preparedStatement.executeQuery();

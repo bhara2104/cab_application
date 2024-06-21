@@ -37,4 +37,18 @@ public class RideServices {
         }
         return false;
     }
+
+
+    public static JsonObject rideDetails(int rideID) {
+        Ride ride = RidesDao.getRide(rideID);
+        Gson gson = new Gson() ;
+        RideDetails rideDetails = RideDetailsDao.getRideDetails(rideID);
+        JsonObject response = new JsonObject();
+        String rideStr = gson.toJson(ride);
+        response.addProperty("ride", rideStr);
+        String rideDetailsStr = gson.toJson(rideDetails);
+        System.out.println(gson.toJson(ride));
+        response.addProperty("rideDetails", rideDetailsStr);
+        return response;
+    }
 }
