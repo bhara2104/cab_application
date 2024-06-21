@@ -2,8 +2,11 @@ package com.application.cab_application.Servlets;
 
 import java.io.*;
 
+import com.application.cab_application.DAO.LocationDao;
+import com.application.cab_application.Models.Location;
 import com.application.cab_application.Services.LocationService;
 import com.application.cab_application.Util.ReadJson;
+import com.google.gson.Gson;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -13,6 +16,7 @@ public class LocationServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Gson gson = new Gson();
         String id = request.getParameter("id");
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -24,6 +28,10 @@ public class LocationServlet extends HttpServlet {
 
         try {
             int idValue = Integer.parseInt(id);
+            Location location = LocationDao.getLocation(idValue);
+            String jsonResponse = gson.toJson(location);
+            response.setStatus(200);
+            printWriter.write(jsonResponse);
 
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -38,12 +46,12 @@ public class LocationServlet extends HttpServlet {
 
         int locationID = LocationService.addLocation(requestBody);
 
-        if(locationID !=0){
+        if (locationID == 0) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             printWriter.write("{\"message\":\"There was something unexpected Happened\"}");
-        }else{
+        } else {
             response.setStatus(HttpServletResponse.SC_CREATED);
-            printWriter.write("{\"message\":\"Driver Details created successfully\", \"ID:\": "+ locationID + "}");
+            printWriter.write("{\"message\":\"Location created successfully\", \"ID:\": " + locationID + "}");
         }
 
     }

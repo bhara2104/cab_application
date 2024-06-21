@@ -14,11 +14,12 @@ public class LocationDao {
             preparedStatement.setString(1, location.getCity());
             preparedStatement.setDouble(2, location.getLatitude());
             preparedStatement.setDouble(3, location.getLongitude());
-            preparedStatement.setString(5, location.getLandmark());
+            preparedStatement.setString(4, location.getLandmark());
             preparedStatement.setInt(5, location.getPinCode());
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();
+                resultSet.next();
                 return resultSet.getInt(1);
             } else
                 return 0;
@@ -29,7 +30,7 @@ public class LocationDao {
     }
 
 
-    public Location getLocation(int id) {
+    public static Location getLocation(int id) {
         String query = "select * from locations where id =" + id;
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {

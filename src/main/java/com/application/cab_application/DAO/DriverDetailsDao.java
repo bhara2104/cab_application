@@ -38,6 +38,7 @@ public class DriverDetailsDao {
             int result = preparedStatement.executeUpdate();
             if (result > 0) {
                 rs = preparedStatement.getGeneratedKeys();
+                rs.next();
                 return rs.getInt(1);
             }
         } catch (Exception e) {
