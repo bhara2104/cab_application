@@ -4,13 +4,11 @@ public class Ride {
     private int id;
     private int RiderId;
     private int DriverId;
-    private int rideDetailsId;
 
-    public Ride(int id, int riderId, int driverId, int rideDetailsId) {
+    public Ride(int id, int riderId, int driverId) {
         this.id = id;
         RiderId = riderId;
         DriverId = driverId;
-        this.rideDetailsId = rideDetailsId;
     }
 
     public Ride() {
@@ -29,7 +27,4 @@ public class Ride {
         return DriverId;
     }
 
-    public int getRideDetailsId() {
-        return rideDetailsId;
-    }
 }

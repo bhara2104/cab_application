@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AccountDetailsDao {
-    public static int createAccountDetails(AccountDetails details) {
+    public static int createAccountDetails(AccountDetails details) throws SQLException, ClassNotFoundException {
         String sql = "Insert into account_details(account_id,name,address) values(?, ?, ?)";
         ResultSet rs;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -26,10 +26,11 @@ public class AccountDetailsDao {
             }
         } catch (SQLException e) {
             System.out.println(e + " SQL Error raised here");
+            throw e ;
         } catch (ClassNotFoundException e) {
             System.out.println(e + " Class Error raised here");
+            throw e ;
         }
-        return 0;
     }
 
     public static AccountDetails getAccountDetailsByAccountID(int id) {
