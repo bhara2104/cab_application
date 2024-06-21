@@ -38,4 +38,12 @@
         <servlet-name>LocationServlet</servlet-name>
         <url-pattern>/location/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RideServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.RideServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RideServlet</servlet-name>
+        <url-pattern>/ride/*</url-pattern>
+    </servlet-mapping>
 </web-app>
