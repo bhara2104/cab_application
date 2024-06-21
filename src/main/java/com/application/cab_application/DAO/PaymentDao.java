@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class PaymentDao {
-    public int createPayment(Payment payment) {
+    public static int createPayment(Payment payment) {
         String sql = "insert into payments(payment_type, payment_date) values(?,?)";
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             int affectedRows = preparedStatement.executeUpdate();
