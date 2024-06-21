@@ -46,4 +46,21 @@
         <servlet-name>RideServlet</servlet-name>
         <url-pattern>/ride/*</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DriverRideServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.DriverRideServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DriverRideServlet</servlet-name>
+        <url-pattern>/driver_rides/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RiderRideServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.RiderRideServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RiderRideServlet</servlet-name>
+        <url-pattern>/rider_rides/*</url-pattern>
+    </servlet-mapping>
 </web-app>
