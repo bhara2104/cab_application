@@ -17,7 +17,7 @@ public enum PaymentType {
         return code;
     }
 
-    public PaymentType fromCode(int code) {
+    public static PaymentType fromCode(int code) {
         for (PaymentType paymentType : PaymentType.values()) {
             if (paymentType.getCode() == code)
                 return paymentType;
