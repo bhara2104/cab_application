@@ -49,4 +49,12 @@ public class DriverDetailsService {
         DriverDetails driverDetails = gson.fromJson(jsonBody, DriverDetails.class);
         return DriverDetailsDao.updateDriverDetails(driverDetails,driverDetails.getAccountID());
     }
+
+    public static boolean toggleAvailability(String jsonBody){
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(jsonBody, JsonObject.class);
+        int accountId = jsonObject.get("account_id").getAsInt();
+        boolean value = jsonObject.get("value").getAsBoolean();
+        return DriverDetailsDao.updateDriverAvailability(accountId, value);
+    }
 }

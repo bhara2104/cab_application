@@ -47,15 +47,28 @@ public class DriverDetailsServlet extends HttpServlet {
     public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
+        String actionName = request.getParameter("action");
         PrintWriter printWriter = response.getWriter();
         String requestBody = ReadJson.convertJsonToString(request.getReader());
-        boolean result = DriverDetailsService.updateDriverDetails(requestBody);
-        if (result) {
-            response.setStatus(HttpServletResponse.SC_CREATED);
-            printWriter.write("{\"message\":\"Driver Details Updated successfully\"}");
+        if(!actionName.isEmpty() && !actionName.equals("toggle_availability")) {
+            boolean result = DriverDetailsService.updateDriverDetails(requestBody);
+            if (result) {
+                response.setStatus(HttpServletResponse.SC_CREATED);
+                printWriter.write("{\"message\":\"Driver Details Updated successfully\"}");
+            } else {
+                response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
+                printWriter.write("{\"message\":\"Failed to Update\"}");
+            }
         } else {
-            response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
-            printWriter.write("{\"message\":\"Failed to Update\"}");
+            boolean result = DriverDetailsService.toggleAvailability(requestBody);
+            if (result) {
+                response.setStatus(HttpServletResponse.SC_CREATED);
+                printWriter.write("{\"message\":\"Driver Availability Updated successfully\"}");
+            } else {
+                System.out.println("I am here");
+                printWriter.write("{\"message\":\"Failed to Update availability\"}");
+                response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
+            }
         }
     }
 
