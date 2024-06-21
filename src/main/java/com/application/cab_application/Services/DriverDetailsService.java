@@ -43,4 +43,10 @@ public class DriverDetailsService {
         int value = DriverDetailsDao.createDriverDetails(driverDetails);
         return value != 0 ;
     }
+
+    public static boolean updateDriverDetails(String jsonBody){
+        Gson gson = new Gson();
+        DriverDetails driverDetails = gson.fromJson(jsonBody, DriverDetails.class);
+        return DriverDetailsDao.updateDriverDetails(driverDetails,driverDetails.getAccountID());
+    }
 }
