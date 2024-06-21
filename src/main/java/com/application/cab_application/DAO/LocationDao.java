@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class LocationDao {
-    public int createLocation(Location location) {
+    public static int createLocation(Location location) {
         String query = "Insert into locations(city,latitude,longitude,landmark,pincode) values (?,?,?,?,?)";
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {

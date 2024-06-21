@@ -29,4 +29,13 @@
         <servlet-name>DriverDetailsServlet</servlet-name>
         <url-pattern>/driver_details/*</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LocationServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.LocationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LocationServlet</servlet-name>
+        <url-pattern>/location/*</url-pattern>
+    </servlet-mapping>
 </web-app>
