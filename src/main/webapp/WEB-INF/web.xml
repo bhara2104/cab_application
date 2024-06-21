@@ -20,4 +20,13 @@
         <servlet-name>AccountDetailsServlet</servlet-name>
         <url-pattern>/account_details/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DriverDetailsServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.DriverDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DriverDetailsServlet</servlet-name>
+        <url-pattern>/driver_details/*</url-pattern>
+    </servlet-mapping>
 </web-app>

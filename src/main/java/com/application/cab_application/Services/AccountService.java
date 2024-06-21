@@ -7,7 +7,6 @@ import com.application.cab_application.Models.AccountDetails;
 import com.application.cab_application.Util.DatabaseConnector;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import jakarta.servlet.http.HttpServletResponse;
 
 import java.sql.Connection;
 import java.sql.SQLException;

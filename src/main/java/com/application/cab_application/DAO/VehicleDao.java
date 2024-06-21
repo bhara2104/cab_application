@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class VehicleDao {
-    public int createVehicle(Vehicle vehicle) {
+    public static int createVehicle(Vehicle vehicle) {
         String query = "insert into vehicles(vehicle_type,vehicle_number,brand,year,model) values (?,?,?,?,?)";
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -48,7 +48,7 @@ public class VehicleDao {
     }
 
     public static Vehicle getVehicle(int id) {
-        String query = "select * from vehicle where id = " + id;
+        String query = "select * from vehicles where id = " + id;
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             resultSet = preparedStatement.executeQuery();
