@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AccountDetailsDao {
-    public int createAccountDetails(AccountDetails details) {
+    public static int createAccountDetails(AccountDetails details) {
         String sql = "Insert into account_details(account_id,name,address) values(?, ?, ?)";
         ResultSet rs;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -32,7 +32,7 @@ public class AccountDetailsDao {
         return 0;
     }
 
-    public AccountDetails getAccountDetailsByAccountID(int id) {
+    public static AccountDetails getAccountDetailsByAccountID(int id) {
         String sql = "select * from account_details where account_id =" + id;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql)) {
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -52,7 +52,7 @@ public class AccountDetailsDao {
         return new AccountDetails();
     }
 
-    public boolean updateAccount(AccountDetails accountDetails, int id) throws SQLException {
+    public static boolean updateAccount(AccountDetails accountDetails, int id) throws SQLException {
         AccountDetails accountDetails1 = getAccountDetailsByAccountID(id);
         if (accountDetails1.getAccountId() != 0) {
             String query = "update accounts set name = ?, address = ? where id =" + accountDetails.getAccountId();
@@ -73,7 +73,7 @@ public class AccountDetailsDao {
         return false;
     }
 
-    public boolean updateCurrentRideID(int accountDetailsID, int rideID) {
+    public static boolean updateCurrentRideID(int accountDetailsID, int rideID) {
         String query = "update accounts set current_ride_id = ? where id =" + accountDetailsID;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setInt(1, rideID);

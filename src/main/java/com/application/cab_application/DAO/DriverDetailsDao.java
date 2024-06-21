@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DriverDetailsDao {
-    public DriverDetails getDriverDetailsByAccountID(int accountID) {
+    public static DriverDetails getDriverDetailsByAccountID(int accountID) {
         String query = "select * from driver_details where account_id =" + accountID;
         ResultSet rs;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
@@ -26,7 +26,7 @@ public class DriverDetailsDao {
         return new DriverDetails();
     }
 
-    public int createDriverDetails(DriverDetails driverDetails) {
+    public static int createDriverDetails(DriverDetails driverDetails) {
         String query = "insert into driver_details(account_id,license_number,availability,vehicle_id,current_location_id) values (?,?,?,?,?)";
         ResultSet rs;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -46,7 +46,7 @@ public class DriverDetailsDao {
         return 0;
     }
 
-    public boolean updateDriverDetails(DriverDetails driverDetails, int accountID) {
+    public static boolean updateDriverDetails(DriverDetails driverDetails, int accountID) {
         String query = "update driver_details set license_number = ?, current_location_id = ? where account_id = " + accountID;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setString(1, driverDetails.getLicenseNumber());
@@ -59,7 +59,7 @@ public class DriverDetailsDao {
         return false;
     }
 
-    public Boolean updateDriverAvailability(int accountID, Boolean value) {
+    public static Boolean updateDriverAvailability(int accountID, Boolean value) {
         String query = "update driver_details set availability = ? where account_id =" + accountID;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setBoolean(1, value);
