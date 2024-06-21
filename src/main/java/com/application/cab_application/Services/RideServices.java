@@ -6,6 +6,8 @@ import com.application.cab_application.Models.Ride;
 import com.application.cab_application.Models.RideDetails;
 import com.application.cab_application.Util.DatabaseConnector;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.sql.Connection;
@@ -41,14 +43,15 @@ public class RideServices {
 
     public static JsonObject rideDetails(int rideID) {
         Ride ride = RidesDao.getRide(rideID);
-        Gson gson = new Gson() ;
+        Gson gson = new GsonBuilder().setPrettyPrinting().create() ;
         RideDetails rideDetails = RideDetailsDao.getRideDetails(rideID);
-        JsonObject response = new JsonObject();
-        String rideStr = gson.toJson(ride);
-        response.addProperty("ride", rideStr);
-        String rideDetailsStr = gson.toJson(rideDetails);
-        System.out.println(gson.toJson(ride));
-        response.addProperty("rideDetails", rideDetailsStr);
-        return response;
+        JsonElement rideJsonElement = gson.toJsonTree(ride);
+        JsonElement rideDetailsJsonElement = gson.toJsonTree(rideDetails);
+
+        JsonObject responseObject = new JsonObject();
+        responseObject.add("ride", rideJsonElement);
+        responseObject.add("rideDetails", rideDetailsJsonElement);
+
+        return responseObject;
     }
 }
