@@ -54,13 +54,18 @@ public class RideServices {
             Vehicle vehicle = VehicleDao.getVehicle(driverDetails.getVehicleId());
             JsonObject rideJsonObject = rideJsonElement.getAsJsonObject();
             rideJsonObject.addProperty("driver_name", accountDetails.getName());
+            rideJsonObject.addProperty("driver_license",driverDetails.getLicenseNumber());
             JsonElement vehicleJson = gson.toJsonTree(vehicle);
             rideJsonObject.add("vehicle", vehicleJson);
-            rideDetailsJsonElement = gson.toJsonTree(rideJsonObject);
+            rideJsonElement = gson.toJsonTree(rideJsonObject);
         }
         responseObject.add("ride", rideJsonElement);
         Location fromLocation = LocationDao.getLocation(rideDetails.getFromLocation());
         Location toLocation = LocationDao.getLocation(rideDetails.getToLocation());
+        JsonObject rideDetail = rideDetailsJsonElement.getAsJsonObject();
+        rideDetail.add("from_location", gson.toJsonTree(fromLocation));
+        rideDetail.add("to_location", gson.toJsonTree(toLocation));
+
         responseObject.add("rideDetails", rideDetailsJsonElement);
 
         return responseObject;
