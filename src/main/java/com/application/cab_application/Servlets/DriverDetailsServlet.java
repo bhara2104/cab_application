@@ -5,6 +5,7 @@ import java.sql.Driver;
 
 import com.application.cab_application.DAO.DriverDetailsDao;
 import com.application.cab_application.DAO.LocationDao;
+import com.application.cab_application.DAO.VehicleDao;
 import com.application.cab_application.Models.DriverDetails;
 import com.application.cab_application.Models.Location;
 import com.application.cab_application.Models.Vehicle;
@@ -12,6 +13,9 @@ import com.application.cab_application.Services.AccountService;
 import com.application.cab_application.Services.DriverDetailsService;
 import com.application.cab_application.Util.ReadJson;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
@@ -25,8 +29,14 @@ public class DriverDetailsServlet extends HttpServlet {
         String ID = request.getParameter("account_id");
         int id = Integer.parseInt(ID);
         DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(id);
-        Gson gson = new Gson();
-        String responseString = gson.toJson(driverDetails);
+        Vehicle vehicle = VehicleDao.getVehicle(driverDetails.getVehicleId());
+        Location location = LocationDao.getLocation(driverDetails.getCurrentLocationId());
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        JsonElement driverJson = gson.toJsonTree(driverDetails);
+        JsonObject jsonObject = driverJson.getAsJsonObject();
+        jsonObject.add("vehicle",gson.toJsonTree(vehicle));
+        jsonObject.add("current_location",gson.toJsonTree(location));
+        String responseString = gson.toJson(jsonObject);
         printWriter.write(responseString);
         response.setStatus(200);
     }
