@@ -7,7 +7,7 @@ import com.application.cab_application.DAO.UpiDataDao;
 import com.application.cab_application.Models.UpiData;
 import com.google.gson.Gson;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+
 
 public class SavedUPIServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
