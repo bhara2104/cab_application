@@ -79,4 +79,12 @@
         <servlet-name>BillServlet</servlet-name>
         <url-pattern>/bill/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SavedUPIServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.SavedUPIServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SavedUPIServlet</servlet-name>
+        <url-pattern>/getUPI/*</url-pattern>
+    </servlet-mapping>
 </web-app>
