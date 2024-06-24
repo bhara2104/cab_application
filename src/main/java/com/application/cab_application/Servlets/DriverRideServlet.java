@@ -60,7 +60,7 @@ public class DriverRideServlet extends HttpServlet {
                 rideDetails.setRequestStatus(RequestStatus.ENDED);
                 rideDetails.setEndTime(new Timestamp(System.currentTimeMillis()));
                 RideDetailsDao.updateRideDetails(rideDetails);
-                int billID = BillsDao.createBill(new Bill(BillAmountGenerator.generateBill(rideDetails.getStartTime().toString(), rideDetails.getEndTime().toString()), Integer.parseInt(rideID)));
+                int billID = BillsDao.createBill(new Bill(BillAmountGenerator.generateBill(rideDetails.getStartTime(), rideDetails.getEndTime()), Integer.parseInt(rideID)));
                 Bill bill = BillsDao.getBill(billID);
                 printWriter.write(new Gson().toJson(bill));
             }
@@ -74,6 +74,7 @@ public class DriverRideServlet extends HttpServlet {
                 System.out.println(check + " " + driverID);
                 response.setStatus(HttpServletResponse.SC_OK);
                 printWriter.write("{\"message\":\"Ride Accepted Successfully\"}");
+
             } else {
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 printWriter.write("{\"message\":\"There is an error while accepting Ride\"}");

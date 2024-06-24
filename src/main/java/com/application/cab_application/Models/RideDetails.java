@@ -1,6 +1,7 @@
 package com.application.cab_application.Models;
 
 import com.application.cab_application.enums.RequestStatus;
+import com.application.cab_application.enums.VehicleType;
 
 import java.sql.Timestamp;
 
@@ -10,6 +11,7 @@ public class RideDetails {
     private int toLocation;
     private int rideID;
     private RequestStatus requestStatus;
+    private VehicleType vehicleType;
     private Timestamp startTime ;
     private Timestamp endTime;
 
@@ -21,7 +23,7 @@ public class RideDetails {
         return endTime;
     }
 
-    public RideDetails(int id, int fromLocation, int toLocation, RequestStatus requestStatus, Timestamp startTime, Timestamp endTime, int rideID) {
+    public RideDetails(int id, int fromLocation, int toLocation, RequestStatus requestStatus, Timestamp startTime, Timestamp endTime, int rideID, VehicleType vehicleType) {
         this.id = id;
         this.fromLocation = fromLocation;
         this.toLocation = toLocation;
@@ -29,20 +31,7 @@ public class RideDetails {
         this.startTime = startTime;
         this.endTime = endTime;
         this.rideID = rideID ;
-    }
-
-    public RideDetails(int fromLocation, int toLocation, RequestStatus requestStatus) {
-        this.fromLocation = fromLocation;
-        this.toLocation = toLocation;
-        this.requestStatus = requestStatus;
-    }
-
-    public void setFromLocation(int fromLocation) {
-        this.fromLocation = fromLocation;
-    }
-
-    public void setToLocation(int toLocation) {
-        this.toLocation = toLocation;
+        this.vehicleType =  vehicleType ;
     }
 
     public int getRideID() {
@@ -82,5 +71,9 @@ public class RideDetails {
 
     public RequestStatus getRequestStatus() {
         return requestStatus;
+    }
+
+    public VehicleType getVehicleType() {
+        return vehicleType;
     }
 }
