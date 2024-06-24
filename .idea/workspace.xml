@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="cab_application:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Ride Details DAO">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Added Location and Driver details and license number in get ride">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RideDetailsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RideDetailsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RidesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RidesDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +22,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="servlet" />
         <option value="Class" />
       </list>
     </option>
@@ -43,6 +47,13 @@
     &quot;accountId&quot;: &quot;161d5406-c775-4c4a-b3ca-fcdfbb482ec6&quot;
   }
 }</component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -67,13 +78,15 @@
     &quot;JUnit.TestDatabaseConnector.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;after__some__DAOs&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.24.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -82,11 +95,12 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="JUnit.TestAccountDao">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.24">
     <configuration name="TestAccountDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cab_application" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TestAccountDao" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -122,20 +136,85 @@
       </method>
     </configuration>
     <configuration name="Tomcat 10.1.24" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.24" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/cab_application_war_exploded/" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="cab_application:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/cab_application_war_exploded" />
+            <option name="CONTEXT_PATH" value="/cab_application" />
           </settings>
         </artifact>
       </deployment>
-      <server-settings />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="6258789f-a0a3-4ec8-9e56-61e01a96753f" />
+      </server-settings>
+      <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
+      <log_file alias="Tomcat Host Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*" />
+      <log_file alias="Tomcat Localhost Access Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*" />
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49453" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
@@ -143,6 +222,13 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.TestAccountDao" />
+      <item itemvalue="JUnit.TestAccountDao.checkCreatedAccount" />
+      <item itemvalue="JUnit.TestDatabaseConnector" />
+      <item itemvalue="JUnit.TestDatabaseConnector.checkConnection" />
+      <item itemvalue="Tomcat Server.Tomcat 10.1.24" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestAccountDao" />
@@ -170,6 +256,8 @@
       <updated>1718798643884</updated>
       <workItem from="1718798644794" duration="30698000" />
       <workItem from="1718934943240" duration="354000" />
+      <workItem from="1719163660332" duration="6000" />
+      <workItem from="1719201060432" duration="845000" />
     </task>
     <task id="LOCAL-00001" summary="Added Models and Test for Database connector and a enum for account type">
       <option name="closed" value="true" />
@@ -363,37 +451,198 @@
       <option name="project" value="LOCAL" />
       <updated>1718888871537</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Payments DAO">
+      <option name="closed" value="true" />
+      <created>1718942333101</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1718942333101</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Payments DAO">
+      <option name="closed" value="true" />
+      <created>1718942421163</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1718942421163</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Added Account Servlet API and created account details and account and Added some helper method to read json and added service layer to fetch account details and accounts and create those">
+      <option name="closed" value="true" />
+      <created>1718949762228</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1718949762228</updated>
+    </task>
+    <task id="LOCAL-00028" summary="API for get account details addded">
+      <option name="closed" value="true" />
+      <created>1718950308886</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1718950308886</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added Services for Driver details and location and created API for creating driver details">
+      <option name="closed" value="true" />
+      <created>1718952741840</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1718952741840</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Added Location servlet and their function">
+      <option name="closed" value="true" />
+      <created>1718953489808</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1718953489808</updated>
+    </task>
+    <task id="LOCAL-00031" summary="API to create Driver details and vehicles and locations">
+      <option name="closed" value="true" />
+      <created>1718957612835</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1718957612835</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Update API for Driver">
+      <option name="closed" value="true" />
+      <created>1718958838902</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1718958838902</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Updated Driver Availability API to update status">
+      <option name="closed" value="true" />
+      <created>1718959697839</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1718959697839</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Added some changes in ride details and ride model and added services for ride and servlet for ride">
+      <option name="closed" value="true" />
+      <created>1718961202381</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1718961202381</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Ride Details">
+      <option name="closed" value="true" />
+      <created>1718961983796</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1718961983796</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Ride Functionalities Added">
+      <option name="closed" value="true" />
+      <created>1718964166040</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1718964166040</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Pretty print for json">
+      <option name="closed" value="true" />
+      <created>1718964908803</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1718964908803</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Added Servlet mapping rider driver and driver rides">
+      <option name="closed" value="true" />
+      <created>1718965198009</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1718965198009</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Added Dao for fetching all rides and added pretty print helper to jsonify the objects and other helpers included">
+      <option name="closed" value="true" />
+      <created>1718971042950</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1718971042950</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Added an API to get all available rides for an Driver">
+      <option name="closed" value="true" />
+      <created>1718971973468</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1718971973468</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Base condition checks">
+      <option name="closed" value="true" />
+      <created>1718972242157</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1718972242157</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Rewritten some of the DAO's">
+      <option name="closed" value="true" />
+      <created>1718975197225</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1718975197225</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Added Location and Driver details in ride details API">
+      <option name="closed" value="true" />
+      <created>1719127879857</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1719127879857</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Added Location and Driver details and license number in get ride">
+      <option name="closed" value="true" />
+      <created>1719129328246</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1719129328246</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Models and Test for Database connector and a enum for account type" />
-    <MESSAGE value="Added Request Status Enum to Keep track of the ride status and created an Account DAO to retrieve database objects to process the API" />
-    <MESSAGE value="Added an Enum Function to convert enum code into account type and account type into enum code" />
-    <MESSAGE value="Removed unwanted timestamps" />
-    <MESSAGE value="Added Methods to get account by email and create account and retrieve account by email" />
-    <MESSAGE value="Added methods to fetch rider and driver accounts" />
-    <MESSAGE value="Added Test for account creation and account retrieval" />
-    <MESSAGE value="Added Nested class to prevent the flaky failure of the checkCreated account test case" />
-    <MESSAGE value="Added Mockito inline and mockito core as dependency inorder to mock the Test cases" />
-    <MESSAGE value="Account Details DAO to transfer account details objects" />
-    <MESSAGE value="Removed Time Stamps from model" />
-    <MESSAGE value="Created necessary methods to process account details requests" />
-    <MESSAGE value="Added ENUM types to store the enums are numbers in database and validate those enums while retrieving" />
-    <MESSAGE value="Added DAO for account details and driver details" />
-    <MESSAGE value="Vehicles DAO" />
-    <MESSAGE value="Vehicle Dao and Fixes in vehicle type" />
-    <MESSAGE value="Moved Hello servlet to servlets package and added some needed methods in LocationDAO" />
-    <MESSAGE value="Updated Location and Location Dao to get location and creating a new location" />
     <MESSAGE value="Added Payment model and payment type" />
     <MESSAGE value="RidesDAO" />
     <MESSAGE value="Added Rating model" />
     <MESSAGE value="Formatted Syntaxes and Added Ride Dao" />
     <MESSAGE value="Added updateDriverID in RidesDao" />
     <MESSAGE value="Ride Details DAO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ride Details DAO" />
+    <MESSAGE value="Payments DAO" />
+    <MESSAGE value="Added Account Servlet API and created account details and account and Added some helper method to read json and added service layer to fetch account details and accounts and create those" />
+    <MESSAGE value="API for get account details addded" />
+    <MESSAGE value="Added Services for Driver details and location and created API for creating driver details" />
+    <MESSAGE value="Added Location servlet and their function" />
+    <MESSAGE value="API to create Driver details and vehicles and locations" />
+    <MESSAGE value="Update API for Driver" />
+    <MESSAGE value="Updated Driver Availability API to update status" />
+    <MESSAGE value="Added some changes in ride details and ride model and added services for ride and servlet for ride" />
+    <MESSAGE value="Ride Details" />
+    <MESSAGE value="Ride Functionalities Added" />
+    <MESSAGE value="Pretty print for json" />
+    <MESSAGE value="Added Servlet mapping rider driver and driver rides" />
+    <MESSAGE value="Added Dao for fetching all rides and added pretty print helper to jsonify the objects and other helpers included" />
+    <MESSAGE value="Added an API to get all available rides for an Driver" />
+    <MESSAGE value="Base condition checks" />
+    <MESSAGE value="Rewritten some of the DAO's" />
+    <MESSAGE value="Added Location and Driver details in ride details API" />
+    <MESSAGE value="Added Location and Driver details and license number in get ride" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Location and Driver details and license number in get ride" />
   </component>
 </project>
