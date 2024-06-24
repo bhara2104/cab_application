@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "SavedUPIServlet", value = "/SavedUPIServlet")
 public class SavedUPIServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String accountID = request.getParameter("accountID");

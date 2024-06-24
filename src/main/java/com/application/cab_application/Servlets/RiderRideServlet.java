@@ -16,7 +16,6 @@ import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "RiderRideServlet", value = "/RiderRideServlet")
 public class RiderRideServlet extends HttpServlet {
 
     public void init() {
@@ -40,8 +39,8 @@ public class RiderRideServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
         Ride ride = RidesDao.getRide(Integer.parseInt(rideID));
-        AccountDetailsDao.updateCurrentRideID(ride.getDriverId(),null);
-        AccountDetailsDao.updateCurrentRideID(ride.getRiderId(),null);
+        AccountDetailsDao.updateCurrentRideIDAsNUll(ride.getDriverId());
+        AccountDetailsDao.updateCurrentRideIDAsNUll(ride.getRiderId());
 
         RideDetailsDao.updateRideStatus(Integer.parseInt(rideID), RequestStatus.CANCELLED);
         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

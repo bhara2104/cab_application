@@ -13,7 +13,7 @@ import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "DriverRideServlet", value = "/DriverRideServlet")
+
 public class DriverRideServlet extends HttpServlet {
 
     public void init() {

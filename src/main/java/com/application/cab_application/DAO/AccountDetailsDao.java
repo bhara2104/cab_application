@@ -84,4 +84,13 @@ public class AccountDetailsDao {
         }
         return false;
     }
+
+    public static void updateCurrentRideIDAsNUll(int accountID){
+        String query = "update account_details set current_ride_id = null where account_id =" + accountID;
+        try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
+            int rows = preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e + "Exception");
+        }
+    }
 }

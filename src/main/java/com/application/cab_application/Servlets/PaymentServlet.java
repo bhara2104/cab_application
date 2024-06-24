@@ -11,7 +11,7 @@ import com.application.cab_application.Util.ReadJson;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "PaymentServlet ", value = "/PaymentServlet ")
+
 public class PaymentServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String billID = request.getParameter("billId");
