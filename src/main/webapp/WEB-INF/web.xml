@@ -63,4 +63,12 @@
         <servlet-name>RiderRideServlet</servlet-name>
         <url-pattern>/rider_rides/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/payments/*</url-pattern>
+    </servlet-mapping>
 </web-app>
