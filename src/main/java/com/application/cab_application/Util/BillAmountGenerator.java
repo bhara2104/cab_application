@@ -11,6 +11,6 @@ public class BillAmountGenerator {
         Instant end = Instant.parse(endTime);
         Duration duration = Duration.between(start, end);
         long minutes = duration.toMinutes();
-        return (15 + Math.random() * 40) * minutes ;
+        return Math.ceil(15 + Math.random() * 40 * minutes);
     }
 }

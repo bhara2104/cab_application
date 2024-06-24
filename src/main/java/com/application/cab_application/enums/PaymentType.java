@@ -4,8 +4,7 @@ import com.application.cab_application.Models.Payment;
 
 public enum PaymentType {
     UPI(1),
-    CASH(2),
-    CARD(3);
+    CASH(2);
 
     private final int code;
 

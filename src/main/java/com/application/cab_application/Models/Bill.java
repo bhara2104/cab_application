@@ -18,6 +18,10 @@ public class Bill {
         this.billAmount = billAmount ;
     }
 
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
+    }
+
     public Bill() {
     }
 

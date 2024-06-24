@@ -26,8 +26,24 @@ public class BillsDao {
         return 0;
     }
 
+    public static Bill getBillByID(int billId) {
+        String query = "Select * from bills where id = "+ billId;
+        try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                return new Bill(resultSet.getInt("id"), resultSet.getInt("ride_id"), resultSet.getDouble("bill_amount"), resultSet.getInt("ride_id"));
+            } else {
+                return new Bill();
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return new Bill();
+    }
 
-    public Boolean updatePaymentInBill(int billID, int paymentID){
+
+    public static Boolean updatePaymentInBill(int billID, int paymentID){
         String query = "update bills set payment_id = ? where id = "+billID;
         try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
             preparedStatement.setInt(1,paymentID);
@@ -40,7 +56,7 @@ public class BillsDao {
     }
 
     public static Bill getBill(int id){
-        String query = "Select * from bills where bill_id = "+ id;
+        String query = "Select * from bills where ride_id = "+ id;
         try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.isBeforeFirst()){
