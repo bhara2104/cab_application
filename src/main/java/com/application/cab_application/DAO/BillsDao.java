@@ -26,22 +26,6 @@ public class BillsDao {
         return 0;
     }
 
-    public static Bill getBillByID(int billId) {
-        String query = "Select * from bills where id = "+ billId;
-        try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.isBeforeFirst()){
-                resultSet.next();
-                return new Bill(resultSet.getInt("id"), resultSet.getInt("ride_id"), resultSet.getDouble("bill_amount"), resultSet.getInt("ride_id"));
-            } else {
-                return new Bill();
-            }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        return new Bill();
-    }
-
 
     public static Boolean updatePaymentInBill(int billID, int paymentID){
         String query = "update bills set payment_id = ? where id = "+billID;
@@ -55,8 +39,24 @@ public class BillsDao {
         return false;
     }
 
-    public static Bill getBill(int id){
+    public static Bill getBillRideID(int id){
         String query = "Select * from bills where ride_id = "+ id;
+        try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                return new Bill(resultSet.getInt("id"), resultSet.getInt("ride_id"), resultSet.getDouble("bill_amount"), resultSet.getInt("payment_id"));
+            } else {
+                return new Bill();
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return new Bill();
+    }
+
+    public static Bill getBill(int id){
+        String query = "Select * from bills where id = "+ id;
         try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.isBeforeFirst()){

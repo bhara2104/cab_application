@@ -14,7 +14,7 @@ public class BillServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String rideID = request.getParameter("rideID");
         int rideId = Integer.parseInt(rideID);
-        Bill bill = BillsDao.getBill(rideId);
+        Bill bill = BillsDao.getBillRideID(rideId);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();

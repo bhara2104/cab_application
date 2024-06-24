@@ -61,6 +61,7 @@ public class DriverRideServlet extends HttpServlet {
                 rideDetails.setEndTime(new Timestamp(System.currentTimeMillis()));
                 RideDetailsDao.updateRideDetails(rideDetails);
                 int billID = BillsDao.createBill(new Bill(BillAmountGenerator.generateBill(rideDetails.getStartTime(), rideDetails.getEndTime()), Integer.parseInt(rideID)));
+                System.out.println(billID);
                 Bill bill = BillsDao.getBill(billID);
                 printWriter.write(new Gson().toJson(bill));
             }
