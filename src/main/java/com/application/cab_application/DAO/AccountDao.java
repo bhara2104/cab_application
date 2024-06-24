@@ -118,11 +118,11 @@ public class AccountDao {
     }
 
     public static boolean checkAccountExist(Account account){
-        String query = "Select * from accounts where email = ? or phone_number = ? and account_type = ?";
+        String query = "Select * from accounts where account_type = ? and (phone_number = ? or email = ?)";
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
-            preparedStatement.setString(1,account.getEmail());
+            preparedStatement.setInt(1,account.getAccountType().getCode());
             preparedStatement.setString(2, account.getPhoneNumber());
-            preparedStatement.setInt(3,account.getAccountType().getCode());
+            preparedStatement.setString(3,account.getEmail());
             ResultSet resultSet = preparedStatement.executeQuery();
             return resultSet.next();
         }catch (Exception e){
