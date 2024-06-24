@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 
 public class BillsDao {
 
-    public int createBill(Bill bill){
+    public static int createBill(Bill bill){
         String sql = "insert into bills(bill_amount, ride_id) values(?,?)";
         ResultSet resultSet;
         try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)){
@@ -39,7 +39,7 @@ public class BillsDao {
         return false;
     }
 
-    public Bill getBill(int id){
+    public static Bill getBill(int id){
         String query = "Select * from bills where bill_id = "+ id;
         try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
             ResultSet resultSet = preparedStatement.executeQuery();

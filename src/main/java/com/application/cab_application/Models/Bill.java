@@ -13,10 +13,9 @@ public class Bill {
         this.paymentId = paymentId;
     }
 
-    public Bill(int rideID, double billAmount, int paymentId) {
-        this.rideID = rideID;
-        this.billAmount = billAmount;
-        this.paymentId = paymentId;
+    public Bill(double billAmount, int rideID){
+        this.rideID = rideID ;
+        this.billAmount = billAmount ;
     }
 
     public Bill() {
