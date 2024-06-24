@@ -116,7 +116,7 @@ public class RidesDao {
                 RideDetails rideDetails = new RideDetails(rs.getInt("ride_detail_id"),rs.getInt("from_location_id"),rs.getInt("to_location_id"), RequestStatus.fromCode(rs.getInt("ride_status")),rs.getTimestamp("start_time"), rs.getTimestamp("end_time"), rs.getInt("ride_id"));
                 JsonElement rideElement= PrettyPrintHelper.prettyPrintHelper(ride);
                 JsonObject jsonObjectRide = rideElement.getAsJsonObject();
-                if(account_type.equals("RIDER") && ride.getDriverId()!=0){
+                if(account_type.equals("RIDER") && rideDetails.getRequestStatus() != RequestStatus.CANCELLED && ride.getDriverId()!=0){
                     DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(ride.getDriverId());
                     AccountDetails accountDetails = AccountDetailsDao.getAccountDetailsByAccountID(ride.getDriverId());
                     Vehicle vehicle = VehicleDao.getVehicle(driverDetails.getVehicleId());

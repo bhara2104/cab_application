@@ -61,4 +61,14 @@ public class RideDetailsDao {
         }
         return false ;
     }
+
+    public static void updateRideStatus(int id, RequestStatus requestStatus){
+        String query = "update ride_details set ride_status =? where id ="+id;
+        try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
+            preparedStatement.setInt(1,requestStatus.getCode());
+            preparedStatement.executeUpdate();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

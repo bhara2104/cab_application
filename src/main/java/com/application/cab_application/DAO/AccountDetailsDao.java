@@ -1,6 +1,5 @@
 package com.application.cab_application.DAO;
 
-import com.application.cab_application.Models.Account;
 import com.application.cab_application.Models.AccountDetails;
 import com.application.cab_application.Util.DatabaseConnector;
 
@@ -74,7 +73,7 @@ public class AccountDetailsDao {
         return false;
     }
 
-    public static boolean updateCurrentRideID(int accountID, int rideID) {
+    public static boolean updateCurrentRideID(int accountID, Integer rideID) {
         String query = "update account_details set current_ride_id = ? where account_id =" + accountID;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setInt(1, rideID);
