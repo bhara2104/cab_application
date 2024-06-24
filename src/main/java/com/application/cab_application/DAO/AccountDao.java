@@ -116,4 +116,18 @@ public class AccountDao {
         }
         return new ArrayList<>();
     }
+
+    public static boolean checkAccountExist(Account account){
+        String query = "Select * from accounts where email = ? or phone_number = ? and account_type = ?";
+        try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
+            preparedStatement.setString(1,account.getEmail());
+            preparedStatement.setString(2, account.getPhoneNumber());
+            preparedStatement.setInt(3,account.getAccountType().getCode());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false ;
+    }
 }
