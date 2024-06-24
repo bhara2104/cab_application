@@ -15,11 +15,6 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 
-    public Payment(PaymentType paymentType, Timestamp paymentDate) {
-        this.paymentType = paymentType;
-        this.paymentDate = paymentDate;
-    }
-
     public Payment() {
     }
 
@@ -33,5 +28,9 @@ public class Payment {
 
     public Timestamp getPaymentDate() {
         return paymentDate;
+    }
+
+    public void setPaymentDate(Timestamp paymentDate) {
+        this.paymentDate = paymentDate;
     }
 }

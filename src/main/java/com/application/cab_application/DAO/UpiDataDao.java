@@ -35,8 +35,10 @@ public class UpiDataDao {
     }
 
     public static boolean checkUPIDateExist(String upiID) {
-        String sql = "select * from upi_datas where upi_id = " + upiID;
+        String sql = "select * from upi_datas where upi_id = ?" ;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql)) {
+            preparedStatement.setString(1,upiID);
+            System.out.println(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             return resultSet.next();
         } catch (Exception e) {

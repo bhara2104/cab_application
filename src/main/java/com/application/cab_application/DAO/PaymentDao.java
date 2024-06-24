@@ -11,9 +11,9 @@ public class PaymentDao {
     public static int createPayment(Payment payment) {
         String sql = "insert into payments(payment_type, payment_date) values(?,?)";
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            int affectedRows = preparedStatement.executeUpdate();
             preparedStatement.setInt(1, payment.getPaymentType().getCode());
             preparedStatement.setTimestamp(2, payment.getPaymentDate());
+            int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0) {
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
                 resultSet.next();
