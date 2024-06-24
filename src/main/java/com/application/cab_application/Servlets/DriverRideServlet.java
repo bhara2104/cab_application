@@ -3,13 +3,9 @@ package com.application.cab_application.Servlets;
 import java.io.*;
 import java.util.List;
 
-import com.application.cab_application.DAO.AccountDao;
-import com.application.cab_application.DAO.AccountDetailsDao;
-import com.application.cab_application.DAO.DriverDetailsDao;
-import com.application.cab_application.DAO.RidesDao;
-import com.application.cab_application.Models.Account;
-import com.application.cab_application.Models.AccountDetails;
-import com.application.cab_application.Models.DriverDetails;
+import com.application.cab_application.DAO.*;
+import com.application.cab_application.Models.*;
+import com.application.cab_application.enums.RequestStatus;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
@@ -51,6 +47,9 @@ public class DriverRideServlet extends HttpServlet {
         PrintWriter printWriter = response.getWriter();
         boolean success = RidesDao.updateDriverID(Integer.parseInt(rideID), Integer.parseInt(driverID));
         if(success){
+            RideDetails rideDetails = RideDetailsDao.getRideDetails(Integer.parseInt(rideID));
+            rideDetails.setRequestStatus(RequestStatus.ACCEPTED);
+            boolean updateRideStatus = RideDetailsDao.updateRideDetails(rideDetails);
             boolean check = AccountDetailsDao.updateCurrentRideID(Integer.parseInt(driverID),Integer.parseInt(rideID));
             System.out.println(check + " " +driverID);
             response.setStatus(HttpServletResponse.SC_OK);

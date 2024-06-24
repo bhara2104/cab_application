@@ -50,6 +50,7 @@ public class RidesDao {
         return new Ride();
     }
 
+
     public static Boolean updateDriverID(int rideID, int driverID) {
         String query = "update rides set driver_id = ? where id =" + rideID;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
