@@ -19,6 +19,7 @@ public class Account {
         this.accountType = accountType;
     }
 
+
     public Account(String email, String password, String phoneNumber, AccountType accountType) {
         this.email = email;
         this.password = password;

@@ -2,15 +2,29 @@ package com.application.cab_application.Servlets;
 
 import java.io.*;
 
+import com.application.cab_application.Models.Account;
+import com.application.cab_application.Services.AccountService;
+import com.application.cab_application.Util.ReadJson;
+import com.application.cab_application.enums.AccountType;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
 
 public class RideLoginServlet extends HttpServlet {
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-    }
-
-    public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        Account loggedAccount = AccountService.authenticateUser(email,password, AccountType.RIDER);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        if(loggedAccount != null){
+            HttpSession session = request.getSession(true);
+            session.setAttribute("userID",loggedAccount.getId());
+            session.setMaxInactiveInterval(7 * 60 * 60);
+            response.addCookie(new Cookie("JSESSIONID", session.getId()));
+            response.setStatus(HttpServletResponse.SC_OK);
+        }else{
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        }
     }
 }

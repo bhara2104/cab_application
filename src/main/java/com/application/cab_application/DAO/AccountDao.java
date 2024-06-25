@@ -65,14 +65,14 @@ public class AccountDao {
             if (rs.isBeforeFirst()) {
                 rs.next();
                 int accountType = rs.getInt("account_type");
-                return new Account(rs.getInt("id"), rs.getString("email"), rs.getString("phone_number"), AccountType.fromCode(accountType));
+                return new Account(rs.getInt("id"), rs.getString("email"), rs.getString("password") ,rs.getString("phone_number"), AccountType.fromCode(accountType));
             }
         } catch (ClassNotFoundException e) {
             System.out.println(e + " Class not found initiated here");
         } catch (SQLException e) {
             System.out.println(e + " SQL Exception got Triggered here");
         }
-        return new Account();
+        return null;
     }
 
     public List<Account> getDriverAccounts() {

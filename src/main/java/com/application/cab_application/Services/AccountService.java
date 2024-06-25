@@ -5,6 +5,7 @@ import com.application.cab_application.DAO.AccountDetailsDao;
 import com.application.cab_application.Models.Account;
 import com.application.cab_application.Models.AccountDetails;
 import com.application.cab_application.Util.DatabaseConnector;
+import com.application.cab_application.enums.AccountType;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.mindrot.jbcrypt.BCrypt;
@@ -20,7 +21,7 @@ public class AccountService {
         JsonObject accountJson = jsonObject.getAsJsonObject("account");
         JsonObject accountDetailsJson = jsonObject.getAsJsonObject("accountDetails");
         Account account = gson.fromJson(accountJson, Account.class);
-        String password = BCrypt.hashpw(account.getPassword(),BCrypt.gensalt());
+        String password = BCrypt.hashpw(account.getPassword(), BCrypt.gensalt());
         account.setPassword(password);
         AccountDetails accountDetails = gson.fromJson(accountDetailsJson, AccountDetails.class);
         try (Connection connection = DatabaseConnector.getConnection()) {
@@ -44,10 +45,20 @@ public class AccountService {
         return false;
     }
 
-    public static Account returnAccount(String jsonBody){
+    public static Account returnAccount(String jsonBody) {
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(jsonBody, JsonObject.class);
         JsonObject accountJson = jsonObject.getAsJsonObject("account");
         return gson.fromJson(accountJson, Account.class);
+    }
+
+    public static Account authenticateUser(String email, String password, AccountType accountType) {
+        Account account = AccountDao.getAccountByEmail(email, accountType.getCode());
+        if (account == null) {
+            return null;
+        } else {
+            String encryptedPassword = account.getPassword();
+            return BCrypt.checkpw(password, encryptedPassword) ? account : null;
+        }
     }
 }
