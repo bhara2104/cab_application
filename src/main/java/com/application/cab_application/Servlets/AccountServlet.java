@@ -2,12 +2,11 @@ package com.application.cab_application.Servlets;
 
 import java.io.*;
 
+
 import com.application.cab_application.DAO.AccountDao;
-import com.application.cab_application.Models.Account;
 import com.application.cab_application.Services.AccountService;
 import com.application.cab_application.Util.ReadJson;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
 
 public class AccountServlet extends HttpServlet {

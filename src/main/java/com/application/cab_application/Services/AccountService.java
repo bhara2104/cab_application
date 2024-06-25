@@ -7,6 +7,7 @@ import com.application.cab_application.Models.AccountDetails;
 import com.application.cab_application.Util.DatabaseConnector;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,10 +15,13 @@ import java.sql.SQLException;
 public class AccountService {
     public static Boolean createAccount(String jsonBody) {
         Gson gson = new Gson();
+
         JsonObject jsonObject = gson.fromJson(jsonBody, JsonObject.class);
         JsonObject accountJson = jsonObject.getAsJsonObject("account");
         JsonObject accountDetailsJson = jsonObject.getAsJsonObject("accountDetails");
         Account account = gson.fromJson(accountJson, Account.class);
+        String password = BCrypt.hashpw(account.getPassword(),BCrypt.gensalt());
+        account.setPassword(password);
         AccountDetails accountDetails = gson.fromJson(accountDetailsJson, AccountDetails.class);
         try (Connection connection = DatabaseConnector.getConnection()) {
             connection.setAutoCommit(false);
