@@ -103,4 +103,12 @@
         <servlet-name>DriverLoginServlet</servlet-name>
         <url-pattern>/driver_login</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout/*</url-pattern>
+    </servlet-mapping>
 </web-app>
