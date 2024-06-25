@@ -87,4 +87,20 @@
         <servlet-name>SavedUPIServlet</servlet-name>
         <url-pattern>/getUPI/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RiderLoginServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.RideLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RiderLoginServlet</servlet-name>
+        <url-pattern>/rider_login</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DriverLoginServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.DriverLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DriverLoginServlet</servlet-name>
+        <url-pattern>/driver_login</url-pattern>
+    </servlet-mapping>
 </web-app>
