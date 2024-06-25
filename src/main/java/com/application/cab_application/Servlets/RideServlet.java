@@ -7,12 +7,7 @@ import com.application.cab_application.Util.ReadJson;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
-
 public class RideServlet extends HttpServlet {
-
-    public void init() {
-    }
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Gson gson = new Gson();
         String id = request.getParameter("id");
@@ -23,10 +18,6 @@ public class RideServlet extends HttpServlet {
         response.setContentType("application/json");
         String op = gson.toJson(jsonObject);
         printWriter.write(op);
-    }
-
-    public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -42,8 +33,5 @@ public class RideServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
             printWriter.write("{\"message\":\"Ride creation not successful\"}");
         }
-    }
-
-    public void destroy() {
     }
 }
