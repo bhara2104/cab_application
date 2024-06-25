@@ -62,8 +62,7 @@ public class AccountDao {
             preparedStatement.setString(1, email);
             preparedStatement.setInt(2, type);
             rs = preparedStatement.executeQuery();
-            if (rs.isBeforeFirst()) {
-                rs.next();
+            if (rs.next()) {
                 int accountType = rs.getInt("account_type");
                 return new Account(rs.getInt("id"), rs.getString("email"), rs.getString("password") ,rs.getString("phone_number"), AccountType.fromCode(accountType));
             }
