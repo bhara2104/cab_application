@@ -11,7 +11,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
 
 public class JwtTokenServlet extends HttpServlet {
@@ -36,6 +35,7 @@ public class JwtTokenServlet extends HttpServlet {
                 response.setStatus(200);
                 printWriter.write(new Gson().toJson(jsonObject));
             } else {
+                printWriter.write("{\"message\":\"Invalid Credentials\"}");
                 response.setStatus(401);
             }
         } else if(grantType.equals("refresh_token")){
@@ -44,6 +44,9 @@ public class JwtTokenServlet extends HttpServlet {
                 int accountID = JWTUtil.getUserID(token);
                 String accessToken = JWTUtil.generateAccessToken(accountID);
                 printWriter.write("{\" accessToken:\"+"+accessToken+"}");
+            }else{
+                printWriter.write("{\"message\":\"Invalid Refresh Token\"}");
+                response.setStatus(401);
             }
         }
     }
