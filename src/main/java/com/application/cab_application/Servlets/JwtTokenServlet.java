@@ -30,6 +30,7 @@ public class JwtTokenServlet extends HttpServlet {
             String jwtToken = JWTUtil.generateAccessToken(loggedAccount.getId());
             String refreshToken = JWTUtil.createRefreshToken();
             jsonObject.addProperty("accessToken", jwtToken);
+            jsonObject.addProperty("refreshToken", refreshToken);
             response.setStatus(200);
             printWriter.write(new Gson().toJson(jsonObject));
         } else {
