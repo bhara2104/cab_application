@@ -47,10 +47,7 @@ public class Account {
     }
 
     public static Boolean checkPasswordValidation(String password){
-        String regex = "^(?=.*[0-9])"
-                + "(?=.*[a-z])(?=.*[A-Z])"
-                + "(?=.*[@#$%^&+=])"
-                + "(?=\\S+$).{8,20}$";
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
 
         Pattern p = Pattern.compile(regex);
         if (password == null) {
