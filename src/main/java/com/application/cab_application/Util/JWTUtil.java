@@ -19,6 +19,7 @@ public class JWTUtil {
         return JWT.create()
                 .withIssuer("auth0")
                 .withClaim("accountID", accountID)
+                .withClaim("type","access")
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .withJWTId(UUID.randomUUID()
@@ -30,6 +31,7 @@ public class JWTUtil {
     public static String createRefreshToken(int accountID) {
         return JWT.create()
                 .withIssuer("auth0")
+                .withClaim("type", "refresh")
                 .withClaim("accountID", accountID)
                 .withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION))
                 .sign(ALGORITHM);
@@ -39,7 +41,28 @@ public class JWTUtil {
         try {
             JWTVerifier jwtVerifier = JWT.require(ALGORITHM).build();
             DecodedJWT jwt = jwtVerifier.verify(token);
-            return true;
+            Claim claim = jwt.getClaim("type");
+            if(claim.asString().equals("access")){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (JWTVerificationException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean verifyRefreshToken(String token){
+        try {
+            JWTVerifier jwtVerifier = JWT.require(ALGORITHM).build();
+            DecodedJWT jwt = jwtVerifier.verify(token);
+            Claim claim = jwt.getClaim("type");
+            if(claim.asString().equals("refresh")){
+                return true;
+            }else{
+                return false;
+            }
         }catch (JWTVerificationException e){
             System.out.println(e.getMessage());
             return false;

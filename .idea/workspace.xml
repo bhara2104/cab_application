@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Added issuer in jwt">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Location Validation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/LocationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/RideServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/RideServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RideServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RideServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/JwtTokenServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/JwtTokenServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/JWTUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/JWTUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,15 +272,7 @@
       <workItem from="1719403965855" duration="3746000" />
       <workItem from="1719408100934" duration="179000" />
       <workItem from="1719408401900" duration="107000" />
-      <workItem from="1719411505640" duration="1072000" />
-    </task>
-    <task id="LOCAL-00036" summary="Ride Functionalities Added">
-      <option name="closed" value="true" />
-      <created>1718964166040</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1718964166040</updated>
+      <workItem from="1719411505640" duration="2382000" />
     </task>
     <task id="LOCAL-00037" summary="Pretty print for json">
       <option name="closed" value="true" />
@@ -667,14 +658,21 @@
       <option name="project" value="LOCAL" />
       <updated>1719408137751</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Location Validation">
+      <option name="closed" value="true" />
+      <created>1719412868163</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1719412868163</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Routes for driver login and rider login and added bcrypt dependency and json dependency" />
     <MESSAGE value="Added Jbcrypt to hash the password" />
     <MESSAGE value="Created JWTUtil" />
     <MESSAGE value="Added Session for login" />
@@ -699,6 +697,7 @@
     <MESSAGE value="Ride Validation" />
     <MESSAGE value="Rider Driver Validation" />
     <MESSAGE value="Added issuer in jwt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added issuer in jwt" />
+    <MESSAGE value="Location Validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Location Validation" />
   </component>
 </project>

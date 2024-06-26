@@ -45,7 +45,7 @@ public class JwtTokenServlet extends HttpServlet {
             }
         } else if (grantType.equals("refresh_token")) {
             String token = jsonBody.get("refreshToken").getAsString();
-            if (JWTUtil.verifyAuthToken(token)) {
+            if (JWTUtil.verifyRefreshToken(token)) {
                 int accountID = JWTUtil.getUserID(token);
                 String accessToken = JWTUtil.generateAccessToken(accountID);
                 jsonObject.addProperty("accessToken", accessToken);
