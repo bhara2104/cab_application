@@ -2,6 +2,8 @@ package com.application.cab_application.Servlets;
 
 import java.io.*;
 
+import java.util.List;
+
 import com.application.cab_application.Services.RideServices;
 import com.application.cab_application.Util.ReadJson;
 import com.google.gson.Gson;
@@ -12,8 +14,15 @@ public class RideServlet extends HttpServlet {
         Gson gson = new Gson();
         String id = request.getParameter("id");
         int rideId = Integer.parseInt(id);
-        JsonObject jsonObject = RideServices.rideDetails(rideId);
         PrintWriter printWriter = response.getWriter();
+        List<String> errors = RideServices.runValidation(rideId);
+        if(!errors.isEmpty()){
+            response.setStatus(422);
+            printWriter.write(new Gson().toJson(errors));
+            errors.clear();
+            return;
+        }
+        JsonObject jsonObject = RideServices.rideDetails(rideId);
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         String op = gson.toJson(jsonObject);
@@ -26,6 +35,13 @@ public class RideServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
         boolean result = RideServices.createRide(requestBody);
+        List<String> errors = RideServices.getRideErrors();
+        if(!errors.isEmpty()){
+            response.setStatus(422);
+            printWriter.write(new Gson().toJson(errors));
+            errors.clear();
+            return;
+        }
         if (result) {
             response.setStatus(HttpServletResponse.SC_CREATED);
             printWriter.write("{\"message\":\"Ride created successfully\"}");

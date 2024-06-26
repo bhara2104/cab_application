@@ -9,8 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Rider Driver Validation">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Added issuer in jwt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/LocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/RideServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/RideServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RideServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RideServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,14 +271,9 @@
       <workItem from="1719380173016" duration="4446000" />
       <workItem from="1719393375025" duration="4401000" />
       <workItem from="1719403965855" duration="3746000" />
-    </task>
-    <task id="LOCAL-00035" summary="Ride Details">
-      <option name="closed" value="true" />
-      <created>1718961983796</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1718961983796</updated>
+      <workItem from="1719408100934" duration="179000" />
+      <workItem from="1719408401900" duration="107000" />
+      <workItem from="1719411505640" duration="1072000" />
     </task>
     <task id="LOCAL-00036" summary="Ride Functionalities Added">
       <option name="closed" value="true" />
@@ -661,14 +659,21 @@
       <option name="project" value="LOCAL" />
       <updated>1719407786611</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Added issuer in jwt">
+      <option name="closed" value="true" />
+      <created>1719408137750</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1719408137751</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Saved UPI's Update" />
     <MESSAGE value="Added Routes for driver login and rider login and added bcrypt dependency and json dependency" />
     <MESSAGE value="Added Jbcrypt to hash the password" />
     <MESSAGE value="Created JWTUtil" />
@@ -693,6 +698,7 @@
     <MESSAGE value="Password and email validation" />
     <MESSAGE value="Ride Validation" />
     <MESSAGE value="Rider Driver Validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rider Driver Validation" />
+    <MESSAGE value="Added issuer in jwt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added issuer in jwt" />
   </component>
 </project>

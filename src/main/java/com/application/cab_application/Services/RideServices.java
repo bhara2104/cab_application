@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RideServices {
+    private static final List<String> rideErrors = new ArrayList<>() ;
     public static boolean createRide(String jsonBody) {
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(jsonBody, JsonObject.class);
@@ -22,6 +23,14 @@ public class RideServices {
         Ride rideObject = gson.fromJson(ride, Ride.class);
         int riderID = rideObject.getRiderId();
         RideDetails rideDetails1 = gson.fromJson(rideDetails, RideDetails.class);
+        if(LocationService.validateRideLocation(rideDetails1.getFromLocation())){
+            rideErrors.add("Enter Valid Location ID");
+            return false;
+        }
+        if(LocationService.validateRideLocation(rideDetails1.getToLocation())){
+            rideErrors.add("Enter Valid To Location");
+            return false;
+        }
         try (Connection connection = DatabaseConnector.getConnection()) {
             connection.setAutoCommit(false);
             try {
@@ -41,6 +50,10 @@ public class RideServices {
             System.out.println(e.getMessage());
         }
         return false;
+    }
+
+    public static List<String> getRideErrors(){
+        return rideErrors ;
     }
 
 
