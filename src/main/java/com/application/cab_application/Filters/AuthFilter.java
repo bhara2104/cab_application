@@ -33,6 +33,7 @@ public class AuthFilter extends HttpFilter {
                 token = token.substring(7);
                 boolean tokenValidation = JWTUtil.verifyAuthToken(token);
                 if (tokenValidation) {
+                    CurrentUserHelper.account = JWTUtil.getUserID(token);
                     chain.doFilter(request, response);
                     return;
                 } else {
