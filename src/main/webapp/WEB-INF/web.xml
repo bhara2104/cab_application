@@ -89,7 +89,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>RiderLoginServlet</servlet-name>
-        <servlet-class>com.application.cab_application.Servlets.RideLoginServlet</servlet-class>
+        <servlet-class>com.application.cab_application.Servlets.RiderLoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RiderLoginServlet</servlet-name>

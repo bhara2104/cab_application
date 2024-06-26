@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.application.cab_application.DAO.*;
 import com.application.cab_application.Models.*;
+import com.application.cab_application.Services.RideServices;
 import com.application.cab_application.Util.BillAmountGenerator;
 import com.application.cab_application.enums.RequestStatus;
 import com.google.gson.Gson;
@@ -48,6 +49,12 @@ public class DriverRideServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
+        List<String> errors = RideServices.runValidation(Integer.parseInt(rideID));
+        if(!errors.isEmpty()){
+            response.setStatus(422);
+            printWriter.write(new Gson().toJson(errors));
+            return;
+        }
         if (actionName != null) {
             RideDetails rideDetails = RideDetailsDao.getRideDetails(Integer.parseInt(rideID));
             if (actionName.equals("startRide")) {

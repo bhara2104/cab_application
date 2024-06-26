@@ -3,12 +3,15 @@ package com.application.cab_application.Services;
 import com.application.cab_application.DAO.*;
 import com.application.cab_application.Models.*;
 import com.application.cab_application.Util.DatabaseConnector;
+import com.application.cab_application.enums.AccountType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RideServices {
     public static boolean createRide(String jsonBody) {
@@ -69,5 +72,14 @@ public class RideServices {
         responseObject.add("rideDetails", rideDetailsJsonElement);
 
         return responseObject;
+    }
+
+    public static List<String> runValidation(int rideID) {
+        List<String> errors = new ArrayList<>();
+        Ride ride = RidesDao.getRide(rideID);
+        if(ride.getId() == 0){
+            errors.add("Enter Valid Ride ID to continue");
+        }
+        return errors;
     }
 }

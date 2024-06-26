@@ -39,6 +39,11 @@ public class RiderRideServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
         Ride ride = RidesDao.getRide(Integer.parseInt(rideID));
+        if(ride.getId() == 0){
+            response.setStatus(422);
+            printWriter.write("{\"message\":\"Enter Valid RideID\"}");
+            return;
+        }
         AccountDetailsDao.updateCurrentRideIDAsNUll(ride.getDriverId());
         AccountDetailsDao.updateCurrentRideIDAsNUll(ride.getRiderId());
 

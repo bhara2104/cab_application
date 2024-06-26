@@ -4,13 +4,10 @@ import java.io.*;
 
 import com.application.cab_application.Models.Account;
 import com.application.cab_application.Services.AccountService;
-import com.application.cab_application.Util.ReadJson;
 import com.application.cab_application.enums.AccountType;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
 
-public class RideLoginServlet extends HttpServlet {
+public class RiderLoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
