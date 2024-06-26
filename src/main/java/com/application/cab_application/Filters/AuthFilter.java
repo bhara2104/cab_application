@@ -18,7 +18,8 @@ public class AuthFilter extends HttpFilter {
             throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String path = httpServletRequest.getRequestURI().substring(httpServletRequest.getContextPath().length());
-        if (path.equals("/accounts") || path.equals("/driver_login") || path.equals("/logout") || path.equals("/rider_login") || path.equals("/api/login")) {
+        if (path.equals("/accounts") || path.equals("/driver_login") || path.equals("/logout") || path.equals("/rider_login")
+                || path.equals("/api/login") || path.equals("/")) {
             chain.doFilter(request, response);
         } else {
             HttpSession httpSession = httpServletRequest.getSession(false);
