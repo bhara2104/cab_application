@@ -17,6 +17,7 @@ public class JWTUtil {
 
     public static String generateAccessToken(int accountID) {
         return JWT.create()
+                .withIssuer("auth0")
                 .withClaim("accountID", accountID)
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))

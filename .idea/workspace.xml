@@ -9,11 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Work around for auth filter">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/CurrentUserHelper.java" afterDir="false" />
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Rider Driver Validation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Filters/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Filters/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,71 +266,8 @@
       <workItem from="1719301327023" duration="10802000" />
       <workItem from="1719317453533" duration="8936000" />
       <workItem from="1719380173016" duration="4446000" />
-      <workItem from="1719393375025" duration="2356000" />
-    </task>
-    <task id="LOCAL-00027" summary="Added Account Servlet API and created account details and account and Added some helper method to read json and added service layer to fetch account details and accounts and create those">
-      <option name="closed" value="true" />
-      <created>1718949762228</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1718949762228</updated>
-    </task>
-    <task id="LOCAL-00028" summary="API for get account details addded">
-      <option name="closed" value="true" />
-      <created>1718950308886</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1718950308886</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Added Services for Driver details and location and created API for creating driver details">
-      <option name="closed" value="true" />
-      <created>1718952741840</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1718952741840</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Added Location servlet and their function">
-      <option name="closed" value="true" />
-      <created>1718953489808</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1718953489808</updated>
-    </task>
-    <task id="LOCAL-00031" summary="API to create Driver details and vehicles and locations">
-      <option name="closed" value="true" />
-      <created>1718957612835</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1718957612835</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Update API for Driver">
-      <option name="closed" value="true" />
-      <created>1718958838902</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1718958838902</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Updated Driver Availability API to update status">
-      <option name="closed" value="true" />
-      <created>1718959697839</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1718959697839</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Added some changes in ride details and ride model and added services for ride and servlet for ride">
-      <option name="closed" value="true" />
-      <created>1718961202381</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1718961202381</updated>
+      <workItem from="1719393375025" duration="4401000" />
+      <workItem from="1719403965855" duration="3746000" />
     </task>
     <task id="LOCAL-00035" summary="Ride Details">
       <option name="closed" value="true" />
@@ -663,21 +597,77 @@
       <option name="project" value="LOCAL" />
       <updated>1719384801762</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Added Filter for API's with both session and jwt auth">
+      <option name="closed" value="true" />
+      <created>1719395773679</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1719395773679</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Helper to get current user ID">
+      <option name="closed" value="true" />
+      <created>1719395824819</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1719395824819</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Index jsp added in auth filter">
+      <option name="closed" value="true" />
+      <created>1719402250882</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1719402250883</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Validation for email and password">
+      <option name="closed" value="true" />
+      <created>1719406075073</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1719406075073</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Validation in accounts">
+      <option name="closed" value="true" />
+      <created>1719406448671</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1719406448671</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Password and email validation">
+      <option name="closed" value="true" />
+      <created>1719406912238</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1719406912239</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Ride Validation">
+      <option name="closed" value="true" />
+      <created>1719407132264</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1719407132264</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Rider Driver Validation">
+      <option name="closed" value="true" />
+      <created>1719407786611</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1719407786611</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added payment servlet and url mapping for it" />
-    <MESSAGE value="Created UPI data to save upi id and upi payments to link payments with respective upi" />
-    <MESSAGE value="Saved upi servlet to fetch UPI ID's" />
-    <MESSAGE value="End point for saved UPI" />
-    <MESSAGE value="Removed @web servlet annotations" />
-    <MESSAGE value="Changes in bill amount generator and driver servlet and other fixes" />
-    <MESSAGE value="Added an Bill amount generator to generate bill value and created bills dao and changes in bills servlet and driver ride servlet" />
-    <MESSAGE value="API to create bill and payment and if it is UPI then UPI id will get saved" />
     <MESSAGE value="Saved UPI's Update" />
     <MESSAGE value="Added Routes for driver login and rider login and added bcrypt dependency and json dependency" />
     <MESSAGE value="Added Jbcrypt to hash the password" />
@@ -695,17 +685,14 @@
     <MESSAGE value="Error Handling" />
     <MESSAGE value="Completed JWT service part" />
     <MESSAGE value="Work around for auth filter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Work around for auth filter" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/PaymentService.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added Filter for API's with both session and jwt auth" />
+    <MESSAGE value="Helper to get current user ID" />
+    <MESSAGE value="Index jsp added in auth filter" />
+    <MESSAGE value="Validation for email and password" />
+    <MESSAGE value="Validation in accounts" />
+    <MESSAGE value="Password and email validation" />
+    <MESSAGE value="Ride Validation" />
+    <MESSAGE value="Rider Driver Validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rider Driver Validation" />
   </component>
 </project>
