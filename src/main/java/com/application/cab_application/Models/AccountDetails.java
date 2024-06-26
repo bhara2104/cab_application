@@ -1,6 +1,10 @@
 package com.application.cab_application.Models;
 
-import java.sql.Timestamp;
+import com.application.cab_application.DAO.RidesDao;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountDetails {
     private int id;
@@ -26,6 +30,19 @@ public class AccountDetails {
 
     public AccountDetails() {
 
+    }
+
+    public static List<String> runValidation(AccountDetails accountDetails){
+        List<String> errors = new ArrayList<>();
+        if(!validateRideID(accountDetails.getCurrentRideID())){
+            errors.add("Enter a Valid Ride ID");
+        }
+        return errors;
+    }
+
+    public static boolean validateRideID(int currentRideID){
+        Ride ride = RidesDao.getRide(currentRideID);
+        return ride.getId() == currentRideID ;
     }
 
     public int getId() {
