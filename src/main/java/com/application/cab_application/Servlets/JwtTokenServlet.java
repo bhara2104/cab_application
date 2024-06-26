@@ -18,15 +18,20 @@ public class JwtTokenServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String body = ReadJson.convertJsonToString(request.getReader());
         JsonObject jsonBody = new Gson().fromJson(body, JsonObject.class);
-        String grantType = jsonBody.get("grant_type").getAsString();
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
-        if(grantType.equals("password")) {
+        if (jsonBody.get("grant_type") == null) {
+            printWriter.write("{\"message\":\"Specify Valid Grant Type\"}");
+            response.setStatus(401);
+            return;
+        }
+        String grantType = jsonBody.get("grant_type").getAsString();
+        JsonObject jsonObject = new JsonObject();
+        if (grantType.equals("password")) {
             String email = jsonBody.get("email").getAsString();
             String password = jsonBody.get("password").getAsString();
             Account loggedAccount = AccountService.authenticateUser(email, password, AccountType.RIDER);
-            JsonObject jsonObject = new JsonObject();
             if (loggedAccount != null) {
                 String jwtToken = JWTUtil.generateAccessToken(loggedAccount.getId());
                 String refreshToken = JWTUtil.createRefreshToken(loggedAccount.getId());
@@ -38,13 +43,14 @@ public class JwtTokenServlet extends HttpServlet {
                 printWriter.write("{\"message\":\"Invalid Credentials\"}");
                 response.setStatus(401);
             }
-        } else if(grantType.equals("refresh_token")){
-            String token = jsonBody.get("refresh_token").getAsString();
-            if(JWTUtil.verifyAuthToken(token)){
+        } else if (grantType.equals("refresh_token")) {
+            String token = jsonBody.get("refreshToken").getAsString();
+            if (JWTUtil.verifyAuthToken(token)) {
                 int accountID = JWTUtil.getUserID(token);
                 String accessToken = JWTUtil.generateAccessToken(accountID);
-                printWriter.write("{\" accessToken:\"+"+accessToken+"}");
-            }else{
+                jsonObject.addProperty("accessToken", accessToken);
+                printWriter.write(new Gson().toJson(jsonObject));
+            } else {
                 printWriter.write("{\"message\":\"Invalid Refresh Token\"}");
                 response.setStatus(401);
             }
