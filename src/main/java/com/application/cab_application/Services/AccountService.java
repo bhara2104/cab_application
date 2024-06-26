@@ -12,6 +12,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class AccountService {
     public static Boolean createAccount(String jsonBody) {
@@ -60,5 +61,14 @@ public class AccountService {
             String encryptedPassword = account.getPassword();
             return BCrypt.checkpw(password, encryptedPassword) ? account : null;
         }
+    }
+
+    public static List<String> validateAccount(String jsonBody){
+        Gson gson = new Gson();
+
+        JsonObject jsonObject = gson.fromJson(jsonBody, JsonObject.class);
+        JsonObject accountJson = jsonObject.getAsJsonObject("account");
+        Account account = gson.fromJson(accountJson, Account.class);
+        return Account.checkValidations(account);
     }
 }

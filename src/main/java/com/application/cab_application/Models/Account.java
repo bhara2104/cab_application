@@ -2,7 +2,7 @@ package com.application.cab_application.Models;
 
 import com.application.cab_application.enums.AccountType;
 
-import java.sql.Timestamp;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -23,7 +23,7 @@ public class Account {
     }
 
 
-    public List<String> checkValidations(Account account){
+    public static List<String> checkValidations(Account account){
         List<String> errors = new ArrayList<>();
         if(!checkEmailValidation(account.getEmail())){
             errors.add("Email is not Valid");
@@ -46,7 +46,7 @@ public class Account {
         return pat.matcher(email).matches();
     }
 
-    public Boolean checkPasswordValidation(String password){
+    public static Boolean checkPasswordValidation(String password){
         String regex = "^(?=.*[0-9])"
                 + "(?=.*[a-z])(?=.*[A-Z])"
                 + "(?=.*[@#$%^&+=])"
