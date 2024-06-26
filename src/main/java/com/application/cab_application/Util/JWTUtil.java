@@ -1,41 +1,53 @@
 package com.application.cab_application.Util;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.Claim;
+import com.auth0.jwt.interfaces.DecodedJWT;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class JWTUtil {
-    private static final String SECRET_KEY = "95a1d6e351c641417065fa25e066c927035e933ed254cd8948c4fd1581e65e2c";
+    private static final Algorithm ALGORITHM = Algorithm.HMAC256("fa42cd01ee4645073aa224065d53caea7bfb8b7644cc0c9cc719985ce0106cfe");
     private static final long EXPIRATION_TIME = 8 * 60 * 60 * 1000;
     private static final long REFRESH_TOKEN_EXPIRATION = 90L * 24 * 60 * 60 * 1000;
 
     public static String generateAccessToken(int accountID) {
-        return Jwts.builder()
-                .subject(String.valueOf(accountID))
-                .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(SignatureAlgorithm.HS256,SECRET_KEY)
-                .compact();
+        return JWT.create()
+                .withClaim("userId", "1234")
+                .withIssuedAt(new Date())
+                .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .withJWTId(UUID.randomUUID()
+                        .toString())
+                .withNotBefore(new Date(System.currentTimeMillis() + 1000L))
+                .sign(ALGORITHM);
     }
 
-    public static String generateRefreshToken(int accountID) {
-        return Jwts.builder()
-                .subject("{accountID:+"+accountID+"}")
-                .expiration(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION))
-                .signWith(SignatureAlgorithm.HS256,SECRET_KEY)
-                .compact();
+    public static String createRefreshToken() {
+        return JWT.create()
+                .withIssuer("auth0")
+                .withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION))
+                .sign(ALGORITHM);
     }
 
-//    public static boolean validateToken(String token) {
-//        try {
-//            Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);
-//            return true;
-//        } catch (Exception e) {
-//            return false;
-//        }
-//    }
-//
-//    public static Claims getClaims(String token) {
-//        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
-//    }
+    public static boolean verifyAuthToken(String token) {
+        try {
+            JWTVerifier jwtVerifier = JWT.require(ALGORITHM).build();
+            DecodedJWT jwt = jwtVerifier.verify(token);
+            return true;
+        }catch (JWTVerificationException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public static int getUserID(String token){
+        JWTVerifier jwtVerifier = JWT.require(ALGORITHM).build();
+        DecodedJWT jwt = jwtVerifier.verify(token);
+        Claim claim = jwt.getClaim("accountID");
+        return claim.asInt();
+    }
 }
