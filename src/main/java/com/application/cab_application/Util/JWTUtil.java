@@ -26,9 +26,10 @@ public class JWTUtil {
                 .sign(ALGORITHM);
     }
 
-    public static String createRefreshToken() {
+    public static String createRefreshToken(int accountID) {
         return JWT.create()
                 .withIssuer("auth0")
+                .withClaim("accountID", accountID)
                 .withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION))
                 .sign(ALGORITHM);
     }

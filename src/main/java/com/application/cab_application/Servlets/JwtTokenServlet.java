@@ -19,22 +19,32 @@ public class JwtTokenServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String body = ReadJson.convertJsonToString(request.getReader());
         JsonObject jsonBody = new Gson().fromJson(body, JsonObject.class);
-        String email = jsonBody.get("email").getAsString();
-        String password = jsonBody.get("password").getAsString();
-        Account loggedAccount = AccountService.authenticateUser(email,password, AccountType.RIDER);
+        String grantType = jsonBody.get("grant_type").getAsString();
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        JsonObject jsonObject = new JsonObject();
         PrintWriter printWriter = response.getWriter();
-        if(loggedAccount != null){
-            String jwtToken = JWTUtil.generateAccessToken(loggedAccount.getId());
-            String refreshToken = JWTUtil.createRefreshToken();
-            jsonObject.addProperty("accessToken", jwtToken);
-            jsonObject.addProperty("refreshToken", refreshToken);
-            response.setStatus(200);
-            printWriter.write(new Gson().toJson(jsonObject));
-        } else {
-            response.setStatus(401);
+        if(grantType.equals("password")) {
+            String email = jsonBody.get("email").getAsString();
+            String password = jsonBody.get("password").getAsString();
+            Account loggedAccount = AccountService.authenticateUser(email, password, AccountType.RIDER);
+            JsonObject jsonObject = new JsonObject();
+            if (loggedAccount != null) {
+                String jwtToken = JWTUtil.generateAccessToken(loggedAccount.getId());
+                String refreshToken = JWTUtil.createRefreshToken(loggedAccount.getId());
+                jsonObject.addProperty("accessToken", jwtToken);
+                jsonObject.addProperty("refreshToken", refreshToken);
+                response.setStatus(200);
+                printWriter.write(new Gson().toJson(jsonObject));
+            } else {
+                response.setStatus(401);
+            }
+        } else if(grantType.equals("refresh_token")){
+            String token = jsonBody.get("refresh_token").getAsString();
+            if(JWTUtil.verifyAuthToken(token)){
+                int accountID = JWTUtil.getUserID(token);
+                String accessToken = JWTUtil.generateAccessToken(accountID);
+                printWriter.write("{\" accessToken:\"+"+accessToken+"}");
+            }
         }
     }
 }
