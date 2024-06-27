@@ -47,13 +47,13 @@ public class DriverDetailsServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
         String requestBody = ReadJson.convertJsonToString(request.getReader());
-        boolean result = DriverDetailsService.createDriverDetails(requestBody);
         DriverDetails driverDetailsCheck = DriverDetailsDao.getDriverDetailsByAccountID(CurrentUserHelper.getAccount());
         if(driverDetailsCheck.getId()!=0){
             response.setStatus(HttpServletResponse.SC_CONFLICT);
             printWriter.write("{\"message\":\"Driver Details Already Exists\"}");
             return;
         }
+        boolean result = DriverDetailsService.createDriverDetails(requestBody);
         if (result) {
             response.setStatus(HttpServletResponse.SC_CREATED);
             printWriter.write("{\"message\":\"Driver Details created successfully\"}");

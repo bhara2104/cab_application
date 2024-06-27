@@ -9,10 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Account Creation logic">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverDetailsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverDetailsServlet.java" afterDir="false" />
-    </list>
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Driver details validation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -273,15 +270,7 @@
       <workItem from="1719408401900" duration="107000" />
       <workItem from="1719411505640" duration="13920000" />
       <workItem from="1719483460122" duration="2483000" />
-      <workItem from="1719490501925" duration="6042000" />
-    </task>
-    <task id="LOCAL-00043" summary="Added Location and Driver details in ride details API">
-      <option name="closed" value="true" />
-      <created>1719127879857</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1719127879857</updated>
+      <workItem from="1719490501925" duration="6370000" />
     </task>
     <task id="LOCAL-00044" summary="Added Location and Driver details and license number in get ride">
       <option name="closed" value="true" />
@@ -667,7 +656,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719491392176</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Driver details validation">
+      <option name="closed" value="true" />
+      <created>1719502156738</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1719502156738</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,7 +672,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Added URL mapping for JWT servlet" />
     <MESSAGE value="JWT and AccountDAO Change" />
     <MESSAGE value="Created all JWT methods" />
     <MESSAGE value="Refresh Token in servlet" />
@@ -700,7 +696,8 @@
     <MESSAGE value="Rating Servlet" />
     <MESSAGE value="Fixes" />
     <MESSAGE value="Account Creation logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Account Creation logic" />
+    <MESSAGE value="Driver details validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Driver details validation" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
