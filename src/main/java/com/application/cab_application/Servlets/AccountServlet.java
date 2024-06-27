@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import com.application.cab_application.DAO.AccountDao;
+import com.application.cab_application.Models.Account;
 import com.application.cab_application.Services.AccountService;
 import com.application.cab_application.Util.ReadJson;
 import com.google.gson.Gson;
@@ -29,8 +30,15 @@ public class AccountServlet extends HttpServlet {
             printWriter.write("{\"message\":\"Account already Exists\"}");
             return;
         }
-        Boolean result = AccountService.createAccount(requestBody);
-        if (result) {
+        int result = AccountService.createAccount(requestBody);
+
+        if (result != 0) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("userID",result);
+            Account account = AccountDao.getByID(result);
+            session.setAttribute("accountType", account.getAccountType());
+            session.setMaxInactiveInterval(7 * 60 * 60);
+            response.addCookie(new Cookie("JSESSIONID", session.getId()));
             response.setStatus(HttpServletResponse.SC_CREATED);
             printWriter.write("{\"message\":\"Account created successfully\"}");
         } else {

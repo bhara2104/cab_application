@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AccountService {
-    public static Boolean createAccount(String jsonBody) {
+    public static int createAccount(String jsonBody) {
         Gson gson = new Gson();
 
         JsonObject jsonObject = gson.fromJson(jsonBody, JsonObject.class);
@@ -30,20 +30,20 @@ public class AccountService {
             try {
                 int id = AccountDao.createAccount(account);
                 if (id == 0) {
-                    return false;
+                    return 0;
                 }
                 accountDetails.setAccountId(id);
                 AccountDetailsDao.createAccountDetails(accountDetails);
                 connection.commit();
-                return true;
+                return id;
             } catch (SQLException e) {
                 connection.rollback();
-                return false;
+                return 0;
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         }
-        return false;
+        return 0;
     }
 
     public static Account returnAccount(String jsonBody) {
