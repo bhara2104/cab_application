@@ -127,4 +127,13 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    
+    <servlet>
+        <servlet-name>RatingServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.RatingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RatingServlet</servlet-name>
+        <url-pattern>/rating</url-pattern>
+    </servlet-mapping>
 </web-app>
