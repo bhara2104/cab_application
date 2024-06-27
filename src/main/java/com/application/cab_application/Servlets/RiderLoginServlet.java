@@ -17,6 +17,7 @@ public class RiderLoginServlet extends HttpServlet {
         if(loggedAccount != null){
             HttpSession session = request.getSession(true);
             session.setAttribute("userID",loggedAccount.getId());
+            session.setAttribute("accountType", "RIDER");
             session.setMaxInactiveInterval(7 * 60 * 60);
             response.addCookie(new Cookie("JSESSIONID", session.getId()));
             response.setStatus(HttpServletResponse.SC_OK);

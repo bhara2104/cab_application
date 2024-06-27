@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Added type claim to jwt refresh token">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Rating Servlet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/LocationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/LocationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/DriverDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/DriverDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverLoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverLoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RiderLoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RiderLoginServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +93,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.CommitDialog&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -271,31 +273,8 @@
       <workItem from="1719403965855" duration="3746000" />
       <workItem from="1719408100934" duration="179000" />
       <workItem from="1719408401900" duration="107000" />
-      <workItem from="1719411505640" duration="4658000" />
-    </task>
-    <task id="LOCAL-00038" summary="Added Servlet mapping rider driver and driver rides">
-      <option name="closed" value="true" />
-      <created>1718965198009</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1718965198009</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Added Dao for fetching all rides and added pretty print helper to jsonify the objects and other helpers included">
-      <option name="closed" value="true" />
-      <created>1718971042950</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1718971042950</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Added an API to get all available rides for an Driver">
-      <option name="closed" value="true" />
-      <created>1718971973468</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1718971973468</updated>
+      <workItem from="1719411505640" duration="13920000" />
+      <workItem from="1719483460122" duration="1639000" />
     </task>
     <task id="LOCAL-00041" summary="Base condition checks">
       <option name="closed" value="true" />
@@ -665,16 +644,38 @@
       <option name="project" value="LOCAL" />
       <updated>1719414266199</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Get all locations">
+      <option name="closed" value="true" />
+      <created>1719464110641</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1719464110641</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Index API for location">
+      <option name="closed" value="true" />
+      <created>1719464440763</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1719464440763</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Rating Servlet">
+      <option name="closed" value="true" />
+      <created>1719474344464</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1719474344465</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created JWTUtil" />
-    <MESSAGE value="Added Session for login" />
-    <MESSAGE value="Added Logout Servlet" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="Added Logout Servlet url mapping" />
     <MESSAGE value="Created a JWT token servlet" />
     <MESSAGE value="Added URL mapping for JWT servlet" />
@@ -697,6 +698,13 @@
     <MESSAGE value="Added issuer in jwt" />
     <MESSAGE value="Location Validation" />
     <MESSAGE value="Added type claim to jwt refresh token" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added type claim to jwt refresh token" />
+    <MESSAGE value="Get all locations" />
+    <MESSAGE value="Index API for location" />
+    <MESSAGE value="Rating Servlet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rating Servlet" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
