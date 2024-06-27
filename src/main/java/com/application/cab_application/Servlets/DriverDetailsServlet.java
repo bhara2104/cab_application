@@ -11,6 +11,7 @@ import com.application.cab_application.Models.Location;
 import com.application.cab_application.Models.Vehicle;
 import com.application.cab_application.Services.AccountService;
 import com.application.cab_application.Services.DriverDetailsService;
+import com.application.cab_application.Util.CurrentUserHelper;
 import com.application.cab_application.Util.ReadJson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,6 +48,12 @@ public class DriverDetailsServlet extends HttpServlet {
         PrintWriter printWriter = response.getWriter();
         String requestBody = ReadJson.convertJsonToString(request.getReader());
         boolean result = DriverDetailsService.createDriverDetails(requestBody);
+        DriverDetails driverDetailsCheck = DriverDetailsDao.getDriverDetailsByAccountID(CurrentUserHelper.getAccount());
+        if(driverDetailsCheck.getId()!=0){
+            response.setStatus(HttpServletResponse.SC_CONFLICT);
+            printWriter.write("{\"message\":\"Driver Details Already Exists\"}");
+            return;
+        }
         if (result) {
             response.setStatus(HttpServletResponse.SC_CREATED);
             printWriter.write("{\"message\":\"Driver Details created successfully\"}");
