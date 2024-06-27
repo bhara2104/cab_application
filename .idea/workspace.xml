@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Location Validation">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Added type claim to jwt refresh token">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/JwtTokenServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/JwtTokenServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/JWTUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/JWTUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/LocationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/LocationDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,15 +271,7 @@
       <workItem from="1719403965855" duration="3746000" />
       <workItem from="1719408100934" duration="179000" />
       <workItem from="1719408401900" duration="107000" />
-      <workItem from="1719411505640" duration="2382000" />
-    </task>
-    <task id="LOCAL-00037" summary="Pretty print for json">
-      <option name="closed" value="true" />
-      <created>1718964908803</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1718964908803</updated>
+      <workItem from="1719411505640" duration="4658000" />
     </task>
     <task id="LOCAL-00038" summary="Added Servlet mapping rider driver and driver rides">
       <option name="closed" value="true" />
@@ -666,14 +657,21 @@
       <option name="project" value="LOCAL" />
       <updated>1719412868163</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Added type claim to jwt refresh token">
+      <option name="closed" value="true" />
+      <created>1719414266199</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1719414266199</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Jbcrypt to hash the password" />
     <MESSAGE value="Created JWTUtil" />
     <MESSAGE value="Added Session for login" />
     <MESSAGE value="Added Logout Servlet" />
@@ -698,6 +696,7 @@
     <MESSAGE value="Rider Driver Validation" />
     <MESSAGE value="Added issuer in jwt" />
     <MESSAGE value="Location Validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Location Validation" />
+    <MESSAGE value="Added type claim to jwt refresh token" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added type claim to jwt refresh token" />
   </component>
 </project>

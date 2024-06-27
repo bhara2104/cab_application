@@ -5,6 +5,8 @@ import com.application.cab_application.Util.DatabaseConnector;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LocationDao {
     public static int createLocation(Location location) {
@@ -47,4 +49,20 @@ public class LocationDao {
         return new Location();
     }
 
+    public static List<Location> locationsList(){
+        List<Location> locationList = new ArrayList<>();
+        String query = "select * from locations" ;
+        ResultSet resultSet ;
+        try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                locationList.add(new Location(resultSet.getInt("id"), resultSet.getDouble("latitude"),
+                        resultSet.getDouble("longitude"), resultSet.getString("landmark"),
+                        resultSet.getString("city"), resultSet.getInt("pincode")));
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return locationList;
+    }
 }
