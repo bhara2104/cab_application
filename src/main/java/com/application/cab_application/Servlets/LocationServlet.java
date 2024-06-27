@@ -1,6 +1,7 @@
 package com.application.cab_application.Servlets;
 
 import java.io.*;
+import java.util.List;
 
 import com.application.cab_application.DAO.LocationDao;
 import com.application.cab_application.Models.Location;
@@ -17,24 +18,31 @@ public class LocationServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Gson gson = new Gson();
+        String action = request.getParameter("action");
         String id = request.getParameter("id");
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
-        if (id == null) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            return;
-        }
-
-        try {
-            int idValue = Integer.parseInt(id);
-            Location location = LocationDao.getLocation(idValue);
-            String jsonResponse = gson.toJson(location);
+        if (action != null && action.equals("index")) {
+            List<Location> locationList = LocationDao.locationsList();
             response.setStatus(200);
-            printWriter.write(jsonResponse);
+            printWriter.write(new Gson().toJson(locationList));
+        } else {
+            if (id == null) {
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                return;
+            }
 
-        } catch (Exception e) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            try {
+                int idValue = Integer.parseInt(id);
+                Location location = LocationDao.getLocation(idValue);
+                String jsonResponse = gson.toJson(location);
+                response.setStatus(200);
+                printWriter.write(jsonResponse);
+
+            } catch (Exception e) {
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            }
         }
     }
 
