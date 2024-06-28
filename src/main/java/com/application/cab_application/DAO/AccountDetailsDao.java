@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AccountDetailsDao {
-    public static int createAccountDetails(AccountDetails details) throws SQLException, ClassNotFoundException {
+    public static void createAccountDetails(AccountDetails details) throws SQLException, ClassNotFoundException {
         String sql = "Insert into account_details(account_id,name,address) values(?, ?, ?)";
         ResultSet rs;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -19,9 +19,6 @@ public class AccountDetailsDao {
             if (affectedRows > 0) {
                 rs = preparedStatement.getGeneratedKeys();
                 rs.next();
-                return rs.getInt(1);
-            } else {
-                return 0;
             }
         } catch (SQLException e) {
             System.out.println(e + " SQL Error raised here");
