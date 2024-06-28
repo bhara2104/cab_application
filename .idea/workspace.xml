@@ -9,7 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Driver details validation" />
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Driver details validation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Filters/CorsFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverLoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverLoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -270,15 +275,7 @@
       <workItem from="1719408401900" duration="107000" />
       <workItem from="1719411505640" duration="13920000" />
       <workItem from="1719483460122" duration="2483000" />
-      <workItem from="1719490501925" duration="6370000" />
-    </task>
-    <task id="LOCAL-00044" summary="Added Location and Driver details and license number in get ride">
-      <option name="closed" value="true" />
-      <created>1719129328246</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1719129328246</updated>
+      <workItem from="1719490501925" duration="11381000" />
     </task>
     <task id="LOCAL-00045" summary="Changes in RidesDAO to fetch Location objects and driver name and license and vehicle details">
       <option name="closed" value="true" />
@@ -664,7 +661,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719502156738</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Driver details validation">
+      <option name="closed" value="true" />
+      <created>1719502668011</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1719502668011</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

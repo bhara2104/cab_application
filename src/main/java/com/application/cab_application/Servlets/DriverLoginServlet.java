@@ -6,9 +6,9 @@ import com.application.cab_application.Models.Account;
 import com.application.cab_application.Services.AccountService;
 import com.application.cab_application.enums.AccountType;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "DriverLoginServlet", value = "/DriverLoginServlet")
+
+
 public class DriverLoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String email = request.getParameter("email");
