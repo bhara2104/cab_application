@@ -143,4 +143,13 @@
         <servlet-name>RatingServlet</servlet-name>
         <url-pattern>/rating</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VehicleServlet</servlet-name>
+        <servlet-class>com.application.cab_application.Servlets.VehicleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VehicleServlet</servlet-name>
+        <url-pattern>/vehicle/*</url-pattern>
+    </servlet-mapping>
 </web-app>

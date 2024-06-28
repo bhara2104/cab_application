@@ -31,7 +31,7 @@ public class VehicleDao {
         return 0;
     }
 
-    public Boolean updateVehicle(Vehicle vehicle) {
+    public static Boolean updateVehicle(Vehicle vehicle) {
         String query = "update vehicles set vehicle_number = ? , vehicle_type = ?, model = ? , year = ?, brand = ? where id = " + vehicle.getId();
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setString(1, vehicle.getVehicleNumber());
