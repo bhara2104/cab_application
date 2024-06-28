@@ -19,6 +19,7 @@ public class AccountDetailsServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
         int id = CurrentUserHelper.getAccount();
+        System.out.println(id);
         try {
             String result = AccountDetailsService.getAccountDetailsResponse(id);
             response.setStatus(HttpServletResponse.SC_OK);

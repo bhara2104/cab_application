@@ -31,7 +31,8 @@ public class JwtTokenServlet extends HttpServlet {
         if (grantType.equals("password")) {
             String email = jsonBody.get("email").getAsString();
             String password = jsonBody.get("password").getAsString();
-            Account loggedAccount = AccountService.authenticateUser(email, password, AccountType.RIDER);
+            String accountType = jsonBody.get("accountType").getAsString();
+            Account loggedAccount = AccountService.authenticateUser(email, password, AccountType.valueOf(accountType));
             if (loggedAccount != null) {
                 String jwtToken = JWTUtil.generateAccessToken(loggedAccount.getId());
                 String refreshToken = JWTUtil.createRefreshToken(loggedAccount.getId());
