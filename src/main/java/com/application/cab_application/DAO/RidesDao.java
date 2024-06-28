@@ -145,7 +145,7 @@ public class RidesDao {
         return new ArrayList<>();
     }
 
-    public static List<JsonObject> getAvailableRides(int locationID) {
+    public static List<JsonObject> getAvailableRides(int locationID, VehicleType vehicleType) {
         List<JsonObject> jsonObjects = new ArrayList<>();
         String query = "SELECT \n" +
                 "    r.id, \n" +
@@ -164,9 +164,10 @@ public class RidesDao {
                 "    ride_details AS rd \n" +
                 "ON \n" +
                 "    r.id = rd.ride_id\n" +
-                "Where r.driver_id IS NULL and rd.from_location_id =  " + locationID;
+                "Where r.driver_id IS NULL and rd.vehicle_type = ? and rd.from_location_id =  " + locationID;
 
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1,vehicleType.getCode());
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 JsonObject jsonObject = new JsonObject();

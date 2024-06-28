@@ -15,6 +15,7 @@ import jakarta.servlet.http.*;
 public class VehicleServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int currentAccountID = CurrentUserHelper.getAccount();
+        System.out.println(currentAccountID);
         DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(currentAccountID);
         Vehicle vehicle = VehicleDao.getVehicle(driverDetails.getVehicleId());
         response.setContentType("application/json");

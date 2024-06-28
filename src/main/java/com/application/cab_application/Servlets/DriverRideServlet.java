@@ -8,6 +8,7 @@ import com.application.cab_application.DAO.*;
 import com.application.cab_application.Models.*;
 import com.application.cab_application.Services.RideServices;
 import com.application.cab_application.Util.BillAmountGenerator;
+import com.application.cab_application.Util.CurrentUserHelper;
 import com.application.cab_application.enums.RequestStatus;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -30,7 +31,8 @@ public class DriverRideServlet extends HttpServlet {
         if (action != null && action.equals("getAvailableRides")) {
             DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(Integer.parseInt(accountId));
             int locationId = driverDetails.getCurrentLocationId();
-            List<JsonObject> objectList = RidesDao.getAvailableRides(locationId);
+            Vehicle vehicle = VehicleDao.getVehicle(driverDetails.getVehicleId());
+            List<JsonObject> objectList = RidesDao.getAvailableRides(locationId, vehicle.getVehicleType());
             String responseValues = gson.toJson(objectList);
             response.setStatus(HttpServletResponse.SC_OK);
             writer.write(responseValues);
