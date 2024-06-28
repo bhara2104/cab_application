@@ -26,7 +26,6 @@ public class RiderLoginServlet extends HttpServlet {
             session.setMaxInactiveInterval(7 * 60 * 60);
             session.setMaxInactiveInterval(7 * 60 * 60);
             Cookie sessionCookie = new Cookie("JSESSIONID", session.getId());
-            sessionCookie.setPath("/");
             response.addCookie(sessionCookie);
             response.setStatus(HttpServletResponse.SC_OK);
         }else{

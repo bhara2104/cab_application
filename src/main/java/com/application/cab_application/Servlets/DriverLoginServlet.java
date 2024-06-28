@@ -27,7 +27,6 @@ public class DriverLoginServlet extends HttpServlet {
             session.setAttribute("accountType", "DRIVER");
             session.setMaxInactiveInterval(7 * 60 * 60);
             Cookie sessionCookie = new Cookie("JSESSIONID", session.getId());
-            sessionCookie.setPath("/");
             response.addCookie(sessionCookie);
             response.setStatus(HttpServletResponse.SC_OK);
         }else{
