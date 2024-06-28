@@ -5,6 +5,7 @@ import com.application.cab_application.DAO.DriverDetailsDao;
 import com.application.cab_application.DAO.VehicleDao;
 import com.application.cab_application.Models.DriverDetails;
 import com.application.cab_application.Models.Vehicle;
+import com.application.cab_application.Util.CurrentUserHelper;
 import com.application.cab_application.Util.DatabaseConnector;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -18,6 +19,7 @@ public class DriverDetailsService {
         JsonObject driverDetailsObject = jsonObject.getAsJsonObject("driverDetails");
         JsonObject vehicleObject = jsonObject.getAsJsonObject("vehicle");
         DriverDetails driverDetails = gson.fromJson(driverDetailsObject, DriverDetails.class);
+        driverDetails.setAccountID(CurrentUserHelper.getAccount());
         Vehicle vehicle = gson.fromJson(vehicleObject, Vehicle.class);
         try(Connection connection = DatabaseConnector.getConnection()){
             connection.setAutoCommit(false);
