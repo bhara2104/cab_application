@@ -25,11 +25,11 @@ public class DriverRideServlet extends HttpServlet {
         Gson gson = new Gson();
         response.setContentType("application/json");
         String action = request.getParameter("action");
-        String accountId = request.getParameter("accountID");
+        int driverID = CurrentUserHelper.getAccount();
         response.setCharacterEncoding("UTF-8");
         PrintWriter writer = response.getWriter();
         if (action != null && action.equals("getAvailableRides")) {
-            DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(Integer.parseInt(accountId));
+            DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(driverID);
             int locationId = driverDetails.getCurrentLocationId();
             Vehicle vehicle = VehicleDao.getVehicle(driverDetails.getVehicleId());
             List<JsonObject> objectList = RidesDao.getAvailableRides(locationId, vehicle.getVehicleType());
@@ -37,7 +37,7 @@ public class DriverRideServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_OK);
             writer.write(responseValues);
         } else {
-            List<JsonObject> objectList = RidesDao.getAllRideDetails(Integer.parseInt(accountId), "DRIVER");
+            List<JsonObject> objectList = RidesDao.getAllRideDetails(driverID, "DRIVER");
             String responseValues = gson.toJson(objectList);
             response.setStatus(HttpServletResponse.SC_OK);
             writer.write(responseValues);
@@ -46,7 +46,7 @@ public class DriverRideServlet extends HttpServlet {
 
     public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String rideID = request.getParameter("RideID");
-        String driverID = request.getParameter("DriverID");
+        int DriverID = CurrentUserHelper.getAccount();
         String actionName = request.getParameter("action");
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -57,8 +57,14 @@ public class DriverRideServlet extends HttpServlet {
             printWriter.write(new Gson().toJson(errors));
             return;
         }
+        Ride ride = RidesDao.getRide(Integer.parseInt(rideID));
         if (actionName != null) {
             RideDetails rideDetails = RideDetailsDao.getRideDetails(Integer.parseInt(rideID));
+            if(ride.getDriverId() != DriverID){
+                response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                printWriter.write("{\"message\":\"Not Authorized to Perform this action\"}");
+                return;
+            }
             if (actionName.equals("startRide")) {
                 rideDetails.setRequestStatus(RequestStatus.STARTED);
                 rideDetails.setStartTime(new Timestamp(System.currentTimeMillis()));
@@ -75,13 +81,18 @@ public class DriverRideServlet extends HttpServlet {
                 printWriter.write(new Gson().toJson(bill));
             }
         } else {
-            boolean success = RidesDao.updateDriverID(Integer.parseInt(rideID), Integer.parseInt(driverID));
+            if(ride.getDriverId()!=0){
+                response.setStatus(HttpServletResponse.SC_OK);
+                printWriter.write("{\"Success: false\",\"message\":\"There was an Error\"}");
+                return;
+            }
+            boolean success = RidesDao.updateDriverID(Integer.parseInt(rideID), DriverID);
             if (success) {
                 RideDetails rideDetails = RideDetailsDao.getRideDetails(Integer.parseInt(rideID));
                 rideDetails.setRequestStatus(RequestStatus.ACCEPTED);
                 boolean updateRideStatus = RideDetailsDao.updateRideDetails(rideDetails);
-                boolean check = AccountDetailsDao.updateCurrentRideID(Integer.parseInt(driverID), Integer.parseInt(rideID));
-                System.out.println(check + " " + driverID);
+                boolean check = AccountDetailsDao.updateCurrentRideID(DriverID, Integer.parseInt(rideID));
+                System.out.println(check + " " + DriverID);
                 response.setStatus(HttpServletResponse.SC_OK);
                 printWriter.write("{\"message\":\"Ride Accepted Successfully\"}");
 
