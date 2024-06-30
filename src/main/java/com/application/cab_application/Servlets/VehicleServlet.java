@@ -49,10 +49,10 @@ public class VehicleServlet extends HttpServlet {
         boolean result = VehicleDao.updateVehicle(updateVehicle);
         if(result){
             response.setStatus(200);
-            printWriter.write("{\"Success: true\",\"message\":\"Updated Successfully\"}");
+            printWriter.write("{\"Success\": \"true\",\"message\":\"Updated Successfully\"}");
         }else{
             response.setStatus(200);
-            printWriter.write("{\"Success: true\",\"message\":\"Failed to Update\"}");
+            printWriter.write("{\"Success\": \"true\",\"message\":\"Failed to Update\"}");
         }
     }
 
