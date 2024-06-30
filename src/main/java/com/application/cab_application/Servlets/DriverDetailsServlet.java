@@ -3,9 +3,11 @@ package com.application.cab_application.Servlets;
 import java.io.*;
 import java.sql.Driver;
 
+import com.application.cab_application.DAO.AccountDao;
 import com.application.cab_application.DAO.DriverDetailsDao;
 import com.application.cab_application.DAO.LocationDao;
 import com.application.cab_application.DAO.VehicleDao;
+import com.application.cab_application.Models.Account;
 import com.application.cab_application.Models.DriverDetails;
 import com.application.cab_application.Models.Location;
 import com.application.cab_application.Models.Vehicle;
@@ -13,6 +15,7 @@ import com.application.cab_application.Services.AccountService;
 import com.application.cab_application.Services.DriverDetailsService;
 import com.application.cab_application.Util.CurrentUserHelper;
 import com.application.cab_application.Util.ReadJson;
+import com.application.cab_application.enums.AccountType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -48,9 +51,15 @@ public class DriverDetailsServlet extends HttpServlet {
         PrintWriter printWriter = response.getWriter();
         String requestBody = ReadJson.convertJsonToString(request.getReader());
         DriverDetails driverDetailsCheck = DriverDetailsDao.getDriverDetailsByAccountID(CurrentUserHelper.getAccount());
+        Account account = AccountDao.getByID(CurrentUserHelper.getAccount());
         if(driverDetailsCheck.getId()!=0){
             response.setStatus(HttpServletResponse.SC_CONFLICT);
             printWriter.write("{\"message\":\"Driver Details Already Exists\"}");
+            return;
+        }
+        if(account.getAccountType()!= AccountType.DRIVER)
+        {
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             return;
         }
         boolean result = DriverDetailsService.createDriverDetails(requestBody);
@@ -89,8 +98,5 @@ public class DriverDetailsServlet extends HttpServlet {
                 response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
             }
         }
-    }
-
-    public void destroy() {
     }
 }

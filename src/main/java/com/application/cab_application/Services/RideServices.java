@@ -3,7 +3,6 @@ package com.application.cab_application.Services;
 import com.application.cab_application.DAO.*;
 import com.application.cab_application.Models.*;
 import com.application.cab_application.Util.DatabaseConnector;
-import com.application.cab_application.enums.AccountType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -67,10 +66,12 @@ public class RideServices {
         if(ride.getDriverId() != 0){
             DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(ride.getDriverId());
             AccountDetails accountDetails = AccountDetailsDao.getAccountDetailsByAccountID(ride.getDriverId());
+            Account account = AccountDao.getByID(ride.getDriverId());
             Vehicle vehicle = VehicleDao.getVehicle(driverDetails.getVehicleId());
             JsonObject rideJsonObject = rideJsonElement.getAsJsonObject();
             rideJsonObject.addProperty("driver_name", accountDetails.getName());
             rideJsonObject.addProperty("driver_license",driverDetails.getLicenseNumber());
+            rideJsonObject.addProperty("driver_number", account.getPhoneNumber());
             JsonElement vehicleJson = gson.toJsonTree(vehicle);
             rideJsonObject.add("vehicle", vehicleJson);
             rideJsonElement = gson.toJsonTree(rideJsonObject);
