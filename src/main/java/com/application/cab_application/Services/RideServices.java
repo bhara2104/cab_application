@@ -2,7 +2,9 @@ package com.application.cab_application.Services;
 
 import com.application.cab_application.DAO.*;
 import com.application.cab_application.Models.*;
+import com.application.cab_application.Util.CurrentUserHelper;
 import com.application.cab_application.Util.DatabaseConnector;
+import com.application.cab_application.enums.RequestStatus;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -16,12 +18,10 @@ public class RideServices {
     private static final List<String> rideErrors = new ArrayList<>() ;
     public static boolean createRide(String jsonBody) {
         Gson gson = new Gson();
-        JsonObject jsonObject = gson.fromJson(jsonBody, JsonObject.class);
-        JsonObject ride = jsonObject.getAsJsonObject("ride");
-        JsonObject rideDetails = jsonObject.getAsJsonObject("ride_details");
-        Ride rideObject = gson.fromJson(ride, Ride.class);
+        Ride rideObject = new Ride();
+        rideObject.setRiderId(CurrentUserHelper.getAccount());
         int riderID = rideObject.getRiderId();
-        RideDetails rideDetails1 = gson.fromJson(rideDetails, RideDetails.class);
+        RideDetails rideDetails1 = gson.fromJson(jsonBody, RideDetails.class);
         if(LocationService.validateRideLocation(rideDetails1.getFromLocation())){
             rideErrors.add("Enter Valid Location ID");
             return false;
@@ -39,6 +39,7 @@ public class RideServices {
                 }
                 AccountDetailsDao.updateCurrentRideID(riderID, id);
                 rideDetails1.setRideID(id);
+                rideDetails1.setRequestStatus(RequestStatus.WAITING);
                 RideDetailsDao.createRideDetail(rideDetails1);
                 connection.commit();
                 return true;

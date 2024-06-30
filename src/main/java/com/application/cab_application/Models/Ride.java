@@ -11,6 +11,10 @@ public class Ride {
         DriverId = driverId;
     }
 
+    public void setRiderId(int riderId) {
+        RiderId = riderId;
+    }
+
     public Ride() {
 
     }
