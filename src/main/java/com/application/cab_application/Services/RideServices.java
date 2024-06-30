@@ -23,7 +23,7 @@ public class RideServices {
         int riderID = rideObject.getRiderId();
         RideDetails rideDetails1 = gson.fromJson(jsonBody, RideDetails.class);
         if(LocationService.validateRideLocation(rideDetails1.getFromLocation())){
-            rideErrors.add("Enter Valid Location ID");
+            rideErrors.add("Enter Valid From Location ID");
             return false;
         }
         if(LocationService.validateRideLocation(rideDetails1.getToLocation())){

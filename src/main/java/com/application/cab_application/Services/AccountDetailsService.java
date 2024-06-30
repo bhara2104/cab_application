@@ -15,6 +15,7 @@ public class AccountDetailsService {
         AccountDetails accountDetails = AccountDetailsDao.getAccountDetailsByAccountID(id);
         JsonObject accountDetailsObject = PrettyPrintHelper.prettyPrintHelper(accountDetails).getAsJsonObject();
         accountDetailsObject.addProperty("email", account.getEmail());
+        accountDetailsObject.addProperty("accountType", account.getAccountType().name());
         if(account.getAccountType() == AccountType.DRIVER){
             DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(id);
             accountDetailsObject.addProperty("detailsUpdated", driverDetails.getId() != 0);
