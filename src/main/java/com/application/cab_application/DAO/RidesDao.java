@@ -181,8 +181,8 @@ public class RidesDao {
                 JsonElement rideElement = PrettyPrintHelper.prettyPrintHelper(ride);
                 JsonElement rideDetailElement = PrettyPrintHelper.prettyPrintHelper(rideDetails);
                 JsonObject rideDetailsObj = rideDetailElement.getAsJsonObject();
-                rideDetailsObj.add("fromLocation", PrettyPrintHelper.prettyPrintHelper(fromLocation));
-                rideDetailsObj.add("toLocation", PrettyPrintHelper.prettyPrintHelper(toLocation));
+                rideDetailsObj.addProperty("fromLocation", fromLocation.getLandmark() + " " + fromLocation.getCity());
+                rideDetailsObj.addProperty("toLocation", toLocation.getLandmark() + " " + toLocation.getCity() );
                 rideDetailElement = new Gson().toJsonTree(rideDetailsObj);
                 jsonObject.add("ride", rideElement);
                 jsonObject.add("rideDetails", rideDetailElement);
