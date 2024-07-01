@@ -9,9 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Added account type in the response">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Vehicle type added in response">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Filters/CorsFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Filters/CorsFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RidesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RidesDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,15 +274,7 @@
       <workItem from="1719483460122" duration="2483000" />
       <workItem from="1719490501925" duration="37327000" />
       <workItem from="1719661925973" duration="19169000" />
-      <workItem from="1719797793166" duration="1795000" />
-    </task>
-    <task id="LOCAL-00062" summary="Created JWTUtil">
-      <option name="closed" value="true" />
-      <created>1719302394447</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1719302394447</updated>
+      <workItem from="1719797793166" duration="2485000" />
     </task>
     <task id="LOCAL-00063" summary="Added Session for login">
       <option name="closed" value="true" />
@@ -668,7 +660,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719764542830</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="Vehicle type added in response">
+      <option name="closed" value="true" />
+      <created>1719799907602</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1719799907602</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -676,7 +676,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Added issuer in jwt" />
     <MESSAGE value="Location Validation" />
     <MESSAGE value="Added type claim to jwt refresh token" />
     <MESSAGE value="Get all locations" />
@@ -701,7 +700,8 @@
     <MESSAGE value="Success message updated" />
     <MESSAGE value="Ride Creation Updates" />
     <MESSAGE value="Added account type in the response" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added account type in the response" />
+    <MESSAGE value="Vehicle type added in response" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vehicle type added in response" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
