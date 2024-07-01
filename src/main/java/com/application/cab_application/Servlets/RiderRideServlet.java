@@ -35,18 +35,18 @@ public class RiderRideServlet extends HttpServlet {
     }
 
     public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String rideID = request.getParameter("rideID");
         int accountID = CurrentUserHelper.getAccount();
+        AccountDetails accountDetails = AccountDetailsDao.getAccountDetailsByAccountID(accountID);
+        RideDetails rideDetails = RideDetailsDao.getRideDetails(accountDetails.getCurrentRideID());
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
-        Ride ride = RidesDao.getRide(Integer.parseInt(rideID));
+        Ride ride = RidesDao.getRide(accountDetails.getCurrentRideID());
         if(ride.getId() == 0){
             response.setStatus(422);
-            printWriter.write("{\"message\":\"Enter Valid RideID\"}");
+            printWriter.write("{\"message\":\"Invalid action\"}");
             return;
         }
-        RideDetails rideDetails = RideDetailsDao.getRideDetails(ride.getId());
         if(ride.getRiderId()!=accountID || rideDetails.getRequestStatus() == RequestStatus.CANCELLED || rideDetails.getRequestStatus()== RequestStatus.ENDED){
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             printWriter.write("{\"message\":\"There was some error\"}");
@@ -55,7 +55,7 @@ public class RiderRideServlet extends HttpServlet {
         AccountDetailsDao.updateCurrentRideIDAsNUll(ride.getDriverId());
         AccountDetailsDao.updateCurrentRideIDAsNUll(ride.getRiderId());
 
-        RideDetailsDao.updateRideStatus(Integer.parseInt(rideID), RequestStatus.CANCELLED);
+        RideDetailsDao.updateRideStatus(accountDetails.getCurrentRideID(), RequestStatus.CANCELLED);
         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         printWriter.write("{\"message\":\"Ride Cancelled Successfully\"}");
     }

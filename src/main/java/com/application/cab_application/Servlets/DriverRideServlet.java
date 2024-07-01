@@ -48,6 +48,7 @@ public class DriverRideServlet extends HttpServlet {
         int DriverID = CurrentUserHelper.getAccount();
         AccountDetails accountDetails = AccountDetailsDao.getAccountDetailsByAccountID(DriverID);
         String actionName = request.getParameter("action");
+        System.out.println(actionName);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
