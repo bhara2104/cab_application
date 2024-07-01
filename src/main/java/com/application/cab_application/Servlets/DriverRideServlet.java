@@ -45,21 +45,15 @@ public class DriverRideServlet extends HttpServlet {
     }
 
     public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String rideID = request.getParameter("RideID");
         int DriverID = CurrentUserHelper.getAccount();
+        AccountDetails accountDetails = AccountDetailsDao.getAccountDetailsByAccountID(DriverID);
         String actionName = request.getParameter("action");
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
-        List<String> errors = RideServices.runValidation(Integer.parseInt(rideID));
-        if(!errors.isEmpty()){
-            response.setStatus(422);
-            printWriter.write(new Gson().toJson(errors));
-            return;
-        }
-        Ride ride = RidesDao.getRide(Integer.parseInt(rideID));
         if (actionName != null) {
-            RideDetails rideDetails = RideDetailsDao.getRideDetails(Integer.parseInt(rideID));
+            Ride ride = RidesDao.getRide(accountDetails.getCurrentRideID());
+            RideDetails rideDetails = RideDetailsDao.getRideDetails(ride.getId());
             if(ride.getDriverId() != DriverID){
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                 printWriter.write("{\"message\":\"Not Authorized to Perform this action\"}");
@@ -75,12 +69,20 @@ public class DriverRideServlet extends HttpServlet {
                 rideDetails.setRequestStatus(RequestStatus.ENDED);
                 rideDetails.setEndTime(new Timestamp(System.currentTimeMillis()));
                 RideDetailsDao.updateRideDetails(rideDetails);
-                int billID = BillsDao.createBill(new Bill(BillAmountGenerator.generateBill(rideDetails.getStartTime(), rideDetails.getEndTime()), Integer.parseInt(rideID)));
+                int billID = BillsDao.createBill(new Bill(BillAmountGenerator.generateBill(rideDetails.getStartTime(), rideDetails.getEndTime()), ride.getId()));
                 System.out.println(billID);
                 Bill bill = BillsDao.getBill(billID);
                 printWriter.write(new Gson().toJson(bill));
             }
         } else {
+            String rideID = request.getParameter("RideID");
+            List<String> errors = RideServices.runValidation(Integer.parseInt(rideID));
+            Ride ride = RidesDao.getRide(Integer.parseInt(rideID));
+            if(!errors.isEmpty()){
+                response.setStatus(422);
+                printWriter.write(new Gson().toJson(errors));
+                return;
+            }
             if(ride.getDriverId()!=0){
                 response.setStatus(HttpServletResponse.SC_OK);
                 printWriter.write("{\"Success: false\",\"message\":\"There was an Error\"}");
