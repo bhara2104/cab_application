@@ -57,7 +57,7 @@ public class RideServices {
     }
 
 
-    public static JsonObject rideDetails(int rideID) {
+    public static JsonObject rideDetailsRider(int rideID) {
         Ride ride = RidesDao.getRide(rideID);
         RideDetails rideDetails = RideDetailsDao.getRideDetails(rideID);
         Gson gson = new GsonBuilder().setPrettyPrinting().create() ;
@@ -81,13 +81,38 @@ public class RideServices {
         Location fromLocation = LocationDao.getLocation(rideDetails.getFromLocation());
         Location toLocation = LocationDao.getLocation(rideDetails.getToLocation());
         JsonObject rideDetail = rideDetailsJsonElement.getAsJsonObject();
-        rideDetail.add("from_location", gson.toJsonTree(fromLocation));
-        rideDetail.add("to_location", gson.toJsonTree(toLocation));
+        rideDetail.addProperty("from_location",fromLocation.getLandmark() + " " + fromLocation.getCity());
+        rideDetail.addProperty("to_location", toLocation.getLandmark() + " " + toLocation.getCity());
 
         responseObject.add("rideDetails", rideDetailsJsonElement);
 
         return responseObject;
     }
+    public static JsonObject rideDetailsDriver(int rideID) {
+        Ride ride = RidesDao.getRide(rideID);
+        RideDetails rideDetails = RideDetailsDao.getRideDetails(rideID);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create() ;
+        JsonElement rideJsonElement = gson.toJsonTree(ride);
+        JsonElement rideDetailsJsonElement = gson.toJsonTree(rideDetails);
+        JsonObject responseObject = new JsonObject();
+        Account rider = AccountDao.getByID(ride.getRiderId());
+        AccountDetails accountDetails = AccountDetailsDao.getAccountDetailsByAccountID(CurrentUserHelper.getAccount());
+        responseObject.add("ride", rideJsonElement);
+        Location fromLocation = LocationDao.getLocation(rideDetails.getFromLocation());
+        Location toLocation = LocationDao.getLocation(rideDetails.getToLocation());
+        JsonObject rideDetail = rideDetailsJsonElement.getAsJsonObject();
+        rideDetail.addProperty("rider_name", accountDetails.getName());
+        rideDetail.addProperty("rider_phone", rider.getPhoneNumber());
+        rideDetail.addProperty("from_location",fromLocation.getLandmark() + " " + fromLocation.getCity());
+        rideDetail.addProperty("to_location", toLocation.getLandmark() + " " + toLocation.getCity());
+
+        responseObject.add("rideDetails", rideDetailsJsonElement);
+
+        return responseObject;
+    }
+
+
+
 
     public static List<String> runValidation(int rideID) {
         List<String> errors = new ArrayList<>();
@@ -96,5 +121,9 @@ public class RideServices {
             errors.add("Enter Valid Ride ID to continue");
         }
         return errors;
+    }
+
+    public static void clearErrors(){
+        rideErrors.clear();
     }
 }

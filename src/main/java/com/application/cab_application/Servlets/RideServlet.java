@@ -5,7 +5,9 @@ import java.io.*;
 import java.util.List;
 
 import com.application.cab_application.DAO.AccountDao;
+import com.application.cab_application.DAO.AccountDetailsDao;
 import com.application.cab_application.Models.Account;
+import com.application.cab_application.Models.AccountDetails;
 import com.application.cab_application.Services.RideServices;
 import com.application.cab_application.Util.CurrentUserHelper;
 import com.application.cab_application.Util.ReadJson;
@@ -16,19 +18,24 @@ import jakarta.servlet.http.*;
 public class RideServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Gson gson = new Gson();
-        String id = request.getParameter("id");
-        int rideId = Integer.parseInt(id);
-        PrintWriter printWriter = response.getWriter();
-        List<String> errors = RideServices.runValidation(rideId);
-        if(!errors.isEmpty()){
-            response.setStatus(422);
-            printWriter.write(new Gson().toJson(errors));
-            errors.clear();
-            return;
-        }
-        JsonObject jsonObject = RideServices.rideDetails(rideId);
+        Account account = AccountDao.getByID(CurrentUserHelper.getAccount());
+        AccountDetails accountDetails = AccountDetailsDao.getAccountDetailsByAccountID(CurrentUserHelper.getAccount());
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
+        PrintWriter printWriter = response.getWriter();
+        int rideId = accountDetails.getCurrentRideID();
+        if(rideId == 0) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            printWriter.write("{\"message\":\"No Ride is Currently Associated with this account\"}");
+            return;
+        }
+        response.setStatus(HttpServletResponse.SC_OK);
+        JsonObject jsonObject;
+        if(account.getAccountType() == AccountType.RIDER) {
+            jsonObject = RideServices.rideDetailsRider(rideId);
+        }else{
+            jsonObject = RideServices.rideDetailsDriver(rideId);
+        }
         String op = gson.toJson(jsonObject);
         printWriter.write(op);
     }
@@ -50,7 +57,7 @@ public class RideServlet extends HttpServlet {
         if(!errors.isEmpty()){
             response.setStatus(422);
             printWriter.write(new Gson().toJson(errors));
-            errors.clear();
+            RideServices.clearErrors();
             return;
         }
         if (result) {
