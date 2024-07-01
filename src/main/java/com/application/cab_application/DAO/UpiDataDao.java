@@ -21,9 +21,10 @@ public class UpiDataDao {
     }
 
     public static List<UpiData> getSavedUPI(int accountID) {
-        String sql = "select * from upi_datas where account_id = " + accountID;
+        String sql = "select * from upi_datas where account_id = ? order by id DESC limit 5";
         List<UpiData> upiDataList = new ArrayList<>();
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql)) {
+            preparedStatement.setInt(1,accountID);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 upiDataList.add(new UpiData(resultSet.getInt("id"), resultSet.getInt("account_id"), resultSet.getString("upi_id")));
