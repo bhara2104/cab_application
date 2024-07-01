@@ -13,7 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CorsFilter extends HttpFilter {
-    private final List<String> allowedOrigins = Arrays.asList("http://localhost:63343");
+    private final String[] corsAllowed = {"http://localhost:63343", "http://localhost:63342"};
+    private final List<String> allowedOrigins = Arrays.asList(corsAllowed);
 
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;

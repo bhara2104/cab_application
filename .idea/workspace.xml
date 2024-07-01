@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Driver details validation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Filters/CorsFilter.java" afterDir="false" />
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Added account type in the response">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverLoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverLoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Filters/CorsFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Filters/CorsFilter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +22,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="servlet" />
         <option value="Class" />
+        <option value="servlet" />
       </list>
     </option>
   </component>
@@ -143,7 +141,6 @@
       </method>
     </configuration>
     <configuration name="Tomcat 10.1.24" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.24" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="cab_application:war exploded">
           <settings>
@@ -275,143 +272,9 @@
       <workItem from="1719408401900" duration="107000" />
       <workItem from="1719411505640" duration="13920000" />
       <workItem from="1719483460122" duration="2483000" />
-      <workItem from="1719490501925" duration="11381000" />
-    </task>
-    <task id="LOCAL-00045" summary="Changes in RidesDAO to fetch Location objects and driver name and license and vehicle details">
-      <option name="closed" value="true" />
-      <created>1719201945739</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1719201945739</updated>
-    </task>
-    <task id="LOCAL-00046" summary="After accepting the RIDE change the status to accepted">
-      <option name="closed" value="true" />
-      <created>1719203570922</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1719203570922</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Added cases like if ride status is cancelled don't respond driver status and change the current ride id as null if ride got cancelled">
-      <option name="closed" value="true" />
-      <created>1719205484747</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1719205484747</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Added a condition to check whether email or mobile already exists">
-      <option name="closed" value="true" />
-      <created>1719207175246</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1719207175246</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Account exist query update">
-      <option name="closed" value="true" />
-      <created>1719209122143</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1719209122143</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Added Bill Generator Helper and created End points to create bill and start and end ride">
-      <option name="closed" value="true" />
-      <created>1719212688924</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1719212688924</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Added payment servlet and url mapping for it">
-      <option name="closed" value="true" />
-      <created>1719212815726</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1719212815726</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Created UPI data to save upi id and upi payments to link payments with respective upi">
-      <option name="closed" value="true" />
-      <created>1719219865397</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1719219865397</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Saved upi servlet to fetch UPI ID's">
-      <option name="closed" value="true" />
-      <created>1719220153412</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1719220153412</updated>
-    </task>
-    <task id="LOCAL-00054" summary="End point for saved UPI">
-      <option name="closed" value="true" />
-      <created>1719220223596</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1719220223596</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Removed @web servlet annotations">
-      <option name="closed" value="true" />
-      <created>1719220697014</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1719220697014</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Changes in bill amount generator and driver servlet and other fixes">
-      <option name="closed" value="true" />
-      <created>1719225189356</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1719225189356</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Added an Bill amount generator to generate bill value and created bills dao and changes in bills servlet and driver ride servlet">
-      <option name="closed" value="true" />
-      <created>1719227724998</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1719227724998</updated>
-    </task>
-    <task id="LOCAL-00058" summary="API to create bill and payment and if it is UPI then UPI id will get saved">
-      <option name="closed" value="true" />
-      <created>1719232122166</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1719232122166</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Saved UPI's Update">
-      <option name="closed" value="true" />
-      <created>1719234515881</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1719234515881</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Added Routes for driver login and rider login and added bcrypt dependency and json dependency">
-      <option name="closed" value="true" />
-      <created>1719296126677</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1719296126677</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Added Jbcrypt to hash the password">
-      <option name="closed" value="true" />
-      <created>1719299121001</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1719299121001</updated>
+      <workItem from="1719490501925" duration="37327000" />
+      <workItem from="1719661925973" duration="19169000" />
+      <workItem from="1719797793166" duration="1795000" />
     </task>
     <task id="LOCAL-00062" summary="Created JWTUtil">
       <option name="closed" value="true" />
@@ -669,7 +532,143 @@
       <option name="project" value="LOCAL" />
       <updated>1719502668011</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="Added CORS">
+      <option name="closed" value="true" />
+      <created>1719551780813</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1719551780813</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Added Cookie in to the entire path">
+      <option name="closed" value="true" />
+      <created>1719555311467</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1719555311467</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Driver login servlet fix">
+      <option name="closed" value="true" />
+      <created>1719556343779</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1719556343779</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Session Cookie path fix">
+      <option name="closed" value="true" />
+      <created>1719556552778</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1719556552778</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Adding updated value to Add Pop at front end">
+      <option name="closed" value="true" />
+      <created>1719564067225</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1719564067225</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Generating auth token for both account types">
+      <option name="closed" value="true" />
+      <created>1719564526770</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1719564526770</updated>
+    </task>
+    <task id="LOCAL-00100" summary="creating driver details with current account ID">
+      <option name="closed" value="true" />
+      <created>1719571463034</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1719571463034</updated>
+    </task>
+    <task id="LOCAL-00101" summary="creating driver details with current account ID">
+      <option name="closed" value="true" />
+      <created>1719571886395</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1719571886396</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Added vehicle servlet to update vehicle data">
+      <option name="closed" value="true" />
+      <created>1719575150798</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1719575150798</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Filtered Based on the vehicle type">
+      <option name="closed" value="true" />
+      <created>1719580882436</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1719580882436</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Driver Ride Validation in server side added">
+      <option name="closed" value="true" />
+      <created>1719662419161</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1719662419161</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Rider ride validations added">
+      <option name="closed" value="true" />
+      <created>1719663110047</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1719663110047</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Ride creation validation added for driver">
+      <option name="closed" value="true" />
+      <created>1719663279323</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1719663279323</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Updated Like adding ride ID nd Ride details">
+      <option name="closed" value="true" />
+      <created>1719729568137</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1719729568137</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Success message updated">
+      <option name="closed" value="true" />
+      <created>1719749639188</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1719749639188</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Ride Creation Updates">
+      <option name="closed" value="true" />
+      <created>1719752430064</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1719752430065</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Added account type in the response">
+      <option name="closed" value="true" />
+      <created>1719764542830</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1719764542830</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,22 +676,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="JWT and AccountDAO Change" />
-    <MESSAGE value="Created all JWT methods" />
-    <MESSAGE value="Refresh Token in servlet" />
-    <MESSAGE value="Completed all JWT related API's" />
-    <MESSAGE value="Refresh Token Logics" />
-    <MESSAGE value="Error Handling" />
-    <MESSAGE value="Completed JWT service part" />
-    <MESSAGE value="Work around for auth filter" />
-    <MESSAGE value="Added Filter for API's with both session and jwt auth" />
-    <MESSAGE value="Helper to get current user ID" />
-    <MESSAGE value="Index jsp added in auth filter" />
-    <MESSAGE value="Validation for email and password" />
-    <MESSAGE value="Validation in accounts" />
-    <MESSAGE value="Password and email validation" />
-    <MESSAGE value="Ride Validation" />
-    <MESSAGE value="Rider Driver Validation" />
     <MESSAGE value="Added issuer in jwt" />
     <MESSAGE value="Location Validation" />
     <MESSAGE value="Added type claim to jwt refresh token" />
@@ -702,7 +685,23 @@
     <MESSAGE value="Fixes" />
     <MESSAGE value="Account Creation logic" />
     <MESSAGE value="Driver details validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Driver details validation" />
+    <MESSAGE value="Added CORS" />
+    <MESSAGE value="Added Cookie in to the entire path" />
+    <MESSAGE value="Driver login servlet fix" />
+    <MESSAGE value="Session Cookie path fix" />
+    <MESSAGE value="Adding updated value to Add Pop at front end" />
+    <MESSAGE value="Generating auth token for both account types" />
+    <MESSAGE value="creating driver details with current account ID" />
+    <MESSAGE value="Added vehicle servlet to update vehicle data" />
+    <MESSAGE value="Filtered Based on the vehicle type" />
+    <MESSAGE value="Driver Ride Validation in server side added" />
+    <MESSAGE value="Rider ride validations added" />
+    <MESSAGE value="Ride creation validation added for driver" />
+    <MESSAGE value="Updated Like adding ride ID nd Ride details" />
+    <MESSAGE value="Success message updated" />
+    <MESSAGE value="Ride Creation Updates" />
+    <MESSAGE value="Added account type in the response" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added account type in the response" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
