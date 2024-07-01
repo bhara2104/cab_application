@@ -123,7 +123,7 @@ public class RidesDao {
                     DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(ride.getDriverId());
                     AccountDetails accountDetails = AccountDetailsDao.getAccountDetailsByAccountID(ride.getDriverId());
                     Vehicle vehicle = VehicleDao.getVehicle(driverDetails.getVehicleId());
-                    jsonObjectRide.addProperty("Driver_name", accountDetails.getName());
+                    jsonObjectRide.addProperty("driver_name", accountDetails.getName());
                     jsonObjectRide.addProperty("driver_license", driverDetails.getLicenseNumber());
                     JsonElement vehicleElement = PrettyPrintHelper.prettyPrintHelper(vehicle);
                     jsonObjectRide.add("vehicle", vehicleElement);
