@@ -27,7 +27,7 @@ public class PaymentServlet extends HttpServlet {
         PrintWriter printWriter = response.getWriter();
         response.setStatus(HttpServletResponse.SC_OK);
         AccountDetailsDao.updateCurrentRideIDAsNUll(ride.getDriverId());
-        AccountDetailsDao.updateCurrentRideIDAsNUll(ride.getDriverId());
+        AccountDetailsDao.updateCurrentRideIDAsNUll(ride.getRiderId());
         printWriter.write("{\"message\":\"Payment Done Successfully\"}");
     }
 }
