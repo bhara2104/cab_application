@@ -167,7 +167,7 @@ public class RidesDao {
                 "    ride_details AS rd \n" +
                 "ON \n" +
                 "    r.id = rd.ride_id\n" +
-                "Where r.driver_id IS NULL and rd.vehicle_type = ? and rd.from_location_id =  " + locationID;
+                "Where r.driver_id IS NULL and rd.vehicle_type = ? and rd.ride_status <> 5 and rd.from_location_id =  " + locationID;
 
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setInt(1, vehicleType.getCode());
