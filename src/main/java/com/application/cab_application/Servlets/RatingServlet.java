@@ -1,7 +1,9 @@
 package com.application.cab_application.Servlets;
 
 import com.application.cab_application.DAO.RatingsDao;
+import com.application.cab_application.DAO.RidesDao;
 import com.application.cab_application.Models.Rating;
+import com.application.cab_application.Models.Ride;
 import com.application.cab_application.Util.ReadJson;
 import com.google.gson.Gson;
 import jakarta.servlet.http.HttpServlet;
@@ -17,8 +19,14 @@ public class RatingServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         String reqBody = ReadJson.convertJsonToString(request.getReader());
         Rating rating = new Gson().fromJson(reqBody, Rating.class);
-        RatingsDao.createRating(rating);
         PrintWriter printWriter = response.getWriter();
+        Ride ride = RidesDao.getRide(rating.getRideID());
+        if (rating.getRideID() == 0 || ride.getId() == 0) {
+            response.setStatus(400);
+            printWriter.write("{\"message\":\"Enter Valid RideID\"}");
+            return;
+        }
+        RatingsDao.createRating(rating);
         response.setStatus(200);
         printWriter.write("{\"message\":\"Rating Added Successfully\"}");
     }
