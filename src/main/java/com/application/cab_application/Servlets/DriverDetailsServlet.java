@@ -2,6 +2,7 @@ package com.application.cab_application.Servlets;
 
 import java.io.*;
 import java.sql.Driver;
+import java.util.List;
 
 import com.application.cab_application.DAO.AccountDao;
 import com.application.cab_application.DAO.DriverDetailsDao;
@@ -60,6 +61,12 @@ public class DriverDetailsServlet extends HttpServlet {
         if(account.getAccountType()!= AccountType.DRIVER)
         {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
+        List<String> errors = DriverDetailsService.errors(requestBody);
+        if(!errors.isEmpty()){
+            response.setStatus(422);
+            printWriter.write(new Gson().toJson(errors));
             return;
         }
         boolean result = DriverDetailsService.createDriverDetails(requestBody);
