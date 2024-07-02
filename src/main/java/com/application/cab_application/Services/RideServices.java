@@ -30,6 +30,10 @@ public class RideServices {
             rideErrors.add("Enter Valid To Location");
             return false;
         }
+        if(rideDetails1.getFromLocation() == rideDetails1.getToLocation()){
+            rideErrors.add("From and To Location Can't be Same");
+            return false;
+        }
         try (Connection connection = DatabaseConnector.getConnection()) {
             connection.setAutoCommit(false);
             try {
