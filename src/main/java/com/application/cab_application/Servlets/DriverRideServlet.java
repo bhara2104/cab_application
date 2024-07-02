@@ -69,6 +69,7 @@ public class DriverRideServlet extends HttpServlet {
             } else if (actionName.equals("endRide")) {
                 rideDetails.setRequestStatus(RequestStatus.ENDED);
                 rideDetails.setEndTime(new Timestamp(System.currentTimeMillis()));
+                DriverDetailsDao.updateCurrentLocation(rideDetails.getToLocation(),accountDetails.getAccountId());
                 RideDetailsDao.updateRideDetails(rideDetails);
                 int billID = BillsDao.createBill(new Bill(BillAmountGenerator.generateBill(rideDetails.getStartTime(), rideDetails.getEndTime()), ride.getId()));
                 System.out.println(billID);

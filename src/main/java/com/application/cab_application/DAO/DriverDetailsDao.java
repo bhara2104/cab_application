@@ -48,12 +48,11 @@ public class DriverDetailsDao {
         return 0;
     }
 
-    public static boolean updateDriverDetails(DriverDetails driverDetails, int accountID) {
-        String query = "update driver_details set license_number = ?, current_location_id = ? where account_id = ?" ;
+    public static boolean updateCurrentLocation(int locationID, int accountID) {
+        String query = "update driver_details set current_location_id = ? where account_id = ?" ;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
-            preparedStatement.setString(1, driverDetails.getLicenseNumber());
-            preparedStatement.setInt(2, driverDetails.getCurrentLocationId());
-            preparedStatement.setInt(3,accountID);
+            preparedStatement.setInt(1, locationID););
+            preparedStatement.setInt(2,accountID);
             int rows = preparedStatement.executeUpdate();
             return rows > 0;
         } catch (Exception e) {
