@@ -51,7 +51,7 @@ public class DriverDetailsDao {
     public static boolean updateCurrentLocation(int locationID, int accountID) {
         String query = "update driver_details set current_location_id = ? where account_id = ?" ;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
-            preparedStatement.setInt(1, locationID););
+            preparedStatement.setInt(1, locationID);
             preparedStatement.setInt(2,accountID);
             int rows = preparedStatement.executeUpdate();
             return rows > 0;
