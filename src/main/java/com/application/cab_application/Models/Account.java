@@ -31,7 +31,19 @@ public class Account {
         if(!checkPasswordValidation(account.getPassword())){
             errors.add("Password is not valid");
         }
+
+        if(!checkValidAccountType(account.getAccountType())){
+            errors.add("Enter Valid Account Type");
+        }
         return errors;
+    }
+
+    public static Boolean checkValidAccountType(AccountType accountType){
+        if(accountType == null){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public static Boolean checkEmailValidation(String email){
