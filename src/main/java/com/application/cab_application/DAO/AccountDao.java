@@ -12,9 +12,10 @@ import java.util.List;
 
 public class AccountDao {
     public static Account getByID(int id) {
-        String sql = "select * from accounts where id =" + id;
+        String sql = "select * from accounts where id = ?" ;
         ResultSet rs;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql)) {
+            preparedStatement.setInt(1,id);
             rs = preparedStatement.executeQuery();
             if (rs.isBeforeFirst()) {
                 rs.next();
@@ -33,7 +34,6 @@ public class AccountDao {
 
     public static int createAccount(Account account) {
         String sql = "insert into accounts(email,password,phone_number,account_type) values (?,?,?,?)";
-        int result;
         ResultSet rs;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, account.getEmail());

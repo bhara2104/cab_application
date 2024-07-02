@@ -26,8 +26,9 @@ public class PaymentDao {
     }
 
     public static Payment getPayment(int id) {
-        String sql = "select * from payments where id = "+id ;
+        String sql = "select * from payments where id = ?" ;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql)){
+            preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.isBeforeFirst()){
                 resultSet.next();

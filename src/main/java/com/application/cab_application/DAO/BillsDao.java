@@ -28,9 +28,10 @@ public class BillsDao {
 
 
     public static Boolean updatePaymentInBill(int billID, int paymentID){
-        String query = "update bills set payment_id = ? where id = "+billID;
+        String query = "update bills set payment_id = ? where id = ?";
         try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
             preparedStatement.setInt(1,paymentID);
+            preparedStatement.setInt(2,billID);
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0 ;
         }catch (Exception e){
@@ -40,8 +41,9 @@ public class BillsDao {
     }
 
     public static Bill getBillRideID(int id){
-        String query = "Select * from bills where ride_id = "+ id;
+        String query = "Select * from bills where ride_id = ?";
         try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
+            preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.isBeforeFirst()){
                 resultSet.next();
@@ -56,8 +58,9 @@ public class BillsDao {
     }
 
     public static Bill getBill(int id){
-        String query = "Select * from bills where id = "+ id;
+        String query = "Select * from bills where id = ?";
         try(PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)){
+            preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.isBeforeFirst()){
                 resultSet.next();

@@ -33,9 +33,10 @@ public class LocationDao {
 
 
     public static Location getLocation(int id) {
-        String query = "select * from locations where id =" + id;
+        String query = "select * from locations where id = ?";
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1,id);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.isBeforeFirst()) {
                 resultSet.next();

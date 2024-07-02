@@ -20,12 +20,12 @@ public class AccountServlet extends HttpServlet {
         PrintWriter printWriter = response.getWriter();
         String requestBody = ReadJson.convertJsonToString(request.getReader());
         List<String> errors = AccountService.validateAccount(requestBody);
-        if(!errors.isEmpty()){
+        if (!errors.isEmpty()) {
             response.setStatus(422);
             printWriter.write(new Gson().toJson(errors));
             return;
         }
-        if(AccountDao.checkAccountExist(AccountService.returnAccount(requestBody))){
+        if (AccountDao.checkAccountExist(AccountService.returnAccount(requestBody))) {
             response.setStatus(HttpServletResponse.SC_CONFLICT);
             printWriter.write("{\"message\":\"Account already Exists\"}");
             return;
@@ -34,7 +34,7 @@ public class AccountServlet extends HttpServlet {
 
         if (result != 0) {
             HttpSession session = request.getSession(true);
-            session.setAttribute("userID",result);
+            session.setAttribute("userID", result);
             Account account = AccountDao.getByID(result);
             session.setAttribute("accountType", account.getAccountType());
             session.setMaxInactiveInterval(7 * 60 * 60);

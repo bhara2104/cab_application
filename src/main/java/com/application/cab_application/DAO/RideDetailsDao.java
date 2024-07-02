@@ -34,9 +34,10 @@ public class RideDetailsDao {
 
 
     public static RideDetails getRideDetails(int id) {
-        String query = "select * from ride_details where ride_id = " + id;
+        String query = "select * from ride_details where ride_id = ?" ;
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1,id);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.isBeforeFirst()) {
                 resultSet.next();
@@ -52,11 +53,12 @@ public class RideDetailsDao {
     }
 
     public static boolean updateRideDetails(RideDetails rideDetails) {
-        String query = "update ride_details set ride_status = ? , start_time = ? , end_time = ? where id =" + rideDetails.getId();
+        String query = "update ride_details set ride_status = ? , start_time = ? , end_time = ? where id = ?";
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setInt(1, rideDetails.getRequestStatus().getCode());
             preparedStatement.setTimestamp(2, rideDetails.getStartTime());
             preparedStatement.setTimestamp(3, rideDetails.getEndTime());
+            preparedStatement.setInt(4,rideDetails.getId());
             int result = preparedStatement.executeUpdate();
             return result > 0;
         } catch (Exception e) {
@@ -66,9 +68,10 @@ public class RideDetailsDao {
     }
 
     public static void updateRideStatus(int id, RequestStatus requestStatus) {
-        String query = "update ride_details set ride_status =? where id =" + id;
+        String query = "update ride_details set ride_status =? where id = ?" ;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setInt(1, requestStatus.getCode());
+            preparedStatement.setInt(2,id);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -9,9 +9,10 @@ import java.sql.SQLException;
 
 public class DriverDetailsDao {
     public static DriverDetails getDriverDetailsByAccountID(int accountID) {
-        String query = "select * from driver_details where account_id =" + accountID;
+        String query = "select * from driver_details where account_id = ?" ;
         ResultSet rs;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1,accountID);
             rs = preparedStatement.executeQuery();
             if (rs.isBeforeFirst()) {
                 rs.next();
@@ -48,10 +49,11 @@ public class DriverDetailsDao {
     }
 
     public static boolean updateDriverDetails(DriverDetails driverDetails, int accountID) {
-        String query = "update driver_details set license_number = ?, current_location_id = ? where account_id = " + accountID;
+        String query = "update driver_details set license_number = ?, current_location_id = ? where account_id = ?" ;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setString(1, driverDetails.getLicenseNumber());
             preparedStatement.setInt(2, driverDetails.getCurrentLocationId());
+            preparedStatement.setInt(3,accountID);
             int rows = preparedStatement.executeUpdate();
             return rows > 0;
         } catch (Exception e) {
@@ -61,9 +63,10 @@ public class DriverDetailsDao {
     }
 
     public static Boolean updateDriverAvailability(int accountID, Boolean value) {
-        String query = "update driver_details set availability = ? where account_id =" + accountID;
+        String query = "update driver_details set availability = ? where account_id = ?";
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setBoolean(1, value);
+            preparedStatement.setInt(2,accountID);
             int rows = preparedStatement.executeUpdate();
             return rows > 0;
         } catch (Exception e) {

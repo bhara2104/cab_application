@@ -37,9 +37,10 @@ public class RidesDao {
     }
 
     public static Ride getRide(int id) {
-        String query = "select * from rides where id =" + id;
+        String query = "select * from rides where id = ?";
         ResultSet resultSet;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1,id);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.isBeforeFirst()) {
                 resultSet.next();
@@ -53,9 +54,10 @@ public class RidesDao {
 
 
     public static Boolean updateDriverID(int rideID, int driverID) {
-        String query = "update rides set driver_id = ? where id =" + rideID;
+        String query = "update rides set driver_id = ? where id = ?";
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setInt(1, driverID);
+            preparedStatement.setInt(2,rideID);
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
         } catch (Exception e) {
@@ -87,7 +89,7 @@ public class RidesDao {
                     "ON \n" +
                     "    r.id = rd.ride_id\n" +
                     "WHERE \n" +
-                    "    r.driver_id =  " + account_id;
+                    "    r.driver_id = ? ";
         } else {
             sql = "SELECT \n" +
                     "    r.id, \n" +
@@ -108,10 +110,11 @@ public class RidesDao {
                     "ON \n" +
                     "    r.id = rd.ride_id\n" +
                     "WHERE \n" +
-                    "    r.rider_id = " + account_id;
+                    "    r.rider_id = ? ";
         }
 
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql)) {
+            preparedStatement.setInt(1,account_id);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 JsonObject jsonObject = new JsonObject();
@@ -167,10 +170,11 @@ public class RidesDao {
                 "    ride_details AS rd \n" +
                 "ON \n" +
                 "    r.id = rd.ride_id\n" +
-                "Where r.driver_id IS NULL and rd.vehicle_type = ? and rd.ride_status <> 5 and rd.from_location_id =  " + locationID;
+                "Where r.driver_id IS NULL and rd.vehicle_type = ? and rd.ride_status <> 5 and rd.from_location_id =  ?";
 
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setInt(1, vehicleType.getCode());
+            preparedStatement.setInt(2,locationID);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 JsonObject jsonObject = new JsonObject();

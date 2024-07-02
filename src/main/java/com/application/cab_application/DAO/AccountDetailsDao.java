@@ -30,8 +30,9 @@ public class AccountDetailsDao {
     }
 
     public static AccountDetails getAccountDetailsByAccountID(int id) {
-        String sql = "select * from account_details where account_id =" + id;
+        String sql = "select * from account_details where account_id = ?";
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(sql)) {
+            preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.isBeforeFirst()) {
                 resultSet.next();
@@ -52,10 +53,11 @@ public class AccountDetailsDao {
     public static boolean updateAccount(AccountDetails accountDetails, int id) throws SQLException {
         AccountDetails accountDetails1 = getAccountDetailsByAccountID(id);
         if (accountDetails1.getAccountId() != 0) {
-            String query = "update account_details set name = ?, address = ? where id =" + accountDetails.getAccountId();
+            String query = "update account_details set name = ?, address = ? where id = ?" ;
             try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
                 preparedStatement.setString(1, accountDetails.getName());
                 preparedStatement.setString(2, accountDetails.getAddress());
+                preparedStatement.setInt(3,accountDetails.getAccountId());
                 int rows = preparedStatement.executeUpdate();
                 return rows > 0;
             } catch (ClassNotFoundException e) {
@@ -71,9 +73,10 @@ public class AccountDetailsDao {
     }
 
     public static boolean updateCurrentRideID(int accountID, Integer rideID) {
-        String query = "update account_details set current_ride_id = ? where account_id =" + accountID;
+        String query = "update account_details set current_ride_id = ? where account_id = ?" ;
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
             preparedStatement.setInt(1, rideID);
+            preparedStatement.setInt(2,accountID);
             int rows = preparedStatement.executeUpdate();
             return rows > 0;
         } catch (Exception e) {
@@ -83,8 +86,9 @@ public class AccountDetailsDao {
     }
 
     public static void updateCurrentRideIDAsNUll(int accountID){
-        String query = "update account_details set current_ride_id = null where account_id =" + accountID;
+        String query = "update account_details set current_ride_id = null where account_id = ?";
         try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1,accountID);
             int rows = preparedStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println(e + "Exception");
