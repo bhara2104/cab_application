@@ -13,7 +13,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import java.sql.Timestamp;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PaymentService {
@@ -33,5 +34,25 @@ public class PaymentService {
             UpiPaymentsDao.createUPIPayment(upiPayment);
         }
         return id ;
+    }
+
+    public static List<String> errors(String json){
+        List<String> errors = new ArrayList<>();
+        JsonObject jsonObject = new Gson().fromJson(json, JsonObject.class);
+        JsonObject paymentJson = jsonObject.getAsJsonObject("payment");
+        if(!checkPaymentType(paymentJson.get("paymentType").getAsString())){
+            errors.add("Enter Valid PaymentType");
+        }
+        return errors;
+    }
+
+    public static boolean checkPaymentType(String payment){
+        try {
+            PaymentType.valueOf(payment);
+            return true;
+        }catch (Exception e){
+            return false ;
+        }
+
     }
 }
