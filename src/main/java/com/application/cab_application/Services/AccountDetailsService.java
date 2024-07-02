@@ -19,6 +19,10 @@ public class AccountDetailsService {
         if(account.getAccountType() == AccountType.DRIVER){
             DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(id);
             accountDetailsObject.addProperty("detailsUpdated", driverDetails.getId() != 0);
+            if(driverDetails.getId()!=0){
+                Location location = LocationDao.getLocation(driverDetails.getCurrentLocationId());
+                accountDetailsObject.addProperty("currentLocation", location.getLandmark() + " " + location.getCity());
+            }
         }
         Gson gson = new Gson();
         return gson.toJson(accountDetailsObject);
