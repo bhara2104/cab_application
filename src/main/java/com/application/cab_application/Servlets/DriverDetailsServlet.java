@@ -39,8 +39,8 @@ public class DriverDetailsServlet extends HttpServlet {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonElement driverJson = gson.toJsonTree(driverDetails);
         JsonObject jsonObject = driverJson.getAsJsonObject();
-        jsonObject.add("vehicle",gson.toJsonTree(vehicle));
-        jsonObject.add("current_location",gson.toJsonTree(location));
+        jsonObject.add("vehicle", gson.toJsonTree(vehicle));
+        jsonObject.add("current_location", gson.toJsonTree(location));
         String responseString = gson.toJson(jsonObject);
         printWriter.write(responseString);
         response.setStatus(200);
@@ -53,18 +53,17 @@ public class DriverDetailsServlet extends HttpServlet {
         String requestBody = ReadJson.convertJsonToString(request.getReader());
         DriverDetails driverDetailsCheck = DriverDetailsDao.getDriverDetailsByAccountID(CurrentUserHelper.getAccount());
         Account account = AccountDao.getByID(CurrentUserHelper.getAccount());
-        if(driverDetailsCheck.getId()!=0){
+        if (driverDetailsCheck.getId() != 0) {
             response.setStatus(HttpServletResponse.SC_CONFLICT);
             printWriter.write("{\"message\":\"Driver Details Already Exists\"}");
             return;
         }
-        if(account.getAccountType()!= AccountType.DRIVER)
-        {
+        if (account.getAccountType() != AccountType.DRIVER) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             return;
         }
         List<String> errors = DriverDetailsService.errors(requestBody);
-        if(!errors.isEmpty()){
+        if (!errors.isEmpty()) {
             response.setStatus(422);
             printWriter.write(new Gson().toJson(errors));
             return;
@@ -83,14 +82,26 @@ public class DriverDetailsServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
-        String requestBody = ReadJson.convertJsonToString(request.getReader());
-            boolean result = DriverDetailsService.updateDriverDetails(requestBody);
-            if (result) {
-                response.setStatus(HttpServletResponse.SC_OK);
-                printWriter.write("{\"message\":\"Driver Location Updated successfully\"}");
-            } else {
-                response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
-                printWriter.write("{\"message\":\"Failed to Update\"}");
-            }
+        String location = request.getParameter("currentLocationId");
+        int currentLocation;
+        try {
+            currentLocation = Integer.parseInt(location);
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+        Location locationToUpdate = LocationDao.getLocation(currentLocation);
+        if(locationToUpdate.getId() == 0){
+            response.setStatus(422);
+            return;
+        }
+        boolean result = DriverDetailsService.updateDriverDetails(currentLocation);
+        if (result) {
+            response.setStatus(HttpServletResponse.SC_OK);
+            printWriter.write("{\"message\":\"Driver Location Updated successfully\"}");
+        } else {
+            response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
+            printWriter.write("{\"message\":\"Failed to Update\"}");
+        }
     }
 }

@@ -100,10 +100,7 @@ public class DriverDetailsService {
         return value != 0;
     }
 
-    public static boolean updateDriverDetails(String jsonBody) {
-        Gson gson = new Gson();
-        JsonObject driverDetails = gson.fromJson(jsonBody, JsonObject.class);
-        int locationID = driverDetails.get("locationID").getAsInt();
-        return DriverDetailsDao.updateCurrentLocation(locationID, CurrentUserHelper.getAccount());
+    public static boolean updateDriverDetails(int currentLocation) {
+        return DriverDetailsDao.updateCurrentLocation(currentLocation, CurrentUserHelper.getAccount());
     }
 }
