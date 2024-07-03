@@ -2,18 +2,17 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="cab_application:war exploded" />
+      <artifact name="cab_application" />
+      <artifact name="cab_application:war" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="From and to location names added in response">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Error handling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverRideServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverRideServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/PaymentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/PaymentServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/LogoutServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="servlet" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,34 +74,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.TestAccountDao.checkCreatedAccount.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestAccountDao.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestDatabaseConnector.checkConnection.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestDatabaseConnector.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.cab_application [deploy].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.cab_application [install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 10.1.24.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.CommitDialog&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.TestAccountDao.checkCreatedAccount.executor": "Run",
+    "JUnit.TestAccountDao.executor": "Run",
+    "JUnit.TestDatabaseConnector.checkConnection.executor": "Run",
+    "JUnit.TestDatabaseConnector.executor": "Run",
+    "Maven.cab_application [clean].executor": "Run",
+    "Maven.cab_application [deploy].executor": "Run",
+    "Maven.cab_application [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat 10.1.24.executor": "Run",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.24">
+}]]></component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.25">
     <configuration name="TestAccountDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cab_application" />
       <option name="PACKAGE_NAME" value="" />
@@ -142,11 +145,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 10.1.24" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.24" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="Tomcat 10.1.25" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.25" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="hot-swap-classes" />
       <deployment>
-        <artifact name="cab_application:war exploded">
+        <artifact name="cab_application">
           <settings>
             <option name="CONTEXT_PATH" value="/cab_application" />
+          </settings>
+        </artifact>
+        <artifact name="cab_application:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/cab_application_war" />
           </settings>
         </artifact>
       </deployment>
@@ -224,7 +233,8 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="cab_application:war exploded" />
+          <artifact name="cab_application" />
+          <artifact name="cab_application:war" />
         </option>
       </method>
     </configuration>
@@ -233,7 +243,7 @@
       <item itemvalue="JUnit.TestAccountDao.checkCreatedAccount" />
       <item itemvalue="JUnit.TestDatabaseConnector" />
       <item itemvalue="JUnit.TestDatabaseConnector.checkConnection" />
-      <item itemvalue="Tomcat Server.Tomcat 10.1.24" />
+      <item itemvalue="Tomcat Server.Tomcat 10.1.25" />
     </list>
     <recent_temporary>
       <list>
@@ -277,166 +287,6 @@
       <workItem from="1719490501925" duration="37327000" />
       <workItem from="1719661925973" duration="19169000" />
       <workItem from="1719797793166" duration="3889000" />
-    </task>
-    <task id="LOCAL-00064" summary="Added Logout Servlet">
-      <option name="closed" value="true" />
-      <created>1719307906215</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1719307906215</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Added Logout Servlet url mapping">
-      <option name="closed" value="true" />
-      <created>1719308067676</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1719308067676</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Created a JWT token servlet">
-      <option name="closed" value="true" />
-      <created>1719309030641</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1719309030641</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Added URL mapping for JWT servlet">
-      <option name="closed" value="true" />
-      <created>1719309133482</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1719309133482</updated>
-    </task>
-    <task id="LOCAL-00068" summary="JWT and AccountDAO Change">
-      <option name="closed" value="true" />
-      <created>1719313969840</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1719313969841</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Created all JWT methods">
-      <option name="closed" value="true" />
-      <created>1719376033765</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1719376033766</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Refresh Token in servlet">
-      <option name="closed" value="true" />
-      <created>1719376129644</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1719376129644</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Completed all JWT related API's">
-      <option name="closed" value="true" />
-      <created>1719376366907</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1719376366907</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Refresh Token Logics">
-      <option name="closed" value="true" />
-      <created>1719376999607</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1719376999607</updated>
-    </task>
-    <task id="LOCAL-00073" summary="Error Handling">
-      <option name="closed" value="true" />
-      <created>1719377112986</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1719377112986</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Completed JWT service part">
-      <option name="closed" value="true" />
-      <created>1719377799867</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1719377799868</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Work around for auth filter">
-      <option name="closed" value="true" />
-      <created>1719384801762</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1719384801762</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Added Filter for API's with both session and jwt auth">
-      <option name="closed" value="true" />
-      <created>1719395773679</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1719395773679</updated>
-    </task>
-    <task id="LOCAL-00077" summary="Helper to get current user ID">
-      <option name="closed" value="true" />
-      <created>1719395824819</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1719395824819</updated>
-    </task>
-    <task id="LOCAL-00078" summary="Index jsp added in auth filter">
-      <option name="closed" value="true" />
-      <created>1719402250882</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1719402250883</updated>
-    </task>
-    <task id="LOCAL-00079" summary="Validation for email and password">
-      <option name="closed" value="true" />
-      <created>1719406075073</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1719406075073</updated>
-    </task>
-    <task id="LOCAL-00080" summary="Validation in accounts">
-      <option name="closed" value="true" />
-      <created>1719406448671</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1719406448671</updated>
-    </task>
-    <task id="LOCAL-00081" summary="Password and email validation">
-      <option name="closed" value="true" />
-      <created>1719406912238</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1719406912239</updated>
-    </task>
-    <task id="LOCAL-00082" summary="Ride Validation">
-      <option name="closed" value="true" />
-      <created>1719407132264</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1719407132264</updated>
-    </task>
-    <task id="LOCAL-00083" summary="Rider Driver Validation">
-      <option name="closed" value="true" />
-      <created>1719407786611</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1719407786611</updated>
     </task>
     <task id="LOCAL-00084" summary="Added issuer in jwt">
       <option name="closed" value="true" />
@@ -670,7 +520,167 @@
       <option name="project" value="LOCAL" />
       <updated>1719800299067</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="Added Necessary methods to end ride">
+      <option name="closed" value="true" />
+      <created>1719821348873</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1719821348873</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Driver and rider servlet current ride id updates included">
+      <option name="closed" value="true" />
+      <created>1719826991854</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1719826991854</updated>
+    </task>
+    <task id="LOCAL-00115" summary="Backend almost done yet to handle ratings page">
+      <option name="closed" value="true" />
+      <created>1719829533829</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1719829533829</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Filter non cancelled rides">
+      <option name="closed" value="true" />
+      <created>1719831683163</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1719831683163</updated>
+    </task>
+    <task id="LOCAL-00117" summary="UPI servlet Fixes">
+      <option name="closed" value="true" />
+      <created>1719834841109</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1719834841109</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Rating Servlet Added">
+      <option name="closed" value="true" />
+      <created>1719896130598</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1719896130598</updated>
+    </task>
+    <task id="LOCAL-00119" summary="Validation for RideID">
+      <option name="closed" value="true" />
+      <created>1719899644417</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1719899644418</updated>
+    </task>
+    <task id="LOCAL-00120" summary="Winding up backend">
+      <option name="closed" value="true" />
+      <created>1719909664333</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1719909664333</updated>
+    </task>
+    <task id="LOCAL-00121" summary="Validation's Added">
+      <option name="closed" value="true" />
+      <created>1719917992398</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1719917992398</updated>
+    </task>
+    <task id="LOCAL-00122" summary="Validation and update driver location API">
+      <option name="closed" value="true" />
+      <created>1719918434448</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1719918434448</updated>
+    </task>
+    <task id="LOCAL-00123" summary="Error Resolved">
+      <option name="closed" value="true" />
+      <created>1719918500551</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1719918500551</updated>
+    </task>
+    <task id="LOCAL-00124" summary="Account Type validation">
+      <option name="closed" value="true" />
+      <created>1719918915810</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1719918915810</updated>
+    </task>
+    <task id="LOCAL-00125" summary="Driver Validations">
+      <option name="closed" value="true" />
+      <created>1719920432576</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1719920432576</updated>
+    </task>
+    <task id="LOCAL-00126" summary="payment Servlet validation">
+      <option name="closed" value="true" />
+      <created>1719921157246</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1719921157246</updated>
+    </task>
+    <task id="LOCAL-00127" summary="Update Current Location">
+      <option name="closed" value="true" />
+      <created>1719922254228</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1719922254228</updated>
+    </task>
+    <task id="LOCAL-00128" summary="From and to locations can't be same validation">
+      <option name="closed" value="true" />
+      <created>1719925981467</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1719925981467</updated>
+    </task>
+    <task id="LOCAL-00129" summary="Added location details">
+      <option name="closed" value="true" />
+      <created>1719926164095</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1719926164095</updated>
+    </task>
+    <task id="LOCAL-00130" summary="Changed the Status code">
+      <option name="closed" value="true" />
+      <created>1719982966678</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1719982966678</updated>
+    </task>
+    <task id="LOCAL-00131" summary="Added Validation at payment end">
+      <option name="closed" value="true" />
+      <created>1719989968874</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1719989968874</updated>
+    </task>
+    <task id="LOCAL-00132" summary="Error handling">
+      <option name="closed" value="true" />
+      <created>1719990462230</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1719990462230</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -678,32 +688,32 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Added type claim to jwt refresh token" />
-    <MESSAGE value="Get all locations" />
-    <MESSAGE value="Index API for location" />
-    <MESSAGE value="Rating Servlet" />
-    <MESSAGE value="Fixes" />
-    <MESSAGE value="Account Creation logic" />
-    <MESSAGE value="Driver details validation" />
-    <MESSAGE value="Added CORS" />
-    <MESSAGE value="Added Cookie in to the entire path" />
-    <MESSAGE value="Driver login servlet fix" />
-    <MESSAGE value="Session Cookie path fix" />
-    <MESSAGE value="Adding updated value to Add Pop at front end" />
-    <MESSAGE value="Generating auth token for both account types" />
-    <MESSAGE value="creating driver details with current account ID" />
-    <MESSAGE value="Added vehicle servlet to update vehicle data" />
-    <MESSAGE value="Filtered Based on the vehicle type" />
-    <MESSAGE value="Driver Ride Validation in server side added" />
-    <MESSAGE value="Rider ride validations added" />
-    <MESSAGE value="Ride creation validation added for driver" />
-    <MESSAGE value="Updated Like adding ride ID nd Ride details" />
     <MESSAGE value="Success message updated" />
     <MESSAGE value="Ride Creation Updates" />
     <MESSAGE value="Added account type in the response" />
     <MESSAGE value="Vehicle type added in response" />
     <MESSAGE value="From and to location names added in response" />
-    <option name="LAST_COMMIT_MESSAGE" value="From and to location names added in response" />
+    <MESSAGE value="Added Necessary methods to end ride" />
+    <MESSAGE value="Driver and rider servlet current ride id updates included" />
+    <MESSAGE value="Backend almost done yet to handle ratings page" />
+    <MESSAGE value="Filter non cancelled rides" />
+    <MESSAGE value="UPI servlet Fixes" />
+    <MESSAGE value="Rating Servlet Added" />
+    <MESSAGE value="Validation for RideID" />
+    <MESSAGE value="Winding up backend" />
+    <MESSAGE value="Validation's Added" />
+    <MESSAGE value="Validation and update driver location API" />
+    <MESSAGE value="Error Resolved" />
+    <MESSAGE value="Account Type validation" />
+    <MESSAGE value="Driver Validations" />
+    <MESSAGE value="payment Servlet validation" />
+    <MESSAGE value="Update Current Location" />
+    <MESSAGE value="From and to locations can't be same validation" />
+    <MESSAGE value="Added location details" />
+    <MESSAGE value="Changed the Status code" />
+    <MESSAGE value="Added Validation at payment end" />
+    <MESSAGE value="Error handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error handling" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

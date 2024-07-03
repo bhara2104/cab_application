@@ -8,7 +8,7 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
-public class LogoutServlet extends HttpServlet {
+public class  LogoutServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(false);
         if (session != null) {
