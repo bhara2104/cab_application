@@ -33,6 +33,12 @@ public class PaymentServlet extends HttpServlet {
         if (bill.getId() == 0 || ride.getId() != bill.getRideID()) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             printWriter.write("{\"message\":\"Enter Valid Ride ID\"}");
+            return;
+        }
+        if(bill.getPaymentId()!=0){
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            printWriter.write("{\"message\":\"Payment Already Done \"}");
+            return;
         }
         String json = ReadJson.convertJsonToString(request.getReader());
         List<String> error = PaymentService.errors(json);
