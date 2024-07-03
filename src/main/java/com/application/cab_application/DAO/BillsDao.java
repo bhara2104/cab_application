@@ -64,7 +64,7 @@ public class BillsDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.isBeforeFirst()){
                 resultSet.next();
-                return new Bill(resultSet.getInt("id"), resultSet.getInt("ride_id"), resultSet.getDouble("bill_amount"), resultSet.getInt("ride_id"));
+                return new Bill(resultSet.getInt("id"), resultSet.getInt("ride_id"), resultSet.getDouble("bill_amount"), resultSet.getInt("payment_id"));
             } else {
                 return new Bill();
             }
