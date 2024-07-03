@@ -56,7 +56,7 @@ public class RiderRideServlet extends HttpServlet {
         AccountDetailsDao.updateCurrentRideIDAsNUll(ride.getRiderId());
 
         RideDetailsDao.updateRideStatus(accountDetails.getCurrentRideID(), RequestStatus.CANCELLED);
-        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        response.setStatus(HttpServletResponse.SC_OK);
         printWriter.write("{\"message\":\"Ride Cancelled Successfully\"}");
     }
 
