@@ -1,5 +1,8 @@
 package com.application.cab_application.Models;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Location {
     private int id;
     private double latitude;
@@ -43,5 +46,15 @@ public class Location {
 
     public String getCity() {
         return city;
+    }
+
+    public Map<String, Object> locationMapping(){
+        Map<String, Object> locationMapped = new HashMap<>();
+        locationMapped.put("city", city);
+        locationMapped.put("latitude", latitude);
+        locationMapped.put("longitude", longitude);
+        locationMapped.put("landmark",landmark);
+        locationMapped.put("pincode",pinCode);
+        return locationMapped ;
     }
 }

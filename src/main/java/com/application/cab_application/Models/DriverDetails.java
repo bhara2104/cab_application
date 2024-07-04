@@ -1,6 +1,8 @@
 package com.application.cab_application.Models;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DriverDetails {
     private int id;
@@ -69,5 +71,15 @@ public class DriverDetails {
 
     public void setVehicleId(int vehicleId) {
         this.vehicleId = vehicleId;
+    }
+
+    public Map<String, Object> driverDetailsObject(){
+        Map<String , Object> driverDetailsMapping = new HashMap<>();
+        driverDetailsMapping.put("account_id",accountID);
+        driverDetailsMapping.put("license_number", licenseNumber) ;
+        driverDetailsMapping.put("availability", availability);
+        driverDetailsMapping.put("vehicle_id", vehicleId);
+        driverDetailsMapping.put("current_location_id", currentLocationId);
+        return driverDetailsMapping;
     }
 }

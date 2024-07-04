@@ -2,6 +2,9 @@ package com.application.cab_application.Models;
 
 import com.application.cab_application.enums.VehicleType;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Vehicle {
     private int id;
     private String model;
@@ -45,5 +48,39 @@ public class Vehicle {
 
     public int getYear() {
         return year;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setVehicleType(VehicleType vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public Map<String, Object> vehicleTableMapper(){
+        Map<String, Object> vehicleMapper = new HashMap<>();
+        vehicleMapper.put("vehicle_type", vehicleType.getCode());
+        vehicleMapper.put("vehicle_number", vehicleNumber);
+        vehicleMapper.put("brand", brand);
+        vehicleMapper.put("year", year);
+        vehicleMapper.put("model", model);
+        return vehicleMapper ;
     }
 }

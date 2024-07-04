@@ -4,6 +4,8 @@ import com.application.cab_application.enums.RequestStatus;
 import com.application.cab_application.enums.VehicleType;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RideDetails {
     private int id;
@@ -75,5 +77,15 @@ public class RideDetails {
 
     public VehicleType getVehicleType() {
         return vehicleType;
+    }
+
+    public Map<String, Object> rideDetailsMapper(){
+        Map<String, Object> rideDetailsMap = new HashMap<>();
+        rideDetailsMap.put("from_location_id", fromLocation);
+        rideDetailsMap.put("to_location_id", toLocation);
+        rideDetailsMap.put("ride_status", requestStatus.getCode());
+        rideDetailsMap.put("ride_id", rideID);
+        rideDetailsMap.put("vehicle_type", vehicleType.getCode());
+        return rideDetailsMap;
     }
 }

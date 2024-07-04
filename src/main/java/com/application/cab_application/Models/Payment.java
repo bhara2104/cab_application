@@ -3,6 +3,8 @@ package com.application.cab_application.Models;
 import com.application.cab_application.enums.PaymentType;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Payment {
     private int id;
@@ -33,4 +35,12 @@ public class Payment {
     public void setPaymentDate(Timestamp paymentDate) {
         this.paymentDate = paymentDate;
     }
+
+    public Map<String, Object> paymentTableMapper() {
+        Map<String, Object> paymentMapper = new HashMap<>();
+        paymentMapper.put("payment_type", paymentType);
+        paymentMapper.put("payment_date", paymentDate);
+        return paymentMapper;
+    }
+
 }

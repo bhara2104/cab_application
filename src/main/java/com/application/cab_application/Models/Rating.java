@@ -1,5 +1,8 @@
 package com.application.cab_application.Models;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Rating {
     private int id;
     private String comments;
@@ -36,5 +39,13 @@ public class Rating {
         this.comments = comments;
         this.ratingValue = ratingValue;
         this.rideID = rideID;
+    }
+
+    public Map<String, Object> ratingTableMapper(){
+        Map<String, Object> ratingMapper = new HashMap<>();
+        ratingMapper.put("rating_value" , ratingValue);
+        ratingMapper.put("comments", comments);
+        ratingMapper.put("ride_id", rideID);
+        return ratingMapper;
     }
 }

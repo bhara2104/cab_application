@@ -1,5 +1,8 @@
 package com.application.cab_application.Models;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Ride {
     private int id;
     private int RiderId;
@@ -31,4 +34,10 @@ public class Ride {
         return DriverId;
     }
 
+    public Map<String, Object> rideTableMapper(){
+        Map<String, Object> rideMapper = new HashMap<>();
+        rideMapper.put("driver_id", DriverId);
+        rideMapper.put("rider_id", RiderId);
+        return rideMapper ;
+    }
 }

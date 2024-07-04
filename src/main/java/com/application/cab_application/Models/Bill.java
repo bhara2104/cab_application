@@ -1,5 +1,8 @@
 package com.application.cab_application.Models;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Bill {
     private int id;
     private int rideID;
@@ -39,5 +42,13 @@ public class Bill {
 
     public int getPaymentId() {
         return paymentId;
+    }
+
+    public Map<String, Object> billTableObject(){
+        Map<String, Object> billObject = new HashMap<>() ;
+        billObject.put("ride_id",rideID);
+        billObject.put("bill_amount", billAmount);
+        billObject.put("payment_id", paymentId);
+        return billObject;
     }
 }

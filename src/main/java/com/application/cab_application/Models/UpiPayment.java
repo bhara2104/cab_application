@@ -1,5 +1,8 @@
 package com.application.cab_application.Models;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class UpiPayment {
     private int id;
     private int paymentID;
@@ -30,5 +33,12 @@ public class UpiPayment {
 
     public UpiPayment(){
 
+    }
+
+    public Map<String ,Object> upiMapper(){
+        Map<String, Object> upiPaymentMapper = new HashMap<>();
+        upiPaymentMapper.put("upi_id", upiID);
+        upiPaymentMapper.put("payment_id", paymentID);
+        return upiPaymentMapper;
     }
 }
