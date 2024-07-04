@@ -4,7 +4,9 @@ import com.application.cab_application.DAO.RidesDao;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AccountDetails {
     private int id;
@@ -83,5 +85,14 @@ public class AccountDetails {
 
     public int getCurrentRideID() {
         return currentRideID;
+    }
+
+    public Map<String , Object> objectMap(){
+        Map<String, Object> accountDetailsTableMapping = new HashMap<>();
+        accountDetailsTableMapping.put("account_id" , accountId);
+        accountDetailsTableMapping.put("name", name);
+        accountDetailsTableMapping.put("address",address);
+        accountDetailsTableMapping.put("current_ride_id" , currentRideID);
+        return accountDetailsTableMapping;
     }
 }

@@ -1,10 +1,13 @@
 package com.application.cab_application.Models;
 
 import com.application.cab_application.enums.AccountType;
+import org.apache.commons.collections.map.HashedMap;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class Account {
@@ -109,5 +112,14 @@ public class Account {
 
     public AccountType getAccountType() {
         return accountType;
+    }
+
+    public Map<String, Object> objectMap(){
+        Map<String, Object> accountTableMapping = new HashMap<>();
+        accountTableMapping.put("email",email);
+        accountTableMapping.put("password", password);
+        accountTableMapping.put("account_type", accountType.getCode());
+        accountTableMapping.put("phone_number",phoneNumber);
+        return accountTableMapping ;
     }
 }

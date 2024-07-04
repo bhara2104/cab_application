@@ -10,12 +10,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Error handling">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/cab_application.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/cab_application_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" afterDir="false" />
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Implemented Connection Pool">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/AccountDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/AccountDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,14 +290,6 @@
       <workItem from="1719490501925" duration="37327000" />
       <workItem from="1719661925973" duration="19169000" />
       <workItem from="1719797793166" duration="3889000" />
-    </task>
-    <task id="LOCAL-00085" summary="Location Validation">
-      <option name="closed" value="true" />
-      <created>1719412868163</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1719412868163</updated>
     </task>
     <task id="LOCAL-00086" summary="Added type claim to jwt refresh token">
       <option name="closed" value="true" />
@@ -683,7 +675,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720021568144</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="Implemented Connection Pool">
+      <option name="closed" value="true" />
+      <created>1720071599458</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1720071599458</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -691,7 +691,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Success message updated" />
     <MESSAGE value="Ride Creation Updates" />
     <MESSAGE value="Added account type in the response" />
     <MESSAGE value="Vehicle type added in response" />
@@ -716,7 +715,8 @@
     <MESSAGE value="Changed the Status code" />
     <MESSAGE value="Added Validation at payment end" />
     <MESSAGE value="Error handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Error handling" />
+    <MESSAGE value="Implemented Connection Pool" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Connection Pool" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
