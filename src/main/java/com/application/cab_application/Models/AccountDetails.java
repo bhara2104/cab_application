@@ -13,7 +13,7 @@ public class AccountDetails {
     private int accountId; //It is mapped to account in order to fetch the account details like name and other details
     private String name;
     private String address;
-    private int currentRideID; // This ID is mapped as the current ride which the rider or driver is travelling
+    private Integer currentRideID; // This ID is mapped as the current ride which the rider or driver is travelling
 
     public AccountDetails(int id, int accountId, String name, String address, int currentRideID) {
         this.id = id;
@@ -71,7 +71,7 @@ public class AccountDetails {
         this.address = address;
     }
 
-    public void setCurrentRideID(int currentRideID) {
+    public void setCurrentRideID(Integer currentRideID) {
         this.currentRideID = currentRideID;
     }
 

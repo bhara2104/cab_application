@@ -23,7 +23,7 @@ public class BaseDao {
     public static int create(Map<String, Object> fields, String tableName) {
         String columns = String.join(", ", fields.keySet());
         String params = String.join(",", fields.keySet().stream().map(key -> "?").toArray(String[]::new));
-        String sql = "Insert into" + tableName + "(" + columns + ") values (" + params + ")";
+        String sql = "Insert into " + tableName + "(" + columns + ") values (" + params + ")";
         ResultSet resultSet;
         Connection connection;
         try {
@@ -50,7 +50,7 @@ public class BaseDao {
 
     public static boolean update(Map<String, Object> fields, String tableName, int id) {
         String updateStatement = String.join(",", fields.keySet().stream().map(key -> key + "= ?").toArray(String[]::new));
-        String sql = "Update" + tableName + "set" + updateStatement + "where id = ?";
+        String sql = "Update " + tableName + "set " + updateStatement + " where id = ?";
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -68,10 +68,25 @@ public class BaseDao {
         return false;
     }
 
+    public static boolean updateColumn(String columnName, Object value, String tableName, String whereColumn, Object whereValue){
+        String sql = "update " + tableName + " set " + columnName +" = ? where "+ whereColumn +" = ?";
+        try {
+            Connection connection = connectionPool.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1,value);
+            preparedStatement.setObject(2,whereValue);
+            int affectedRows = preparedStatement.executeUpdate();
+            return affectedRows > 0 ;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
     public static boolean update(Map<String, Object> fields, String tableName, Map<String, Object> whereClause) {
         String updateStatement = String.join(",", fields.keySet().stream().map(key -> key + "= ?").toArray(String[]::new));
         String whereQuery = String.join("and", whereClause.keySet().stream().map(key -> key + "= ?").toArray(String[]::new));
-        String sql = "Update" + tableName + "set" + updateStatement + "where" + whereQuery;
+        String sql = "Update " + tableName + " set " + updateStatement + " where " + whereQuery;
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -91,7 +106,7 @@ public class BaseDao {
     }
 
     public static ResultSet find_by(String tableName, String fieldName, Object value) {
-        String sql = "select * from" + tableName + "where fieldName = ?";
+        String sql = "select * from " + tableName + " where fieldName = ?";
         ResultSet resultSet ;
         try {
             Connection connection = connectionPool.getConnection();
@@ -104,7 +119,7 @@ public class BaseDao {
     }
 
     public static ResultSet find(int id, String tableName) {
-        String sql = "select * from" + tableName + "where id = ?";
+        String sql = "select * from " + tableName + " where id = ?";
         ResultSet resultSet ;
         try {
             Connection connection = connectionPool.getConnection();
@@ -122,7 +137,7 @@ public class BaseDao {
     public static ResultSet find_chain(String tableName,Map<String,Object> whereChain){
         String whereChainQuery = String.join("and ", whereChain.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         ResultSet resultSet ;
-        String sql = "select * from"+ tableName + "where" + whereChain ;
+        String sql = "select * from "+ tableName + " where " + whereChain ;
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
