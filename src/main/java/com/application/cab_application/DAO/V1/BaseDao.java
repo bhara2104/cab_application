@@ -119,6 +119,22 @@ public class BaseDao {
         return null;
     }
 
+    public static ResultSet find_chain(String tableName,Map<String,Object> whereChain){
+        String whereChainQuery = String.join("and ", whereChain.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
+        ResultSet resultSet ;
+        String sql = "select * from"+ tableName + "where" + whereChain ;
+        try {
+            Connection connection = connectionPool.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            connectionPool.removeConnection(connection);
+            return resultSet;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     public static ResultSet find_by_sql(String sql, Map<String, Object> fields) {
         ResultSet resultSet ;
         try {
