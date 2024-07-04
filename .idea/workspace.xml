@@ -10,17 +10,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="created base dao and adding object mapping with column names">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Changed the maximum pool size to 30 as it needs to dynamically update some times">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Bill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/DriverDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/DriverDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Rating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Ride.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Ride.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/RideDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/RideDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/UpiData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/UpiData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/UpiPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/UpiPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,40 +74,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.TestAccountDao.checkCreatedAccount.executor": "Run",
-    "JUnit.TestAccountDao.executor": "Run",
-    "JUnit.TestDatabaseConnector.checkConnection.executor": "Run",
-    "JUnit.TestDatabaseConnector.executor": "Run",
-    "Maven.cab_application [clean].executor": "Run",
-    "Maven.cab_application [compile].executor": "Run",
-    "Maven.cab_application [deploy].executor": "Run",
-    "Maven.cab_application [install].executor": "Run",
-    "Maven.cab_application [package].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 10.1.24.executor": "Run",
-    "Tomcat Server.Tomcat 10.1.25.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.TestAccountDao.checkCreatedAccount.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestAccountDao.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDatabaseConnector.checkConnection.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDatabaseConnector.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cab_application [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cab_application [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cab_application [deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cab_application [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cab_application [package].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.24.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.25.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="openRunningConfigInTab" value="true" />
   </component>
@@ -295,22 +287,7 @@
       <workItem from="1719490501925" duration="37327000" />
       <workItem from="1719661925973" duration="19169000" />
       <workItem from="1719797793166" duration="3889000" />
-    </task>
-    <task id="LOCAL-00087" summary="Get all locations">
-      <option name="closed" value="true" />
-      <created>1719464110641</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1719464110641</updated>
-    </task>
-    <task id="LOCAL-00088" summary="Index API for location">
-      <option name="closed" value="true" />
-      <created>1719464440763</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1719464440763</updated>
+      <workItem from="1720086281423" duration="1021000" />
     </task>
     <task id="LOCAL-00089" summary="Rating Servlet">
       <option name="closed" value="true" />
@@ -688,7 +665,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720077703790</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="Added Mappers to map column name with the value">
+      <option name="closed" value="true" />
+      <created>1720083095424</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1720083095424</updated>
+    </task>
+    <task id="LOCAL-00137" summary="Changed the maximum pool size to 30 as it needs to dynamically update some times">
+      <option name="closed" value="true" />
+      <created>1720083638615</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1720083638615</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -696,8 +689,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Added account type in the response" />
-    <MESSAGE value="Vehicle type added in response" />
     <MESSAGE value="From and to location names added in response" />
     <MESSAGE value="Added Necessary methods to end ride" />
     <MESSAGE value="Driver and rider servlet current ride id updates included" />
@@ -721,7 +712,9 @@
     <MESSAGE value="Error handling" />
     <MESSAGE value="Implemented Connection Pool" />
     <MESSAGE value="created base dao and adding object mapping with column names" />
-    <option name="LAST_COMMIT_MESSAGE" value="created base dao and adding object mapping with column names" />
+    <MESSAGE value="Added Mappers to map column name with the value" />
+    <MESSAGE value="Changed the maximum pool size to 30 as it needs to dynamically update some times" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the maximum pool size to 30 as it needs to dynamically update some times" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

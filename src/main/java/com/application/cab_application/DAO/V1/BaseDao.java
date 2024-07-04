@@ -5,6 +5,7 @@ import com.application.cab_application.Util.ConnectionPool;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 public class BaseDao {
 
@@ -20,31 +21,27 @@ public class BaseDao {
     }
 
 
-    public static int create(){
+    public static int create(Map<String,Object> fields, String tableName){
 
     }
 
-    public static boolean update(){
+    public static boolean update(Map<String,Object> fields, String tableName, int id){
 
     }
 
-    public static ResultSet find_by(){
+    public static boolean update(Map<String,Object> fields, String tableName,Map<String, Object> whereClause){
 
     }
 
-    public static ResultSet find(){
+    public static ResultSet find_by(Map<String,Object> fields, String tableName){
 
     }
 
-    public static ResultSet find(){
+    public static ResultSet find(int id, String tableName){
 
     }
 
-    public static ResultSet find_by_sql(){
-
-    }
-
-    public static ResultSet select(){
+    public static ResultSet find_by_sql(String sql, Map<String,Object> fields, String tableName){
 
     }
 }
