@@ -13,38 +13,28 @@ public class VehicleDao {
     }
 
     public static Boolean updateVehicle(Vehicle vehicle) {
-        String query = "update vehicles set vehicle_number = ? , vehicle_type = ?, model = ? , year = ?, brand = ? where id = ?";
-        try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
-            preparedStatement.setString(1, vehicle.getVehicleNumber());
-            preparedStatement.setInt(2, vehicle.getVehicleType().getCode());
-            preparedStatement.setString(3, vehicle.getModel());
-            preparedStatement.setInt(4, vehicle.getYear());
-            preparedStatement.setString(5, vehicle.getBrand());
-            preparedStatement.setInt(6, vehicle.getId());
-            int affectedRows = preparedStatement.executeUpdate();
-            return affectedRows > 0;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return false;
+        return BaseDao.update(vehicle.vehicleTableMapper(),"vehicles",vehicle.getId());
     }
 
     public static Vehicle getVehicle(int id) {
-        String query = "select * from vehicles where id = ?" ;
-        ResultSet resultSet;
-        try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
-            preparedStatement.setInt(1,id);
-            resultSet = preparedStatement.executeQuery();
-            if (resultSet.isBeforeFirst()) {
-                resultSet.next();
-                return new Vehicle(resultSet.getInt("id"), resultSet.getString("model"),
+        ResultSet resultSet = BaseDao.find(id, "vehicles");
+        return vehicleMapper(resultSet);
+    }
+
+    public static Vehicle vehicleMapper(ResultSet resultSet){
+        try {
+            Vehicle vehicle ;
+            if(resultSet.next()){
+                vehicle =  new Vehicle(resultSet.getInt("id"), resultSet.getString("model"),
                         VehicleType.fromCode(resultSet.getInt("vehicle_type")),
                         resultSet.getString("vehicle_number"), resultSet.getString("brand"),
                         resultSet.getInt("year"));
-            } else {
-                return new Vehicle();
+            }else{
+                vehicle = new Vehicle();
             }
-        } catch (Exception e) {
+            resultSet.close();
+            return vehicle ;
+        }catch (Exception e){
             System.out.println(e.getMessage());
         }
         return new Vehicle();
