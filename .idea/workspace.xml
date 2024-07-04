@@ -10,7 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="create method for base dao">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Completed create and update methods in where clause">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" afterDir="false" />
     </list>
@@ -286,15 +286,7 @@
       <workItem from="1719490501925" duration="37327000" />
       <workItem from="1719661925973" duration="19169000" />
       <workItem from="1719797793166" duration="3889000" />
-      <workItem from="1720086281423" duration="3473000" />
-    </task>
-    <task id="LOCAL-00091" summary="Account Creation logic">
-      <option name="closed" value="true" />
-      <created>1719491392176</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1719491392176</updated>
+      <workItem from="1720086281423" duration="4473000" />
     </task>
     <task id="LOCAL-00092" summary="Driver details validation">
       <option name="closed" value="true" />
@@ -680,7 +672,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720088690854</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="Completed create and update methods in where clause">
+      <option name="closed" value="true" />
+      <created>1720089778525</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1720089778526</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -688,7 +688,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Driver and rider servlet current ride id updates included" />
     <MESSAGE value="Backend almost done yet to handle ratings page" />
     <MESSAGE value="Filter non cancelled rides" />
     <MESSAGE value="UPI servlet Fixes" />
@@ -713,7 +712,8 @@
     <MESSAGE value="Changed the maximum pool size to 30 as it needs to dynamically update some times" />
     <MESSAGE value="base Dao config" />
     <MESSAGE value="create method for base dao" />
-    <option name="LAST_COMMIT_MESSAGE" value="create method for base dao" />
+    <MESSAGE value="Completed create and update methods in where clause" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed create and update methods in where clause" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

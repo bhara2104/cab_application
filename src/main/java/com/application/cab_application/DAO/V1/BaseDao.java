@@ -19,9 +19,6 @@ public class BaseDao {
         }
     }
 
-    public BaseDao() throws SQLException, ClassNotFoundException {
-    }
-
 
     public static int create(Map<String, Object> fields, String tableName) {
         String columns = String.join(", ", fields.keySet());
@@ -93,15 +90,50 @@ public class BaseDao {
         return false;
     }
 
-    public static ResultSet find_by(Map<String, Object> fields, String tableName) {
-
+    public static ResultSet find_by(String tableName, String fieldName, Object value) {
+        String sql = "select * from" + tableName + "where fieldName = ?";
+        ResultSet resultSet ;
+        try {
+            Connection connection = connectionPool.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     public static ResultSet find(int id, String tableName) {
-
+        String sql = "select * from" + tableName + "where id = ?";
+        ResultSet resultSet ;
+        try {
+            Connection connection = connectionPool.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,id);
+            resultSet = preparedStatement.executeQuery();
+            connectionPool.removeConnection(connection);
+            return resultSet;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
-    public static ResultSet find_by_sql(String sql, Map<String, Object> fields, String tableName) {
-
+    public static ResultSet find_by_sql(String sql, Map<String, Object> fields) {
+        ResultSet resultSet ;
+        try {
+            Connection connection = connectionPool.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            int idx = 1 ;
+            for(Object object : fields.values()){
+                preparedStatement.setObject(idx++,object);
+            }
+            resultSet = preparedStatement.executeQuery();
+            connectionPool.removeConnection(connection);
+            return resultSet;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }
