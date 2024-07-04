@@ -182,4 +182,18 @@ public class BaseDao {
         }
         return null;
     }
+
+    public static ResultSet all(String tableName){
+        String sql = "select * from " + tableName;
+        ResultSet resultSet ;
+        try {
+            Connection connection = connectionPool.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            return resultSet ;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 }

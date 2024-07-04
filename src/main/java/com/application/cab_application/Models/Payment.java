@@ -38,7 +38,7 @@ public class Payment {
 
     public Map<String, Object> paymentTableMapper() {
         Map<String, Object> paymentMapper = new HashMap<>();
-        paymentMapper.put("payment_type", paymentType);
+        paymentMapper.put("payment_type", paymentType.getCode());
         paymentMapper.put("payment_date", paymentDate);
         return paymentMapper;
     }
