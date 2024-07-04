@@ -9,6 +9,7 @@ import java.util.List;
 @SuppressWarnings("FieldMayBeFinal")
 public class ConnectionPool {
     private static final int POOL_SIZE = 10 ;
+    private static final int MAX_POOL_SIZE = 30 ;
     private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking" ;
     private static final String USERNAME = "bharathkumar" ;
     private static final String PASSWORD = "Bharath123";
@@ -34,7 +35,7 @@ public class ConnectionPool {
 
     public Connection getConnection() throws SQLException, ClassNotFoundException {
         if(connectionPool.isEmpty()){
-            if(usedConnections.size() < POOL_SIZE){
+            if(usedConnections.size() < MAX_POOL_SIZE){
                 connectionPool.add(createConnection());
             } else {
                 throw new RuntimeException("There is no connection Left in the connection POOL to Reuse");
