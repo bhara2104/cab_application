@@ -68,16 +68,31 @@ public class BaseDao {
         return false;
     }
 
-    public static boolean updateColumn(String columnName, Object value, String tableName, String whereColumn, Object whereValue){
-        String sql = "update " + tableName + " set " + columnName +" = ? where "+ whereColumn +" = ?";
+    public static boolean updateColumn(String columnName, Object value, String tableName, int id) {
+        String sql = "update " + tableName + " set " + columnName + " = ? where id = ?";
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setObject(1,value);
-            preparedStatement.setObject(2,whereValue);
+            preparedStatement.setObject(1, value);
+            preparedStatement.setObject(2, id);
             int affectedRows = preparedStatement.executeUpdate();
-            return affectedRows > 0 ;
-        }catch (Exception e){
+            return affectedRows > 0;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    public static boolean updateColumn(String columnName, Object value, String tableName, String whereColumn, Object whereValue) {
+        String sql = "update " + tableName + " set " + columnName + " = ? where " + whereColumn + " = ?";
+        try {
+            Connection connection = connectionPool.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1, value);
+            preparedStatement.setObject(2, whereValue);
+            int affectedRows = preparedStatement.executeUpdate();
+            return affectedRows > 0;
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return false;
@@ -90,16 +105,16 @@ public class BaseDao {
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            int idx = 1 ;
-            for(Object object : fields.values()){
+            int idx = 1;
+            for (Object object : fields.values()) {
                 preparedStatement.setObject(idx++, object);
             }
-            for(Object object : whereClause.values()){
-                preparedStatement.setObject(idx++,object);
+            for (Object object : whereClause.values()) {
+                preparedStatement.setObject(idx++, object);
             }
             int affectedRows = preparedStatement.executeUpdate();
-            return affectedRows > 0 ;
-        }catch (Exception e){
+            return affectedRows > 0;
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return false;
@@ -107,12 +122,12 @@ public class BaseDao {
 
     public static ResultSet find_by(String tableName, String fieldName, Object value) {
         String sql = "select * from " + tableName + " where fieldName = ?";
-        ResultSet resultSet ;
+        ResultSet resultSet;
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;
@@ -120,49 +135,49 @@ public class BaseDao {
 
     public static ResultSet find(int id, String tableName) {
         String sql = "select * from " + tableName + " where id = ?";
-        ResultSet resultSet ;
+        ResultSet resultSet;
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1,id);
+            preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             connectionPool.removeConnection(connection);
             return resultSet;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;
     }
 
-    public static ResultSet find_chain(String tableName,Map<String,Object> whereChain){
+    public static ResultSet find_chain(String tableName, Map<String, Object> whereChain) {
         String whereChainQuery = String.join("and ", whereChain.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
-        ResultSet resultSet ;
-        String sql = "select * from "+ tableName + " where " + whereChain ;
+        ResultSet resultSet;
+        String sql = "select * from " + tableName + " where " + whereChain;
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             connectionPool.removeConnection(connection);
             return resultSet;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;
     }
 
     public static ResultSet find_by_sql(String sql, Map<String, Object> fields) {
-        ResultSet resultSet ;
+        ResultSet resultSet;
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            int idx = 1 ;
-            for(Object object : fields.values()){
-                preparedStatement.setObject(idx++,object);
+            int idx = 1;
+            for (Object object : fields.values()) {
+                preparedStatement.setObject(idx++, object);
             }
             resultSet = preparedStatement.executeQuery();
             connectionPool.removeConnection(connection);
             return resultSet;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;

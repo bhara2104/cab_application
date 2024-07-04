@@ -7,7 +7,7 @@ public class Bill {
     private int id;
     private int rideID;
     private double billAmount;
-    private int paymentId;
+    private Integer paymentId;
 
     public Bill(int id, int rideID, double billAmount, int paymentId) {
         this.id = id;
@@ -21,7 +21,7 @@ public class Bill {
         this.billAmount = billAmount ;
     }
 
-    public void setPaymentId(int paymentId) {
+    public void setPaymentId(Integer paymentId) {
         this.paymentId = paymentId;
     }
 
@@ -40,7 +40,7 @@ public class Bill {
         return billAmount;
     }
 
-    public int getPaymentId() {
+    public Integer getPaymentId() {
         return paymentId;
     }
 
