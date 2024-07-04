@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cab_application">
+    <output-path>$USER_HOME$/apache-tomcat-10.1.25/webapps</output-path>
+    <root id="archive" name="cab_application.war">
+      <element id="artifact" artifact-name="cab_application:war exploded" />
+    </root>
+  </artifact>
+</component>

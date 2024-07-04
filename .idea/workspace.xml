@@ -3,7 +3,7 @@
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="cab_application" />
-      <artifact name="cab_application:war" />
+      <artifact name="cab_application:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -11,8 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Error handling">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/cab_application.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/cab_application_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/LogoutServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +84,14 @@
     "JUnit.TestDatabaseConnector.checkConnection.executor": "Run",
     "JUnit.TestDatabaseConnector.executor": "Run",
     "Maven.cab_application [clean].executor": "Run",
+    "Maven.cab_application [compile].executor": "Run",
     "Maven.cab_application [deploy].executor": "Run",
     "Maven.cab_application [install].executor": "Run",
+    "Maven.cab_application [package].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Tomcat Server.Tomcat 10.1.24.executor": "Run",
+    "Tomcat Server.Tomcat 10.1.25.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -105,6 +111,9 @@
     ]
   }
 }]]></component>
+  <component name="RunDashboard">
+    <option name="openRunningConfigInTab" value="true" />
+  </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.25">
     <configuration name="TestAccountDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cab_application" />
@@ -145,22 +154,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 10.1.25" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.25" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+    <configuration name="Tomcat 10.1.25" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.25" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="cab_application">
+        <artifact name="cab_application:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/cab_application" />
           </settings>
         </artifact>
-        <artifact name="cab_application:war">
-          <settings>
-            <option name="CONTEXT_PATH" value="/cab_application_war" />
-          </settings>
-        </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="6258789f-a0a3-4ec8-9e56-61e01a96753f" />
+        <option name="BASE_DIRECTORY_NAME" value="ba7f8ef9-876f-45d0-998e-f6983fc823ba" />
       </server-settings>
       <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
       <log_file alias="Tomcat Host Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*" />
@@ -168,7 +172,7 @@
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="49453" />
+        <option name="DEBUG_PORT" value="57597" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -233,8 +237,7 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="cab_application" />
-          <artifact name="cab_application:war" />
+          <artifact name="cab_application:war exploded" />
         </option>
       </method>
     </configuration>
@@ -287,14 +290,6 @@
       <workItem from="1719490501925" duration="37327000" />
       <workItem from="1719661925973" duration="19169000" />
       <workItem from="1719797793166" duration="3889000" />
-    </task>
-    <task id="LOCAL-00084" summary="Added issuer in jwt">
-      <option name="closed" value="true" />
-      <created>1719408137750</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1719408137751</updated>
     </task>
     <task id="LOCAL-00085" summary="Location Validation">
       <option name="closed" value="true" />
@@ -680,7 +675,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719990462230</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="Error handling">
+      <option name="closed" value="true" />
+      <created>1720021568144</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1720021568144</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
