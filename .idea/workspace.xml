@@ -10,9 +10,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Completed upto vehicle dao still rides and ride details pending">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="ride details dao completed need to work on rides dao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RideDetailsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RideDetailsDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,23 +287,7 @@
       <workItem from="1719797793166" duration="3889000" />
       <workItem from="1720086281423" duration="16057000" />
       <workItem from="1720158017618" duration="23000" />
-      <workItem from="1720164590762" duration="303000" />
-    </task>
-    <task id="LOCAL-00099" summary="Generating auth token for both account types">
-      <option name="closed" value="true" />
-      <created>1719564526770</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1719564526770</updated>
-    </task>
-    <task id="LOCAL-00100" summary="creating driver details with current account ID">
-      <option name="closed" value="true" />
-      <created>1719571463034</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1719571463034</updated>
+      <workItem from="1720164590762" duration="1130000" />
     </task>
     <task id="LOCAL-00101" summary="creating driver details with current account ID">
       <option name="closed" value="true" />
@@ -682,7 +665,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720098713396</updated>
     </task>
-    <option name="localTasksCounter" value="148" />
+    <task id="LOCAL-00148" summary="Ride Details DAO conversion">
+      <option name="closed" value="true" />
+      <created>1720164902358</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1720164902358</updated>
+    </task>
+    <task id="LOCAL-00149" summary="ride details dao completed need to work on rides dao">
+      <option name="closed" value="true" />
+      <created>1720165222573</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1720165222573</updated>
+    </task>
+    <option name="localTasksCounter" value="150" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,8 +689,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Validation's Added" />
-    <MESSAGE value="Validation and update driver location API" />
     <MESSAGE value="Error Resolved" />
     <MESSAGE value="Account Type validation" />
     <MESSAGE value="Driver Validations" />
@@ -715,7 +712,9 @@
     <MESSAGE value="Bills Dao added and updated base dao to support update column on a specific field" />
     <MESSAGE value="Completed till payments Dao v1 with reusable sql done" />
     <MESSAGE value="Completed upto vehicle dao still rides and ride details pending" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed upto vehicle dao still rides and ride details pending" />
+    <MESSAGE value="Ride Details DAO conversion" />
+    <MESSAGE value="ride details dao completed need to work on rides dao" />
+    <option name="LAST_COMMIT_MESSAGE" value="ride details dao completed need to work on rides dao" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
