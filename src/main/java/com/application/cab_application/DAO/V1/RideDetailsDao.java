@@ -20,29 +20,11 @@ public class RideDetailsDao {
     }
 
     public static boolean updateRideDetails(RideDetails rideDetails) {
-        String query = "update ride_details set ride_status = ? , start_time = ? , end_time = ? where id = ?";
-        try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
-            preparedStatement.setInt(1, rideDetails.getRequestStatus().getCode());
-            preparedStatement.setTimestamp(2, rideDetails.getStartTime());
-            preparedStatement.setTimestamp(3, rideDetails.getEndTime());
-            preparedStatement.setInt(4,rideDetails.getId());
-            int result = preparedStatement.executeUpdate();
-            return result > 0;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return false;
+        return BaseDao.update(rideDetails.rideDetailsMapper(),"ride_details",rideDetails.getId());
     }
 
     public static void updateRideStatus(int id, RequestStatus requestStatus) {
-        String query = "update ride_details set ride_status =? where id = ?" ;
-        try (PreparedStatement preparedStatement = DatabaseConnector.getConnection().prepareStatement(query)) {
-            preparedStatement.setInt(1, requestStatus.getCode());
-            preparedStatement.setInt(2,id);
-            preparedStatement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        BaseDao.updateColumn("ride_details", requestStatus.getCode(), "ride_status", id);
     }
 
     public static RideDetails RideDetailsMapper(ResultSet resultSet){
