@@ -10,9 +10,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Completed create and update methods in where clause">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Completed upto vehicle dao still rides and ride details pending">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RideDetailsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RideDetailsDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,39 +74,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.TestAccountDao.checkCreatedAccount.executor": "Run",
-    "JUnit.TestAccountDao.executor": "Run",
-    "JUnit.TestDatabaseConnector.checkConnection.executor": "Run",
-    "JUnit.TestDatabaseConnector.executor": "Run",
-    "Maven.cab_application [clean].executor": "Run",
-    "Maven.cab_application [compile].executor": "Run",
-    "Maven.cab_application [deploy].executor": "Run",
-    "Maven.cab_application [install].executor": "Run",
-    "Maven.cab_application [package].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.Tomcat 10.1.24.executor": "Run",
-    "Tomcat Server.Tomcat 10.1.25.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.TestAccountDao.checkCreatedAccount.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestAccountDao.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDatabaseConnector.checkConnection.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestDatabaseConnector.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cab_application [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cab_application [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cab_application [deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cab_application [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cab_application [package].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.24.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.25.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="openRunningConfigInTab" value="true" />
   </component>
@@ -286,63 +286,9 @@
       <workItem from="1719490501925" duration="37327000" />
       <workItem from="1719661925973" duration="19169000" />
       <workItem from="1719797793166" duration="3889000" />
-      <workItem from="1720086281423" duration="4473000" />
-    </task>
-    <task id="LOCAL-00092" summary="Driver details validation">
-      <option name="closed" value="true" />
-      <created>1719502156738</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1719502156738</updated>
-    </task>
-    <task id="LOCAL-00093" summary="Driver details validation">
-      <option name="closed" value="true" />
-      <created>1719502668011</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1719502668011</updated>
-    </task>
-    <task id="LOCAL-00094" summary="Added CORS">
-      <option name="closed" value="true" />
-      <created>1719551780813</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1719551780813</updated>
-    </task>
-    <task id="LOCAL-00095" summary="Added Cookie in to the entire path">
-      <option name="closed" value="true" />
-      <created>1719555311467</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1719555311467</updated>
-    </task>
-    <task id="LOCAL-00096" summary="Driver login servlet fix">
-      <option name="closed" value="true" />
-      <created>1719556343779</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1719556343779</updated>
-    </task>
-    <task id="LOCAL-00097" summary="Session Cookie path fix">
-      <option name="closed" value="true" />
-      <created>1719556552778</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1719556552778</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Adding updated value to Add Pop at front end">
-      <option name="closed" value="true" />
-      <created>1719564067225</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1719564067225</updated>
+      <workItem from="1720086281423" duration="16057000" />
+      <workItem from="1720158017618" duration="23000" />
+      <workItem from="1720164590762" duration="303000" />
     </task>
     <task id="LOCAL-00099" summary="Generating auth token for both account types">
       <option name="closed" value="true" />
@@ -680,7 +626,63 @@
       <option name="project" value="LOCAL" />
       <updated>1720089778526</updated>
     </task>
-    <option name="localTasksCounter" value="141" />
+    <task id="LOCAL-00141" summary="Dynamic Query Generator">
+      <option name="closed" value="true" />
+      <created>1720092371745</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1720092371745</updated>
+    </task>
+    <task id="LOCAL-00142" summary="Winding up base dao">
+      <option name="closed" value="true" />
+      <created>1720092700518</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1720092700518</updated>
+    </task>
+    <task id="LOCAL-00143" summary="Completed DAO for two files">
+      <option name="closed" value="true" />
+      <created>1720095272415</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1720095272415</updated>
+    </task>
+    <task id="LOCAL-00144" summary="Bills Dao added and updated base dao to support update column on a specific field">
+      <option name="closed" value="true" />
+      <created>1720095969869</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1720095969869</updated>
+    </task>
+    <task id="LOCAL-00145" summary="Completed till payments Dao v1 with reusable sql done">
+      <option name="closed" value="true" />
+      <created>1720097345386</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1720097345386</updated>
+    </task>
+    <task id="LOCAL-00146" summary="Completed upto vehicle dao still rides and ride details pending">
+      <option name="closed" value="true" />
+      <created>1720098194104</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1720098194104</updated>
+    </task>
+    <task id="LOCAL-00147" summary="Completed upto vehicle dao still rides and ride details pending">
+      <option name="closed" value="true" />
+      <created>1720098713396</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1720098713396</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -688,12 +690,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Backend almost done yet to handle ratings page" />
-    <MESSAGE value="Filter non cancelled rides" />
-    <MESSAGE value="UPI servlet Fixes" />
-    <MESSAGE value="Rating Servlet Added" />
-    <MESSAGE value="Validation for RideID" />
-    <MESSAGE value="Winding up backend" />
     <MESSAGE value="Validation's Added" />
     <MESSAGE value="Validation and update driver location API" />
     <MESSAGE value="Error Resolved" />
@@ -713,7 +709,13 @@
     <MESSAGE value="base Dao config" />
     <MESSAGE value="create method for base dao" />
     <MESSAGE value="Completed create and update methods in where clause" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed create and update methods in where clause" />
+    <MESSAGE value="Dynamic Query Generator" />
+    <MESSAGE value="Winding up base dao" />
+    <MESSAGE value="Completed DAO for two files" />
+    <MESSAGE value="Bills Dao added and updated base dao to support update column on a specific field" />
+    <MESSAGE value="Completed till payments Dao v1 with reusable sql done" />
+    <MESSAGE value="Completed upto vehicle dao still rides and ride details pending" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed upto vehicle dao still rides and ride details pending" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
