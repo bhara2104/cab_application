@@ -18,6 +18,7 @@ public class VehicleServlet extends HttpServlet {
         System.out.println(currentAccountID);
         DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(currentAccountID);
         Vehicle vehicle = VehicleDao.getVehicle(driverDetails.getVehicleId());
+        System.out.println(driverDetails.getId());
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();

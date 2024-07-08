@@ -9,7 +9,7 @@ import java.util.List;
 @SuppressWarnings("FieldMayBeFinal")
 public class ConnectionPool {
     private static final int POOL_SIZE = 10 ;
-    private static final int MAX_POOL_SIZE = 30 ;
+    private static final int MAX_POOL_SIZE = 500 ;
     private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking" ;
     private static final String USERNAME = "bharathkumar" ;
     private static final String PASSWORD = "Bharath123";
