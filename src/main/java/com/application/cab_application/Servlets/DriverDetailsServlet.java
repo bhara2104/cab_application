@@ -4,15 +4,14 @@ import java.io.*;
 import java.sql.Driver;
 import java.util.List;
 
-import com.application.cab_application.DAO.AccountDao;
-import com.application.cab_application.DAO.DriverDetailsDao;
-import com.application.cab_application.DAO.LocationDao;
-import com.application.cab_application.DAO.VehicleDao;
+import com.application.cab_application.DAO.V1.AccountDao;
+import com.application.cab_application.DAO.V1.DriverDetailsDao;
+import com.application.cab_application.DAO.V1.LocationDao;
+import com.application.cab_application.DAO.V1.VehicleDao;
 import com.application.cab_application.Models.Account;
 import com.application.cab_application.Models.DriverDetails;
 import com.application.cab_application.Models.Location;
 import com.application.cab_application.Models.Vehicle;
-import com.application.cab_application.Services.AccountService;
 import com.application.cab_application.Services.DriverDetailsService;
 import com.application.cab_application.Util.CurrentUserHelper;
 import com.application.cab_application.Util.ReadJson;
@@ -22,7 +21,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
 
 public class DriverDetailsServlet extends HttpServlet {

@@ -1,8 +1,8 @@
 package com.application.cab_application.Services;
 
-import com.application.cab_application.DAO.PaymentDao;
-import com.application.cab_application.DAO.UpiDataDao;
-import com.application.cab_application.DAO.UpiPaymentsDao;
+import com.application.cab_application.DAO.V1.PaymentDao;
+import com.application.cab_application.DAO.V1.UpiDataDao;
+import com.application.cab_application.DAO.V1.UpiPaymentsDao;
 import com.application.cab_application.Models.Payment;
 import com.application.cab_application.Models.UpiData;
 import com.application.cab_application.Models.UpiPayment;

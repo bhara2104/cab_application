@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.List;
 
 
-import com.application.cab_application.DAO.AccountDao;
+import com.application.cab_application.DAO.V1.AccountDao;
 import com.application.cab_application.Models.Account;
 import com.application.cab_application.Services.AccountService;
 import com.application.cab_application.Util.ReadJson;
@@ -25,7 +25,7 @@ public class AccountServlet extends HttpServlet {
             printWriter.write(new Gson().toJson(errors));
             return;
         }
-        if (AccountDao.checkAccountExist(AccountService.returnAccount(requestBody))) {
+        if (AccountDao.checkAccountExists(AccountService.returnAccount(requestBody))) {
             response.setStatus(HttpServletResponse.SC_CONFLICT);
             printWriter.write("{\"message\":\"Account already Exists\"}");
             return;

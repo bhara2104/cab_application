@@ -1,7 +1,7 @@
 package com.application.cab_application.Services;
 
-import com.application.cab_application.DAO.AccountDao;
-import com.application.cab_application.DAO.AccountDetailsDao;
+import com.application.cab_application.DAO.V1.AccountDao;
+import com.application.cab_application.DAO.V1.AccountDetailsDao;
 import com.application.cab_application.Models.Account;
 import com.application.cab_application.Models.AccountDetails;
 import com.application.cab_application.Util.DatabaseConnector;

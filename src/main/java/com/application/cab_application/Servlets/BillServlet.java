@@ -2,11 +2,10 @@ package com.application.cab_application.Servlets;
 
 import java.io.*;
 
-import com.application.cab_application.DAO.BillsDao;
+import com.application.cab_application.DAO.V1.BillsDao;
 import com.application.cab_application.Models.Bill;
 import com.google.gson.Gson;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
 
 public class BillServlet extends HttpServlet {
