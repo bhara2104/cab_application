@@ -10,8 +10,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="ride details dao completed need to work on rides dao">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Start Time missed in mapped added that in the mapper">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/AccountDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/AccountDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,10 +247,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestAccountDao" />
-        <item itemvalue="JUnit.TestAccountDao.checkCreatedAccount" />
-        <item itemvalue="JUnit.TestDatabaseConnector" />
         <item itemvalue="JUnit.TestDatabaseConnector.checkConnection" />
+        <item itemvalue="JUnit.TestDatabaseConnector" />
+        <item itemvalue="JUnit.TestAccountDao.checkCreatedAccount" />
+        <item itemvalue="JUnit.TestAccountDao" />
       </list>
     </recent_temporary>
   </component>
@@ -287,103 +289,9 @@
       <workItem from="1719797793166" duration="3889000" />
       <workItem from="1720086281423" duration="16057000" />
       <workItem from="1720158017618" duration="23000" />
-      <workItem from="1720164590762" duration="1130000" />
-    </task>
-    <task id="LOCAL-00101" summary="creating driver details with current account ID">
-      <option name="closed" value="true" />
-      <created>1719571886395</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1719571886396</updated>
-    </task>
-    <task id="LOCAL-00102" summary="Added vehicle servlet to update vehicle data">
-      <option name="closed" value="true" />
-      <created>1719575150798</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1719575150798</updated>
-    </task>
-    <task id="LOCAL-00103" summary="Filtered Based on the vehicle type">
-      <option name="closed" value="true" />
-      <created>1719580882436</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1719580882436</updated>
-    </task>
-    <task id="LOCAL-00104" summary="Driver Ride Validation in server side added">
-      <option name="closed" value="true" />
-      <created>1719662419161</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1719662419161</updated>
-    </task>
-    <task id="LOCAL-00105" summary="Rider ride validations added">
-      <option name="closed" value="true" />
-      <created>1719663110047</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1719663110047</updated>
-    </task>
-    <task id="LOCAL-00106" summary="Ride creation validation added for driver">
-      <option name="closed" value="true" />
-      <created>1719663279323</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1719663279323</updated>
-    </task>
-    <task id="LOCAL-00107" summary="Updated Like adding ride ID nd Ride details">
-      <option name="closed" value="true" />
-      <created>1719729568137</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1719729568137</updated>
-    </task>
-    <task id="LOCAL-00108" summary="Success message updated">
-      <option name="closed" value="true" />
-      <created>1719749639188</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1719749639188</updated>
-    </task>
-    <task id="LOCAL-00109" summary="Ride Creation Updates">
-      <option name="closed" value="true" />
-      <created>1719752430064</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1719752430065</updated>
-    </task>
-    <task id="LOCAL-00110" summary="Added account type in the response">
-      <option name="closed" value="true" />
-      <created>1719764542830</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1719764542830</updated>
-    </task>
-    <task id="LOCAL-00111" summary="Vehicle type added in response">
-      <option name="closed" value="true" />
-      <created>1719799907602</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1719799907602</updated>
-    </task>
-    <task id="LOCAL-00112" summary="From and to location names added in response">
-      <option name="closed" value="true" />
-      <created>1719800299067</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1719800299067</updated>
+      <workItem from="1720164590762" duration="1181000" />
+      <workItem from="1720410879712" duration="11836000" />
+      <workItem from="1720426211143" duration="7917000" />
     </task>
     <task id="LOCAL-00113" summary="Added Necessary methods to end ride">
       <option name="closed" value="true" />
@@ -681,7 +589,103 @@
       <option name="project" value="LOCAL" />
       <updated>1720165222573</updated>
     </task>
-    <option name="localTasksCounter" value="150" />
+    <task id="LOCAL-00150" summary="Winding up">
+      <option name="closed" value="true" />
+      <created>1720168491210</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1720168491210</updated>
+    </task>
+    <task id="LOCAL-00151" summary="Done with Base DAO">
+      <option name="closed" value="true" />
+      <created>1720411878949</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1720411878949</updated>
+    </task>
+    <task id="LOCAL-00152" summary="Updated servlets with new Connection pool logic">
+      <option name="closed" value="true" />
+      <created>1720413050123</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1720413050123</updated>
+    </task>
+    <task id="LOCAL-00153" summary="Migrated to Connection pool with the query generator base DAO">
+      <option name="closed" value="true" />
+      <created>1720413473852</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1720413473853</updated>
+    </task>
+    <task id="LOCAL-00154" summary="Sql Fixes">
+      <option name="closed" value="true" />
+      <created>1720417094500</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1720417094500</updated>
+    </task>
+    <task id="LOCAL-00155" summary="set object fix">
+      <option name="closed" value="true" />
+      <created>1720417521158</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1720417521159</updated>
+    </task>
+    <task id="LOCAL-00156" summary="set object fix">
+      <option name="closed" value="true" />
+      <created>1720418733259</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1720418733259</updated>
+    </task>
+    <task id="LOCAL-00157" summary="BASE DAO String Fixes">
+      <option name="closed" value="true" />
+      <created>1720420799423</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1720420799423</updated>
+    </task>
+    <task id="LOCAL-00158" summary="Driver Details Error fix">
+      <option name="closed" value="true" />
+      <created>1720421045106</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1720421045106</updated>
+    </task>
+    <task id="LOCAL-00159" summary="Connection Pool Fix">
+      <option name="closed" value="true" />
+      <created>1720422443028</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1720422443028</updated>
+    </task>
+    <task id="LOCAL-00160" summary="Connection pool revoked after sending result set">
+      <option name="closed" value="true" />
+      <created>1720422516488</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1720422516489</updated>
+    </task>
+    <task id="LOCAL-00161" summary="Start Time missed in mapped added that in the mapper">
+      <option name="closed" value="true" />
+      <created>1720422967131</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1720422967131</updated>
+    </task>
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -689,17 +693,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Error Resolved" />
-    <MESSAGE value="Account Type validation" />
-    <MESSAGE value="Driver Validations" />
-    <MESSAGE value="payment Servlet validation" />
-    <MESSAGE value="Update Current Location" />
-    <MESSAGE value="From and to locations can't be same validation" />
-    <MESSAGE value="Added location details" />
-    <MESSAGE value="Changed the Status code" />
-    <MESSAGE value="Added Validation at payment end" />
-    <MESSAGE value="Error handling" />
-    <MESSAGE value="Implemented Connection Pool" />
     <MESSAGE value="created base dao and adding object mapping with column names" />
     <MESSAGE value="Added Mappers to map column name with the value" />
     <MESSAGE value="Changed the maximum pool size to 30 as it needs to dynamically update some times" />
@@ -714,7 +707,18 @@
     <MESSAGE value="Completed upto vehicle dao still rides and ride details pending" />
     <MESSAGE value="Ride Details DAO conversion" />
     <MESSAGE value="ride details dao completed need to work on rides dao" />
-    <option name="LAST_COMMIT_MESSAGE" value="ride details dao completed need to work on rides dao" />
+    <MESSAGE value="Winding up" />
+    <MESSAGE value="Done with Base DAO" />
+    <MESSAGE value="Updated servlets with new Connection pool logic" />
+    <MESSAGE value="Migrated to Connection pool with the query generator base DAO" />
+    <MESSAGE value="Sql Fixes" />
+    <MESSAGE value="set object fix" />
+    <MESSAGE value="BASE DAO String Fixes" />
+    <MESSAGE value="Driver Details Error fix" />
+    <MESSAGE value="Connection Pool Fix" />
+    <MESSAGE value="Connection pool revoked after sending result set" />
+    <MESSAGE value="Start Time missed in mapped added that in the mapper" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start Time missed in mapped added that in the mapper" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -10,10 +10,10 @@ import java.util.Map;
 
 public class AccountDetails {
     private int id;
-    private int accountId; //It is mapped to account in order to fetch the account details like name and other details
+    private int accountId;
     private String name;
     private String address;
-    private Integer currentRideID; // This ID is mapped as the current ride which the rider or driver is travelling
+    private Integer currentRideID;
 
     public AccountDetails(int id, int accountId, String name, String address, int currentRideID) {
         this.id = id;
@@ -34,17 +34,17 @@ public class AccountDetails {
 
     }
 
-    public static List<String> runValidation(AccountDetails accountDetails){
+    public static List<String> runValidation(AccountDetails accountDetails) {
         List<String> errors = new ArrayList<>();
-        if(!validateRideID(accountDetails.getCurrentRideID())){
+        if (!validateRideID(accountDetails.getCurrentRideID())) {
             errors.add("Enter a Valid Ride ID");
         }
         return errors;
     }
 
-    public static boolean validateRideID(int currentRideID){
+    public static boolean validateRideID(int currentRideID) {
         Ride ride = RidesDao.getRide(currentRideID);
-        return ride.getId() == currentRideID ;
+        return ride.getId() == currentRideID;
     }
 
     public int getId() {
@@ -87,12 +87,12 @@ public class AccountDetails {
         return currentRideID;
     }
 
-    public Map<String , Object> objectMap(){
+    public Map<String, Object> objectMap() {
         Map<String, Object> accountDetailsTableMapping = new HashMap<>();
-        accountDetailsTableMapping.put("account_id" , accountId);
+        accountDetailsTableMapping.put("account_id", accountId);
         accountDetailsTableMapping.put("name", name);
-        accountDetailsTableMapping.put("address",address);
-        accountDetailsTableMapping.put("current_ride_id" , currentRideID);
+        accountDetailsTableMapping.put("address", address);
+        accountDetailsTableMapping.put("current_ride_id", currentRideID);
         return accountDetailsTableMapping;
     }
 }
