@@ -55,7 +55,7 @@ public class AccountService {
 
     public static Account authenticateUser(String email, String password, AccountType accountType) {
         Account account = AccountDao.getAccountByEmail(email, accountType.getCode());
-        if (account == null) {
+        if (account.getId() == 0) {
             return null;
         } else {
             String encryptedPassword = account.getPassword();

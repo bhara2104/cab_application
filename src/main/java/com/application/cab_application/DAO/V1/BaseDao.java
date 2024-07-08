@@ -153,6 +153,7 @@ public class BaseDao {
         String whereChainQuery = String.join("and ", whereChain.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         ResultSet resultSet;
         String sql = "select * from " + tableName + " where " + whereChain;
+        System.out.println(sql);
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);

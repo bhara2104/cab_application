@@ -1,8 +1,5 @@
 package com.application.cab_application.Servlets;
 
-import com.application.cab_application.DAO.AccountDao;
-import com.application.cab_application.DAO.DriverDetailsDao;
-import com.application.cab_application.Models.Account;
 import com.application.cab_application.Services.AccountDetailsService;
 import com.application.cab_application.Util.CurrentUserHelper;
 import com.application.cab_application.enums.AccountType;
