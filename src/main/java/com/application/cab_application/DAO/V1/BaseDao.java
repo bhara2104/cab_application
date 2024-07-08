@@ -21,8 +21,8 @@ public class BaseDao {
 
 
     public static int create(Map<String, Object> fields, String tableName) {
-        String columns = String.join(", ", fields.keySet());
-        String params = String.join(",", fields.keySet().stream().map(key -> "?").toArray(String[]::new));
+        String columns = String.join(" , ", fields.keySet());
+        String params = String.join(" , ", fields.keySet().stream().map(key -> "?").toArray(String[]::new));
         String sql = "Insert into " + tableName + "(" + columns + ") values (" + params + ")";
         ResultSet resultSet;
         Connection connection;
@@ -49,7 +49,7 @@ public class BaseDao {
     }
 
     public static boolean update(Map<String, Object> fields, String tableName, int id) {
-        String updateStatement = String.join(",", fields.keySet().stream().map(key -> key + "= ?").toArray(String[]::new));
+        String updateStatement = String.join(" , ", fields.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         String sql = "Update " + tableName + "set " + updateStatement + " where id = ?";
         try {
             Connection connection = connectionPool.getConnection();
@@ -99,8 +99,8 @@ public class BaseDao {
     }
 
     public static boolean update(Map<String, Object> fields, String tableName, Map<String, Object> whereClause) {
-        String updateStatement = String.join(",", fields.keySet().stream().map(key -> key + "= ?").toArray(String[]::new));
-        String whereQuery = String.join("and", whereClause.keySet().stream().map(key -> key + "= ?").toArray(String[]::new));
+        String updateStatement = String.join(" , ", fields.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
+        String whereQuery = String.join(" and ", whereClause.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         String sql = "Update " + tableName + " set " + updateStatement + " where " + whereQuery;
         try {
             Connection connection = connectionPool.getConnection();
@@ -151,9 +151,9 @@ public class BaseDao {
     }
 
     public static ResultSet find_chain(String tableName, Map<String, Object> whereChain) {
-        String whereChainQuery = String.join("and ", whereChain.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
+        String whereChainQuery = String.join(" and ", whereChain.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         ResultSet resultSet;
-        String sql = "select * from " + tableName + " where " + whereChain;
+        String sql = "select * from " + tableName + "where " + whereChain;
         System.out.println(sql);
         try {
             Connection connection = connectionPool.getConnection();
