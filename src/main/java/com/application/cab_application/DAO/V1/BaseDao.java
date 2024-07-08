@@ -121,11 +121,12 @@ public class BaseDao {
     }
 
     public static ResultSet find_by(String tableName, String fieldName, Object value) {
-        String sql = "select * from " + tableName + " where fieldName = ?";
+        String sql = "select * from " + tableName + " where" +fieldName+" = ?";
         ResultSet resultSet;
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1,value);
             resultSet = preparedStatement.executeQuery();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -157,6 +158,10 @@ public class BaseDao {
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            int inc = 1 ;
+            for(Object object : whereChain.values()){
+                preparedStatement.setObject(inc++, object);
+            }
             resultSet = preparedStatement.executeQuery();
             connectionPool.removeConnection(connection);
             return resultSet;
