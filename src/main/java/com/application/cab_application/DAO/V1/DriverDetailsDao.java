@@ -18,7 +18,7 @@ public class DriverDetailsDao {
     }
 
     public static boolean updateCurrentLocation(int locationID, int accountID) {
-        return BaseDao.updateColumn("current_location_id", locationID, "account_details","account_id",accountID);
+        return BaseDao.updateColumn("current_location_id", locationID, "driver_details","account_id",accountID);
     }
 
     public static DriverDetails driverDetailsMapper(ResultSet rs){
