@@ -86,6 +86,8 @@ public class RideDetails {
         rideDetailsMap.put("ride_status", requestStatus.getCode());
         rideDetailsMap.put("ride_id", rideID);
         rideDetailsMap.put("vehicle_type", vehicleType.getCode());
+        rideDetailsMap.put("start_time", startTime);
+        rideDetailsMap.put("end_time", endTime);
         return rideDetailsMap;
     }
 }
