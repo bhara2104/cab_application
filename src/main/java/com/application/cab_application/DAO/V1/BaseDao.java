@@ -68,7 +68,7 @@ public class BaseDao {
         return false;
     }
 
-    public static boolean updateColumn(String columnName, Object value, String tableName, int id) {
+    public static boolean updateColumn(String columnName, Object value, String tableName, Integer id) {
         String sql = "update " + tableName + " set " + columnName + " = ? where id = ?";
         try {
             Connection connection = connectionPool.getConnection();

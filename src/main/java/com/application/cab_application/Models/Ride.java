@@ -5,8 +5,8 @@ import java.util.Map;
 
 public class Ride {
     private int id;
-    private int RiderId;
-    private int DriverId;
+    private Integer RiderId;
+    private Integer DriverId;
 
     public Ride(int id, int riderId, int driverId) {
         this.id = id;
