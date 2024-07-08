@@ -2,8 +2,8 @@ package com.application.cab_application.Servlets;
 
 import java.io.*;
 
-import com.application.cab_application.DAO.DriverDetailsDao;
-import com.application.cab_application.DAO.VehicleDao;
+import com.application.cab_application.DAO.V1.DriverDetailsDao;
+import com.application.cab_application.DAO.V1.VehicleDao;
 import com.application.cab_application.Models.DriverDetails;
 import com.application.cab_application.Models.Vehicle;
 import com.application.cab_application.Util.CurrentUserHelper;

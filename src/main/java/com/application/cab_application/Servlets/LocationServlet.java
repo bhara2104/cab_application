@@ -3,7 +3,7 @@ package com.application.cab_application.Servlets;
 import java.io.*;
 import java.util.List;
 
-import com.application.cab_application.DAO.LocationDao;
+import com.application.cab_application.DAO.V1.LocationDao;
 import com.application.cab_application.Models.Location;
 import com.application.cab_application.Services.LocationService;
 import com.application.cab_application.Util.ReadJson;

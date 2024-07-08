@@ -1,7 +1,7 @@
 package com.application.cab_application.Servlets;
 
-import com.application.cab_application.DAO.RatingsDao;
-import com.application.cab_application.DAO.RidesDao;
+import com.application.cab_application.DAO.V1.RatingsDao;
+import com.application.cab_application.DAO.V1.RidesDao;
 import com.application.cab_application.Models.Rating;
 import com.application.cab_application.Models.Ride;
 import com.application.cab_application.Util.ReadJson;

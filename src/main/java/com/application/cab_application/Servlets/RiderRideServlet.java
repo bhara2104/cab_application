@@ -3,10 +3,9 @@ package com.application.cab_application.Servlets;
 import java.io.*;
 import java.util.List;
 
-import com.application.cab_application.DAO.AccountDetailsDao;
-import com.application.cab_application.DAO.RideDetailsDao;
-import com.application.cab_application.DAO.RidesDao;
-import com.application.cab_application.Models.Account;
+import com.application.cab_application.DAO.V1.AccountDetailsDao;
+import com.application.cab_application.DAO.V1.RideDetailsDao;
+import com.application.cab_application.DAO.V1.RidesDao;
 import com.application.cab_application.Models.AccountDetails;
 import com.application.cab_application.Models.Ride;
 import com.application.cab_application.Models.RideDetails;
@@ -28,7 +27,7 @@ public class RiderRideServlet extends HttpServlet {
         int accountId = CurrentUserHelper.getAccount();
         response.setCharacterEncoding("UTF-8");
         PrintWriter writer = response.getWriter();
-        List<JsonObject> objectList = RidesDao.getAllRideDetails(accountId,"RIDER");
+        List<JsonObject> objectList = com.application.cab_application.DAO.RidesDao.getAllRideDetails(accountId,"RIDER");
         String responseValues = gson.toJson(objectList);
         response.setStatus(HttpServletResponse.SC_OK);
         writer.write(responseValues);
