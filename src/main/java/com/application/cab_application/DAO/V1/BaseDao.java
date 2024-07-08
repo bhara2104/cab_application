@@ -92,6 +92,7 @@ public class BaseDao {
             preparedStatement.setObject(1, value);
             preparedStatement.setObject(2, whereValue);
             int affectedRows = preparedStatement.executeUpdate();
+            connectionPool.removeConnection(connection);
             return affectedRows > 0;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -114,6 +115,7 @@ public class BaseDao {
                 preparedStatement.setObject(idx++, object);
             }
             int affectedRows = preparedStatement.executeUpdate();
+            connectionPool.removeConnection(connection);
             return affectedRows > 0;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -130,6 +132,7 @@ public class BaseDao {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1,value);
             resultSet = preparedStatement.executeQuery();
+            connectionPool.removeConnection(connection);
             return resultSet ;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -199,6 +202,7 @@ public class BaseDao {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
+            connectionPool.removeConnection(connection);
             return resultSet ;
         }catch (Exception e){
             System.out.println(e.getMessage());
