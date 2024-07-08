@@ -31,19 +31,19 @@ public class AccountDao {
         return accountMapper(resultSet);
     }
 
-    public static Boolean checkAccountExists(Account account){
+    public static Boolean checkAccountExists(Account account) {
         Map<String, Object> whereObject = Map.ofEntries(
                 entry("account_type", account.getAccountType()),
                 entry("phone_number", account.getPhoneNumber()),
                 entry("email", account.getEmail())
         );
         String query = "Select * from accounts where account_type = ? and (phone_number = ? or email = ?)";
-        ResultSet resultSet = BaseDao.find_by_sql(query,whereObject);
+        ResultSet resultSet = BaseDao.find_by_sql(query, whereObject);
         try {
             boolean bool = resultSet.next();
             resultSet.close();
-            return bool ;
-        }catch (Exception e){
+            return bool;
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return false;
@@ -53,7 +53,7 @@ public class AccountDao {
         try {
             if (rs.next()) {
                 int accountType = rs.getInt("account_type");
-                Account account = new Account(rs.getInt("id"), rs.getString("email"), rs.getString("phone_number"), AccountType.fromCode(accountType));
+                Account account = new Account(rs.getInt("id"), rs.getString("email"), rs.getString("password"), rs.getString("phone_number"), AccountType.fromCode(accountType));
                 rs.close();
                 return account;
             }

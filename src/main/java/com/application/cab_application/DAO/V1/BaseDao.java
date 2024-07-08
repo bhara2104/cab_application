@@ -50,7 +50,8 @@ public class BaseDao {
 
     public static boolean update(Map<String, Object> fields, String tableName, int id) {
         String updateStatement = String.join(" , ", fields.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
-        String sql = "Update " + tableName + "set " + updateStatement + " where id = ?";
+        String sql = "Update " + tableName + " set " + updateStatement + " where id = ?";
+        System.out.println(sql);
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -121,13 +122,15 @@ public class BaseDao {
     }
 
     public static ResultSet find_by(String tableName, String fieldName, Object value) {
-        String sql = "select * from " + tableName + " where" +fieldName+" = ?";
+        String sql = "select * from " + tableName + " where " +fieldName+" = ?";
         ResultSet resultSet;
+        System.out.println(sql);
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1,value);
             resultSet = preparedStatement.executeQuery();
+            return resultSet ;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -153,7 +156,7 @@ public class BaseDao {
     public static ResultSet find_chain(String tableName, Map<String, Object> whereChain) {
         String whereChainQuery = String.join(" and ", whereChain.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         ResultSet resultSet;
-        String sql = "select * from " + tableName + "where " + whereChain;
+        String sql = "select * from " + tableName + " where " + whereChainQuery;
         System.out.println(sql);
         try {
             Connection connection = connectionPool.getConnection();
