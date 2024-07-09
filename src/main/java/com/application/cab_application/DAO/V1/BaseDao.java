@@ -212,7 +212,7 @@ public class BaseDao {
 
     public static ResultSet find_by_sql(String sql, Map<String, Object> fields) {
         ResultSet resultSet;
-        Connection connection;
+        Connection connection = null;
         try {
             connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);

@@ -38,7 +38,20 @@ public class Account {
         if(!checkValidAccountType(account.getAccountType())){
             errors.add("Enter Valid Account Type");
         }
+        if(!checkValidPhoneNumber(account.getPhoneNumber())){
+            errors.add("Enter Valid Phone Number");
+        }
         return errors;
+    }
+
+    private static boolean checkValidPhoneNumber(String phoneNumber) {
+        String phoneRegx = "^(\\+\\d{1,2}\\s?)?1?\\-?\\.?\\s?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$";
+        Pattern pat = Pattern.compile(phoneRegx);
+        if(phoneNumber == null){
+            return false;
+        }else{
+            return pat.matcher(phoneNumber).matches();
+        }
     }
 
     public static Boolean checkValidAccountType(AccountType accountType){
