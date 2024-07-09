@@ -39,7 +39,6 @@ public class BaseDao {
                 resultSet.next();
                 int value = resultSet.getInt(1);
                 resultSet.close();
-                connectionPool.removeConnection(connection);
                 return value;
             }
         } catch (Exception e) {
@@ -79,8 +78,9 @@ public class BaseDao {
 
     public static boolean updateColumn(String columnName, Object value, String tableName, Integer id) {
         String sql = "update " + tableName + " set " + columnName + " = ? where id = ?";
+        Connection connection = null;
         try {
-            Connection connection = connectionPool.getConnection();
+            connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, value);
             preparedStatement.setObject(2, id);
@@ -88,14 +88,19 @@ public class BaseDao {
             return affectedRows > 0;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            if (connection != null) {
+                connectionPool.removeConnection(connection);
+            }
         }
         return false;
     }
 
     public static boolean updateColumn(String columnName, Object value, String tableName, String whereColumn, Object whereValue) {
         String sql = "update " + tableName + " set " + columnName + " = ? where " + whereColumn + " = ?";
+        Connection connection = null;
         try {
-            Connection connection = connectionPool.getConnection();
+            connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, value);
             preparedStatement.setObject(2, whereValue);
@@ -104,6 +109,10 @@ public class BaseDao {
             return affectedRows > 0;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            if (connection != null) {
+                connectionPool.removeConnection(connection);
+            }
         }
         return false;
     }
@@ -112,8 +121,9 @@ public class BaseDao {
         String updateStatement = String.join(" , ", fields.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         String whereQuery = String.join(" and ", whereClause.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         String sql = "Update " + tableName + " set " + updateStatement + " where " + whereQuery;
+        Connection connection = null;
         try {
-            Connection connection = connectionPool.getConnection();
+            connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             int idx = 1;
             for (Object object : fields.values()) {
@@ -127,6 +137,10 @@ public class BaseDao {
             return affectedRows > 0;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            if (connection != null) {
+                connectionPool.removeConnection(connection);
+            }
         }
         return false;
     }
@@ -135,15 +149,19 @@ public class BaseDao {
         String sql = "select * from " + tableName + " where " + fieldName + " = ?";
         ResultSet resultSet;
         System.out.println(sql);
+        Connection connection = null;
         try {
-            Connection connection = connectionPool.getConnection();
+            connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, value);
             resultSet = preparedStatement.executeQuery();
-            connectionPool.removeConnection(connection);
             return resultSet;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            if (connection != null) {
+                connectionPool.removeConnection(connection);
+            }
         }
         return null;
     }
@@ -151,8 +169,9 @@ public class BaseDao {
     public static ResultSet find(int id, String tableName) {
         String sql = "select * from " + tableName + " where id = ?";
         ResultSet resultSet;
+        Connection connection = null;
         try {
-            Connection connection = connectionPool.getConnection();
+            connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
@@ -160,6 +179,10 @@ public class BaseDao {
             return resultSet;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            if (connection != null) {
+                connectionPool.removeConnection(connection);
+            }
         }
         return null;
     }
@@ -168,27 +191,30 @@ public class BaseDao {
         String whereChainQuery = String.join(" and ", whereChain.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         ResultSet resultSet;
         String sql = "select * from " + tableName + " where " + whereChainQuery;
+        Connection connection = null;
         System.out.println(sql);
         try {
-            Connection connection = connectionPool.getConnection();
+            connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             int inc = 1;
             for (Object object : whereChain.values()) {
                 preparedStatement.setObject(inc++, object);
             }
             resultSet = preparedStatement.executeQuery();
-            connectionPool.removeConnection(connection);
             return resultSet;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            if (connection != null) connectionPool.removeConnection(connection);
         }
         return null;
     }
 
     public static ResultSet find_by_sql(String sql, Map<String, Object> fields) {
         ResultSet resultSet;
+        Connection connection;
         try {
-            Connection connection = connectionPool.getConnection();
+            connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             int idx = 1;
             for (Object object : fields.values()) {
@@ -199,21 +225,26 @@ public class BaseDao {
             return resultSet;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            if (connection != null) connectionPool.removeConnection(connection);
         }
         return null;
     }
 
     public static ResultSet all(String tableName) {
         String sql = "select * from " + tableName;
+        Connection connection = null;
         ResultSet resultSet;
         try {
-            Connection connection = connectionPool.getConnection();
+            connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             connectionPool.removeConnection(connection);
             return resultSet;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            connectionPool.removeConnection(connection);
         }
         return null;
     }
