@@ -10,11 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Start Time missed in mapped added that in the mapper">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/AccountDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/AccountDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" afterDir="false" />
-    </list>
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Winding up" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -291,15 +287,7 @@
       <workItem from="1720158017618" duration="23000" />
       <workItem from="1720164590762" duration="1181000" />
       <workItem from="1720410879712" duration="11836000" />
-      <workItem from="1720426211143" duration="7917000" />
-    </task>
-    <task id="LOCAL-00113" summary="Added Necessary methods to end ride">
-      <option name="closed" value="true" />
-      <created>1719821348873</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1719821348873</updated>
+      <workItem from="1720426211143" duration="7949000" />
     </task>
     <task id="LOCAL-00114" summary="Driver and rider servlet current ride id updates included">
       <option name="closed" value="true" />
@@ -685,7 +673,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720422967131</updated>
     </task>
-    <option name="localTasksCounter" value="162" />
+    <task id="LOCAL-00162" summary="Winding up">
+      <option name="closed" value="true" />
+      <created>1720438598091</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1720438598091</updated>
+    </task>
+    <option name="localTasksCounter" value="163" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,7 +703,6 @@
     <MESSAGE value="Completed upto vehicle dao still rides and ride details pending" />
     <MESSAGE value="Ride Details DAO conversion" />
     <MESSAGE value="ride details dao completed need to work on rides dao" />
-    <MESSAGE value="Winding up" />
     <MESSAGE value="Done with Base DAO" />
     <MESSAGE value="Updated servlets with new Connection pool logic" />
     <MESSAGE value="Migrated to Connection pool with the query generator base DAO" />
@@ -718,7 +713,8 @@
     <MESSAGE value="Connection Pool Fix" />
     <MESSAGE value="Connection pool revoked after sending result set" />
     <MESSAGE value="Start Time missed in mapped added that in the mapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start Time missed in mapped added that in the mapper" />
+    <MESSAGE value="Winding up" />
+    <option name="LAST_COMMIT_MESSAGE" value="Winding up" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

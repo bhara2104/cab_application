@@ -25,7 +25,7 @@ public class BaseDao {
         String params = String.join(" , ", fields.keySet().stream().map(key -> "?").toArray(String[]::new));
         String sql = "Insert into " + tableName + "(" + columns + ") values (" + params + ")";
         ResultSet resultSet;
-        Connection connection;
+        Connection connection = null;
         try {
             connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -44,6 +44,10 @@ public class BaseDao {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            if (connection != null) {
+                connectionPool.removeConnection(connection);
+            }
         }
         return 0;
     }
@@ -52,8 +56,9 @@ public class BaseDao {
         String updateStatement = String.join(" , ", fields.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         String sql = "Update " + tableName + " set " + updateStatement + " where id = ?";
         System.out.println(sql);
+        Connection connection = null;
         try {
-            Connection connection = connectionPool.getConnection();
+            connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             int idx = 1;
             for (Object object : fields.values()) {
@@ -61,10 +66,13 @@ public class BaseDao {
             }
             preparedStatement.setInt(idx, id);
             int affectedRows = preparedStatement.executeUpdate();
-            connectionPool.removeConnection(connection);
             return affectedRows > 0;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            if (connection != null) {
+                connectionPool.removeConnection(connection);
+            }
         }
         return false;
     }
@@ -124,16 +132,16 @@ public class BaseDao {
     }
 
     public static ResultSet find_by(String tableName, String fieldName, Object value) {
-        String sql = "select * from " + tableName + " where " +fieldName+" = ?";
+        String sql = "select * from " + tableName + " where " + fieldName + " = ?";
         ResultSet resultSet;
         System.out.println(sql);
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setObject(1,value);
+            preparedStatement.setObject(1, value);
             resultSet = preparedStatement.executeQuery();
             connectionPool.removeConnection(connection);
-            return resultSet ;
+            return resultSet;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -164,8 +172,8 @@ public class BaseDao {
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            int inc = 1 ;
-            for(Object object : whereChain.values()){
+            int inc = 1;
+            for (Object object : whereChain.values()) {
                 preparedStatement.setObject(inc++, object);
             }
             resultSet = preparedStatement.executeQuery();
@@ -195,16 +203,16 @@ public class BaseDao {
         return null;
     }
 
-    public static ResultSet all(String tableName){
+    public static ResultSet all(String tableName) {
         String sql = "select * from " + tableName;
-        ResultSet resultSet ;
+        ResultSet resultSet;
         try {
             Connection connection = connectionPool.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             connectionPool.removeConnection(connection);
-            return resultSet ;
-        }catch (Exception e){
+            return resultSet;
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;
