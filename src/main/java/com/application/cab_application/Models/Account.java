@@ -45,7 +45,7 @@ public class Account {
     }
 
     private static boolean checkValidPhoneNumber(String phoneNumber) {
-        String phoneRegx = "^(\\+\\d{1,2}\\s?)?1?\\-?\\.?\\s?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$";
+        String phoneRegx = "^\\d{10}$";
         Pattern pat = Pattern.compile(phoneRegx);
         if(phoneNumber == null){
             return false;
