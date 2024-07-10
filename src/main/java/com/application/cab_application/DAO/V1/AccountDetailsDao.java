@@ -37,7 +37,7 @@ public class AccountDetailsDao {
             }else{
                 accountDetails = new AccountDetails();
             }
-            resultSet.close();
+            resultSet.getStatement().close();
             return accountDetails;
         } catch (Exception e) {
             System.out.println(e.getMessage());

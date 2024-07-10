@@ -10,21 +10,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Phone Number pattern matching">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Ride status and ride details mismatch">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RidesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RidesDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/AccountDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/AccountDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/AccountDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Bill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/DriverDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/DriverDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Rating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Ride.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Ride.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/RideDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/RideDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/UpiData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/UpiData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/UpiPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/UpiPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Models/Vehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/AccountDetailsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/AccountDetailsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BillsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BillsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/DriverDetailsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/DriverDetailsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/LocationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/LocationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/PaymentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/PaymentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RidesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RidesDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/UpiDataDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/UpiDataDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/VehicleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/VehicleDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +97,7 @@
     &quot;Maven.cab_application [package].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Tomcat Server.Tomcat 10.1.24.executor&quot;: &quot;Run&quot;,
-    &quot;Tomcat Server.Tomcat 10.1.25.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.25.executor&quot;: &quot;Debug&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -107,7 +105,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
@@ -172,11 +170,11 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="ba7f8ef9-876f-45d0-998e-f6983fc823ba" />
+        <option name="BASE_DIRECTORY_NAME" value="de774c37-ef46-420c-aca6-8eb3a1ec0508" />
       </server-settings>
-      <log_file alias="Tomcat Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/manager.*" />
-      <log_file alias="Tomcat Host Manager Log" path="%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*" />
-      <log_file alias="Tomcat Localhost Access Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*" />
+      <log_file alias="Tomcat Manager Log" path="$USER_HOME$/Library/Caches/JetBrains/IntelliJIdea2024.1/tomcat/ba7f8ef9-876f-45d0-998e-f6983fc823ba/logs/manager.*" />
+      <log_file alias="Tomcat Host Manager Log" path="$USER_HOME$/Library/Caches/JetBrains/IntelliJIdea2024.1/tomcat/ba7f8ef9-876f-45d0-998e-f6983fc823ba/logs/host-manager.*" />
+      <log_file alias="Tomcat Localhost Access Log" path="$USER_HOME$/Library/Caches/JetBrains/IntelliJIdea2024.1/tomcat/ba7f8ef9-876f-45d0-998e-f6983fc823ba/logs/localhost_access_log.*" />
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
       <RunnerSettings RunnerId="Debug">
@@ -307,63 +305,10 @@
       <workItem from="1720512462172" duration="114000" />
       <workItem from="1720527094237" duration="2532000" />
       <workItem from="1720530041814" duration="2630000" />
-      <workItem from="1720584702876" duration="387000" />
-    </task>
-    <task id="LOCAL-00118" summary="Rating Servlet Added">
-      <option name="closed" value="true" />
-      <created>1719896130598</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1719896130598</updated>
-    </task>
-    <task id="LOCAL-00119" summary="Validation for RideID">
-      <option name="closed" value="true" />
-      <created>1719899644417</created>
-      <option name="number" value="00119" />
-      <option name="presentableId" value="LOCAL-00119" />
-      <option name="project" value="LOCAL" />
-      <updated>1719899644418</updated>
-    </task>
-    <task id="LOCAL-00120" summary="Winding up backend">
-      <option name="closed" value="true" />
-      <created>1719909664333</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
-      <option name="project" value="LOCAL" />
-      <updated>1719909664333</updated>
-    </task>
-    <task id="LOCAL-00121" summary="Validation's Added">
-      <option name="closed" value="true" />
-      <created>1719917992398</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1719917992398</updated>
-    </task>
-    <task id="LOCAL-00122" summary="Validation and update driver location API">
-      <option name="closed" value="true" />
-      <created>1719918434448</created>
-      <option name="number" value="00122" />
-      <option name="presentableId" value="LOCAL-00122" />
-      <option name="project" value="LOCAL" />
-      <updated>1719918434448</updated>
-    </task>
-    <task id="LOCAL-00123" summary="Error Resolved">
-      <option name="closed" value="true" />
-      <created>1719918500551</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1719918500551</updated>
-    </task>
-    <task id="LOCAL-00124" summary="Account Type validation">
-      <option name="closed" value="true" />
-      <created>1719918915810</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1719918915810</updated>
+      <workItem from="1720584702876" duration="1991000" />
+      <workItem from="1720586848113" duration="6705000" />
+      <workItem from="1720604242388" duration="9437000" />
+      <workItem from="1720619849589" duration="511000" />
     </task>
     <task id="LOCAL-00125" summary="Driver Validations">
       <option name="closed" value="true" />
@@ -701,20 +646,81 @@
       <option name="project" value="LOCAL" />
       <updated>1720530768421</updated>
     </task>
-    <option name="localTasksCounter" value="167" />
+    <task id="LOCAL-00167" summary="Added Linked Hash map to get ride of order issues">
+      <option name="closed" value="true" />
+      <created>1720585106150</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1720585106150</updated>
+    </task>
+    <task id="LOCAL-00168" summary="Account validation">
+      <option name="closed" value="true" />
+      <created>1720585784401</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1720585784401</updated>
+    </task>
+    <task id="LOCAL-00169" summary="VerifySession API">
+      <option name="closed" value="true" />
+      <created>1720592064854</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1720592064854</updated>
+    </task>
+    <task id="LOCAL-00170" summary="Added Verify Session API in each page to check whether the session exist or not">
+      <option name="closed" value="true" />
+      <created>1720594991313</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1720594991313</updated>
+    </task>
+    <task id="LOCAL-00171" summary="Added Verify Session API in each page to check whether the session exist or not">
+      <option name="closed" value="true" />
+      <created>1720606772232</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1720606772233</updated>
+    </task>
+    <task id="LOCAL-00172" summary="Changed the position of the return">
+      <option name="closed" value="true" />
+      <created>1720609926922</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1720609926923</updated>
+    </task>
+    <task id="LOCAL-00173" summary="Ride status and ride details mismatch">
+      <option name="closed" value="true" />
+      <created>1720610523775</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1720610523775</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Changed the maximum pool size to 30 as it needs to dynamically update some times" />
-    <MESSAGE value="base Dao config" />
-    <MESSAGE value="create method for base dao" />
-    <MESSAGE value="Completed create and update methods in where clause" />
-    <MESSAGE value="Dynamic Query Generator" />
-    <MESSAGE value="Winding up base dao" />
     <MESSAGE value="Completed DAO for two files" />
     <MESSAGE value="Bills Dao added and updated base dao to support update column on a specific field" />
     <MESSAGE value="Completed till payments Dao v1 with reusable sql done" />
@@ -734,7 +740,24 @@
     <MESSAGE value="Winding up" />
     <MESSAGE value="Finally block" />
     <MESSAGE value="Phone Number pattern matching" />
-    <option name="LAST_COMMIT_MESSAGE" value="Phone Number pattern matching" />
+    <MESSAGE value="Added Linked Hash map to get ride of order issues" />
+    <MESSAGE value="Account validation" />
+    <MESSAGE value="VerifySession API" />
+    <MESSAGE value="Added Verify Session API in each page to check whether the session exist or not" />
+    <MESSAGE value="Changed the position of the return" />
+    <MESSAGE value="Ride status and ride details mismatch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ride status and ride details mismatch" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverLoginServlet.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

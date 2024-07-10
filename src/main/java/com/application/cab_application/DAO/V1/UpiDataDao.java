@@ -24,7 +24,7 @@ public class UpiDataDao {
             while (resultSet.next()) {
                 upiDataList.add(new UpiData(resultSet.getInt("id"), resultSet.getInt("account_id"), resultSet.getString("upi_id")));
             }
-            resultSet.close();
+            resultSet.getStatement().close();
             return upiDataList ;
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -36,7 +36,7 @@ public class UpiDataDao {
         ResultSet resultSet = BaseDao.find_by("upi_datas", "upi_id", upiID);
         try {
             boolean bool = resultSet.next();
-            resultSet.close();
+            resultSet.getStatement().close();
             return bool;
         }catch (Exception e){
             System.out.println(e.getMessage());

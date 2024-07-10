@@ -32,7 +32,7 @@ public class VehicleDao {
             }else{
                 vehicle = new Vehicle();
             }
-            resultSet.close();
+            resultSet.getStatement().close();
             return vehicle ;
         }catch (Exception e){
             System.out.println(e.getMessage());

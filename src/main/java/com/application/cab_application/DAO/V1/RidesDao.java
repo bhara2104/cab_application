@@ -44,7 +44,7 @@ public class RidesDao {
             }else{
                 ride = new Ride();
             }
-            resultSet.close();
+            resultSet.getStatement().close();
             return ride ;
         } catch (Exception e) {
             System.out.println(e.getMessage());

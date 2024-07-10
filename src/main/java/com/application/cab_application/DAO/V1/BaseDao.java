@@ -24,7 +24,7 @@ public class BaseDao {
         String columns = String.join(" , ", fields.keySet());
         String params = String.join(" , ", fields.keySet().stream().map(key -> "?").toArray(String[]::new));
         String sql = "Insert into " + tableName + "(" + columns + ") values (" + params + ")";
-        ResultSet resultSet;
+        ResultSet resultSet = null;
         Connection connection = null;
         try {
             connection = connectionPool.getConnection();
@@ -38,7 +38,6 @@ public class BaseDao {
                 resultSet = preparedStatement.getGeneratedKeys();
                 resultSet.next();
                 int value = resultSet.getInt(1);
-                resultSet.close();
                 return value;
             }
         } catch (Exception e) {
@@ -46,6 +45,11 @@ public class BaseDao {
         } finally {
             if (connection != null) {
                 connectionPool.removeConnection(connection);
+                try {
+                    if (resultSet != null) resultSet.getStatement().close();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
         return 0;
@@ -56,9 +60,10 @@ public class BaseDao {
         String sql = "Update " + tableName + " set " + updateStatement + " where id = ?";
         System.out.println(sql);
         Connection connection = null;
+        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement = connection.prepareStatement(sql);
             int idx = 1;
             for (Object object : fields.values()) {
                 preparedStatement.setObject(idx++, object);
@@ -71,6 +76,11 @@ public class BaseDao {
         } finally {
             if (connection != null) {
                 connectionPool.removeConnection(connection);
+                try {
+                    if (preparedStatement != null) preparedStatement.close();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
         return false;
@@ -79,9 +89,10 @@ public class BaseDao {
     public static boolean updateColumn(String columnName, Object value, String tableName, Integer id) {
         String sql = "update " + tableName + " set " + columnName + " = ? where id = ?";
         Connection connection = null;
+        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, value);
             preparedStatement.setObject(2, id);
             int affectedRows = preparedStatement.executeUpdate();
@@ -91,6 +102,11 @@ public class BaseDao {
         } finally {
             if (connection != null) {
                 connectionPool.removeConnection(connection);
+                try {
+                    if (preparedStatement != null) preparedStatement.close();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
         return false;
@@ -99,9 +115,10 @@ public class BaseDao {
     public static boolean updateColumn(String columnName, Object value, String tableName, String whereColumn, Object whereValue) {
         String sql = "update " + tableName + " set " + columnName + " = ? where " + whereColumn + " = ?";
         Connection connection = null;
+        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, value);
             preparedStatement.setObject(2, whereValue);
             int affectedRows = preparedStatement.executeUpdate();
@@ -112,6 +129,11 @@ public class BaseDao {
         } finally {
             if (connection != null) {
                 connectionPool.removeConnection(connection);
+                try {
+                    if (preparedStatement != null) preparedStatement.close();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
         return false;
@@ -122,9 +144,10 @@ public class BaseDao {
         String whereQuery = String.join(" and ", whereClause.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         String sql = "Update " + tableName + " set " + updateStatement + " where " + whereQuery;
         Connection connection = null;
+        PreparedStatement preparedStatement = null;
         try {
             connection = connectionPool.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement = connection.prepareStatement(sql);
             int idx = 1;
             for (Object object : fields.values()) {
                 preparedStatement.setObject(idx++, object);
@@ -140,6 +163,11 @@ public class BaseDao {
         } finally {
             if (connection != null) {
                 connectionPool.removeConnection(connection);
+                try {
+                    if (preparedStatement != null) preparedStatement.close();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
         return false;

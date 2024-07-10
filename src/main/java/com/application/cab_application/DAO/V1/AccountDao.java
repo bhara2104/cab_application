@@ -40,7 +40,7 @@ public class AccountDao {
         ResultSet resultSet = BaseDao.find_by_sql(query, whereObject);
         try {
             boolean bool = resultSet.next();
-            resultSet.close();
+            resultSet.getStatement().close();
             return bool;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -53,7 +53,7 @@ public class AccountDao {
             if (rs.next()) {
                 int accountType = rs.getInt("account_type");
                 Account account = new Account(rs.getInt("id"), rs.getString("email"), rs.getString("password"), rs.getString("phone_number"), AccountType.fromCode(accountType));
-                rs.close();
+                rs.getStatement().close();
                 return account;
             }
         } catch (Exception e) {

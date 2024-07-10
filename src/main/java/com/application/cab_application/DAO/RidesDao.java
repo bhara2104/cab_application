@@ -125,6 +125,10 @@ public class RidesDao {
                 if (account_type.equals("RIDER") && rideDetails.getRequestStatus() != RequestStatus.CANCELLED && ride.getDriverId() != 0) {
                     DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(ride.getDriverId());
                     AccountDetails accountDetails = AccountDetailsDao.getAccountDetailsByAccountID(ride.getDriverId());
+                    Bill bill = BillsDao.getBillRideID(ride.getId());
+                    if(rideDetails.getRequestStatus() == RequestStatus.ENDED && bill.getId()!=0){
+                        jsonObjectRide.addProperty("bill_amount", bill.getBillAmount());
+                    }
                     Vehicle vehicle = VehicleDao.getVehicle(driverDetails.getVehicleId());
                     jsonObjectRide.addProperty("driver_name", accountDetails.getName());
                     jsonObjectRide.addProperty("driver_license", driverDetails.getLicenseNumber());

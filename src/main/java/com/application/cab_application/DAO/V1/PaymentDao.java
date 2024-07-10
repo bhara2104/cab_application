@@ -24,7 +24,7 @@ public class PaymentDao {
             } else {
                 payment = new Payment();
             }
-            resultSet.close();
+            resultSet.getStatement().close();
             return payment;
         } catch (Exception e) {
             System.out.println(e.getMessage());

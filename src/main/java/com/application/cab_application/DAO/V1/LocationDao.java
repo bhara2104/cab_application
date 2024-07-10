@@ -29,7 +29,7 @@ public class LocationDao {
             }else{
                 location = new Location();
             }
-            resultSet.close();
+            resultSet.getStatement().close();
             return location ;
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -46,7 +46,7 @@ public class LocationDao {
                         resultSet.getDouble("longitude"), resultSet.getString("landmark"),
                         resultSet.getString("city"), resultSet.getInt("pincode")));
             }
-            resultSet.close();
+            resultSet.getStatement().close();
             return locationList ;
         }catch (Exception e){
             System.out.println(e.getMessage());

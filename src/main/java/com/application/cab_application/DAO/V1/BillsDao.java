@@ -34,7 +34,7 @@ public class BillsDao {
             }else{
                 bill = new Bill();
             }
-            resultSet.close();
+            resultSet.getStatement().close();
             return bill;
         }catch (Exception e){
             System.out.println(e.getMessage());

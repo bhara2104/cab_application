@@ -30,7 +30,7 @@ public class DriverDetailsDao {
             }else{
                 driverDetails = new DriverDetails();
             }
-            rs.close();
+            rs.getStatement().close();
             return driverDetails;
         }catch (Exception e){
             System.out.println(e.getMessage());
