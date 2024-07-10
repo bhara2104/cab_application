@@ -38,12 +38,12 @@ public class AuthFilter extends HttpFilter {
                     chain.doFilter(request, response);
                     return;
                 } else {
-                    ((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "InValid Token");
+                    ((HttpServletResponse) response).setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 }
             }
 
 
-            ((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+            ((HttpServletResponse) response).setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
 }
