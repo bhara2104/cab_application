@@ -33,7 +33,7 @@ public class AccountDao {
 
     public static Boolean checkAccountExists(Account account) {
         Map<String, Object> whereObject = new LinkedHashMap<>();
-        whereObject.put("account_type", account.getAccountType());
+        whereObject.put("account_type", account.getAccountType().getCode());
         whereObject.put("phone_number", account.getPhoneNumber());
         whereObject.put("email", account.getEmail());
         String query = "Select * from accounts where account_type = ? and (phone_number = ? or email = ?)";
