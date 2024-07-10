@@ -4,6 +4,7 @@ import com.application.cab_application.enums.PaymentType;
 
 import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Payment {
@@ -37,7 +38,7 @@ public class Payment {
     }
 
     public Map<String, Object> paymentTableMapper() {
-        Map<String, Object> paymentMapper = new HashMap<>();
+        Map<String, Object> paymentMapper = new LinkedHashMap<>();
         paymentMapper.put("payment_type", paymentType.getCode());
         paymentMapper.put("payment_date", paymentDate);
         return paymentMapper;

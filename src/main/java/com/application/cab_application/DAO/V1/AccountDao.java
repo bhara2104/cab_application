@@ -8,6 +8,7 @@ import org.checkerframework.checker.units.qual.A;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static java.util.Map.entry;
@@ -23,20 +24,18 @@ public class AccountDao {
     }
 
     public static Account getAccountByEmail(String email, int type) {
-        Map<String, Object> whereObject = Map.ofEntries(
-                entry("email", email),
-                entry("account_type", type)
-        );
+        Map<String, Object> whereObject = new LinkedHashMap<>();
+        whereObject.put("email", email);
+        whereObject.put("account_type",type);
         ResultSet resultSet = BaseDao.find_chain("accounts", whereObject);
         return accountMapper(resultSet);
     }
 
     public static Boolean checkAccountExists(Account account) {
-        Map<String, Object> whereObject = Map.ofEntries(
-                entry("account_type", account.getAccountType()),
-                entry("phone_number", account.getPhoneNumber()),
-                entry("email", account.getEmail())
-        );
+        Map<String, Object> whereObject = new LinkedHashMap<>();
+        whereObject.put("account_type", account.getAccountType());
+        whereObject.put("phone_number", account.getPhoneNumber());
+        whereObject.put("email", account.getEmail());
         String query = "Select * from accounts where account_type = ? and (phone_number = ? or email = ?)";
         ResultSet resultSet = BaseDao.find_by_sql(query, whereObject);
         try {

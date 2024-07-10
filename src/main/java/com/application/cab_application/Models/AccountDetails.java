@@ -3,10 +3,7 @@ package com.application.cab_application.Models;
 import com.application.cab_application.DAO.RidesDao;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AccountDetails {
     private int id;
@@ -88,7 +85,7 @@ public class AccountDetails {
     }
 
     public Map<String, Object> objectMap() {
-        Map<String, Object> accountDetailsTableMapping = new HashMap<>();
+        Map<String, Object> accountDetailsTableMapping = new LinkedHashMap<>();
         accountDetailsTableMapping.put("account_id", accountId);
         accountDetailsTableMapping.put("name", name);
         accountDetailsTableMapping.put("address", address);

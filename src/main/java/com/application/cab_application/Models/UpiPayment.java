@@ -1,6 +1,7 @@
 package com.application.cab_application.Models;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class UpiPayment {
@@ -36,7 +37,7 @@ public class UpiPayment {
     }
 
     public Map<String ,Object> upiMapper(){
-        Map<String, Object> upiPaymentMapper = new HashMap<>();
+        Map<String, Object> upiPaymentMapper = new LinkedHashMap<>();
         upiPaymentMapper.put("upi_id", upiID);
         upiPaymentMapper.put("payment_id", paymentID);
         return upiPaymentMapper;

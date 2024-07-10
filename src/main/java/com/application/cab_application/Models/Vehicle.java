@@ -3,6 +3,7 @@ package com.application.cab_application.Models;
 import com.application.cab_application.enums.VehicleType;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Vehicle {
@@ -75,7 +76,7 @@ public class Vehicle {
     }
 
     public Map<String, Object> vehicleTableMapper(){
-        Map<String, Object> vehicleMapper = new HashMap<>();
+        Map<String, Object> vehicleMapper = new LinkedHashMap<>();
         vehicleMapper.put("vehicle_type", vehicleType.getCode());
         vehicleMapper.put("vehicle_number", vehicleNumber);
         vehicleMapper.put("brand", brand);

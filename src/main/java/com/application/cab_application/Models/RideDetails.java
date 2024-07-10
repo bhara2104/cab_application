@@ -5,6 +5,7 @@ import com.application.cab_application.enums.VehicleType;
 
 import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class RideDetails {
@@ -80,7 +81,7 @@ public class RideDetails {
     }
 
     public Map<String, Object> rideDetailsMapper(){
-        Map<String, Object> rideDetailsMap = new HashMap<>();
+        Map<String, Object> rideDetailsMap = new LinkedHashMap<>();
         rideDetailsMap.put("from_location_id", fromLocation);
         rideDetailsMap.put("to_location_id", toLocation);
         rideDetailsMap.put("ride_status", requestStatus.getCode());

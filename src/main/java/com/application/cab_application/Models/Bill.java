@@ -1,6 +1,7 @@
 package com.application.cab_application.Models;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Bill {
@@ -45,7 +46,7 @@ public class Bill {
     }
 
     public Map<String, Object> billTableObject(){
-        Map<String, Object> billObject = new HashMap<>() ;
+        Map<String, Object> billObject = new LinkedHashMap<>() ;
         billObject.put("ride_id",rideID);
         billObject.put("bill_amount", billAmount);
         billObject.put("payment_id", paymentId);

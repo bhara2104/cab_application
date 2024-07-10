@@ -4,10 +4,7 @@ import com.application.cab_application.enums.AccountType;
 import org.apache.commons.collections.map.HashedMap;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Account {
@@ -128,7 +125,7 @@ public class Account {
     }
 
     public Map<String, Object> objectMap(){
-        Map<String, Object> accountTableMapping = new HashMap<>();
+        Map<String, Object> accountTableMapping = new LinkedHashMap<>();
         accountTableMapping.put("email",email);
         accountTableMapping.put("password", password);
         accountTableMapping.put("account_type", accountType.getCode());

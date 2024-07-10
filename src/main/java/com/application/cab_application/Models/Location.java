@@ -1,6 +1,7 @@
 package com.application.cab_application.Models;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Location {
@@ -49,7 +50,7 @@ public class Location {
     }
 
     public Map<String, Object> locationMapping(){
-        Map<String, Object> locationMapped = new HashMap<>();
+        Map<String, Object> locationMapped = new LinkedHashMap<>();
         locationMapped.put("city", city);
         locationMapped.put("latitude", latitude);
         locationMapped.put("longitude", longitude);

@@ -1,6 +1,7 @@
 package com.application.cab_application.Models;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Ride {
@@ -35,7 +36,7 @@ public class Ride {
     }
 
     public Map<String, Object> rideTableMapper(){
-        Map<String, Object> rideMapper = new HashMap<>();
+        Map<String, Object> rideMapper = new LinkedHashMap<>();
         rideMapper.put("driver_id", DriverId);
         rideMapper.put("rider_id", RiderId);
         return rideMapper ;

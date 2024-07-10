@@ -1,6 +1,7 @@
 package com.application.cab_application.Models;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Rating {
@@ -42,7 +43,7 @@ public class Rating {
     }
 
     public Map<String, Object> ratingTableMapper(){
-        Map<String, Object> ratingMapper = new HashMap<>();
+        Map<String, Object> ratingMapper = new LinkedHashMap<>();
         ratingMapper.put("rating_value" , ratingValue);
         ratingMapper.put("comments", comments);
         ratingMapper.put("ride_id", rideID);

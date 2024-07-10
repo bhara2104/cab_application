@@ -2,6 +2,7 @@ package com.application.cab_application.Models;
 
 import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class DriverDetails {
@@ -74,7 +75,7 @@ public class DriverDetails {
     }
 
     public Map<String, Object> driverDetailsObject(){
-        Map<String , Object> driverDetailsMapping = new HashMap<>();
+        Map<String , Object> driverDetailsMapping = new LinkedHashMap<>();
         driverDetailsMapping.put("account_id",accountID);
         driverDetailsMapping.put("license_number", licenseNumber) ;
         driverDetailsMapping.put("availability", availability);
