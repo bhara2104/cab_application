@@ -46,4 +46,11 @@ public class AccountServlet extends HttpServlet {
             printWriter.write("{\"message\":\"Account creation not successful\"}");
         }
     }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter printWriter = response.getWriter();
+        printWriter.write("{\"success\":\"True\"}");
+    }
 }
