@@ -24,7 +24,7 @@ public class RideDetailsDao {
     }
 
     public static void updateRideStatus(int id, RequestStatus requestStatus) {
-        BaseDao.updateColumn("ride_details", requestStatus.getCode(), "ride_status", id);
+        BaseDao.updateColumn("ride_status", requestStatus.getCode(), "ride_details", id);
     }
 
     public static RideDetails RideDetailsMapper(ResultSet resultSet){
