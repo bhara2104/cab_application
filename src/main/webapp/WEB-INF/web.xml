@@ -10,6 +10,7 @@
     <servlet-mapping>
         <servlet-name>AccountServlet</servlet-name>
         <url-pattern>/accounts/*</url-pattern>
+        <url-pattern>/verify_session</url-pattern>
     </servlet-mapping>
     
     <servlet>

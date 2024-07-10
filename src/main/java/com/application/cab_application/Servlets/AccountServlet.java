@@ -51,6 +51,6 @@ public class AccountServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
-        printWriter.write("{\"success\":\"True\"}");
+        printWriter.write("{\"success\":\"true\"}");
     }
 }
