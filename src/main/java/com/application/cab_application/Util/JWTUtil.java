@@ -42,15 +42,11 @@ public class JWTUtil {
             JWTVerifier jwtVerifier = JWT.require(ALGORITHM).build();
             DecodedJWT jwt = jwtVerifier.verify(token);
             Claim claim = jwt.getClaim("type");
-            if(claim.asString().equals("access")){
-                return true;
-            }else{
-                return false;
-            }
+            return claim.asString().equals("access");
         }catch (JWTVerificationException e){
             System.out.println(e.getMessage());
-            return false;
         }
+        return false;
     }
 
     public static boolean verifyRefreshToken(String token){
@@ -58,15 +54,11 @@ public class JWTUtil {
             JWTVerifier jwtVerifier = JWT.require(ALGORITHM).build();
             DecodedJWT jwt = jwtVerifier.verify(token);
             Claim claim = jwt.getClaim("type");
-            if(claim.asString().equals("refresh")){
-                return true;
-            }else{
-                return false;
-            }
+            return claim.asString().equals("refresh");
         }catch (JWTVerificationException e){
             System.out.println(e.getMessage());
-            return false;
         }
+        return false;
     }
 
     public static int getUserID(String token){
