@@ -1,5 +1,6 @@
 package com.application.cab_application.DAO.V1;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.Account;
 import com.application.cab_application.Util.DatabaseConnector;
 import com.application.cab_application.enums.AccountType;
@@ -19,7 +20,7 @@ public class AccountDao {
         return accountMapper(rs);
     }
 
-    public static int createAccount(Account account) {
+    public static int createAccount(Account account) throws DbNotReachableException {
         return BaseDao.create(account.objectMap(), "accounts");
     }
 

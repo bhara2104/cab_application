@@ -86,7 +86,7 @@ public class BaseDao {
         return false;
     }
 
-    public static boolean updateColumn(String columnName, Object value, String tableName, Integer id) {
+    public static boolean updateColumn(String columnName, Object value, String tableName, Integer id) throws DbNotReachableException{
         String sql = "update " + tableName + " set " + columnName + " = ? where id = ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -97,7 +97,7 @@ public class BaseDao {
             preparedStatement.setObject(2, id);
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
-        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
@@ -112,7 +112,7 @@ public class BaseDao {
         return false;
     }
 
-    public static boolean updateColumn(String columnName, Object value, String tableName, String whereColumn, Object whereValue) {
+    public static boolean updateColumn(String columnName, Object value, String tableName, String whereColumn, Object whereValue) throws DbNotReachableException{
         String sql = "update " + tableName + " set " + columnName + " = ? where " + whereColumn + " = ?";
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -123,7 +123,7 @@ public class BaseDao {
             preparedStatement.setObject(2, whereValue);
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
-        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
@@ -138,7 +138,7 @@ public class BaseDao {
         return false;
     }
 
-    public static boolean update(Map<String, Object> fields, String tableName, Map<String, Object> whereClause) {
+    public static boolean update(Map<String, Object> fields, String tableName, Map<String, Object> whereClause) throws DbNotReachableException {
         String updateStatement = String.join(" , ", fields.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         String whereQuery = String.join(" and ", whereClause.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         String sql = "Update " + tableName + " set " + updateStatement + " where " + whereQuery;
@@ -156,7 +156,7 @@ public class BaseDao {
             }
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
-        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
@@ -171,7 +171,7 @@ public class BaseDao {
         return false;
     }
 
-    public static ResultSet find_by(String tableName, String fieldName, Object value) {
+    public static ResultSet find_by(String tableName, String fieldName, Object value) throws DbNotReachableException {
         String sql = "select * from " + tableName + " where " + fieldName + " = ?";
         ResultSet resultSet;
         System.out.println(sql);
@@ -182,7 +182,7 @@ public class BaseDao {
             preparedStatement.setObject(1, value);
             resultSet = preparedStatement.executeQuery();
             return resultSet;
-        }catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
+        }catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }finally {
             if (connection != null) {
@@ -196,7 +196,7 @@ public class BaseDao {
         return null;
     }
 
-    public static ResultSet find(int id, String tableName) {
+    public static ResultSet find(int id, String tableName) throws DbNotReachableException{
         String sql = "select * from " + tableName + " where id = ?";
         ResultSet resultSet;
         Connection connection = null;
@@ -206,7 +206,7 @@ public class BaseDao {
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             return resultSet;
-        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
+        } catch (SQLException | ClassNotFoundException  e) {
             System.out.println(e.getMessage());
         } finally {
             try {
@@ -218,7 +218,7 @@ public class BaseDao {
         return null;
     }
 
-    public static ResultSet find_chain(String tableName, Map<String, Object> whereChain) {
+    public static ResultSet find_chain(String tableName, Map<String, Object> whereChain) throws DbNotReachableException{
         String whereChainQuery = String.join(" and ", whereChain.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         ResultSet resultSet;
         String sql = "select * from " + tableName + " where " + whereChainQuery;
@@ -233,7 +233,7 @@ public class BaseDao {
             }
             resultSet = preparedStatement.executeQuery();
             return resultSet;
-        }catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
+        }catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
@@ -247,7 +247,7 @@ public class BaseDao {
         return null;
     }
 
-    public static ResultSet find_by_sql(String sql, Map<String, Object> fields) {
+    public static ResultSet find_by_sql(String sql, Map<String, Object> fields) throws DbNotReachableException {
         ResultSet resultSet;
         Connection connection = null;
         try {
@@ -259,7 +259,7 @@ public class BaseDao {
             }
             resultSet = preparedStatement.executeQuery();
             return resultSet;
-        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
@@ -273,7 +273,7 @@ public class BaseDao {
         return null;
     }
 
-    public static ResultSet all(String tableName) {
+    public static ResultSet all(String tableName) throws DbNotReachableException{
         String sql = "select * from " + tableName;
         Connection connection = null;
         ResultSet resultSet;
@@ -282,7 +282,7 @@ public class BaseDao {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             return resultSet;
-        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
