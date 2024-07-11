@@ -10,19 +10,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Ride status and ride details mismatch">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Closed Result sets">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RidesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/RidesDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/AccountDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/AccountDetailsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/AccountDetailsDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BaseDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BillsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BillsDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/DriverDetailsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/DriverDetailsDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/LocationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/LocationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/PaymentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/PaymentDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RidesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RidesDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/UpiDataDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/UpiDataDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/VehicleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/VehicleDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,15 +298,7 @@
       <workItem from="1720584702876" duration="1991000" />
       <workItem from="1720586848113" duration="6705000" />
       <workItem from="1720604242388" duration="9437000" />
-      <workItem from="1720619849589" duration="511000" />
-    </task>
-    <task id="LOCAL-00125" summary="Driver Validations">
-      <option name="closed" value="true" />
-      <created>1719920432576</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1719920432576</updated>
+      <workItem from="1720619849589" duration="2412000" />
     </task>
     <task id="LOCAL-00126" summary="payment Servlet validation">
       <option name="closed" value="true" />
@@ -702,7 +684,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720610523775</updated>
     </task>
-    <option name="localTasksCounter" value="174" />
+    <task id="LOCAL-00174" summary="Closed Result sets">
+      <option name="closed" value="true" />
+      <created>1720620374285</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1720620374285</updated>
+    </task>
+    <option name="localTasksCounter" value="175" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -721,7 +711,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Completed DAO for two files" />
     <MESSAGE value="Bills Dao added and updated base dao to support update column on a specific field" />
     <MESSAGE value="Completed till payments Dao v1 with reusable sql done" />
     <MESSAGE value="Completed upto vehicle dao still rides and ride details pending" />
@@ -746,7 +735,8 @@
     <MESSAGE value="Added Verify Session API in each page to check whether the session exist or not" />
     <MESSAGE value="Changed the position of the return" />
     <MESSAGE value="Ride status and ride details mismatch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ride status and ride details mismatch" />
+    <MESSAGE value="Closed Result sets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Closed Result sets" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
