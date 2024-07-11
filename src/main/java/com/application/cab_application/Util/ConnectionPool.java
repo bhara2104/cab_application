@@ -11,7 +11,7 @@ import java.util.List;
 @SuppressWarnings("FieldMayBeFinal")
 public class ConnectionPool {
     private static final int POOL_SIZE = 10;
-    private static final int MAX_POOL_SIZE = 500;
+    private static final int MAX_POOL_SIZE = 50;
     private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking";
     private static final String USERNAME = "bharathkumar";
     private static final String PASSWORD = "Bharath123";
@@ -19,15 +19,16 @@ public class ConnectionPool {
     private List<Connection> usedConnections = new ArrayList<>();
     private static ConnectionPool connectionPoolClass = null;
 
-    public static void createConnectionPool() throws ClassNotFoundException, DbNotReachableException {
+    public static List<Connection> createConnectionPool() throws ClassNotFoundException, DbNotReachableException {
         List<Connection> pool = new ArrayList<>(POOL_SIZE);
         for (int i = 0; i < POOL_SIZE; i++) {
             pool.add(createConnection());
         }
+        return pool ;
     }
 
     public ConnectionPool() throws DbNotReachableException, ClassNotFoundException {
-        createConnectionPool();
+        connectionPool =  createConnectionPool();
     }
 
     public static synchronized ConnectionPool getConnectionPoolInstance() throws DbNotReachableException, ClassNotFoundException {
