@@ -24,17 +24,18 @@ public class ConnectionPool {
         for (int i = 0; i < POOL_SIZE; i++) {
             pool.add(createConnection());
         }
-        return pool ;
+        return pool;
     }
 
     public ConnectionPool() throws DbNotReachableException, ClassNotFoundException {
-        connectionPool =  createConnectionPool();
+        connectionPool = createConnectionPool();
     }
 
-    public static synchronized ConnectionPool getConnectionPoolInstance() throws DbNotReachableException, ClassNotFoundException {
-        if (connectionPoolClass == null)
-            return new ConnectionPool();
-        else
+    public static ConnectionPool getConnectionPoolInstance() throws DbNotReachableException, ClassNotFoundException {
+        if (connectionPoolClass == null) {
+            connectionPoolClass = new ConnectionPool();
+            return connectionPoolClass;
+        } else
             return connectionPoolClass;
     }
 
@@ -57,6 +58,7 @@ public class ConnectionPool {
         }
         Connection connection = connectionPool.remove(connectionPool.size() - 1);
         if (!connection.isValid(5)) {
+            connection.close();
             connection = createConnection();
         }
         usedConnections.add(connection);
@@ -64,7 +66,15 @@ public class ConnectionPool {
     }
 
     public void removeConnection(Connection connection) {
-        connectionPool.add(connection);
+        try {
+            if (!connection.isValid(5)) {
+                connection.close();
+            } else {
+                connectionPool.add(connection);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         usedConnections.remove(connection);
     }
 
