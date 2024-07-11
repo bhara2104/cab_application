@@ -32,12 +32,12 @@ public class DriverRideServlet extends HttpServlet {
             DriverDetails driverDetails = DriverDetailsDao.getDriverDetailsByAccountID(driverID);
             int locationId = driverDetails.getCurrentLocationId();
             Vehicle vehicle = VehicleDao.getVehicle(driverDetails.getVehicleId());
-            List<JsonObject> objectList = com.application.cab_application.DAO.RidesDao.getAvailableRides(locationId, vehicle.getVehicleType());
+            List<JsonObject> objectList = RidesDao.getAvailableRides(locationId, vehicle.getVehicleType());
             String responseValues = gson.toJson(objectList);
             response.setStatus(HttpServletResponse.SC_OK);
             writer.write(responseValues);
         } else {
-            List<JsonObject> objectList = com.application.cab_application.DAO.RidesDao.getAllRideDetails(driverID, "DRIVER");
+            List<JsonObject> objectList = RidesDao.getAllRideDetails(driverID, "DRIVER");
             String responseValues = gson.toJson(objectList);
             response.setStatus(HttpServletResponse.SC_OK);
             writer.write(responseValues);

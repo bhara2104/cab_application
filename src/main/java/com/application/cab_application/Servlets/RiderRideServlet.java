@@ -27,7 +27,7 @@ public class RiderRideServlet extends HttpServlet {
         int accountId = CurrentUserHelper.getAccount();
         response.setCharacterEncoding("UTF-8");
         PrintWriter writer = response.getWriter();
-        List<JsonObject> objectList = com.application.cab_application.DAO.RidesDao.getAllRideDetails(accountId,"RIDER");
+        List<JsonObject> objectList = RidesDao.getAllRideDetails(accountId,"RIDER");
         String responseValues = gson.toJson(objectList);
         response.setStatus(HttpServletResponse.SC_OK);
         writer.write(responseValues);

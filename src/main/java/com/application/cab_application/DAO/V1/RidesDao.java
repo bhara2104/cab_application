@@ -31,7 +31,6 @@ public class RidesDao {
     }
 
     public static List<JsonObject> getAllRideDetails(int account_id, String account_type) {
-        List<JsonObject> jsonObjects = new ArrayList<>();
         String sql;
         if (account_type.equals("DRIVER")) {
             sql = "SELECT \n" +
@@ -124,7 +123,6 @@ public class RidesDao {
     }
 
     public static List<JsonObject> getAvailableRides(int locationID, VehicleType vehicleType) {
-        List<JsonObject> jsonObjects = new ArrayList<>();
         String query = "SELECT \n" +
                 "    r.id, \n" +
                 "    r.driver_id, \n" +
@@ -148,7 +146,6 @@ public class RidesDao {
         map.put("vehicle_type", vehicleType.getCode());
         map.put("location_id", locationID);
         return availableRideMapper(BaseDao.find_by_sql(query, map));
-
     }
 
     public static ArrayList<JsonObject> availableRideMapper(ResultSet rs) {
