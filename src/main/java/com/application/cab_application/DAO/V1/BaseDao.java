@@ -42,8 +42,6 @@ public class BaseDao {
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
-        } catch (DbNotReachableException e) {
-            throw e;
         } finally {
             if (connection != null) {
                 try {
@@ -57,7 +55,7 @@ public class BaseDao {
         return 0;
     }
 
-    public static boolean update(Map<String, Object> fields, String tableName, int id) {
+    public static boolean update(Map<String, Object> fields, String tableName, int id) throws DbNotReachableException {
         String updateStatement = String.join(" , ", fields.keySet().stream().map(key -> key + "= ? ").toArray(String[]::new));
         String sql = "Update " + tableName + " set " + updateStatement + " where id = ?";
         System.out.println(sql);
@@ -73,7 +71,7 @@ public class BaseDao {
             preparedStatement.setInt(idx, id);
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
-        } catch (Exception e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
@@ -99,7 +97,7 @@ public class BaseDao {
             preparedStatement.setObject(2, id);
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
-        } catch (Exception e) {
+        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
@@ -125,7 +123,7 @@ public class BaseDao {
             preparedStatement.setObject(2, whereValue);
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
-        } catch (Exception e) {
+        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
@@ -158,7 +156,7 @@ public class BaseDao {
             }
             int affectedRows = preparedStatement.executeUpdate();
             return affectedRows > 0;
-        } catch (Exception e) {
+        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
@@ -184,9 +182,9 @@ public class BaseDao {
             preparedStatement.setObject(1, value);
             resultSet = preparedStatement.executeQuery();
             return resultSet;
-        } catch (Exception e) {
+        }catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
             System.out.println(e.getMessage());
-        } finally {
+        }finally {
             if (connection != null) {
                 try {
                     removeConnectionFromConnectionPoolInstance(connection);
@@ -208,7 +206,7 @@ public class BaseDao {
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             return resultSet;
-        } catch (Exception e) {
+        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
             System.out.println(e.getMessage());
         } finally {
             try {
@@ -235,7 +233,7 @@ public class BaseDao {
             }
             resultSet = preparedStatement.executeQuery();
             return resultSet;
-        } catch (Exception e) {
+        }catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
@@ -261,7 +259,7 @@ public class BaseDao {
             }
             resultSet = preparedStatement.executeQuery();
             return resultSet;
-        } catch (Exception e) {
+        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
@@ -284,7 +282,7 @@ public class BaseDao {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             return resultSet;
-        } catch (Exception e) {
+        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
