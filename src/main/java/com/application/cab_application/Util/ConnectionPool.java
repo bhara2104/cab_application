@@ -31,7 +31,7 @@ public class ConnectionPool {
         connectionPool = createConnectionPool();
     }
 
-    public static ConnectionPool getConnectionPoolInstance() throws DbNotReachableException, ClassNotFoundException {
+    public static synchronized ConnectionPool getConnectionPoolInstance() throws DbNotReachableException, ClassNotFoundException {
         if (connectionPoolClass == null) {
             connectionPoolClass = new ConnectionPool();
             return connectionPoolClass;
@@ -39,7 +39,7 @@ public class ConnectionPool {
             return connectionPoolClass;
     }
 
-    public static Connection createConnection() throws ClassNotFoundException, DbNotReachableException {
+    public static synchronized Connection createConnection() throws ClassNotFoundException, DbNotReachableException {
         try {
             Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -48,7 +48,7 @@ public class ConnectionPool {
         }
     }
 
-    public Connection getConnection() throws SQLException, ClassNotFoundException, DbNotReachableException {
+    public synchronized Connection getConnection() throws SQLException, ClassNotFoundException, DbNotReachableException {
         if (connectionPool.isEmpty()) {
             if (usedConnections.size() < MAX_POOL_SIZE) {
                 connectionPool.add(createConnection());
@@ -65,7 +65,7 @@ public class ConnectionPool {
         return connection;
     }
 
-    public void removeConnection(Connection connection) {
+    public synchronized void removeConnection(Connection connection) {
         try {
             if (!connection.isValid(5)) {
                 connection.close();

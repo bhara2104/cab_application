@@ -15,7 +15,6 @@ import com.application.cab_application.enums.RequestStatus;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
 public class RiderRideServlet extends HttpServlet {
 
