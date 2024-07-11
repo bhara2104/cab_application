@@ -9,7 +9,6 @@ import com.application.cab_application.Models.Vehicle;
 import com.application.cab_application.Models.Location;
 import com.application.cab_application.Util.ConnectionPool;
 import com.application.cab_application.Util.CurrentUserHelper;
-import com.application.cab_application.Util.DatabaseConnector;
 import com.application.cab_application.enums.VehicleType;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -29,11 +28,11 @@ public class DriverDetailsService {
             errors.add("Enter Valid Location ID");
         }
 
-        if(!checkValidVehicleType(vehicleObject.get("vehicleType").getAsString())){
+        if (!checkValidVehicleType(vehicleObject.get("vehicleType").getAsString())) {
             errors.add("Enter Valid Vehicle Type");
         }
 
-        if(!checkValidVehicleYear(vehicleObject.get("year").getAsString())){
+        if (!checkValidVehicleYear(vehicleObject.get("year").getAsString())) {
             errors.add("Enter Valid Year");
         }
         return errors;
@@ -41,9 +40,9 @@ public class DriverDetailsService {
 
     public static boolean checkValidVehicleYear(String year) {
         try {
-           int value = Integer.parseInt(year);
+            int value = Integer.parseInt(year);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -52,7 +51,7 @@ public class DriverDetailsService {
         try {
             VehicleType.valueOf(vehicleType);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -76,7 +75,9 @@ public class DriverDetailsService {
         DriverDetails driverDetails = gson.fromJson(driverDetailsObject, DriverDetails.class);
         driverDetails.setAccountID(CurrentUserHelper.getAccount());
         Vehicle vehicle = gson.fromJson(vehicleObject, Vehicle.class);
-        try (Connection connection = ConnectionPool.getConnectionPoolInstance().getConnection()) {
+        Connection connection = null;
+        try {
+            connection = ConnectionPool.getConnectionPoolInstance().getConnection();
             connection.setAutoCommit(false);
             try {
                 int id = VehicleDao.createVehicle(vehicle);
@@ -97,6 +98,14 @@ public class DriverDetailsService {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            if(connection != null){
+                try {
+                    ConnectionPool.getConnectionPoolInstance().removeConnection(connection);
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
         }
         int value = DriverDetailsDao.createDriverDetails(driverDetails);
         return value != 0;

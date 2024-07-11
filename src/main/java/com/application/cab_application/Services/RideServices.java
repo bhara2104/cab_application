@@ -5,7 +5,6 @@ import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.*;
 import com.application.cab_application.Util.ConnectionPool;
 import com.application.cab_application.Util.CurrentUserHelper;
-import com.application.cab_application.Util.DatabaseConnector;
 import com.application.cab_application.enums.RequestStatus;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,7 +37,9 @@ public class RideServices {
             rideErrors.add("From and To Location Can't be Same");
             return false;
         }
-        try (Connection connection = ConnectionPool.getConnectionPoolInstance().getConnection()) {
+        Connection connection = null ;
+        try {
+            connection = ConnectionPool.getConnectionPoolInstance().getConnection();
             connection.setAutoCommit(false);
             try {
                 int id = RidesDao.createRide(rideObject);
@@ -56,6 +57,14 @@ public class RideServices {
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
+        } finally {
+            if(connection != null){
+                try {
+                    ConnectionPool.getConnectionPoolInstance().removeConnection(connection);
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
         }
         return false;
     }

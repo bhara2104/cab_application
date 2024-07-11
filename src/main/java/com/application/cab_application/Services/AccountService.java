@@ -26,7 +26,9 @@ public class AccountService {
         String password = BCrypt.hashpw(account.getPassword(), BCrypt.gensalt());
         account.setPassword(password);
         AccountDetails accountDetails = gson.fromJson(accountDetailsJson, AccountDetails.class);
-        try (Connection connection = ConnectionPool.getConnectionPoolInstance().getConnection()) {
+        Connection connection = null;
+        try {
+            connection = ConnectionPool.getConnectionPoolInstance().getConnection();
             connection.setAutoCommit(false);
             try {
                 int id = AccountDao.createAccount(account);
@@ -43,6 +45,12 @@ public class AccountService {
             }
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                ConnectionPool.getConnectionPoolInstance().removeConnection(connection);
+            } catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
         return 0;
     }
