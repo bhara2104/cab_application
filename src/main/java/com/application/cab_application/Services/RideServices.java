@@ -37,37 +37,15 @@ public class RideServices {
             rideErrors.add("From and To Location Can't be Same");
             return false;
         }
-        Connection connection = null ;
-        try {
-            connection = ConnectionPool.getConnectionPoolInstance().getConnection();
-            connection.setAutoCommit(false);
-            try {
-                int id = RidesDao.createRide(rideObject);
-                if (id == 0) {
-                    return false;
-                }
-                AccountDetailsDao.updateCurrentRideID(riderID, id);
-                rideDetails1.setRideID(id);
-                rideDetails1.setRequestStatus(RequestStatus.WAITING);
-                RideDetailsDao.createRideDetail(rideDetails1);
-                connection.commit();
-                return true;
-            } catch (SQLException e) {
-                connection.rollback();
-                System.out.println(e.getMessage());
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            if(connection != null){
-                try {
-                    ConnectionPool.getConnectionPoolInstance().removeConnection(connection);
-                }catch (Exception e){
-                    System.out.println(e.getMessage());
-                }
-            }
+        int id = RidesDao.createRide(rideObject);
+        if (id == 0) {
+            return false;
         }
-        return false;
+        AccountDetailsDao.updateCurrentRideID(riderID, id);
+        rideDetails1.setRideID(id);
+        rideDetails1.setRequestStatus(RequestStatus.WAITING);
+        int rideDetail = RideDetailsDao.createRideDetail(rideDetails1);
+        return rideDetail != 0;
     }
 
     public static List<String> getRideErrors() {

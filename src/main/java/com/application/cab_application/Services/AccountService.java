@@ -26,33 +26,13 @@ public class AccountService {
         String password = BCrypt.hashpw(account.getPassword(), BCrypt.gensalt());
         account.setPassword(password);
         AccountDetails accountDetails = gson.fromJson(accountDetailsJson, AccountDetails.class);
-        Connection connection = null;
-        try {
-            connection = ConnectionPool.getConnectionPoolInstance().getConnection();
-            connection.setAutoCommit(false);
-            try {
-                int id = AccountDao.createAccount(account);
-                if (id == 0) {
-                    return 0;
-                }
-                accountDetails.setAccountId(id);
-                AccountDetailsDao.createAccountDetails(accountDetails);
-                connection.commit();
-                return id;
-            } catch (SQLException e) {
-                connection.rollback();
-                return 0;
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                ConnectionPool.getConnectionPoolInstance().removeConnection(connection);
-            } catch (Exception e){
-                System.out.println(e.getMessage());
-            }
+        int id = AccountDao.createAccount(account);
+        if (id == 0) {
+            return 0;
         }
-        return 0;
+        accountDetails.setAccountId(id);
+        AccountDetailsDao.createAccountDetails(accountDetails);
+        return id;
     }
 
     public static Account returnAccount(String jsonBody) {

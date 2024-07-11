@@ -7,13 +7,10 @@ import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.DriverDetails;
 import com.application.cab_application.Models.Vehicle;
 import com.application.cab_application.Models.Location;
-import com.application.cab_application.Util.ConnectionPool;
 import com.application.cab_application.Util.CurrentUserHelper;
 import com.application.cab_application.enums.VehicleType;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,40 +72,18 @@ public class DriverDetailsService {
         DriverDetails driverDetails = gson.fromJson(driverDetailsObject, DriverDetails.class);
         driverDetails.setAccountID(CurrentUserHelper.getAccount());
         Vehicle vehicle = gson.fromJson(vehicleObject, Vehicle.class);
-        Connection connection = null;
-        try {
-            connection = ConnectionPool.getConnectionPoolInstance().getConnection();
-            connection.setAutoCommit(false);
-            try {
-                int id = VehicleDao.createVehicle(vehicle);
-                if (id == 0) {
-                    return false;
-                }
-                driverDetails.setVehicleId(id);
-                int driverDetail = DriverDetailsDao.createDriverDetails(driverDetails);
-                connection.commit();
-                if (driverDetail != 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } catch (Exception e) {
-                connection.rollback();
-                System.out.println(e.getMessage());
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            if(connection != null){
-                try {
-                    ConnectionPool.getConnectionPoolInstance().removeConnection(connection);
-                }catch (Exception e){
-                    System.out.println(e.getMessage());
-                }
-            }
+
+        int id = VehicleDao.createVehicle(vehicle);
+        if (id == 0) {
+            return false;
         }
-        int value = DriverDetailsDao.createDriverDetails(driverDetails);
-        return value != 0;
+        driverDetails.setVehicleId(id);
+        int driverDetail = DriverDetailsDao.createDriverDetails(driverDetails);
+        if (driverDetail != 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static boolean updateDriverDetails(int currentLocation) throws DbNotReachableException {
