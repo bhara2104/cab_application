@@ -2,6 +2,7 @@ package com.application.cab_application.Servlets;
 
 import java.io.*;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.Account;
 import com.application.cab_application.Services.AccountService;
 import com.application.cab_application.Util.JWTUtil;
@@ -32,17 +33,22 @@ public class JwtTokenServlet extends HttpServlet {
             String email = jsonBody.get("email").getAsString();
             String password = jsonBody.get("password").getAsString();
             String accountType = jsonBody.get("accountType").getAsString();
-            Account loggedAccount = AccountService.authenticateUser(email, password, AccountType.valueOf(accountType));
-            if (loggedAccount != null) {
-                String jwtToken = JWTUtil.generateAccessToken(loggedAccount.getId());
-                String refreshToken = JWTUtil.createRefreshToken(loggedAccount.getId());
-                jsonObject.addProperty("accessToken", jwtToken);
-                jsonObject.addProperty("refreshToken", refreshToken);
-                response.setStatus(200);
-                printWriter.write(new Gson().toJson(jsonObject));
-            } else {
-                printWriter.write("{\"message\":\"Invalid Credentials\"}");
-                response.setStatus(401);
+            try {
+                Account loggedAccount = AccountService.authenticateUser(email, password, AccountType.valueOf(accountType));
+                if (loggedAccount != null) {
+                    String jwtToken = JWTUtil.generateAccessToken(loggedAccount.getId());
+                    String refreshToken = JWTUtil.createRefreshToken(loggedAccount.getId());
+                    jsonObject.addProperty("accessToken", jwtToken);
+                    jsonObject.addProperty("refreshToken", refreshToken);
+                    response.setStatus(200);
+                    printWriter.write(new Gson().toJson(jsonObject));
+                } else {
+                    printWriter.write("{\"message\":\"Invalid Credentials\"}");
+                    response.setStatus(401);
+                }
+            } catch (DbNotReachableException e){
+                response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+                printWriter.write("{\"message\":\"We are very Sorry It's not You It's us, Try Reloading the Page\"}");
             }
         } else if (grantType.equals("refresh_token")) {
             String token = jsonBody.get("refreshToken").getAsString();

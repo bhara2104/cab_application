@@ -2,6 +2,7 @@ package com.application.cab_application.Servlets;
 
 import com.application.cab_application.DAO.V1.RatingsDao;
 import com.application.cab_application.DAO.V1.RidesDao;
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.Rating;
 import com.application.cab_application.Models.Ride;
 import com.application.cab_application.Util.ReadJson;
@@ -20,14 +21,19 @@ public class RatingServlet extends HttpServlet {
         String reqBody = ReadJson.convertJsonToString(request.getReader());
         Rating rating = new Gson().fromJson(reqBody, Rating.class);
         PrintWriter printWriter = response.getWriter();
-        Ride ride = RidesDao.getRide(rating.getRideID());
-        if (rating.getRideID() == 0 || ride.getId() == 0) {
-            response.setStatus(400);
-            printWriter.write("{\"message\":\"Enter Valid RideID\"}");
-            return;
+        try {
+            Ride ride = RidesDao.getRide(rating.getRideID());
+            if (rating.getRideID() == 0 || ride.getId() == 0) {
+                response.setStatus(400);
+                printWriter.write("{\"message\":\"Enter Valid RideID\"}");
+                return;
+            }
+            RatingsDao.createRating(rating);
+            response.setStatus(200);
+            printWriter.write("{\"message\":\"Rating Added Successfully\"}");
+        } catch (DbNotReachableException e) {
+            response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+            printWriter.write("{\"message\":\"We are very Sorry It's not You It's us, Try Reloading the Page\"}");
         }
-        RatingsDao.createRating(rating);
-        response.setStatus(200);
-        printWriter.write("{\"message\":\"Rating Added Successfully\"}");
     }
 }

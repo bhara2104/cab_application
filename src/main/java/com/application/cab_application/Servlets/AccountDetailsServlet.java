@@ -1,5 +1,6 @@
 package com.application.cab_application.Servlets;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Services.AccountDetailsService;
 import com.application.cab_application.Util.CurrentUserHelper;
 import com.application.cab_application.enums.AccountType;
@@ -21,9 +22,9 @@ public class AccountDetailsServlet extends HttpServlet {
             String result = AccountDetailsService.getAccountDetailsResponse(id);
             response.setStatus(HttpServletResponse.SC_OK);
             printWriter.write(result);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        } catch (DbNotReachableException e){
+            response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+            printWriter.write("{\"message\":\"We are very Sorry It's not You It's us, Try Reloading the Page\"}");
         }
     }
 }

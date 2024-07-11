@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.List;
 
 import com.application.cab_application.DAO.V1.LocationDao;
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.Location;
 import com.application.cab_application.Services.LocationService;
 import com.application.cab_application.Util.ReadJson;
@@ -23,26 +24,31 @@ public class LocationServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter printWriter = response.getWriter();
-        if (action != null && action.equals("index")) {
-            List<Location> locationList = LocationDao.locationsList();
-            response.setStatus(200);
-            printWriter.write(new Gson().toJson(locationList));
-        } else {
-            if (id == null) {
-                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                return;
-            }
-
-            try {
-                int idValue = Integer.parseInt(id);
+        try {
+            if (action != null && action.equals("index")) {
+                List<Location> locationList = LocationDao.locationsList();
+                response.setStatus(200);
+                printWriter.write(new Gson().toJson(locationList));
+            } else {
+                if (id == null) {
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    return;
+                }
+                int idValue;
+                try {
+                    idValue = Integer.parseInt(id);
+                } catch (Exception e) {
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    return;
+                }
                 Location location = LocationDao.getLocation(idValue);
                 String jsonResponse = gson.toJson(location);
                 response.setStatus(200);
                 printWriter.write(jsonResponse);
-
-            } catch (Exception e) {
-                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             }
+        } catch (DbNotReachableException e) {
+            response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+            printWriter.write("{\"message\":\"We are very Sorry It's not You It's us, Try Reloading the Page\"}");
         }
     }
 
