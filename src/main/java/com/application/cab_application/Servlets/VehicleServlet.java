@@ -25,6 +25,7 @@ public class VehicleServlet extends HttpServlet {
             System.out.println(driverDetails.getId());
             if (driverDetails.getId() == 0 || vehicle.getId() == 0) {
                 response.setStatus(404);
+                printWriter.write("{\"Success\": \"true\",\"message\":\"Try Adding a Vehicle\"}");
                 return;
             }
             response.setStatus(200);
@@ -51,14 +52,14 @@ public class VehicleServlet extends HttpServlet {
             }
             if (vehicleID != updateVehicle.getId()) {
                 response.setStatus(403);
+                printWriter.write("{\"Success\": \"false\",\"message\":\"Unable to Find Vehicle\"}");
                 return;
             }
             boolean result = VehicleDao.updateVehicle(updateVehicle);
+            response.setStatus(200);
             if (result) {
-                response.setStatus(200);
                 printWriter.write("{\"Success\": \"true\",\"message\":\"Updated Successfully\"}");
             } else {
-                response.setStatus(200);
                 printWriter.write("{\"Success\": \"true\",\"message\":\"Failed to Update\"}");
             }
         }catch (DbNotReachableException e){
