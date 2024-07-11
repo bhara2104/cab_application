@@ -1,5 +1,7 @@
 package com.application.cab_application.Util;
 
+import com.application.cab_application.Exception.DbNotReachableException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,25 +17,36 @@ public class ConnectionPool {
     private static final String PASSWORD = "Bharath123";
     private List<Connection> connectionPool;
     private List<Connection> usedConnections = new ArrayList<>();
+    private static ConnectionPool connectionPoolClass = null;
 
-    public static ConnectionPool createConnectionPool() throws SQLException, ClassNotFoundException {
+    public static void createConnectionPool() throws SQLException, ClassNotFoundException, DbNotReachableException {
         List<Connection> pool = new ArrayList<>(POOL_SIZE);
         for (int i = 0; i < POOL_SIZE; i++) {
             pool.add(createConnection());
         }
-        return new ConnectionPool(pool);
     }
 
-    public ConnectionPool(List<Connection> connectionPool) {
-        this.connectionPool = connectionPool;
+    public ConnectionPool() throws SQLException, DbNotReachableException, ClassNotFoundException {
+        createConnectionPool();
     }
 
-    public static Connection createConnection() throws SQLException, ClassNotFoundException {
-        Class.forName("org.postgresql.Driver");
-        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    public static ConnectionPool getConnectionPoolInstance() throws SQLException, DbNotReachableException, ClassNotFoundException {
+        if (connectionPoolClass == null)
+            return new ConnectionPool();
+        else
+            return connectionPoolClass;
     }
 
-    public Connection getConnection() throws SQLException, ClassNotFoundException {
+    public static Connection createConnection() throws ClassNotFoundException, DbNotReachableException {
+        try {
+            Class.forName("org.postgresql.Driver");
+            return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        } catch (SQLException e) {
+            throw new DbNotReachableException("There is an Error while connection to DB", e);
+        }
+    }
+
+    public Connection getConnection() throws SQLException, ClassNotFoundException, DbNotReachableException {
         if (connectionPool.isEmpty()) {
             if (usedConnections.size() < MAX_POOL_SIZE) {
                 connectionPool.add(createConnection());

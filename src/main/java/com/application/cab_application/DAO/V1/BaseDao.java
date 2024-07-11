@@ -1,5 +1,6 @@
 package com.application.cab_application.DAO.V1;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Util.ConnectionPool;
 
 import java.sql.Connection;
@@ -14,7 +15,7 @@ public class BaseDao {
     static {
         try {
             connectionPool = ConnectionPool.createConnectionPool();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -37,8 +38,7 @@ public class BaseDao {
             if (affectedRows > 0) {
                 resultSet = preparedStatement.getGeneratedKeys();
                 resultSet.next();
-                int value = resultSet.getInt(1);
-                return value;
+                return resultSet.getInt(1);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
