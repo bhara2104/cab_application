@@ -30,7 +30,7 @@ public class ConnectionPool {
         createConnectionPool();
     }
 
-    public static ConnectionPool getConnectionPoolInstance() throws DbNotReachableException, ClassNotFoundException {
+    public static synchronized ConnectionPool getConnectionPoolInstance() throws DbNotReachableException, ClassNotFoundException {
         if (connectionPoolClass == null)
             return new ConnectionPool();
         else
@@ -51,7 +51,7 @@ public class ConnectionPool {
             if (usedConnections.size() < MAX_POOL_SIZE) {
                 connectionPool.add(createConnection());
             } else {
-                throw new DbNotReachableException("There is no connection Left in the connection POOL to Reuse");
+                throw new DbNotReachableException("There is no connection Left in the connection Pool to Reuse");
             }
         }
         Connection connection = connectionPool.remove(connectionPool.size() - 1);
