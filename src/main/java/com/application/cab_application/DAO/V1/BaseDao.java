@@ -119,9 +119,11 @@ public class BaseDao {
         try {
             connection = getConnectionFromConnectionPool();
             preparedStatement = connection.prepareStatement(sql);
+            System.out.println(sql);
             preparedStatement.setObject(1, value);
             preparedStatement.setObject(2, whereValue);
             int affectedRows = preparedStatement.executeUpdate();
+            System.out.println(affectedRows);
             return affectedRows > 0;
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());

@@ -54,6 +54,7 @@ public class RideServices {
                 return true;
             } catch (SQLException e) {
                 connection.rollback();
+                System.out.println(e.getMessage());
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());

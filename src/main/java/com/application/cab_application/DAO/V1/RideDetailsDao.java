@@ -39,7 +39,7 @@ public class RideDetailsDao {
             }else{
                 rideDetails = new RideDetails();
             }
-            resultSet.close();
+            resultSet.getStatement().close();
             return rideDetails;
         }catch (Exception e){
             System.out.println(e.getMessage());
