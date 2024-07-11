@@ -10,15 +10,16 @@ import java.sql.SQLException;
 import java.util.Map;
 
 public class BaseDao {
-    static ConnectionPool connectionPool;
-
-    static {
-        try {
-            connectionPool = ConnectionPool.createConnectionPool();
-        } catch (SQLException | ClassNotFoundException | DbNotReachableException e) {
-            System.out.println(e.getMessage());
-        }
+    public static Connection getConnectionFromConnectionPool() throws SQLException, DbNotReachableException, ClassNotFoundException {
+        ConnectionPool connectionPool = ConnectionPool.getConnectionPoolInstance();
+        return connectionPool.getConnection();
     }
+
+    public static void removeConnectionFromConnectionPoolInstance(Connection connection) throws SQLException, DbNotReachableException, ClassNotFoundException {
+        ConnectionPool connectionPool = ConnectionPool.getConnectionPoolInstance();
+        connectionPool.removeConnection(connection);
+    }
+
 
 
     public static int create(Map<String, Object> fields, String tableName) {
@@ -28,7 +29,7 @@ public class BaseDao {
         ResultSet resultSet = null;
         Connection connection = null;
         try {
-            connection = connectionPool.getConnection();
+            connection = getConnectionFromConnectionPool();
             PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             int idx = 1;
             for (Object object : fields.values()) {
@@ -44,9 +45,9 @@ public class BaseDao {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
-                connectionPool.removeConnection(connection);
                 try {
                     if (resultSet != null) resultSet.getStatement().close();
+                    removeConnectionFromConnectionPoolInstance(connection);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -62,7 +63,7 @@ public class BaseDao {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
-            connection = connectionPool.getConnection();
+            connection = getConnectionFromConnectionPool();
             preparedStatement = connection.prepareStatement(sql);
             int idx = 1;
             for (Object object : fields.values()) {
@@ -75,8 +76,8 @@ public class BaseDao {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
-                connectionPool.removeConnection(connection);
                 try {
+                    removeConnectionFromConnectionPoolInstance(connection);
                     if (preparedStatement != null) preparedStatement.close();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
@@ -91,7 +92,7 @@ public class BaseDao {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
-            connection = connectionPool.getConnection();
+            connection = getConnectionFromConnectionPool();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, value);
             preparedStatement.setObject(2, id);
@@ -101,8 +102,8 @@ public class BaseDao {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
-                connectionPool.removeConnection(connection);
                 try {
+                    removeConnectionFromConnectionPoolInstance(connection);
                     if (preparedStatement != null) preparedStatement.close();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
@@ -117,19 +118,18 @@ public class BaseDao {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
-            connection = connectionPool.getConnection();
+            connection = getConnectionFromConnectionPool();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, value);
             preparedStatement.setObject(2, whereValue);
             int affectedRows = preparedStatement.executeUpdate();
-            connectionPool.removeConnection(connection);
             return affectedRows > 0;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
-                connectionPool.removeConnection(connection);
                 try {
+                    removeConnectionFromConnectionPoolInstance(connection);
                     if (preparedStatement != null) preparedStatement.close();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
@@ -146,7 +146,7 @@ public class BaseDao {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
-            connection = connectionPool.getConnection();
+            connection = getConnectionFromConnectionPool();
             preparedStatement = connection.prepareStatement(sql);
             int idx = 1;
             for (Object object : fields.values()) {
@@ -156,14 +156,13 @@ public class BaseDao {
                 preparedStatement.setObject(idx++, object);
             }
             int affectedRows = preparedStatement.executeUpdate();
-            connectionPool.removeConnection(connection);
             return affectedRows > 0;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
-                connectionPool.removeConnection(connection);
                 try {
+                    removeConnectionFromConnectionPoolInstance(connection);
                     if (preparedStatement != null) preparedStatement.close();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
@@ -179,7 +178,7 @@ public class BaseDao {
         System.out.println(sql);
         Connection connection = null;
         try {
-            connection = connectionPool.getConnection();
+            connection =  getConnectionFromConnectionPool();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, value);
             resultSet = preparedStatement.executeQuery();
@@ -188,7 +187,11 @@ public class BaseDao {
             System.out.println(e.getMessage());
         } finally {
             if (connection != null) {
-                connectionPool.removeConnection(connection);
+                try {
+                    removeConnectionFromConnectionPoolInstance(connection);
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
             }
         }
         return null;
@@ -199,17 +202,18 @@ public class BaseDao {
         ResultSet resultSet;
         Connection connection = null;
         try {
-            connection = connectionPool.getConnection();
+            connection = getConnectionFromConnectionPool();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
-            connectionPool.removeConnection(connection);
             return resultSet;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            if (connection != null) {
-                connectionPool.removeConnection(connection);
+            try {
+                removeConnectionFromConnectionPoolInstance(connection);
+            }catch (Exception e){
+                System.out.println(e.getMessage());
             }
         }
         return null;
@@ -222,7 +226,7 @@ public class BaseDao {
         Connection connection = null;
         System.out.println(sql);
         try {
-            connection = connectionPool.getConnection();
+            connection = getConnectionFromConnectionPool();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             int inc = 1;
             for (Object object : whereChain.values()) {
@@ -233,7 +237,13 @@ public class BaseDao {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            if (connection != null) connectionPool.removeConnection(connection);
+            if (connection != null) {
+                try {
+                    removeConnectionFromConnectionPoolInstance(connection);
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
         }
         return null;
     }
@@ -242,19 +252,24 @@ public class BaseDao {
         ResultSet resultSet;
         Connection connection = null;
         try {
-            connection = connectionPool.getConnection();
+            connection =  getConnectionFromConnectionPool();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             int idx = 1;
             for (Object object : fields.values()) {
                 preparedStatement.setObject(idx++, object);
             }
             resultSet = preparedStatement.executeQuery();
-            connectionPool.removeConnection(connection);
             return resultSet;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            if (connection != null) connectionPool.removeConnection(connection);
+            if (connection != null) {
+                try {
+                    removeConnectionFromConnectionPoolInstance(connection);
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
         }
         return null;
     }
@@ -264,15 +279,20 @@ public class BaseDao {
         Connection connection = null;
         ResultSet resultSet;
         try {
-            connection = connectionPool.getConnection();
+            connection = getConnectionFromConnectionPool();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
-            connectionPool.removeConnection(connection);
             return resultSet;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            connectionPool.removeConnection(connection);
+            if(connection != null){
+                try {
+                    removeConnectionFromConnectionPoolInstance(connection);
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
         }
         return null;
     }
