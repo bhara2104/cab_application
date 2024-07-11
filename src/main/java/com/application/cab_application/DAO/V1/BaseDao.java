@@ -21,8 +21,7 @@ public class BaseDao {
     }
 
 
-
-    public static int create(Map<String, Object> fields, String tableName) {
+    public static int create(Map<String, Object> fields, String tableName) throws DbNotReachableException {
         String columns = String.join(" , ", fields.keySet());
         String params = String.join(" , ", fields.keySet().stream().map(key -> "?").toArray(String[]::new));
         String sql = "Insert into " + tableName + "(" + columns + ") values (" + params + ")";
@@ -41,8 +40,10 @@ public class BaseDao {
                 resultSet.next();
                 return resultSet.getInt(1);
             }
-        } catch (Exception e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
+        } catch (DbNotReachableException e) {
+            throw e;
         } finally {
             if (connection != null) {
                 try {
@@ -178,7 +179,7 @@ public class BaseDao {
         System.out.println(sql);
         Connection connection = null;
         try {
-            connection =  getConnectionFromConnectionPool();
+            connection = getConnectionFromConnectionPool();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, value);
             resultSet = preparedStatement.executeQuery();
@@ -189,7 +190,7 @@ public class BaseDao {
             if (connection != null) {
                 try {
                     removeConnectionFromConnectionPoolInstance(connection);
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             }
@@ -212,7 +213,7 @@ public class BaseDao {
         } finally {
             try {
                 removeConnectionFromConnectionPoolInstance(connection);
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -240,7 +241,7 @@ public class BaseDao {
             if (connection != null) {
                 try {
                     removeConnectionFromConnectionPoolInstance(connection);
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             }
@@ -252,7 +253,7 @@ public class BaseDao {
         ResultSet resultSet;
         Connection connection = null;
         try {
-            connection =  getConnectionFromConnectionPool();
+            connection = getConnectionFromConnectionPool();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             int idx = 1;
             for (Object object : fields.values()) {
@@ -266,7 +267,7 @@ public class BaseDao {
             if (connection != null) {
                 try {
                     removeConnectionFromConnectionPoolInstance(connection);
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             }
@@ -286,10 +287,10 @@ public class BaseDao {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            if(connection != null){
+            if (connection != null) {
                 try {
                     removeConnectionFromConnectionPoolInstance(connection);
-                }catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             }

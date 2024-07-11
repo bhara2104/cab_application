@@ -19,18 +19,18 @@ public class ConnectionPool {
     private List<Connection> usedConnections = new ArrayList<>();
     private static ConnectionPool connectionPoolClass = null;
 
-    public static void createConnectionPool() throws SQLException, ClassNotFoundException, DbNotReachableException {
+    public static void createConnectionPool() throws ClassNotFoundException, DbNotReachableException {
         List<Connection> pool = new ArrayList<>(POOL_SIZE);
         for (int i = 0; i < POOL_SIZE; i++) {
             pool.add(createConnection());
         }
     }
 
-    public ConnectionPool() throws SQLException, DbNotReachableException, ClassNotFoundException {
+    public ConnectionPool() throws DbNotReachableException, ClassNotFoundException {
         createConnectionPool();
     }
 
-    public static ConnectionPool getConnectionPoolInstance() throws SQLException, DbNotReachableException, ClassNotFoundException {
+    public static ConnectionPool getConnectionPoolInstance() throws DbNotReachableException, ClassNotFoundException {
         if (connectionPoolClass == null)
             return new ConnectionPool();
         else
@@ -42,7 +42,7 @@ public class ConnectionPool {
             Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
-            throw new DbNotReachableException("There is an Error while connection to DB", e);
+            throw new DbNotReachableException("There is an Error in DB", e);
         }
     }
 
@@ -51,7 +51,7 @@ public class ConnectionPool {
             if (usedConnections.size() < MAX_POOL_SIZE) {
                 connectionPool.add(createConnection());
             } else {
-                throw new RuntimeException("There is no connection Left in the connection POOL to Reuse");
+                throw new DbNotReachableException("There is no connection Left in the connection POOL to Reuse");
             }
         }
         Connection connection = connectionPool.remove(connectionPool.size() - 1);
