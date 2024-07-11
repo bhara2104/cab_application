@@ -1,5 +1,6 @@
 package com.application.cab_application.DAO.V1;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.DriverDetails;
 import com.application.cab_application.Util.DatabaseConnector;
 
@@ -8,16 +9,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DriverDetailsDao {
-    public static DriverDetails getDriverDetailsByAccountID(int accountID) {
+    public static DriverDetails getDriverDetailsByAccountID(int accountID) throws DbNotReachableException {
         ResultSet resultSet = BaseDao.find_by("driver_details", "account_id", accountID);
         return driverDetailsMapper(resultSet);
     }
 
-    public static int createDriverDetails(DriverDetails driverDetails) {
+    public static int createDriverDetails(DriverDetails driverDetails) throws DbNotReachableException {
         return BaseDao.create(driverDetails.driverDetailsObject(), "driver_details");
     }
 
-    public static boolean updateCurrentLocation(int locationID, int accountID) {
+    public static boolean updateCurrentLocation(int locationID, int accountID) throws DbNotReachableException {
         return BaseDao.updateColumn("current_location_id", locationID, "driver_details","account_id",accountID);
     }
 

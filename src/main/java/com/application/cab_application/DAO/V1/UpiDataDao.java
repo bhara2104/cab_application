@@ -1,5 +1,6 @@
 package com.application.cab_application.DAO.V1;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.UpiData;
 import com.application.cab_application.Util.DatabaseConnector;
 
@@ -9,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UpiDataDao {
-    public static void createUPIData(UpiData upiData) {
+    public static void createUPIData(UpiData upiData) throws DbNotReachableException {
         BaseDao.create(upiData.upiDataTableMapper(), "upi_datas");
     }
 
-    public static List<UpiData> getSavedUPI(int accountID) {
+    public static List<UpiData> getSavedUPI(int accountID) throws DbNotReachableException {
         ResultSet resultSet = BaseDao.find_by("upi_datas", "account_id", accountID);
         return upiDataListMapper(resultSet);
     }
@@ -32,7 +33,7 @@ public class UpiDataDao {
         return new ArrayList<>();
     }
 
-    public static boolean checkUPIDateExist(String upiID) {
+    public static boolean checkUPIDateExist(String upiID) throws DbNotReachableException {
         ResultSet resultSet = BaseDao.find_by("upi_datas", "upi_id", upiID);
         try {
             boolean bool = resultSet.next();

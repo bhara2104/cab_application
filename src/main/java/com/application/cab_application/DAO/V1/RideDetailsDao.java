@@ -1,5 +1,6 @@
 package com.application.cab_application.DAO.V1;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.RideDetails;
 import com.application.cab_application.Util.DatabaseConnector;
 import com.application.cab_application.enums.RequestStatus;
@@ -9,21 +10,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class RideDetailsDao {
-    public static int createRideDetail(RideDetails rideDetails) {
+    public static int createRideDetail(RideDetails rideDetails) throws DbNotReachableException {
         return BaseDao.create(rideDetails.rideDetailsMapper(),"ride_details");
     }
 
 
-    public static RideDetails getRideDetails(int id) {
+    public static RideDetails getRideDetails(int id) throws DbNotReachableException {
         ResultSet resultSet = BaseDao.find_by("ride_details", "ride_id", id);
         return RideDetailsMapper(resultSet);
     }
 
-    public static boolean updateRideDetails(RideDetails rideDetails) {
+    public static boolean updateRideDetails(RideDetails rideDetails) throws DbNotReachableException {
         return BaseDao.update(rideDetails.rideDetailsMapper(),"ride_details",rideDetails.getId());
     }
 
-    public static void updateRideStatus(int id, RequestStatus requestStatus) {
+    public static void updateRideStatus(int id, RequestStatus requestStatus) throws DbNotReachableException {
         BaseDao.updateColumn("ride_status", requestStatus.getCode(), "ride_details", id);
     }
 

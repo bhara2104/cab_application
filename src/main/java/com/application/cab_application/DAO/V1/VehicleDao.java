@@ -1,5 +1,6 @@
 package com.application.cab_application.DAO.V1;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.Vehicle;
 import com.application.cab_application.Util.DatabaseConnector;
 import com.application.cab_application.enums.VehicleType;
@@ -8,15 +9,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class VehicleDao {
-    public static int createVehicle(Vehicle vehicle) {
+    public static int createVehicle(Vehicle vehicle) throws DbNotReachableException {
         return BaseDao.create(vehicle.vehicleTableMapper(), "vehicles");
     }
 
-    public static Boolean updateVehicle(Vehicle vehicle) {
+    public static Boolean updateVehicle(Vehicle vehicle) throws DbNotReachableException {
         return BaseDao.update(vehicle.vehicleTableMapper(),"vehicles",vehicle.getId());
     }
 
-    public static Vehicle getVehicle(int id) {
+    public static Vehicle getVehicle(int id) throws DbNotReachableException {
         ResultSet resultSet = BaseDao.find(id, "vehicles");
         return vehicleMapper(resultSet);
     }

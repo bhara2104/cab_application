@@ -1,5 +1,6 @@
 package com.application.cab_application.DAO.V1;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.*;
 import com.application.cab_application.Util.PrettyPrintHelper;
 
@@ -14,23 +15,23 @@ import java.sql.ResultSet;
 import java.util.*;
 
 public class RidesDao {
-    public static int createRide(Ride ride) throws Exception {
+    public static int createRide(Ride ride) throws DbNotReachableException {
         Map<String, Object> rideMap = ride.rideTableMapper();
         rideMap.remove("driver_id");
         return BaseDao.create(rideMap, "rides");
     }
 
-    public static Ride getRide(int id) {
+    public static Ride getRide(int id) throws DbNotReachableException {
         ResultSet resultSet = BaseDao.find(id, "rides");
         return mapRide(resultSet);
     }
 
 
-    public static Boolean updateDriverID(Integer rideID, Integer driverID) {
+    public static Boolean updateDriverID(Integer rideID, Integer driverID) throws DbNotReachableException {
         return BaseDao.updateColumn("driver_id", driverID, "rides", rideID);
     }
 
-    public static List<JsonObject> getAllRideDetails(int account_id, String account_type) {
+    public static List<JsonObject> getAllRideDetails(int account_id, String account_type) throws DbNotReachableException {
         String sql;
         if (account_type.equals("DRIVER")) {
             sql = "SELECT \n" +
@@ -122,7 +123,7 @@ public class RidesDao {
         return new ArrayList<>();
     }
 
-    public static List<JsonObject> getAvailableRides(int locationID, VehicleType vehicleType) {
+    public static List<JsonObject> getAvailableRides(int locationID, VehicleType vehicleType) throws DbNotReachableException {
         String query = "SELECT \n" +
                 "    r.id, \n" +
                 "    r.driver_id, \n" +

@@ -15,7 +15,7 @@ import java.util.Map;
 import static java.util.Map.entry;
 
 public class AccountDao {
-    public static Account getByID(int id) {
+    public static Account getByID(int id) throws DbNotReachableException {
         ResultSet rs = BaseDao.find(id, "accounts");
         return accountMapper(rs);
     }
@@ -24,7 +24,7 @@ public class AccountDao {
         return BaseDao.create(account.objectMap(), "accounts");
     }
 
-    public static Account getAccountByEmail(String email, int type) {
+    public static Account getAccountByEmail(String email, int type) throws DbNotReachableException {
         Map<String, Object> whereObject = new LinkedHashMap<>();
         whereObject.put("email", email);
         whereObject.put("account_type",type);
@@ -32,7 +32,7 @@ public class AccountDao {
         return accountMapper(resultSet);
     }
 
-    public static Boolean checkAccountExists(Account account) {
+    public static Boolean checkAccountExists(Account account) throws DbNotReachableException {
         Map<String, Object> whereObject = new LinkedHashMap<>();
         whereObject.put("account_type", account.getAccountType().getCode());
         whereObject.put("phone_number", account.getPhoneNumber());

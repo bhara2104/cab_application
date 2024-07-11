@@ -1,5 +1,6 @@
 package com.application.cab_application.DAO.V1;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.AccountDetails;
 import com.application.cab_application.Util.DatabaseConnector;
 import org.checkerframework.checker.units.qual.A;
@@ -9,21 +10,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AccountDetailsDao {
-    public static void createAccountDetails(AccountDetails details) {
+    public static void createAccountDetails(AccountDetails details) throws DbNotReachableException {
         details.setCurrentRideID(null);
         BaseDao.create(details.objectMap(), "account_details");
     }
 
-    public static AccountDetails getAccountDetailsByAccountID(int id) {
+    public static AccountDetails getAccountDetailsByAccountID(int id) throws DbNotReachableException {
         ResultSet resultSet = BaseDao.find_by("account_details","account_id", id);
         return AccountDetailsObjectMapper(resultSet);
     }
 
-    public static boolean updateCurrentRideID(int accountId, int currentRideID){
+    public static boolean updateCurrentRideID(int accountId, int currentRideID) throws DbNotReachableException {
         return BaseDao.updateColumn("current_ride_id", currentRideID, "account_details", "account_id", accountId);
     }
 
-    public static boolean updateCurrentRideIDAsNUll(int accountId){
+    public static boolean updateCurrentRideIDAsNUll(int accountId) throws DbNotReachableException {
         return BaseDao.updateColumn("current_ride_id", null, "account_details", "account_id", accountId);
     }
 

@@ -1,5 +1,6 @@
 package com.application.cab_application.DAO.V1;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.Location;
 import com.application.cab_application.Util.DatabaseConnector;
 
@@ -9,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LocationDao {
-    public static Location getLocation(int id) {
+    public static Location getLocation(int id) throws DbNotReachableException {
         ResultSet resultSet = BaseDao.find(id, "locations");
         return locationMapper(resultSet);
     }
 
-    public static List<Location> locationsList(){
+    public static List<Location> locationsList() throws DbNotReachableException {
         ResultSet resultSet = BaseDao.all("locations");
         return locationListMapper(resultSet);
     }

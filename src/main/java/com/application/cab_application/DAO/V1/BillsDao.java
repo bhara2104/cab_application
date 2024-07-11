@@ -1,5 +1,6 @@
 package com.application.cab_application.DAO.V1;
 
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.Bill;
 import com.application.cab_application.Util.DatabaseConnector;
 
@@ -7,21 +8,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class BillsDao {
-    public static int createBill(Bill bill){
+    public static int createBill(Bill bill) throws DbNotReachableException {
         bill.setPaymentId(null);
         return BaseDao.create(bill.billTableObject(), "bills");
     }
 
-    public static Boolean updatePaymentInBill(int billID, int paymentID){
+    public static Boolean updatePaymentInBill(int billID, int paymentID) throws DbNotReachableException {
         return BaseDao.updateColumn("payment_id", paymentID, "bills", billID);
     }
 
-    public static Bill getBillRideID(int id){
+    public static Bill getBillRideID(int id) throws DbNotReachableException {
         ResultSet resultSet = BaseDao.find_by("bills", "ride_id", id);
         return billMapper(resultSet);
     }
 
-    public static Bill getBill(int id){
+    public static Bill getBill(int id) throws DbNotReachableException {
         ResultSet resultSet = BaseDao.find(id,"bills");
         return billMapper(resultSet);
     }
