@@ -1,6 +1,7 @@
 package com.application.cab_application.Services;
 
 import com.application.cab_application.DAO.V1.*;
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.*;
 
 import com.application.cab_application.Util.PrettyPrintHelper;
@@ -10,7 +11,7 @@ import com.google.gson.JsonObject;
 
 public class AccountDetailsService {
 
-    public static String getAccountDetailsResponse(int id){
+    public static String getAccountDetailsResponse(int id) throws DbNotReachableException {
         Account account = AccountDao.getByID(id);
         AccountDetails accountDetails = AccountDetailsDao.getAccountDetailsByAccountID(id);
         JsonObject accountDetailsObject = PrettyPrintHelper.prettyPrintHelper(accountDetails).getAsJsonObject();

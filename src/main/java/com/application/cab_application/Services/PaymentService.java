@@ -3,6 +3,7 @@ package com.application.cab_application.Services;
 import com.application.cab_application.DAO.V1.PaymentDao;
 import com.application.cab_application.DAO.V1.UpiDataDao;
 import com.application.cab_application.DAO.V1.UpiPaymentsDao;
+import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.Payment;
 import com.application.cab_application.Models.UpiData;
 import com.application.cab_application.Models.UpiPayment;
@@ -18,7 +19,7 @@ import java.util.List;
 
 
 public class PaymentService {
-    public static int savePayment(String jsonBody) {
+    public static int savePayment(String jsonBody) throws DbNotReachableException {
         JsonObject jsonObject = new Gson().fromJson(jsonBody, JsonObject.class);
         JsonObject paymentJson = jsonObject.getAsJsonObject("payment");
         Payment payment = new Gson().fromJson(paymentJson, Payment.class);
