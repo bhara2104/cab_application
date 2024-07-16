@@ -18,50 +18,10 @@ public class UpdateThread1 implements Runnable{
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.executeUpdate();
+                connectionPool.removeConnection(connection);
             }
         } catch (DbNotReachableException | ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         }
-        // It will update for the first time and connection pool become full so there will be no connection to reuse
-        // connection creating
-        //connection creating
-        //1
-        //0
-        //There is no connection left in the connection pool to reuse
-        //1
-        //0
-        //There is no connection left in the connection pool to reuse
-
-        // This is after changing connection pool size
-        // connection creating
-        //connection creating
-        //connection creating
-        //connection creating
-        //connection creating
-        //5
-        //connection creating
-        //4
-        //3
-        //2
-        //1
-        //0
-        //connection creating
-        //0
-        //connection creating
-        //connection creating
-        //0
-        //connection creating
-        //0
-        //5
-        //4
-        //0
-        //3
-        //2
-        //1
-        //0
-        //0
-        //0
-        //0
-        //0
     }
 }

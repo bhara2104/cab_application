@@ -18,6 +18,7 @@ public class UpdateThread implements Runnable {
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.executeUpdate();
+                connectionPool.removeConnection(connection);
             }
         } catch (DbNotReachableException | ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());

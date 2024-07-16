@@ -10,8 +10,8 @@ import java.util.List;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class ConnectionPool {
-    private static final int POOL_SIZE = 5;
-    private static final int MAX_POOL_SIZE = 10;
+    private static final int POOL_SIZE = 1;
+    private static final int MAX_POOL_SIZE = 1;
     private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking"; // The firs jdbc:postgres to load the postgres driver // No suitable driver found for jdbc:postgrsql://localhost:5432/cab_booking
     private static final String USERNAME = "bharathkumar";
     private static final String PASSWORD = "Bharath123";
@@ -19,7 +19,7 @@ public class ConnectionPool {
     private List<Connection> usedConnections = new ArrayList<>();
     private static ConnectionPool connectionPoolClass = null;
 
-    public static synchronized List<Connection> createConnectionPool() throws ClassNotFoundException, DbNotReachableException {
+    public static List<Connection> createConnectionPool() throws ClassNotFoundException, DbNotReachableException {
         List<Connection> pool = new ArrayList<>(POOL_SIZE);
         for (int i = 0; i < POOL_SIZE; i++) {
             System.out.println("connection creating");
@@ -69,7 +69,7 @@ public class ConnectionPool {
         return connection;
     }
 
-    public synchronized void removeConnection(Connection connection) {
+    public void removeConnection(Connection connection) {
         try {
             if (!connection.isValid(5)) {
                 connection.close();
