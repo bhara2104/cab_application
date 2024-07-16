@@ -41,4 +41,6 @@ public class MultiThreadedUpdates {
     //1
 
     // This may occur whenever some Thread takes more time to execute and connection pool size is less
+
+    // By making it as single connection if connection does not returned by the first thread second thread will never get chance to execute
 }
