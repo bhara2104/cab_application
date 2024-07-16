@@ -5,14 +5,10 @@ import com.application.cab_application.DAO.V1.AccountDetailsDao;
 import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.Account;
 import com.application.cab_application.Models.AccountDetails;
-import com.application.cab_application.Util.ConnectionPool;
 import com.application.cab_application.enums.AccountType;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.mindrot.jbcrypt.BCrypt;
-
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 public class AccountService {
