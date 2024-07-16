@@ -35,10 +35,16 @@ public class BillsDao {
             }else{
                 bill = new Bill();
             }
-            resultSet.getStatement().close();
             return bill;
         }catch (Exception e){
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                resultSet.getStatement().close();
+                resultSet.close();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
         return new Bill();
     }

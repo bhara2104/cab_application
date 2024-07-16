@@ -25,10 +25,17 @@ public class PaymentDao {
             } else {
                 payment = new Payment();
             }
-            resultSet.getStatement().close();
+
             return payment;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                resultSet.getStatement().close();
+                resultSet.close();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
         return new Payment();
     }

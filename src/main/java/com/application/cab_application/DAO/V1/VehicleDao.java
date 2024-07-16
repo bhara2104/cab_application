@@ -33,10 +33,16 @@ public class VehicleDao {
             }else{
                 vehicle = new Vehicle();
             }
-            resultSet.getStatement().close();
             return vehicle ;
         }catch (Exception e){
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                resultSet.getStatement().close();
+                resultSet.close();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
         return new Vehicle();
     }

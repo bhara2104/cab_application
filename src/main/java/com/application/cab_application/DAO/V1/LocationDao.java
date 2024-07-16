@@ -47,10 +47,16 @@ public class LocationDao {
                         resultSet.getDouble("longitude"), resultSet.getString("landmark"),
                         resultSet.getString("city"), resultSet.getInt("pincode")));
             }
-            resultSet.getStatement().close();
             return locationList ;
         }catch (Exception e){
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                resultSet.getStatement().close();
+                resultSet.close();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
         return locationList ;
     }

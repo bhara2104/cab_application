@@ -168,10 +168,16 @@ public class RidesDao {
                 jsonObject.add("rideDetails", rideDetailElement);
                 jsonObjects.add(jsonObject);
             }
-            rs.getStatement().close();
             return jsonObjects;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                rs.getStatement().close();
+                rs.close();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
         return new ArrayList<>();
     }
@@ -185,10 +191,16 @@ public class RidesDao {
             } else {
                 ride = new Ride();
             }
-            resultSet.getStatement().close();
             return ride;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                resultSet.getStatement().close();
+                resultSet.close();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
         return new Ride();
     }

@@ -31,10 +31,16 @@ public class DriverDetailsDao {
             }else{
                 driverDetails = new DriverDetails();
             }
-            rs.getStatement().close();
             return driverDetails;
         }catch (Exception e){
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                rs.getStatement().close();
+                rs.close();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
         return new DriverDetails();
     }

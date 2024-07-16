@@ -45,7 +45,10 @@ public class BaseDao {
         } finally {
             if (connection != null) {
                 try {
-                    if (resultSet != null) resultSet.getStatement().close();
+                    if (resultSet != null) {
+                        resultSet.getStatement().close();
+                        resultSet.close();
+                    }
                     removeConnectionFromConnectionPoolInstance(connection);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());

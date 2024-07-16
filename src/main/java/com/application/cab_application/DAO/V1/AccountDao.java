@@ -41,10 +41,16 @@ public class AccountDao {
         ResultSet resultSet = BaseDao.find_by_sql(query, whereObject);
         try {
             boolean bool = resultSet.next();
-            resultSet.getStatement().close();
             return bool;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                resultSet.getStatement().close();
+                resultSet.close();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
         }
         return false;
     }
