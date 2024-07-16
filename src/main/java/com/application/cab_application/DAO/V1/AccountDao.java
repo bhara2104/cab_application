@@ -2,17 +2,11 @@ package com.application.cab_application.DAO.V1;
 
 import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.Account;
-import com.application.cab_application.Util.DatabaseConnector;
 import com.application.cab_application.enums.AccountType;
-import org.checkerframework.checker.units.qual.A;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import static java.util.Map.entry;
 
 public class AccountDao {
     public static Account getByID(int id) throws DbNotReachableException {
@@ -70,10 +64,8 @@ public class AccountDao {
         return new Account();
     }
 }
-
-
 // Problem with using do while in Result set
 
-// We have invoke result set next before using it in do while
+// We have to invoke result set next before using it in do while
 
 // if result set is null it will raise an exception
