@@ -10,9 +10,9 @@ import java.util.List;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class ConnectionPool {
-    private static final int POOL_SIZE = 1;
-    private static final int MAX_POOL_SIZE = 1;
-    private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking";
+    private static final int POOL_SIZE = 5;
+    private static final int MAX_POOL_SIZE = 10;
+    private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking"; // The firs jdbc:postgres to load the postgres driver // No suitable driver found for jdbc:postgrsql://localhost:5432/cab_booking
     private static final String USERNAME = "bharathkumar";
     private static final String PASSWORD = "Bharath123";
     private List<Connection> connectionPool;
@@ -22,6 +22,7 @@ public class ConnectionPool {
     public static synchronized List<Connection> createConnectionPool() throws ClassNotFoundException, DbNotReachableException {
         List<Connection> pool = new ArrayList<>(POOL_SIZE);
         for (int i = 0; i < POOL_SIZE; i++) {
+            System.out.println("connection creating");
             pool.add(createConnection());
         }
         return pool;
@@ -38,9 +39,10 @@ public class ConnectionPool {
         return connectionPoolClass;
     }
 
-    public static synchronized Connection createConnection() throws ClassNotFoundException, DbNotReachableException {
+    public static Connection createConnection() throws ClassNotFoundException, DbNotReachableException {
         try {
             Class.forName("org.postgresql.Driver");
+            // This is to initially load the postgres driver initially
             // Another way DriverManger.registerDriver()
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
@@ -49,7 +51,8 @@ public class ConnectionPool {
     }
     // A tcp connection will be established between the driver and the java application which is a connection and that exactly is an instance
 
-    public synchronized Connection getConnection() throws SQLException, ClassNotFoundException, DbNotReachableException {
+    public Connection getConnection() throws SQLException, ClassNotFoundException, DbNotReachableException {
+        System.out.println(connectionPool.size());
         if (connectionPool.isEmpty()) {
             if (usedConnections.size() < MAX_POOL_SIZE) {
                 connectionPool.add(createConnection());
