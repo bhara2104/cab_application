@@ -31,4 +31,6 @@ public class MultiThreadedUpdates {
     // Since last thread never returned the connection back to the pool
 
     // Here race condition does not occurs but if all the threads tries to execute at the same time and access the same resource deadlock will occur
+
+    // In our case the thread wait till the db connection is over
 }
