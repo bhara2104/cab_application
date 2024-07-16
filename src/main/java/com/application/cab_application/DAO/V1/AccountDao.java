@@ -70,3 +70,10 @@ public class AccountDao {
         return new Account();
     }
 }
+
+
+// Problem with using do while in Result set
+
+// We have invoke result set next before using it in do while
+
+// if result set is null it will raise an exception
