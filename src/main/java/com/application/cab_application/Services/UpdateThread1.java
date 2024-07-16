@@ -6,6 +6,7 @@ import com.application.cab_application.Util.ConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class UpdateThread1 implements Runnable{
     String sql = "Update vehicles set brand = 'Dota' where id = 7";
@@ -13,15 +14,18 @@ public class UpdateThread1 implements Runnable{
 
     public void run(){
         try {
-            ConnectionPool connectionPool = new ConnectionPool();
+            ConnectionPool connectionPool = ConnectionPool.getConnectionPoolInstance();
             for(int i = 0; i < 10 ; i++){
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.executeUpdate();
+                Thread.sleep(ThreadLocalRandom.current().nextInt(1000, 5000));
                 connectionPool.removeConnection(connection);
             }
         } catch (DbNotReachableException | ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

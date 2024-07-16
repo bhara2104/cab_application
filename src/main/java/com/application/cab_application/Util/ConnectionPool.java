@@ -11,7 +11,7 @@ import java.util.List;
 @SuppressWarnings("FieldMayBeFinal")
 public class ConnectionPool {
     private static final int POOL_SIZE = 1;
-    private static final int MAX_POOL_SIZE = 1;
+    private static final int MAX_POOL_SIZE = 0;
     private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking"; // The firs jdbc:postgres to load the postgres driver // No suitable driver found for jdbc:postgrsql://localhost:5432/cab_booking
     private static final String USERNAME = "bharathkumar";
     private static final String PASSWORD = "Bharath123";
@@ -21,8 +21,8 @@ public class ConnectionPool {
 
     public static List<Connection> createConnectionPool() throws ClassNotFoundException, DbNotReachableException {
         List<Connection> pool = new ArrayList<>(POOL_SIZE);
+        System.out.println("Creating");
         for (int i = 0; i < POOL_SIZE; i++) {
-            System.out.println("connection creating");
             pool.add(createConnection());
         }
         return pool;

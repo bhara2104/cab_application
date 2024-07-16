@@ -6,10 +6,8 @@ public class MultiThreadedUpdates {
         Runnable obj2 = new UpdateThread1();
         Thread t1 = new Thread(obj2);
         Thread t2 = new Thread(obj1);
-        Thread t3 = new Thread(obj1);
         t1.start();
         t2.start();
-        t3.start();
     }
 
     // with 1 Thread
@@ -33,4 +31,14 @@ public class MultiThreadedUpdates {
     // Here race condition does not occurs but if all the threads tries to execute at the same time and access the same resource deadlock will occur
 
     // In our case the thread wait till the db connection is over
+
+    // Creating
+    //1
+    //1
+    //There is no connection left in the connection pool to reuse
+    //1
+    //1
+    //1
+
+    // This may occur whenever some Thread takes more time to execute and connection pool size is less
 }
