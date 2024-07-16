@@ -46,6 +46,7 @@ public class ConnectionPool {
             // Another way DriverManger.registerDriver()
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new DbNotReachableException("There is an Error in DB", e);
         }
     }
