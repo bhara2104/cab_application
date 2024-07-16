@@ -12,7 +12,7 @@ import java.util.List;
 public class ConnectionPool {
     private static final int POOL_SIZE = 2;
     private static final int MAX_POOL_SIZE = 0;
-    private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking"; // The firs jdbc:postgres to load the postgres driver // No suitable driver found for jdbc:postgrsql://localhost:5432/cab_booking
+    private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking"; // The first jdbc:postgres to load the postgres driver // No suitable driver found for jdbc:postgrsql://localhost:5432/cab_booking
     private static final String USERNAME = "bharathkumar";
     private static final String PASSWORD = "Bharath123";
     private List<Connection> connectionPool;
@@ -41,7 +41,8 @@ public class ConnectionPool {
 
     public static Connection createConnection() throws ClassNotFoundException, DbNotReachableException {
         try {
-            Class.forName("org.postgresql.Driver");
+//            Class.forName("org.postgresql.Driver"); // We no longer need to load because psql provides a java service mechanism so it will be automatically loaded
+            // unless it is in classpath
             // This is to initially load the postgres driver initially
             // Another way DriverManger.registerDriver()
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
