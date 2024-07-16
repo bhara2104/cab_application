@@ -10,8 +10,8 @@ import java.util.List;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class ConnectionPool {
-    private static final int POOL_SIZE = 10;
-    private static final int MAX_POOL_SIZE = 50;
+    private static final int POOL_SIZE = 1;
+    private static final int MAX_POOL_SIZE = 1;
     private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking";
     private static final String USERNAME = "bharathkumar";
     private static final String PASSWORD = "Bharath123";
@@ -41,11 +41,13 @@ public class ConnectionPool {
     public static synchronized Connection createConnection() throws ClassNotFoundException, DbNotReachableException {
         try {
             Class.forName("org.postgresql.Driver");
+            // Another way DriverManger.registerDriver()
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
             throw new DbNotReachableException("There is an Error in DB", e);
         }
     }
+    // A tcp connection will be established between the driver and the java application which is a connection and that exactly is an instance
 
     public synchronized Connection getConnection() throws SQLException, ClassNotFoundException, DbNotReachableException {
         if (connectionPool.isEmpty()) {
