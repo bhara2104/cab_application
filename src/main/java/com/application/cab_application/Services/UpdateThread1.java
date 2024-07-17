@@ -24,8 +24,6 @@ public class UpdateThread1 implements Runnable{
             }
         } catch (DbNotReachableException | ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
     }
 }
