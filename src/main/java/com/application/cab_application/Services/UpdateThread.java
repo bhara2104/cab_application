@@ -15,7 +15,7 @@ public class UpdateThread implements Runnable {
     public void run(){
         try {
             ConnectionPool connectionPool = ConnectionPool.getConnectionPoolInstance();
-            for(int i = 0; i < 10 ; i++){
+            for(int i = 0; i < 10000 ; i++){
                 ResultSet resultSet ;
                 System.out.println(Thread.currentThread().getName());
                 Connection connection = connectionPool.getConnection();

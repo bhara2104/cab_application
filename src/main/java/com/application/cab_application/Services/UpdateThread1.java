@@ -6,7 +6,6 @@ import com.application.cab_application.Util.ConnectionPool;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class UpdateThread1 implements Runnable{
     String sql = "Update vehicles set brand = 'Dota' where id = 7";

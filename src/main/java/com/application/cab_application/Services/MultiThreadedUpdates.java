@@ -1,16 +1,28 @@
 package com.application.cab_application.Services;
 
+import com.application.cab_application.Util.ConnectionPool;
+
 public class MultiThreadedUpdates {
     public static void main(String[] args) {
+        try {
+            ConnectionPool connectionPool = new ConnectionPool();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         Runnable obj1 = new UpdateThread();
         Runnable obj2 = new UpdateThread1();
         Thread t1 = new Thread(obj2);
         Thread t2 = new Thread(obj1);
+        Thread t3 = new Thread(obj2);
+        long startTime = System.nanoTime();
         t1.start();
         t2.start();
+        t3.start();
+        long endTime = System.nanoTime();
+        System.out.println(endTime - startTime);
     }
 
-    // with 1 Thread
+    // with 1 Thread -> 149584
     // connection creating
     //1
     //connection creating
@@ -43,4 +55,11 @@ public class MultiThreadedUpdates {
     // This may occur whenever some Thread takes more time to execute and connection pool size is less
 
     // By making it as single connection if connection does not returned by the first thread second thread will never get chance to execute
+
+    //One Connection -> 95458 It is less because 1'st thread exited due to connection pool problem
+    // Second try -> 154333
+    // Two connection -> 110000
+
+    // Five connection -> 91542
+
 }

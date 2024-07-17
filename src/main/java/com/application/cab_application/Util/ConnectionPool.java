@@ -7,12 +7,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import org.postgresql.Driver ;
 
-@SuppressWarnings("FieldMayBeFinal")
+import org.postgresql.Driver;
+
 public class ConnectionPool {
-    private static final int POOL_SIZE = 20;
-    private static final int MAX_POOL_SIZE = 10;
+    private static final int POOL_SIZE = 5;
+    private static final int MAX_POOL_SIZE = 5;
     private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking"; // The first jdbc:postgres to load the postgres driver // No suitable driver found for jdbc:postgrsql://localhost:5432/cab_booking
     private static final String USERNAME = "bharathkumar";
     private static final String PASSWORD = "Bharath123";
@@ -55,7 +55,7 @@ public class ConnectionPool {
     }
     // A tcp connection will be established between the driver and the java application which is a connection and that exactly is an instance
 
-    public Connection getConnection() throws SQLException, ClassNotFoundException, DbNotReachableException {
+    public synchronized Connection getConnection() throws SQLException, ClassNotFoundException, DbNotReachableException {
         System.out.println(connectionPool.size());
         if (connectionPool.isEmpty()) {
             if (usedConnections.size() < MAX_POOL_SIZE) {
@@ -73,7 +73,7 @@ public class ConnectionPool {
         return connection;
     }
 
-    public void removeConnection(Connection connection) {
+    public synchronized void removeConnection(Connection connection) {
         try {
             if (!connection.isValid(5)) {
                 connection.close();
@@ -86,12 +86,12 @@ public class ConnectionPool {
         usedConnections.remove(connection);
     }
 
-    public void closeConnectionPool(){
+    public void closeConnectionPool() {
         try {
             for (Connection connection : connectionPool) {
                 connection.close();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
