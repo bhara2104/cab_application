@@ -14,7 +14,7 @@ public class UpdateThread1 implements Runnable{
     public void run(){
         try {
             ConnectionPool connectionPool = ConnectionPool.getConnectionPoolInstance();
-            for(int i = 0; i < 10 ; i++){
+            for(int i = 0; i < 1000 ; i++){
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.executeUpdate();
