@@ -66,7 +66,7 @@ public class RiderRideServlet extends HttpServlet {
             printWriter.write("{\"message\":\"Ride Cancelled Successfully\"}");
         } catch (DbNotReachableException e) {
             response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
-            printWriter.write("{\"message\":\"We are very Sorry It's not You It's us, Try Reloading the Page\"}");
+            printWriter.write("{\"message\":\"We are very Sorry It's not You, It's us, Try Reloading the Page\"}");
         }
     }
 }

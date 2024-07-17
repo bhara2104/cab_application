@@ -10,9 +10,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="Closed Result sets">
+    <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="multi threaded connections">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RidesDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RidesDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/UpdateThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/UpdateThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/UpdateThread1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/UpdateThread1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RiderRideServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RiderRideServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +80,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.Alist.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MultiThreadedUpdates.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TestAccountDao.checkCreatedAccount.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TestAccountDao.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.TestDatabaseConnector.checkConnection.executor&quot;: &quot;Run&quot;,
@@ -85,9 +91,10 @@
     &quot;Maven.cab_application [deploy].executor&quot;: &quot;Run&quot;,
     &quot;Maven.cab_application [install].executor&quot;: &quot;Run&quot;,
     &quot;Maven.cab_application [package].executor&quot;: &quot;Run&quot;,
+    &quot;Remote JVM Debug.cab_application.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Tomcat Server.Tomcat 10.1.24.executor&quot;: &quot;Run&quot;,
-    &quot;Tomcat Server.Tomcat 10.1.25.executor&quot;: &quot;Debug&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.25.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -108,15 +115,36 @@
   }
 }</component>
   <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="Remote" />
+      </set>
+    </option>
     <option name="openRunningConfigInTab" value="true" />
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.25">
-    <configuration name="TestAccountDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.MultiThreadedUpdates">
+    <configuration name="Alist" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.application.cab_application.Services.Alist" />
       <module name="cab_application" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestAccountDao" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.application.cab_application.Services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MultiThreadedUpdates" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.application.cab_application.Services.MultiThreadedUpdates" />
+      <module name="cab_application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.application.cab_application.Services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -149,6 +177,21 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="cab_application" type="Remote">
+      <log_file alias="$USER_HOME$/apache-tomcat-10.1.25/logs" path="$USER_HOME$/apache-tomcat-10.1.25/logs" />
+      <module name="cab_application" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="true" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8081" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8081" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
     </configuration>
     <configuration name="Tomcat 10.1.25" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.25" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -238,18 +281,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.TestAccountDao" />
+      <item itemvalue="Application.Alist" />
+      <item itemvalue="Application.MultiThreadedUpdates" />
       <item itemvalue="JUnit.TestAccountDao.checkCreatedAccount" />
       <item itemvalue="JUnit.TestDatabaseConnector" />
       <item itemvalue="JUnit.TestDatabaseConnector.checkConnection" />
+      <item itemvalue="Remote JVM Debug.cab_application" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.25" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MultiThreadedUpdates" />
+        <item itemvalue="Application.Alist" />
         <item itemvalue="JUnit.TestDatabaseConnector.checkConnection" />
         <item itemvalue="JUnit.TestDatabaseConnector" />
         <item itemvalue="JUnit.TestAccountDao.checkCreatedAccount" />
-        <item itemvalue="JUnit.TestAccountDao" />
       </list>
     </recent_temporary>
   </component>
@@ -298,287 +344,15 @@
       <workItem from="1720584702876" duration="1991000" />
       <workItem from="1720586848113" duration="6705000" />
       <workItem from="1720604242388" duration="9437000" />
-      <workItem from="1720619849589" duration="2412000" />
-    </task>
-    <task id="LOCAL-00126" summary="payment Servlet validation">
-      <option name="closed" value="true" />
-      <created>1719921157246</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1719921157246</updated>
-    </task>
-    <task id="LOCAL-00127" summary="Update Current Location">
-      <option name="closed" value="true" />
-      <created>1719922254228</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1719922254228</updated>
-    </task>
-    <task id="LOCAL-00128" summary="From and to locations can't be same validation">
-      <option name="closed" value="true" />
-      <created>1719925981467</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1719925981467</updated>
-    </task>
-    <task id="LOCAL-00129" summary="Added location details">
-      <option name="closed" value="true" />
-      <created>1719926164095</created>
-      <option name="number" value="00129" />
-      <option name="presentableId" value="LOCAL-00129" />
-      <option name="project" value="LOCAL" />
-      <updated>1719926164095</updated>
-    </task>
-    <task id="LOCAL-00130" summary="Changed the Status code">
-      <option name="closed" value="true" />
-      <created>1719982966678</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
-      <option name="project" value="LOCAL" />
-      <updated>1719982966678</updated>
-    </task>
-    <task id="LOCAL-00131" summary="Added Validation at payment end">
-      <option name="closed" value="true" />
-      <created>1719989968874</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1719989968874</updated>
-    </task>
-    <task id="LOCAL-00132" summary="Error handling">
-      <option name="closed" value="true" />
-      <created>1719990462230</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1719990462230</updated>
-    </task>
-    <task id="LOCAL-00133" summary="Error handling">
-      <option name="closed" value="true" />
-      <created>1720021568144</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1720021568144</updated>
-    </task>
-    <task id="LOCAL-00134" summary="Implemented Connection Pool">
-      <option name="closed" value="true" />
-      <created>1720071599458</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1720071599458</updated>
-    </task>
-    <task id="LOCAL-00135" summary="created base dao and adding object mapping with column names">
-      <option name="closed" value="true" />
-      <created>1720077703790</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1720077703790</updated>
-    </task>
-    <task id="LOCAL-00136" summary="Added Mappers to map column name with the value">
-      <option name="closed" value="true" />
-      <created>1720083095424</created>
-      <option name="number" value="00136" />
-      <option name="presentableId" value="LOCAL-00136" />
-      <option name="project" value="LOCAL" />
-      <updated>1720083095424</updated>
-    </task>
-    <task id="LOCAL-00137" summary="Changed the maximum pool size to 30 as it needs to dynamically update some times">
-      <option name="closed" value="true" />
-      <created>1720083638615</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1720083638615</updated>
-    </task>
-    <task id="LOCAL-00138" summary="base Dao config">
-      <option name="closed" value="true" />
-      <created>1720087477568</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1720087477569</updated>
-    </task>
-    <task id="LOCAL-00139" summary="create method for base dao">
-      <option name="closed" value="true" />
-      <created>1720088690854</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1720088690854</updated>
-    </task>
-    <task id="LOCAL-00140" summary="Completed create and update methods in where clause">
-      <option name="closed" value="true" />
-      <created>1720089778525</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
-      <option name="project" value="LOCAL" />
-      <updated>1720089778526</updated>
-    </task>
-    <task id="LOCAL-00141" summary="Dynamic Query Generator">
-      <option name="closed" value="true" />
-      <created>1720092371745</created>
-      <option name="number" value="00141" />
-      <option name="presentableId" value="LOCAL-00141" />
-      <option name="project" value="LOCAL" />
-      <updated>1720092371745</updated>
-    </task>
-    <task id="LOCAL-00142" summary="Winding up base dao">
-      <option name="closed" value="true" />
-      <created>1720092700518</created>
-      <option name="number" value="00142" />
-      <option name="presentableId" value="LOCAL-00142" />
-      <option name="project" value="LOCAL" />
-      <updated>1720092700518</updated>
-    </task>
-    <task id="LOCAL-00143" summary="Completed DAO for two files">
-      <option name="closed" value="true" />
-      <created>1720095272415</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1720095272415</updated>
-    </task>
-    <task id="LOCAL-00144" summary="Bills Dao added and updated base dao to support update column on a specific field">
-      <option name="closed" value="true" />
-      <created>1720095969869</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1720095969869</updated>
-    </task>
-    <task id="LOCAL-00145" summary="Completed till payments Dao v1 with reusable sql done">
-      <option name="closed" value="true" />
-      <created>1720097345386</created>
-      <option name="number" value="00145" />
-      <option name="presentableId" value="LOCAL-00145" />
-      <option name="project" value="LOCAL" />
-      <updated>1720097345386</updated>
-    </task>
-    <task id="LOCAL-00146" summary="Completed upto vehicle dao still rides and ride details pending">
-      <option name="closed" value="true" />
-      <created>1720098194104</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
-      <option name="project" value="LOCAL" />
-      <updated>1720098194104</updated>
-    </task>
-    <task id="LOCAL-00147" summary="Completed upto vehicle dao still rides and ride details pending">
-      <option name="closed" value="true" />
-      <created>1720098713396</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1720098713396</updated>
-    </task>
-    <task id="LOCAL-00148" summary="Ride Details DAO conversion">
-      <option name="closed" value="true" />
-      <created>1720164902358</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1720164902358</updated>
-    </task>
-    <task id="LOCAL-00149" summary="ride details dao completed need to work on rides dao">
-      <option name="closed" value="true" />
-      <created>1720165222573</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1720165222573</updated>
-    </task>
-    <task id="LOCAL-00150" summary="Winding up">
-      <option name="closed" value="true" />
-      <created>1720168491210</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1720168491210</updated>
-    </task>
-    <task id="LOCAL-00151" summary="Done with Base DAO">
-      <option name="closed" value="true" />
-      <created>1720411878949</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1720411878949</updated>
-    </task>
-    <task id="LOCAL-00152" summary="Updated servlets with new Connection pool logic">
-      <option name="closed" value="true" />
-      <created>1720413050123</created>
-      <option name="number" value="00152" />
-      <option name="presentableId" value="LOCAL-00152" />
-      <option name="project" value="LOCAL" />
-      <updated>1720413050123</updated>
-    </task>
-    <task id="LOCAL-00153" summary="Migrated to Connection pool with the query generator base DAO">
-      <option name="closed" value="true" />
-      <created>1720413473852</created>
-      <option name="number" value="00153" />
-      <option name="presentableId" value="LOCAL-00153" />
-      <option name="project" value="LOCAL" />
-      <updated>1720413473853</updated>
-    </task>
-    <task id="LOCAL-00154" summary="Sql Fixes">
-      <option name="closed" value="true" />
-      <created>1720417094500</created>
-      <option name="number" value="00154" />
-      <option name="presentableId" value="LOCAL-00154" />
-      <option name="project" value="LOCAL" />
-      <updated>1720417094500</updated>
-    </task>
-    <task id="LOCAL-00155" summary="set object fix">
-      <option name="closed" value="true" />
-      <created>1720417521158</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
-      <option name="project" value="LOCAL" />
-      <updated>1720417521159</updated>
-    </task>
-    <task id="LOCAL-00156" summary="set object fix">
-      <option name="closed" value="true" />
-      <created>1720418733259</created>
-      <option name="number" value="00156" />
-      <option name="presentableId" value="LOCAL-00156" />
-      <option name="project" value="LOCAL" />
-      <updated>1720418733259</updated>
-    </task>
-    <task id="LOCAL-00157" summary="BASE DAO String Fixes">
-      <option name="closed" value="true" />
-      <created>1720420799423</created>
-      <option name="number" value="00157" />
-      <option name="presentableId" value="LOCAL-00157" />
-      <option name="project" value="LOCAL" />
-      <updated>1720420799423</updated>
-    </task>
-    <task id="LOCAL-00158" summary="Driver Details Error fix">
-      <option name="closed" value="true" />
-      <created>1720421045106</created>
-      <option name="number" value="00158" />
-      <option name="presentableId" value="LOCAL-00158" />
-      <option name="project" value="LOCAL" />
-      <updated>1720421045106</updated>
-    </task>
-    <task id="LOCAL-00159" summary="Connection Pool Fix">
-      <option name="closed" value="true" />
-      <created>1720422443028</created>
-      <option name="number" value="00159" />
-      <option name="presentableId" value="LOCAL-00159" />
-      <option name="project" value="LOCAL" />
-      <updated>1720422443028</updated>
-    </task>
-    <task id="LOCAL-00160" summary="Connection pool revoked after sending result set">
-      <option name="closed" value="true" />
-      <created>1720422516488</created>
-      <option name="number" value="00160" />
-      <option name="presentableId" value="LOCAL-00160" />
-      <option name="project" value="LOCAL" />
-      <updated>1720422516489</updated>
+      <workItem from="1720619849589" duration="7983000" />
+      <workItem from="1720677327931" duration="7247000" />
+      <workItem from="1720689920467" duration="3532000" />
+      <workItem from="1720696738951" duration="4424000" />
+      <workItem from="1720756282562" duration="608000" />
+      <workItem from="1720864691262" duration="65000" />
+      <workItem from="1721039819312" duration="908000" />
+      <workItem from="1721107543591" duration="29992000" />
+      <workItem from="1721198718644" duration="4460000" />
     </task>
     <task id="LOCAL-00161" summary="Start Time missed in mapped added that in the mapper">
       <option name="closed" value="true" />
@@ -692,7 +466,287 @@
       <option name="project" value="LOCAL" />
       <updated>1720620374285</updated>
     </task>
-    <option name="localTasksCounter" value="175" />
+    <task id="LOCAL-00175" summary="Moved all the queries to base dao">
+      <option name="closed" value="true" />
+      <created>1720670702278</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1720670702278</updated>
+    </task>
+    <task id="LOCAL-00176" summary="Rides DAO fixes">
+      <option name="closed" value="true" />
+      <created>1720670910918</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1720670910918</updated>
+    </task>
+    <task id="LOCAL-00177" summary="Singleton Connection pool instance">
+      <option name="closed" value="true" />
+      <created>1720673527778</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1720673527778</updated>
+    </task>
+    <task id="LOCAL-00178" summary="Created Singleton Instance for Connection Pool">
+      <option name="closed" value="true" />
+      <created>1720674061232</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
+      <option name="project" value="LOCAL" />
+      <updated>1720674061232</updated>
+    </task>
+    <task id="LOCAL-00179" summary="Connection pool fixes">
+      <option name="closed" value="true" />
+      <created>1720674442741</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1720674442741</updated>
+    </task>
+    <task id="LOCAL-00180" summary="Proper Exception Handling">
+      <option name="closed" value="true" />
+      <created>1720674841372</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1720674841372</updated>
+    </task>
+    <task id="LOCAL-00181" summary="Added DB not reachable exception to method signature">
+      <option name="closed" value="true" />
+      <created>1720675011132</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1720675011132</updated>
+    </task>
+    <task id="LOCAL-00182" summary="Propagated Errors till the DAO's Need to handle on the servlet level">
+      <option name="closed" value="true" />
+      <created>1720675208971</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1720675208971</updated>
+    </task>
+    <task id="LOCAL-00183" summary="Added Connection pooling Exception Propagation from services">
+      <option name="closed" value="true" />
+      <created>1720675714446</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1720675714446</updated>
+    </task>
+    <task id="LOCAL-00184" summary="Connection pool updates">
+      <option name="closed" value="true" />
+      <created>1720677756250</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1720677756250</updated>
+    </task>
+    <task id="LOCAL-00185" summary="Connection Pool Fixes">
+      <option name="closed" value="true" />
+      <created>1720681645326</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
+      <option name="project" value="LOCAL" />
+      <updated>1720681645327</updated>
+    </task>
+    <task id="LOCAL-00186" summary="Returning of connection back to the connection pool after rollback has been called">
+      <option name="closed" value="true" />
+      <created>1720681963680</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1720681963680</updated>
+    </task>
+    <task id="LOCAL-00187" summary="Singleton Implementation fix">
+      <option name="closed" value="true" />
+      <created>1720689942668</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1720689942668</updated>
+    </task>
+    <task id="LOCAL-00188" summary="Dead locks removed">
+      <option name="closed" value="true" />
+      <created>1720697334426</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1720697334427</updated>
+    </task>
+    <task id="LOCAL-00189" summary="Fixes">
+      <option name="closed" value="true" />
+      <created>1720699824684</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1720699824684</updated>
+    </task>
+    <task id="LOCAL-00190" summary="Auto commits false removed">
+      <option name="closed" value="true" />
+      <created>1720700246697</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
+      <option name="project" value="LOCAL" />
+      <updated>1720700246697</updated>
+    </task>
+    <task id="LOCAL-00191" summary="Rider Services Done">
+      <option name="closed" value="true" />
+      <created>1720701069913</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
+      <option name="project" value="LOCAL" />
+      <updated>1720701069913</updated>
+    </task>
+    <task id="LOCAL-00192" summary="Connection Pool">
+      <option name="closed" value="true" />
+      <created>1721122036611</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1721122036611</updated>
+    </task>
+    <task id="LOCAL-00193" summary="DB Connections Pool closing">
+      <option name="closed" value="true" />
+      <created>1721122519395</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1721122519396</updated>
+    </task>
+    <task id="LOCAL-00194" summary="Connection Pool with thread checks">
+      <option name="closed" value="true" />
+      <created>1721124477946</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1721124477946</updated>
+    </task>
+    <task id="LOCAL-00195" summary="Threading">
+      <option name="closed" value="true" />
+      <created>1721125124331</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1721125124331</updated>
+    </task>
+    <task id="LOCAL-00196" summary="Multi Threaded">
+      <option name="closed" value="true" />
+      <created>1721126192674</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1721126192674</updated>
+    </task>
+    <task id="LOCAL-00197" summary="Multi Threaded">
+      <option name="closed" value="true" />
+      <created>1721126727512</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1721126727512</updated>
+    </task>
+    <task id="LOCAL-00198" summary="Thread pool fixes">
+      <option name="closed" value="true" />
+      <created>1721127814113</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1721127814113</updated>
+    </task>
+    <task id="LOCAL-00199" summary="Multi Threaded">
+      <option name="closed" value="true" />
+      <created>1721129486193</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1721129486194</updated>
+    </task>
+    <task id="LOCAL-00200" summary="Problem with Result set">
+      <option name="closed" value="true" />
+      <created>1721130980341</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1721130980341</updated>
+    </task>
+    <task id="LOCAL-00201" summary="Completed">
+      <option name="closed" value="true" />
+      <created>1721131554778</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1721131554778</updated>
+    </task>
+    <task id="LOCAL-00202" summary=".">
+      <option name="closed" value="true" />
+      <created>1721131867537</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1721131867537</updated>
+    </task>
+    <task id="LOCAL-00203" summary=". . .">
+      <option name="closed" value="true" />
+      <created>1721132496855</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
+      <option name="project" value="LOCAL" />
+      <updated>1721132496856</updated>
+    </task>
+    <task id="LOCAL-00204" summary="Wrapping up">
+      <option name="closed" value="true" />
+      <created>1721133438168</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1721133438168</updated>
+    </task>
+    <task id="LOCAL-00205" summary="Fixes">
+      <option name="closed" value="true" />
+      <created>1721136699348</created>
+      <option name="number" value="00205" />
+      <option name="presentableId" value="LOCAL-00205" />
+      <option name="project" value="LOCAL" />
+      <updated>1721136699348</updated>
+    </task>
+    <task id="LOCAL-00206" summary="Connection pooling">
+      <option name="closed" value="true" />
+      <created>1721188334464</created>
+      <option name="number" value="00206" />
+      <option name="presentableId" value="LOCAL-00206" />
+      <option name="project" value="LOCAL" />
+      <updated>1721188334464</updated>
+    </task>
+    <task id="LOCAL-00207" summary="Removed unnecessary close">
+      <option name="closed" value="true" />
+      <created>1721188651510</created>
+      <option name="number" value="00207" />
+      <option name="presentableId" value="LOCAL-00207" />
+      <option name="project" value="LOCAL" />
+      <updated>1721188651510</updated>
+    </task>
+    <task id="LOCAL-00208" summary="multi threaded connections">
+      <option name="closed" value="true" />
+      <created>1721189427572</created>
+      <option name="number" value="00208" />
+      <option name="presentableId" value="LOCAL-00208" />
+      <option name="project" value="LOCAL" />
+      <updated>1721189427572</updated>
+    </task>
+    <task id="LOCAL-00209" summary="multi threaded connections">
+      <option name="closed" value="true" />
+      <created>1721195286091</created>
+      <option name="number" value="00209" />
+      <option name="presentableId" value="LOCAL-00209" />
+      <option name="project" value="LOCAL" />
+      <updated>1721195286091</updated>
+    </task>
+    <option name="localTasksCounter" value="210" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -711,43 +765,32 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Bills Dao added and updated base dao to support update column on a specific field" />
-    <MESSAGE value="Completed till payments Dao v1 with reusable sql done" />
-    <MESSAGE value="Completed upto vehicle dao still rides and ride details pending" />
-    <MESSAGE value="Ride Details DAO conversion" />
-    <MESSAGE value="ride details dao completed need to work on rides dao" />
-    <MESSAGE value="Done with Base DAO" />
-    <MESSAGE value="Updated servlets with new Connection pool logic" />
-    <MESSAGE value="Migrated to Connection pool with the query generator base DAO" />
-    <MESSAGE value="Sql Fixes" />
-    <MESSAGE value="set object fix" />
-    <MESSAGE value="BASE DAO String Fixes" />
-    <MESSAGE value="Driver Details Error fix" />
-    <MESSAGE value="Connection Pool Fix" />
-    <MESSAGE value="Connection pool revoked after sending result set" />
-    <MESSAGE value="Start Time missed in mapped added that in the mapper" />
-    <MESSAGE value="Winding up" />
-    <MESSAGE value="Finally block" />
-    <MESSAGE value="Phone Number pattern matching" />
-    <MESSAGE value="Added Linked Hash map to get ride of order issues" />
-    <MESSAGE value="Account validation" />
-    <MESSAGE value="VerifySession API" />
-    <MESSAGE value="Added Verify Session API in each page to check whether the session exist or not" />
-    <MESSAGE value="Changed the position of the return" />
-    <MESSAGE value="Ride status and ride details mismatch" />
-    <MESSAGE value="Closed Result sets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Closed Result sets" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/DriverLoginServlet.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added DB not reachable exception to method signature" />
+    <MESSAGE value="Propagated Errors till the DAO's Need to handle on the servlet level" />
+    <MESSAGE value="Added Connection pooling Exception Propagation from services" />
+    <MESSAGE value="Connection pool updates" />
+    <MESSAGE value="Connection Pool Fixes" />
+    <MESSAGE value="Returning of connection back to the connection pool after rollback has been called" />
+    <MESSAGE value="Singleton Implementation fix" />
+    <MESSAGE value="Dead locks removed" />
+    <MESSAGE value="Auto commits false removed" />
+    <MESSAGE value="Rider Services Done" />
+    <MESSAGE value="Connection Pool" />
+    <MESSAGE value="DB Connections Pool closing" />
+    <MESSAGE value="Connection Pool with thread checks" />
+    <MESSAGE value="Threading" />
+    <MESSAGE value="Thread pool fixes" />
+    <MESSAGE value="Multi Threaded" />
+    <MESSAGE value="Problem with Result set" />
+    <MESSAGE value="Completed" />
+    <MESSAGE value="." />
+    <MESSAGE value=". . ." />
+    <MESSAGE value="Wrapping up" />
+    <MESSAGE value="Fixes" />
+    <MESSAGE value="Connection pooling" />
+    <MESSAGE value="Removed unnecessary close" />
+    <MESSAGE value="multi threaded connections" />
+    <option name="LAST_COMMIT_MESSAGE" value="multi threaded connections" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

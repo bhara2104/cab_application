@@ -43,7 +43,7 @@ public class ConnectionPool {
     public static Connection createConnection() throws ClassNotFoundException, DbNotReachableException {
         try {
             Class.forName("org.postgresql.Driver"); // We no longer need to load because psql provides a java service mechanism,so it will be automatically loaded
-            Driver driver = new Driver();
+//            Driver driver = new Driver();
             // unless it is in classpath
             // This is to initially load the postgres driver initially
             // Another way DriverManger.registerDriver()

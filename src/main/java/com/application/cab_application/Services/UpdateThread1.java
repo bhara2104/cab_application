@@ -8,13 +8,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UpdateThread1 implements Runnable{
-    String sql = "Update vehicles set brand = 'Dota' where id = 7";
+    String sql = "Update vehicles set brand = 'Tata' where id = 7";
 
 
     public void run(){
         try {
             ConnectionPool connectionPool = ConnectionPool.getConnectionPoolInstance();
-            for(int i = 0; i < 1000 ; i++){
+            for(int i = 0; i < 10000 ; i++){
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.executeUpdate();

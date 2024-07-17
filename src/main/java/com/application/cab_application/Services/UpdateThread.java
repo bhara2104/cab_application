@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UpdateThread implements Runnable {
-    String sql = "Update vehicles set brand = 'Dota' where id = 7";
+    String sql = "Update vehicles set brand = 'Tata' where id = 7";
 
 
     public void run(){
@@ -23,6 +23,7 @@ public class UpdateThread implements Runnable {
                 preparedStatement.executeUpdate();
                 resultSet = preparedStatement.getGeneratedKeys();
                 preparedStatement.close();
+                System.out.println(resultSet.isClosed());
                 resultSet.close();
                 connectionPool.removeConnection(connection);
             }
