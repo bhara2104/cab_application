@@ -12,6 +12,7 @@ import com.google.gson.JsonObject;
 
 
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.*;
 
 public class RidesDao {
@@ -173,7 +174,8 @@ public class RidesDao {
             System.out.println(e.getMessage());
         } finally {
             try {
-                rs.getStatement().close();
+                Statement statement = rs.getStatement();
+                statement.close();
                 rs.close();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -196,8 +198,9 @@ public class RidesDao {
             System.out.println(e.getMessage());
         } finally {
             try {
-                resultSet.getStatement().close();
+                Statement statement = resultSet.getStatement();
                 resultSet.close();
+                statement.close();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

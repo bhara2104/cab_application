@@ -5,6 +5,7 @@ import com.application.cab_application.Models.Payment;
 import com.application.cab_application.enums.PaymentType;
 
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class PaymentDao {
     public static int createPayment(Payment payment) throws DbNotReachableException {
@@ -31,8 +32,9 @@ public class PaymentDao {
             System.out.println(e.getMessage());
         } finally {
             try {
-                resultSet.getStatement().close();
+                Statement statement = resultSet.getStatement();
                 resultSet.close();
+                statement.close();
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }

@@ -7,11 +7,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.postgresql.Driver ;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class ConnectionPool {
-    private static final int POOL_SIZE = 5;
-    private static final int MAX_POOL_SIZE = 5;
+    private static final int POOL_SIZE = 20;
+    private static final int MAX_POOL_SIZE = 10;
     private static final String URL = "jdbc:postgresql://localhost:5432/cab_booking"; // The first jdbc:postgres to load the postgres driver // No suitable driver found for jdbc:postgrsql://localhost:5432/cab_booking
     private static final String USERNAME = "bharathkumar";
     private static final String PASSWORD = "Bharath123";
@@ -41,7 +42,8 @@ public class ConnectionPool {
 
     public static Connection createConnection() throws ClassNotFoundException, DbNotReachableException {
         try {
-//            Class.forName("org.postgresql.Driver"); // We no longer need to load because psql provides a java service mechanism,so it will be automatically loaded
+            Class.forName("org.postgresql.Driver"); // We no longer need to load because psql provides a java service mechanism,so it will be automatically loaded
+            Driver driver = new Driver();
             // unless it is in classpath
             // This is to initially load the postgres driver initially
             // Another way DriverManger.registerDriver()
@@ -82,6 +84,16 @@ public class ConnectionPool {
             System.out.println(e.getMessage());
         }
         usedConnections.remove(connection);
+    }
+
+    public void closeConnectionPool(){
+        try {
+            for (Connection connection : connectionPool) {
+                connection.close();
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public int getConnectionsInUse() {

@@ -4,7 +4,9 @@ import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Models.Account;
 import com.application.cab_application.enums.AccountType;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -40,8 +42,9 @@ public class AccountDao {
             System.out.println(e.getMessage());
         } finally {
             try {
-                resultSet.getStatement().close();
+                Statement statement = resultSet.getStatement();
                 resultSet.close();
+                statement.close();
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }

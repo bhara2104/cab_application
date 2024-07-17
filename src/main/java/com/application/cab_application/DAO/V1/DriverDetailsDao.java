@@ -7,6 +7,7 @@ import com.application.cab_application.Util.DatabaseConnector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DriverDetailsDao {
     public static DriverDetails getDriverDetailsByAccountID(int accountID) throws DbNotReachableException {
@@ -36,8 +37,9 @@ public class DriverDetailsDao {
             System.out.println(e.getMessage());
         } finally {
             try {
-                rs.getStatement().close();
+                Statement statement = rs.getStatement();
                 rs.close();
+                statement.close();
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }

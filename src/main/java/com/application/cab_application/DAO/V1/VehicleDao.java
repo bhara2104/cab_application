@@ -7,6 +7,7 @@ import com.application.cab_application.enums.VehicleType;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class VehicleDao {
     public static int createVehicle(Vehicle vehicle) throws DbNotReachableException {
@@ -38,8 +39,9 @@ public class VehicleDao {
             System.out.println(e.getMessage());
         } finally {
             try {
-                resultSet.getStatement().close();
+                Statement statement = resultSet.getStatement();
                 resultSet.close();
+                statement.close();
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }

@@ -20,7 +20,6 @@ public class UpdateThread1 implements Runnable{
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.executeUpdate();
                 System.out.println(Thread.currentThread().getName() + " Sleeper");
-                Thread.sleep(4000);
                 connectionPool.removeConnection(connection);
             }
         } catch (DbNotReachableException | ClassNotFoundException | SQLException e) {

@@ -5,6 +5,7 @@ import com.application.cab_application.Models.UpiData;
 
 
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,14 +25,14 @@ public class UpiDataDao {
             while (resultSet.next()) {
                 upiDataList.add(new UpiData(resultSet.getInt("id"), resultSet.getInt("account_id"), resultSet.getString("upi_id")));
             }
-            resultSet.getStatement().close();
             return upiDataList ;
         }catch (Exception e){
             System.out.println(e.getMessage());
         } finally {
             try {
-                resultSet.getStatement().close();
+                Statement statement = resultSet.getStatement();
                 resultSet.close();
+                statement.close();
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }
@@ -49,8 +50,9 @@ public class UpiDataDao {
             System.out.println(e.getMessage());
         } finally {
             try {
-                resultSet.getStatement().close();
+                Statement statement = resultSet.getStatement();
                 resultSet.close();
+                statement.close();
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }

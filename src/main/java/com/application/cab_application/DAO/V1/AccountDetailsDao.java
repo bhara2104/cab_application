@@ -8,6 +8,7 @@ import org.checkerframework.checker.units.qual.A;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class AccountDetailsDao {
     public static void createAccountDetails(AccountDetails details) throws DbNotReachableException {
@@ -43,8 +44,9 @@ public class AccountDetailsDao {
             System.out.println(e.getMessage());
         } finally {
             try {
-                resultSet.getStatement().close();
+                Statement statement = resultSet.getStatement();
                 resultSet.close();
+                statement.close();
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }

@@ -6,6 +6,7 @@ import com.application.cab_application.Util.DatabaseConnector;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class BillsDao {
     public static int createBill(Bill bill) throws DbNotReachableException {
@@ -40,8 +41,9 @@ public class BillsDao {
             System.out.println(e.getMessage());
         } finally {
             try {
-                resultSet.getStatement().close();
+                Statement statement = resultSet.getStatement();
                 resultSet.close();
+                statement.close();
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }

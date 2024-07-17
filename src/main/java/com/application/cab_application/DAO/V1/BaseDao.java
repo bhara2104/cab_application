@@ -3,10 +3,7 @@ package com.application.cab_application.DAO.V1;
 import com.application.cab_application.Exception.DbNotReachableException;
 import com.application.cab_application.Util.ConnectionPool;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Map;
 
 public class BaseDao {
@@ -46,8 +43,9 @@ public class BaseDao {
             if (connection != null) {
                 try {
                     if (resultSet != null) {
-                        resultSet.getStatement().close();
+                        Statement statement = resultSet.getStatement();
                         resultSet.close();
+                        statement.close();
                     }
                     removeConnectionFromConnectionPoolInstance(connection);
                 } catch (Exception e) {
