@@ -11,12 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="multi threaded connections">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/UpdateThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/UpdateThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/UpdateThread1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Services/UpdateThread1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RiderRideServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RiderRideServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Util/ConnectionPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BillsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BillsDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -352,15 +348,10 @@
       <workItem from="1720864691262" duration="65000" />
       <workItem from="1721039819312" duration="908000" />
       <workItem from="1721107543591" duration="29992000" />
-      <workItem from="1721198718644" duration="4460000" />
-    </task>
-    <task id="LOCAL-00161" summary="Start Time missed in mapped added that in the mapper">
-      <option name="closed" value="true" />
-      <created>1720422967131</created>
-      <option name="number" value="00161" />
-      <option name="presentableId" value="LOCAL-00161" />
-      <option name="project" value="LOCAL" />
-      <updated>1720422967131</updated>
+      <workItem from="1721198718644" duration="4831000" />
+      <workItem from="1721276752722" duration="7034000" />
+      <workItem from="1721307791105" duration="340000" />
+      <workItem from="1721320618784" duration="7150000" />
     </task>
     <task id="LOCAL-00162" summary="Winding up">
       <option name="closed" value="true" />
@@ -746,7 +737,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721195286091</updated>
     </task>
-    <option name="localTasksCounter" value="210" />
+    <task id="LOCAL-00210" summary="multi threaded connections">
+      <option name="closed" value="true" />
+      <created>1721205657784</created>
+      <option name="number" value="00210" />
+      <option name="presentableId" value="LOCAL-00210" />
+      <option name="project" value="LOCAL" />
+      <updated>1721205657784</updated>
+    </task>
+    <option name="localTasksCounter" value="211" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
