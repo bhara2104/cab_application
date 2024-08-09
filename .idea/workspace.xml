@@ -12,7 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="211e6b01-5d8f-4090-a6a1-adabfe7216d2" name="Changes" comment="multi threaded connections">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BillsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/BillsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RatingsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/DAO/V1/RatingsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RatingServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/application/cab_application/Servlets/RatingServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,8 +299,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18968.26" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18968.26" />
       </set>
     </attachedChunks>
   </component>
@@ -351,15 +352,14 @@
       <workItem from="1721198718644" duration="4831000" />
       <workItem from="1721276752722" duration="7034000" />
       <workItem from="1721307791105" duration="340000" />
-      <workItem from="1721320618784" duration="7150000" />
-    </task>
-    <task id="LOCAL-00162" summary="Winding up">
-      <option name="closed" value="true" />
-      <created>1720438598091</created>
-      <option name="number" value="00162" />
-      <option name="presentableId" value="LOCAL-00162" />
-      <option name="project" value="LOCAL" />
-      <updated>1720438598091</updated>
+      <workItem from="1721320618784" duration="7181000" />
+      <workItem from="1721625628073" duration="451000" />
+      <workItem from="1721626657849" duration="1538000" />
+      <workItem from="1721822419190" duration="2018000" />
+      <workItem from="1721879596162" duration="612000" />
+      <workItem from="1722320987023" duration="1191000" />
+      <workItem from="1722327602453" duration="10000" />
+      <workItem from="1723187337813" duration="5551000" />
     </task>
     <task id="LOCAL-00163" summary="Finally block">
       <option name="closed" value="true" />
@@ -745,7 +745,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721205657784</updated>
     </task>
-    <option name="localTasksCounter" value="211" />
+    <task id="LOCAL-00211" summary="multi threaded connections">
+      <option name="closed" value="true" />
+      <created>1721384856382</created>
+      <option name="number" value="00211" />
+      <option name="presentableId" value="LOCAL-00211" />
+      <option name="project" value="LOCAL" />
+      <updated>1721384856382</updated>
+    </task>
+    <option name="localTasksCounter" value="212" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

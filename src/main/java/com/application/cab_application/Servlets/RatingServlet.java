@@ -36,4 +36,27 @@ public class RatingServlet extends HttpServlet {
             printWriter.write("{\"message\":\"We are very Sorry It's not You It's us, Try Reloading the Page\"}");
         }
     }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        String id = request.getParameter("id");
+        PrintWriter printWriter = response.getWriter();
+        int idInt;
+        try {
+            idInt = Integer.parseInt(id);
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            printWriter.write("{\"message\":\"Enter Valid Rating ID\"}");
+            return;
+        }
+        try {
+            Rating rating = RatingsDao.getRating(idInt);
+            response.setStatus(200);
+            printWriter.write(new Gson().toJson(rating));
+        } catch (DbNotReachableException e) {
+            response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+            printWriter.write("{\"message\":\"We are very Sorry It's not You It's us, Try Reloading the Page\"}");
+        }
+    }
 }
